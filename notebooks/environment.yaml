@@ -1,0 +1,13 @@
+name: pythonProject
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - cfunits==3.2.9
+  - folium
+  - jupyter
+  - matplotlib
+  - xarray
+  - cartopy
+prefix: C:\programs\envs\pythonProject

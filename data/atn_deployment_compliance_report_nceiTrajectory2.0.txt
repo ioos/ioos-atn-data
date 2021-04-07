@@ -1,0 +1,59 @@
+
+
+--------------------------------------------------------------------------------
+                         IOOS Compliance Checker Report                         
+                              ncei-trajectory:2.0                               
+   http://www.nodc.noaa.gov/data/formats/netcdf/v2.0/trajectoryIncomplete.cdl   
+--------------------------------------------------------------------------------
+                               Corrective Actions                               
+atn_deployment.nc has 8 potential issues
+
+
+                                 High Priority                                  
+--------------------------------------------------------------------------------
+Required Global Attributes for Trajectory dataset
+* ncei_template_version attribute must be NCEI_NetCDF_Trajectory_Template_v2.0
+
+
+                                Medium Priority                                 
+--------------------------------------------------------------------------------
+A container variable storing information about the platform exists
+* Create a variable to store the platform information
+
+Recommended attributes for coordinate variable z
+* valid_min attribute should exist, have the same type as z, and not be empty or valid_range should be defined
+* valid_max attribute should exist, have the same type as z, and not be empty or valid_range should be defined
+
+Recommended attributes for variable lat
+* comment attribute should exist and not be empty
+
+Recommended global attributes
+* standard_name_vocabulary doesn't contain 'Standard Name Table': CF-v58
+
+Recommended variable for grid mapping should exist
+* A variable to describe the grid mapping should exist
+
+Recommended variable for instrument should exist
+* No instrument variables found
+
+
+                                  Low Priority                                  
+--------------------------------------------------------------------------------
+Suggested global attributes
+* contributor_name should exist and not be empty.
+* contributor_role should exist and not be empty.
+* creator_type should exist and not be empty.
+* creator_institution should exist and not be empty.
+* contributor_name should exist and not be empty.
+* contributor_role should exist and not be empty.
+* date_metadata_modified should exist and be ISO-8601 format (example: PT1M30S), currently: 
+* instrument should exist and not be empty.
+* instrument_vocabulary should exist and not be empty.
+* keywords_vocabulary should exist and not be empty.
+* platform should exist and point to a term in :platform_vocabulary.
+* publisher_type should exist and not be empty.
+* publisher_institution should exist and not be empty.
+* program should exist and not be empty.
+* product_version should exist and not be empty.
+* platform_vocabulary should exist and not be empty.
+* references should exist and not be empty.
