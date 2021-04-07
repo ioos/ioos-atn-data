@@ -1,4 +1,4 @@
-name: pythonProject
+name: atn
 channels:
   - conda-forge
   - defaults
@@ -10,4 +10,4 @@ dependencies:
   - matplotlib
   - xarray
   - cartopy
-prefix: C:\programs\envs\pythonProject
+  - netcdf4
