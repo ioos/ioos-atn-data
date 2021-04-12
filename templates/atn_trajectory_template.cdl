@@ -1,8 +1,8 @@
 netcdf ATN_Trajectory {
 dimensions:
-	obs = < dim1 > ; //............................................Total number of observations
-	strlen_taxon_name = < dim2 > ; //..............................Length of the taxon name string (eg. 18 for "Eumetopias jubatus")
-	strlen_taxon_lsid = < dim3 > ; //..............................Length of the taxon lsid string (eg. 41 for "urn:lsid:marinespecies.org:taxname:254999")
+	obs = < dim1 > ; //..........................................................................Total number of observations
+	strlen_taxon_name = < dim2 > ; //............................................................Length of the taxon name string (eg. 18 for "Eumetopias jubatus")
+	strlen_taxon_lsid = < dim3 > ; //............................................................Length of the taxon lsid string (eg. 41 for "urn:lsid:marinespecies.org:taxname:254999")
 variables:
 	double time(obs) ;
 		time:_FillValue = "" ;
@@ -86,7 +86,7 @@ variables:
 		instrument_pressure:make_model = "" ;
 		instrument_pressure:calibration_date = "" ;
 		instrument_pressure:serial_number = "" ;
-	string animal ;
+	string animal ; //.........................................................................Treated as a platform container variable
 		animal:cf_role = "" ;
 		animal:long_name = "" ;
 		animal:platform_type = "" ;
@@ -101,7 +101,6 @@ variables:
 		animal:order = "" ;
 		animal:family = "" ;
 		animal:genus = "" ;
-		animal:taxonRankID = "" ;
 		animal:rank = "" ;
 		animal:superdomain = "" ;
 		animal:subphylum = "" ;
@@ -110,13 +109,14 @@ variables:
 		animal:suborder = "" ;
 		animal:infraorder = "" ;
 		animal:species = "" ;
-	string taxon_name(strlen_taxon_name) ;  //..........................................Eg. "Eumetopias jubatus"
-	    taxon_name:standard_name = "biological_taxon_name" ;
-	    taxon_name:long_name = "" ; //..................................................most precise taxonomic classification
-	string taxon_lsid(strlen_taxon_lsid) ;  //..........................................Eg. "urn:lsid:marinespecies.org:taxname:254999"
-	    taxon_lsid:standard_name = "biological_taxon_id" ;
-	    taxon_lsid:long_name = "Taxon identifier" ;
-	    taxon_lsid:source = "" ; //.....................................................source of the lsid
+		animal:taxonRankID = "" ;
+	string taxon_name(strlen_taxon_name) ;  //.................................................Eg. "Eumetopias jubatus"
+	    	taxon_name:standard_name = "biological_taxon_name" ;
+	    	taxon_name:long_name = "" ; //.....................................................most precise taxonomic classification
+	string taxon_lsid(strlen_taxon_lsid) ;  //.................................................Eg. "urn:lsid:marinespecies.org:taxname:254999"
+	    	taxon_lsid:standard_name = "biological_taxon_id" ;
+	    	taxon_lsid:long_name = "Taxon identifier" ;
+	    	taxon_lsid:source = "" ; //........................................................source of the lsid (eg. WoRMS, ITIS)
 	double ellipse_orientation(obs) ;
 		ellipse_orientation:_FillValue = "" ;
 		ellipse_orientation:coordinates = "" ;
@@ -204,19 +204,19 @@ variables:
 		:comment = "" ;
 		:common_name = "" ;
 		:Conventions = "" ;
-        :creator_country = "" ;
+		:creator_country = "" ;
 		:creator_email = "" ;
 		:creator_institution = "" ;
 		:creator_name = "" ;
-	    :creator_sector = "" ;
+		:creator_sector = "" ;
 		:creator_url = "" ;
 		:date_created = "" ;
 		:date_issued = "" ;
 		:date_modified = "" ;
 		:date_metadata_modified = "" ;
 		:featureType = "" ;
-        :first_uplink_date = "" ;
-        :geospatial_bbox = "" ;
+		:first_uplink_date = "" ;
+		:geospatial_bbox = "" ;
 		:geospatial_bounds_vertical_crs = "" ;
 		:geospatial_lat_units = "" ;
 		:geospatial_lon_units = "" ;
@@ -248,12 +248,12 @@ variables:
 		:time_coverage_duration = "" ;
 		:time_coverage_resolution = "" ;
 		:last_uplink_date = "" ;
-		:ptt = "" ;
 		:last_location_lat = "" ;
 		:last_location_lon = "" ;
 		:last_location_date = "" ;
 		:license = "" ;
 		:metadata_link = "" ;
+		:NCO = "" ;
 		:processing_level = "" ;
 		:project = "" ;
 		:platform = "animal" ;
@@ -261,14 +261,15 @@ variables:
 		:platform_name = "" ;
 		:platform_vocabulary = "" ;
 		:program = "" ;
+		:ptt = "" ;
 		:publisher_country = "" ;
 		:publisher_institution = "" ;
 		:publisher_type = "" ;
-		:vendor = "" ;
-		:vendor_id = "" ;
-		:wmo_platform_code = "" ;
 		:sea_name = "" ;
 		:summary = "" ;
 		:title = "" ;
-		:NCO = "" ;
+		:vendor = "" ;
+		:vendor_id = "" ;
+		:wmo_platform_code = "" ;
+		
 }
