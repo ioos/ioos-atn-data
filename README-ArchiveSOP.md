@@ -8,14 +8,14 @@ Each section below documents the decisions made for the archival of the data at 
 
 ## Trajectory
 * Example files can be found at this url: 
-* The file template can be found at https://github.com/MathewBiddle/ATN-archive/blob/master/templates/atn_trajectory_template.cdl
+* The netCDF file template can be found at https://github.com/MathewBiddle/ATN-archive/blob/master/templates/atn_trajectory_template.cdl
 
 ### Archival procedure
-* Each Archival Information Package (AIP) will consist of _document the package structure_
-* _Describe the data source structure._ Submission Information Package (SIP) and will follow the (BagIt convention?).
-* The packages will be updated at a frequency **weekly?monthly?yearly?**.
+* Each Archival Information Package (AIP) will consist of a single tag deployment?
+* Describe how the packages will be organized on ATNs server for pickup from NCEI. 
+* The packages will be updated at a frequency of **weekly?monthly?yearly?**.
 * NCEI will check for new packages every **month?year?**
-* _What process will be used to validate the transfer to NCEI?_
+* _What is the process that will be used to validate the transfer to NCEI? BagIt? Manifest files?_
 * For new submissions (ones that NCEI hasn't made an AIP for yet)
   * The package will be tranferred to NCEI.
   * Once the package has been verified, the manifest files will be discarded as they are artifacts from the transfer.
@@ -23,10 +23,13 @@ Each section below documents the decisions made for the archival of the data at 
   * **What else will NCEI do?**
 * Updates to already archived packages:
   * Update the *entire* package?
-  * How will NCEI know there is a new version?
-  * NCEI will perform a *major revision* replacing the existing AIP with the new data.
-  * The AIP metadata record will be updated to reflect the replacement data.
-* The data will be served according to Tier 1 stewardship (basic access), with the hopes that NCEI can make the geojson inventory files accessible using advanced access services.
+  * How will NCEI know there is a new version? 
+    * File checksums don't match? 
+    * File names don't match?
+  * Should NCEI replace all of the files with new files? A *major revision* replacing the existing AIP with the new data.
+  * Should NCEI only update the changed files?
+  * The AIP metadata record will be updated to reflect the change in the AIP contents.
+* The data will be served according to Tier 1 stewardship (basic access), and Tier 2 (enhanced access) by providing access to the netCDF files via [THREDDS](https://www.ncei.noaa.gov/thredds-ocean/catalog/catalog.html). 
 
 ### NCEI checks on the package
 1. Package structure follows the identified [structure below](#submission-information-package-structure).
