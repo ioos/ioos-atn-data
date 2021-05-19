@@ -1,4 +1,4 @@
-netcdf deployment_km_greyseal_v0 {
+netcdf deployment_km_greyseal_v1 {
 dimensions:
 	obs = 2216 ;
 	nchars = 41 ;
@@ -13,7 +13,6 @@ variables:
 		time:axis = "T" ;
 		time:_CoordinateAxisType = "Time" ;
 		time:calendar = "standard" ;
-		time:ioos_category = "Time" ;
 		time:long_name = "Time" ;
 		time:actual_min = "2020-01-30T15:05:34Z" ;
 		time:actual_max = "2020-06-15T23:16:37Z" ;
@@ -33,7 +32,6 @@ variables:
 		lat:_FillValue = -9999.9 ;
 		lat:axis = "Y" ;
 		lat:_CoordinateAxisType = "Lat" ;
-		lat:ioos_category = "Location" ;
 		lat:long_name = "Profile Location" ;
 		lat:standard_name = "latitude" ;
 		lat:units = "degrees_north" ;
@@ -48,7 +46,6 @@ variables:
 		lon:_FillValue = -9999.9 ;
 		lon:axis = "X" ;
 		lon:_CoordinateAxisType = "Lon" ;
-		lon:ioos_category = "Location" ;
 		lon:long_name = "Profile Location" ;
 		lon:standard_name = "longitude" ;
 		lon:units = "degrees_east" ;
@@ -63,7 +60,6 @@ variables:
 		location_class:coordinates = "time z lon lat" ;
 		location_class:long_name = "Location Quality Code" ;
 		location_class:standard_name = "quality_flag" ;
-		location_class:ioos_category = "Quality" ;
 		location_class:comment = "Quality codes from the ARGOS satellite (in meters): G,3,2,1,0,A,B,Z. See http://www.argos-system.org/manual/3-location/34_location_classes.htm" ;
 		location_class:code_values = "G,3,2,1,0,A,B,Z" ;
 		location_class:code_meanings = "estimated error less than 100m and 1+ messages received per satellite pass,estimated error less than 250m and 4+ messages received per satellite pass,estimated error between 250m and 500m and 4+ messages per satellite pass,estimated error between 500m and 1500m and 4+ messages per satellite pass,estimated error greater than 1500m and 4+ messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 3 messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 1 or 2 messages received per satellite pass,invalid location (available for Service Plus or Auxilliary Location Processing)" ;
@@ -142,7 +138,6 @@ variables:
 		crs:epsg_code = "EPSG:4326" ;
 		crs:grid_mapping_name = "latitude_longitude" ;
 		crs:inverse_flattening = 298.257223563 ;
-		crs:ioos_category = "Other" ;
 		crs:long_name = "http://www.opengis.net/def/crs/EPSG/0/4326" ;
 		crs:semi_major_axis = 6378137. ;
 	string instrument_location ;
@@ -182,28 +177,24 @@ variables:
 		qartod_rollup_flag:_FillValue = 0LL ;
 		qartod_rollup_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
 		qartod_rollup_flag:flag_values = "1, 2, 3, 4, 9" ;
-		qartod_rollup_flag:ioos_category = "Other" ;
 		qartod_rollup_flag:long_name = "" ;
 		qartod_rollup_flag:standard_name = "aggregate_quality_flag" ;
 	int64 qartod_speed_flag(obs) ;
 		qartod_speed_flag:_FillValue = 0LL ;
 		qartod_speed_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
 		qartod_speed_flag:flag_values = "1, 2, 3, 4, 9" ;
-		qartod_speed_flag:ioos_category = "Other" ;
 		qartod_speed_flag:long_name = "" ;
 		qartod_speed_flag:standard_name = "gross_range_test_quality_flag" ;
 	int64 qartod_location_flag(obs) ;
 		qartod_location_flag:_FillValue = 0LL ;
 		qartod_location_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
 		qartod_location_flag:flag_values = "1, 2, 3, 4, 9" ;
-		qartod_location_flag:ioos_category = "Other" ;
 		qartod_location_flag:long_name = "" ;
 		qartod_location_flag:standard_name = "location_test_quality_flag" ;
 	int64 qartod_time_flag(obs) ;
 		qartod_time_flag:_FillValue = 0LL ;
 		qartod_time_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
 		qartod_time_flag:flag_values = "1, 2, 3, 4, 9" ;
-		qartod_time_flag:ioos_category = "Other" ;
 		qartod_time_flag:long_name = "" ;
 		qartod_time_flag:standard_name = "gross_range_test_quality_flag" ;
 	char taxon_name(nchars) ;
