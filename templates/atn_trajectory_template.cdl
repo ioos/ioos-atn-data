@@ -3,6 +3,7 @@ dimensions:
 	time = 1 ; //..........................................................................Total number of observations
 	strlen_taxon_name = 1 ; //............................................................Length of the taxon name string (eg. 18 for "Eumetopias jubatus")
 	strlen_taxon_lsid = 1 ; //............................................................Length of the taxon lsid string (eg. 41 for "urn:lsid:marinespecies.org:taxname:254999")
+	animal_obs = 1 ; /....................................................................Number of direct observations of animal (length, weight, sex, stage)
 variables:
 	string trajectory ;
 		trajectory:cf_role = "trajectory_id" ;
@@ -144,12 +145,12 @@ variables:
 		qartod_time_flag:standard_name = "gross_range_test_quality_flag" ;
 		qartod_time_flag:references = "" ;
 	string taxon_name(strlen_taxon_name) ;  //.................................................Eg. "Eumetopias jubatus"
-	    taxon_name:standard_name = "biological_taxon_name" ;
-	    taxon_name:long_name = "" ; //.....................................................most precise taxonomic classification
+	    	taxon_name:standard_name = "biological_taxon_name" ;
+	    	taxon_name:long_name = "" ; //.....................................................most precise taxonomic classification
 	string taxon_lsid(strlen_taxon_lsid) ;  //.................................................Eg. "urn:lsid:marinespecies.org:taxname:254999"
-	    taxon_lsid:standard_name = "biological_taxon_lsid" ;//.............................CF table 76/77 incorrectly lists this as biological_taxon_identifier
-	    taxon_lsid:long_name = "Taxon identifier" ;
-	    taxon_lsid:source = "" ; //........................................................source of the lsid (eg. WoRMS, ITIS)
+	    	taxon_lsid:standard_name = "biological_taxon_lsid" ;//.............................CF table 76/77 incorrectly lists this as biological_taxon_identifier
+	    	taxon_lsid:long_name = "Taxon identifier" ;
+	    	taxon_lsid:source = "" ; //........................................................source of the lsid (eg. WoRMS, ITIS)
 	string instrument_tag ;
 		instrument_tag:long_name = "" ;
 		instrument_tag:comment = "" ;
@@ -193,6 +194,16 @@ variables:
 		animal:infraorder = "" ;
 		animal:species = "" ;
 		animal:taxonRankID = "" ;
+	double animal_length(animal_obs) ;
+		animal_length:units = "m" ;
+		animal_length:long_name = "length of the animal" ;
+	double animal_weight(animal_obs) ;
+		animal_weight:units = "kg" ;
+		animal_weight:long_name = "weight of the animal" ;
+	string animal_sex(animal_obs) ;
+		animal_sex:long_name = "sex of the animal (m=male, f=female)" ;
+	string animal_stage(animal_obs) ;
+		animal_stage:long_name = "stage of the animal (adult, juvenile)" ;
 	int crs ;
 		crs:epsg_code = "EPSG:4326" ;
 		crs:grid_mapping_name = "latitude_longitude" ;
@@ -207,12 +218,20 @@ variables:
 		:cdm_data_type = "Trajectory" ;
 		:comment = "" ;
 		:common_name = "" ;
+		:contributor_email = "" ;
+		:contributor_name = "" ;
+		:contributor_role = "" ;
+		:contributor_role_vocabulary = "" ;
 		:Conventions = "CF-1.6, ACDD-1.3, IOOS-1.2" ;
+		:creator_address = "" ;
+		:creator_city = "" ;
 		:creator_country = "" ;
 		:creator_email = "" ;
 		:creator_institution = "" ;
 		:creator_name = "" ;
+		:creator_phone = "" ;
 		:creator_sector = "" ;
+		:creator_type = "" ;
 		:creator_url = "" ;
 		:date_created = "" ;
 		:date_issued = "" ;
@@ -230,10 +249,13 @@ variables:
 		:geospatial_vertical_units = "m" ;
 		:geospatial_lat_min = "" ;
 		:geospatial_lat_max = "" ;
+		:geospatial_lat_resolution = "" ;
 		:geospatial_lon_min = "" ;
 		:geospatial_lon_max = "" ;
+		:geospatial_lon_resolution = "" ;
 		:geospatial_vertical_min = "" ;
 		:geospatial_vertical_max = "" ;
+		:geospatial_vertical_resolution = "" ;
 		:history = "" ;
 		:id = "" ;
 		:infoUrl = "" ;
@@ -273,6 +295,7 @@ variables:
 		:sea_name = "" ;
 		:summary = "This is a template file for the IOOS Animal Telemetry Network (ATN) trajectory observations." ;
 		:title = "Animal Telemetry Network trajectory netCDF file template" ;
+		:uuid = "" ;
 		:vendor = "" ;
 		:vendor_id = "" ;
 		:wmo_platform_code = "" ;
