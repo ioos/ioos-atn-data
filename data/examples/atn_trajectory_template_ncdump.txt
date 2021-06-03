@@ -65,19 +65,16 @@ variables:
 		location_class:code_meanings = "estimated error less than 100m and 1+ messages received per satellite pass,estimated error less than 250m and 4+ messages received per satellite pass,estimated error between 250m and 500m and 4+ messages per satellite pass,estimated error between 500m and 1500m and 4+ messages per satellite pass,estimated error greater than 1500m and 4+ messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 3 messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 1 or 2 messages received per satellite pass,invalid location (available for Service Plus or Auxilliary Location Processing)" ;
 		location_class:instrument = "instrument_location" ;
 		location_class:platform = "platform" ;
+		location_class:ancillary_variables = "lat lon" ;
 	int deploy_id(obs) ;
 		deploy_id:_FillValue = -9999 ;
 		deploy_id:coordinates = "time z lon lat" ;
 		deploy_id:long_name = "Platform identifier" ;
 		deploy_id:comment = "Friendly name given to the tag by the user. If no specific friendly name is given, this is the PTT id." ;
-	string instrument_tag(obs) ;
-		instrument_tag:coordinates = "time z lon lat" ;
-		instrument_tag:long_name = "instrument" ;
-		instrument_tag:comment = "Wildlife Computers instrument family. " ;
-		instrument_tag:manufacturer = "Wildlife Computers" ;
-		instrument_tag:make_model = "SPOT293" ;
-		instrument_tag:calibration_date = "NOT PROVIDED" ;
-		instrument_tag:serial_number = "18U2179" ;
+	string instrument(obs) ;
+		instrument:coordinates = "time z lon lat" ;
+		instrument:long_name = "Instrument" ;
+		instrument:comment = "Wildlife Computers instrument family. " ;
 	string type(obs) ;
 		type:coordinates = "time z lon lat" ;
 		type:long_name = "Type of location" ;
@@ -141,18 +138,19 @@ variables:
 		crs:long_name = "http://www.opengis.net/def/crs/EPSG/0/4326" ;
 		crs:semi_major_axis = 6378137. ;
 	string instrument_location ;
-		instrument_location:long_name = "Wildlife Computers SPOT293" ;
+		instrument_location:long_name = "instrument" ;
 		instrument_location:location_type = "argos/modeled" ;
 		instrument_location:comment = "Location" ;
 		instrument_location:manufacturer = "Wildlife Computers" ;
 		instrument_location:make_model = "SPOT293" ;
 		instrument_location:calibration_date = "NOT PROVIDED" ;
-		instrument_location:serial_number = "NOT PROVIDED" ;
+		instrument_location:serial_number = "18U2179" ;
+	string instrument_tag ;
 	string platform ;
 		platform:cf_role = "5e32f4e46321be14905ea848" ;
 		platform:long_name = "NOT PROVIDED IN REG APP - SHOULD BE THE VALUE OF THE \'Animal ID\' FIELD" ;
-		platform:platform_type = "animal" ;
-		platform:platform_vocabulary = "https://mmisw.org/ont/ioos/platform" ;
+		platform:platform_type = "EARTH SCIENCE > BIOLOGICAL CLASSIFICATION > ANIMALS/INVERTEBRATES" ;
+		platform:platform_vocabulary = "NASA Global Change Master Directory v10.1" ;
 		platform:valid_name = "Halichoerus grypus" ;
 		platform:AphiaID = 137080LL ;
 		platform:scientificname = "Halichoerus grypus" ;
@@ -201,9 +199,9 @@ variables:
 		taxon_name:standard_name = "biological_taxon_name" ;
 		taxon_name:long_name = "most precise taxonomic classification" ;
 	char taxon_lsid(nchars) ;
-		taxon_lsid:standard_name = "biological_taxon_id" ;
+		taxon_lsid:standard_name = "biological_taxon_lsid" ;
 		taxon_lsid:long_name = "Namespaced Taxon Identifier" ;
-		taxon_lsid:source = "WoRMS (2021). Halichoerus grypus (Fabricius, 1791). Accessed at: http://www.marinespecies.org/aphia.php?p=taxdetails&id=137080 on 2021-05-19" ;
+		taxon_lsid:source = "WoRMS (2021). Halichoerus grypus (Fabricius, 1791). Accessed at: http://www.marinespecies.org/aphia.php?p=taxdetails&id=137080 on 2021-06-04" ;
 		taxon_lsid:url = "http://www.marinespecies.org/aphia.php?p=taxdetails&id=137080" ;
 
 // global attributes:
@@ -238,8 +236,10 @@ variables:
 		:history = "2020-08-25T00:04:17Z - Created by the IOOS ATN DAC from the Wildlife Computers API" ;
 		:argos_program_number = "16584" ;
 		:creator_email = "kimberly.murray@noaa.gov" ;
-		:first_uplink_date = "1580396673" ;
 		:id = "5e32f4e46321be14905ea848" ;
+		:last_uplink_date = "1598309631" ;
+		:last_location_lat = "43.7804" ;
+		:last_location_lon = "-69.4668" ;
 		:Conventions = "CF-1.6, ACDD-1.3" ;
 		:acknowledgement = "NOAA Integrated Ocean Observing System (IOOS), Axiom Data Science,US Navy Office of Naval Research,NOAA National Marine Fisheries Service, Wildlife Computers, Argos" ;
 		:creator_name = "Kimberly Murray" ;
@@ -252,7 +252,10 @@ variables:
 		:project = "Grey Seal Pup Movements in the Northwest Atlantic, 2020-2021" ;
 		:publisher_name = "Integrated Ocean Observing System Animal Telemetry Network (IOOS ATN)" ;
 		:standard_name_vocabulary = "CF Standard Name Table v77" ;
+		:first_uplink_date = "2020-01-30T15:04:33" ;
 		:tag_id = "195533" ;
+		:last_location_date = "2020-06-15T23:16:37" ;
+		:uuid = "d11bd637-8d37-4a71-986a-b00330d7f770" ;
 		:comment = NaN ;
 		:common_name = "grey seal" ;
 		:creator_country = "USA" ;
@@ -274,6 +277,10 @@ variables:
 		:vendor = "Wildlife Computers" ;
 		:vendor_id = "5e32f4e46321be14905ea848" ;
 		:wmo_platform_code = "99nnnnn" ;
+		:contributor_email = "fcontributor1@noaa.gov, fake.contributor2@somthing.tld" ;
+		:contributor_name = "fake contributor1, fake contributor2" ;
+		:contributor_role = "mediator, contributor" ;
+		:contributor_role_vocabulary = "http://vocab.nerc.ac.uk/collection/G04/current/" ;
 		:ncei_template_version = "NCEI_trajectory_template_v2.0" ;
 		:sea_name = "Stellwagen Bank National Marine Sanctuary, and North Atlantic Ocean" ;
 		:summary = "Wildlife Computers SPOT293 tag deployed on a Grey seal (Halichoerus grypus) by Kimberly Murray in Stellwagen Bank National Marine Sanctuary, and North Atlantic Ocean from 2020-01-30 to 2020-06-15. PTT tag number 195533." ;
@@ -1751,7 +1758,7 @@ data:
     195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
     195533, 195533, 195533 ;
 
- instrument_tag = "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", 
+ instrument = "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", 
     "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", 
     "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", 
     "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", 
@@ -3292,6 +3299,8 @@ data:
  crs = _ ;
 
  instrument_location = _ ;
+
+ instrument_tag = _ ;
 
  platform = _ ;
 
