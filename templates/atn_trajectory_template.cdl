@@ -3,7 +3,7 @@ dimensions:
 	time = 1 ; //..........................................................................Total number of observations
 	strlen_taxon_name = 1 ; //............................................................Length of the taxon name string (eg. 18 for "Eumetopias jubatus")
 	strlen_taxon_lsid = 1 ; //............................................................Length of the taxon lsid string (eg. 41 for "urn:lsid:marinespecies.org:taxname:254999")
-	animal_obs = 1 ; /....................................................................Number of direct observations of animal (length, weight, sex, stage)
+	animal_obs = 1 ; //....................................................................Number of direct observations of animal (length, weight, sex, stage)
 variables:
 	string trajectory ;
 		trajectory:cf_role = "trajectory_id" ;
@@ -145,12 +145,12 @@ variables:
 		qartod_time_flag:standard_name = "gross_range_test_quality_flag" ;
 		qartod_time_flag:references = "" ;
 	string taxon_name(strlen_taxon_name) ;  //.................................................Eg. "Eumetopias jubatus"
-	    	taxon_name:standard_name = "biological_taxon_name" ;
-	    	taxon_name:long_name = "" ; //.....................................................most precise taxonomic classification
+	    taxon_name:standard_name = "biological_taxon_name" ;
+	    taxon_name:long_name = "" ; //.....................................................most precise taxonomic classification
 	string taxon_lsid(strlen_taxon_lsid) ;  //.................................................Eg. "urn:lsid:marinespecies.org:taxname:254999"
-	    	taxon_lsid:standard_name = "biological_taxon_lsid" ;//.............................CF table 76/77 incorrectly lists this as biological_taxon_identifier
-	    	taxon_lsid:long_name = "Taxon identifier" ;
-	    	taxon_lsid:source = "" ; //........................................................source of the lsid (eg. WoRMS, ITIS)
+	    taxon_lsid:standard_name = "biological_taxon_lsid" ;//.............................CF table 78 correctly lists this term
+	    taxon_lsid:long_name = "Taxon identifier" ;
+	    taxon_lsid:source = "" ; //........................................................source of the lsid (eg. WoRMS, ITIS)
 	string instrument_tag ;
 		instrument_tag:long_name = "" ;
 		instrument_tag:comment = "" ;
@@ -269,7 +269,7 @@ variables:
 		:publisher_name = "" ;
 		:publisher_url = "" ;
 		:source = "" ;
-		:standard_name_vocabulary = "CF Standard Name Table v77" ;
+		:standard_name_vocabulary = "CF Standard Name Table v78" ;
 		:time_coverage_start = "" ;
 		:time_coverage_end = "" ;
 		:time_coverage_duration = "" ;
