@@ -1,4 +1,4 @@
-netcdf deployment_km_greyseal_v1 {
+netcdf deployment_km_greyseal_2021-10-06_v1 {
 dimensions:
 	obs = 2216 ;
 	nchars = 41 ;
@@ -13,26 +13,25 @@ variables:
 		time:axis = "T" ;
 		time:_CoordinateAxisType = "Time" ;
 		time:calendar = "standard" ;
-		time:long_name = "Time" ;
 		time:actual_min = "2020-01-30T15:05:34Z" ;
 		time:actual_max = "2020-06-15T23:16:37Z" ;
 		time:ancillary_variables = "qartod_time_flag qartod_rollup_flag qartod_speed_flag" ;
+		time:long_name = "Time of the measurement, in seconds since 1990-01-01" ;
 	int z(obs) ;
 		z:_FillValue = -9999 ;
 		z:axis = "Z" ;
-		z:long_name = "depth" ;
 		z:positive = "down" ;
 		z:standard_name = "depth" ;
 		z:units = "m" ;
 		z:actual_min = 0. ;
 		z:actual_max = 0. ;
-		z:instrument = "instrument_pressure" ;
-		z:platform = "platform" ;
+		z:instrument = "intrument_pressure" ;
+		z:platform = "animal" ;
+		z:long_name = "depth of measurement" ;
 	double lat(obs) ;
 		lat:_FillValue = -9999.9 ;
 		lat:axis = "Y" ;
 		lat:_CoordinateAxisType = "Lat" ;
-		lat:long_name = "Profile Location" ;
 		lat:standard_name = "latitude" ;
 		lat:units = "degrees_north" ;
 		lat:valid_max = 90. ;
@@ -40,13 +39,13 @@ variables:
 		lat:actual_min = 40.2363 ;
 		lat:actual_max = 43.8355 ;
 		lat:instrument = "instrument_location" ;
-		lat:platform = "platform" ;
+		lat:platform = "animal" ;
 		lat:ancillary_variables = "qartod_location_flag quartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation" ;
+		lat:long_name = "Profile latitude Location in decimal degrees North" ;
 	double lon(obs) ;
 		lon:_FillValue = -9999.9 ;
 		lon:axis = "X" ;
 		lon:_CoordinateAxisType = "Lon" ;
-		lon:long_name = "Profile Location" ;
 		lon:standard_name = "longitude" ;
 		lon:units = "degrees_east" ;
 		lon:valid_max = 180. ;
@@ -54,169 +53,228 @@ variables:
 		lon:actual_min = -71.3079 ;
 		lon:actual_max = -66.0281 ;
 		lon:instrument = "instrument_location" ;
-		lon:platform = "platform" ;
+		lon:platform = "animal" ;
 		lon:ancillary_variables = "qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation" ;
-	string location_class(obs) ;
-		location_class:coordinates = "time z lon lat" ;
-		location_class:long_name = "Location Quality Code" ;
-		location_class:standard_name = "quality_flag" ;
-		location_class:comment = "Quality codes from the ARGOS satellite (in meters): G,3,2,1,0,A,B,Z. See http://www.argos-system.org/manual/3-location/34_location_classes.htm" ;
-		location_class:code_values = "G,3,2,1,0,A,B,Z" ;
-		location_class:code_meanings = "estimated error less than 100m and 1+ messages received per satellite pass,estimated error less than 250m and 4+ messages received per satellite pass,estimated error between 250m and 500m and 4+ messages per satellite pass,estimated error between 500m and 1500m and 4+ messages per satellite pass,estimated error greater than 1500m and 4+ messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 3 messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 1 or 2 messages received per satellite pass,invalid location (available for Service Plus or Auxilliary Location Processing)" ;
-		location_class:instrument = "instrument_location" ;
-		location_class:platform = "platform" ;
-		location_class:ancillary_variables = "lat lon" ;
+		lon:long_name = "Profile longitude Location in decimal degrees East" ;
 	int deploy_id(obs) ;
 		deploy_id:_FillValue = -9999 ;
 		deploy_id:coordinates = "time z lon lat" ;
-		deploy_id:long_name = "Platform identifier" ;
 		deploy_id:comment = "Friendly name given to the tag by the user. If no specific friendly name is given, this is the PTT id." ;
+		deploy_id:long_name = "id for this deployment. This is typically the tag ptt" ;
+	int Ptt(obs) ;
+		Ptt:_FillValue = -9999 ;
+		Ptt:coordinates = "time z lon lat" ;
 	string instrument(obs) ;
 		instrument:coordinates = "time z lon lat" ;
 		instrument:long_name = "Instrument" ;
 		instrument:comment = "Wildlife Computers instrument family. " ;
 	string type(obs) ;
 		type:coordinates = "time z lon lat" ;
-		type:long_name = "Type of location" ;
 		type:comment = "Type of location: Argos" ;
+		type:long_name = "Type of location information - Argos satellite location" ;
+	string location_class(obs) ;
+		location_class:coordinates = "time z lon lat" ;
+		location_class:standard_name = "quality_flag" ;
+		location_class:comment = "Quality codes from the ARGOS satellite (in meters): G,3,2,1,0,A,B,Z. See http://www.argos-system.org/manual/3-location/34_location_classes.htm" ;
+		location_class:code_values = "G,3,2,1,0,A,B,Z" ;
+		location_class:code_meanings = "estimated error less than 100m and 1+ messages received per satellite pass,estimated error less than 250m and 4+ messages received per satellite pass,estimated error between 250m and 500m and 4+ messages per satellite pass,estimated error between 500m and 1500m and 4+ messages per satellite pass,estimated error greater than 1500m and 4+ messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 3 messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 1 or 2 messages received per satellite pass,invalid location (available for Service Plus or Auxilliary Location Processing)" ;
+		location_class:instrument = "instrument_location" ;
+		location_class:platform = "animal" ;
+		location_class:ancillary_variables = "lat lon" ;
+		location_class:long_name = "Location Quality Code from ARGOS satellite system" ;
 	double error_radius(obs) ;
 		error_radius:_FillValue = -9999.9 ;
 		error_radius:coordinates = "time z lon lat" ;
-		error_radius:long_name = "Error radius" ;
 		error_radius:units = "m" ;
 		error_radius:comment = "If the position is best represented as a circle, this field gives the radius of that circle in meters." ;
 		error_radius:instrument = "instrument_location" ;
-		error_radius:platform = "platform" ;
+		error_radius:platform = "animal" ;
+		error_radius:long_name = "Error-circle radius in meters" ;
 	double semi_major_axis(obs) ;
 		semi_major_axis:_FillValue = -9999.9 ;
 		semi_major_axis:coordinates = "time z lon lat" ;
-		semi_major_axis:long_name = "Error semi-major axis" ;
 		semi_major_axis:units = "m" ;
 		semi_major_axis:comment = "If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-major elliptical axis (one half of the major axis)." ;
 		semi_major_axis:instrument = "instrument_location" ;
-		semi_major_axis:platform = "platform" ;
+		semi_major_axis:platform = "animal" ;
+		semi_major_axis:long_name = "Error-elipse semi-major axis" ;
 	double semi_minor_axis(obs) ;
 		semi_minor_axis:_FillValue = -9999.9 ;
 		semi_minor_axis:coordinates = "time z lon lat" ;
-		semi_minor_axis:long_name = "Error semi-minor axis" ;
 		semi_minor_axis:units = "m" ;
 		semi_minor_axis:comment = "If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-minor elliptical axis (one half of the minor axis)." ;
 		semi_minor_axis:instrument = "instrument_location" ;
-		semi_minor_axis:platform = "platform" ;
+		semi_minor_axis:platform = "animal" ;
+		semi_minor_axis:long_name = "Error-elipse semi-minor axis" ;
 	double ellipse_orientation(obs) ;
 		ellipse_orientation:_FillValue = -9999.9 ;
 		ellipse_orientation:coordinates = "time z lon lat" ;
-		ellipse_orientation:long_name = "Ellipse orientation" ;
 		ellipse_orientation:units = "degrees" ;
 		ellipse_orientation:comment = "The angle in degrees of the ellipse from true north, proceeding clockwise (0 to 360). A blank field represents 0 degrees." ;
 		ellipse_orientation:instrument = "instrument_location" ;
-		ellipse_orientation:platform = "platform" ;
+		ellipse_orientation:platform = "animal" ;
+		ellipse_orientation:long_name = "Ellipse orientation angle between N and E" ;
 	double offset(obs) ;
 		offset:_FillValue = -9999.9 ;
 		offset:coordinates = "time z lon lat" ;
-		offset:long_name = "Offset" ;
 		offset:units = "m" ;
 		offset:comment = "This field is non-zero if the circle or ellipse are not centered on the (Latitude, Longitude) values on this row. \"Offset\" gives the distance in meters from (Latitude, Longitude) to the center of the ellipse." ;
 		offset:instrument = "instrument_location" ;
-		offset:platform = "platform" ;
+		offset:platform = "animal" ;
+		offset:long_name = "Offset in meters to center of error elipse or circle" ;
 	double offset_orientation(obs) ;
 		offset_orientation:_FillValue = -9999.9 ;
 		offset_orientation:coordinates = "time z lon lat" ;
-		offset_orientation:long_name = "Offset orientation" ;
 		offset_orientation:units = "degrees" ;
 		offset_orientation:comment = "If the \"Offset\" field is non-zero, this field is the angle in degrees from (Latitude, Longitude) to the center of the ellipse. Zero degrees is true north; a blank field represents 0 degrees." ;
 		offset_orientation:instrument = "instrument_location" ;
-		offset_orientation:platform = "platform" ;
+		offset_orientation:platform = "animal" ;
+		offset_orientation:long_name = "Offset orientation angle to ellipse center" ;
+	double gpe_msd(obs) ;
+		gpe_msd:_FillValue = -9999.9 ;
+		gpe_msd:coordinates = "time z lon lat" ;
+	double gpe_u(obs) ;
+		gpe_u:_FillValue = -9999.9 ;
+		gpe_u:coordinates = "time z lon lat" ;
+	double count(obs) ;
+		count:_FillValue = -9999.9 ;
+		count:coordinates = "time z lon lat" ;
 	string comment(obs) ;
 		comment:coordinates = "time z lon lat" ;
-		comment:long_name = "Comment" ;
 		comment:comment = "Optional text field" ;
+		comment:long_name = "just a comment" ;
+	ubyte time_axds_valid_range_test(obs) ;
+		time_axds_valid_range_test:_FillValue = 241UB ;
+		time_axds_valid_range_test:coordinates = "time z lon lat" ;
+		time_axds_valid_range_test:standard_name = "gross_range_test_quality_flag" ;
+		time_axds_valid_range_test:long_name = "Gross Range Test Quality Flag" ;
+		time_axds_valid_range_test:implementation = "https://github.com/ioos/ioos_qc/" ;
+	ubyte argo_speed_test(obs) ;
+		argo_speed_test:_FillValue = 241UB ;
+		argo_speed_test:coordinates = "time z lon lat" ;
+		argo_speed_test:standard_name = "speed_test_quality_flag" ;
+		argo_speed_test:long_name = "Speed Test Quality Flag" ;
+		argo_speed_test:references = "https://archimer.ifremer.fr/doc/00228/33951/" ;
+		argo_speed_test:implementation = "https://github.com/ioos/ioos_qc/" ;
+	ubyte qartod_location_test(obs) ;
+		qartod_location_test:_FillValue = 241UB ;
+		qartod_location_test:coordinates = "time z lon lat" ;
+		qartod_location_test:standard_name = "location_test_quality_flag" ;
+		qartod_location_test:long_name = "Location Test Quality Flag" ;
+		qartod_location_test:implementation = "https://github.com/ioos/ioos_qc/" ;
+	ubyte qartod_rollup_qc(obs) ;
+		qartod_rollup_qc:_FillValue = 241UB ;
+		qartod_rollup_qc:coordinates = "time z lon lat" ;
+		qartod_rollup_qc:standard_name = "aggregate_quality_flag" ;
+		qartod_rollup_qc:long_name = "Aggregate Quality Flag" ;
+		qartod_rollup_qc:implementation = "https://github.com/ioos/ioos_qc/" ;
 	int crs ;
 		crs:epsg_code = "EPSG:4326" ;
 		crs:grid_mapping_name = "latitude_longitude" ;
 		crs:inverse_flattening = 298.257223563 ;
-		crs:long_name = "http://www.opengis.net/def/crs/EPSG/0/4326" ;
 		crs:semi_major_axis = 6378137. ;
+		crs:long_name = "Coordinate Reference System - http://www.opengis.net/def/crs/EPSG/0/4326" ;
 	string instrument_location ;
-		instrument_location:long_name = "instrument" ;
 		instrument_location:location_type = "argos/modeled" ;
 		instrument_location:comment = "Location" ;
 		instrument_location:manufacturer = "Wildlife Computers" ;
 		instrument_location:make_model = "SPOT293" ;
 		instrument_location:calibration_date = "NOT PROVIDED" ;
 		instrument_location:serial_number = "18U2179" ;
+		instrument_location:long_name = "information about location instrument" ;
 	string instrument_tag ;
-	string platform ;
-		platform:cf_role = "5e32f4e46321be14905ea848" ;
-		platform:long_name = "NOT PROVIDED IN REG APP - SHOULD BE THE VALUE OF THE \'Animal ID\' FIELD" ;
-		platform:platform_type = "EARTH SCIENCE > BIOLOGICAL CLASSIFICATION > ANIMALS/INVERTEBRATES" ;
-		platform:platform_vocabulary = "NASA Global Change Master Directory v10.1" ;
-		platform:valid_name = "Halichoerus grypus" ;
-		platform:AphiaID = 137080LL ;
-		platform:scientificname = "Halichoerus grypus" ;
-		platform:authority = "(Fabricius, 1791)" ;
-		platform:kingdom = "Animalia" ;
-		platform:phylum = "Chordata" ;
-		platform:class = "Mammalia" ;
-		platform:order = "Carnivora" ;
-		platform:family = "Phocidae" ;
-		platform:genus = "Halichoerus" ;
-		platform:taxonRankID = 220LL ;
-		platform:rank = "Species" ;
-		platform:superdomain = "Biota" ;
-		platform:subphylum = "Vertebrata" ;
-		platform:infraphylum = "Gnathostomata" ;
-		platform:superclass = "Tetrapoda" ;
-		platform:subclass = "Theria" ;
-		platform:suborder = "Caniformia" ;
-		platform:infraorder = "Pinnipedia" ;
-		platform:species = "Halichoerus grypus" ;
 	int64 qartod_rollup_flag(obs) ;
 		qartod_rollup_flag:_FillValue = 0LL ;
 		qartod_rollup_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
 		qartod_rollup_flag:flag_values = "1, 2, 3, 4, 9" ;
-		qartod_rollup_flag:long_name = "" ;
 		qartod_rollup_flag:standard_name = "aggregate_quality_flag" ;
+		qartod_rollup_flag:references = "" ;
+		qartod_rollup_flag:long_name = "Aggregate QC value" ;
 	int64 qartod_speed_flag(obs) ;
 		qartod_speed_flag:_FillValue = 0LL ;
 		qartod_speed_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
 		qartod_speed_flag:flag_values = "1, 2, 3, 4, 9" ;
-		qartod_speed_flag:long_name = "" ;
 		qartod_speed_flag:standard_name = "gross_range_test_quality_flag" ;
+		qartod_speed_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_speed_flag:long_name = "Speed QC test- gross range test" ;
 	int64 qartod_location_flag(obs) ;
 		qartod_location_flag:_FillValue = 0LL ;
 		qartod_location_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
 		qartod_location_flag:flag_values = "1, 2, 3, 4, 9" ;
-		qartod_location_flag:long_name = "" ;
 		qartod_location_flag:standard_name = "location_test_quality_flag" ;
+		qartod_location_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_location_flag:long_name = "Location QC test - Location test" ;
 	int64 qartod_time_flag(obs) ;
 		qartod_time_flag:_FillValue = 0LL ;
 		qartod_time_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
 		qartod_time_flag:flag_values = "1, 2, 3, 4, 9" ;
-		qartod_time_flag:long_name = "" ;
 		qartod_time_flag:standard_name = "gross_range_test_quality_flag" ;
+		qartod_time_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_time_flag:long_name = "Time QC test- gross range test" ;
+	char animal(nchars) ;
+		animal:cf_role = "5e32f4e46321be14905ea848" ;
+		animal:long_name = "NOT PROVIDED IN REG APP - SHOULD BE THE VALUE OF THE \'Animal ID\' FIELD" ;
+		animal:platform_type = "EARTH SCIENCE > BIOLOGICAL CLASSIFICATION > ANIMALS/INVERTEBRATES" ;
+		animal:platform_vocabulary = "NASA Global Change Master Directory v10.1" ;
+		animal:animal_length = "" ;
+		animal:animal_sex = "" ;
+		animal:animal_life_stage = "" ;
+		animal:animal_weight = "" ;
+		animal:valid_name = "Halichoerus grypus" ;
+		animal:AphiaID = 137080LL ;
+		animal:scientificname = "Halichoerus grypus" ;
+		animal:authority = "(Fabricius, 1791)" ;
+		animal:kingdom = "Animalia" ;
+		animal:phylum = "Chordata" ;
+		animal:class = "Mammalia" ;
+		animal:order = "Carnivora" ;
+		animal:family = "Phocidae" ;
+		animal:genus = "Halichoerus" ;
+		animal:taxonRankID = 220LL ;
+		animal:rank = "Species" ;
+		animal:superdomain = "Biota" ;
+		animal:subphylum = "Vertebrata" ;
+		animal:infraphylum = "Gnathostomata" ;
+		animal:megaclass = "Tetrapoda" ;
+		animal:subclass = "Theria" ;
+		animal:suborder = "Caniformia" ;
+		animal:infraorder = "Pinnipedia" ;
+		animal:species = "Halichoerus grypus" ;
 	char taxon_name(nchars) ;
 		taxon_name:standard_name = "biological_taxon_name" ;
-		taxon_name:long_name = "most precise taxonomic classification" ;
+		taxon_name:long_name = "most precise taxonomic classification for the tagged animal" ;
 	char taxon_lsid(nchars) ;
 		taxon_lsid:standard_name = "biological_taxon_lsid" ;
 		taxon_lsid:long_name = "Namespaced Taxon Identifier" ;
-		taxon_lsid:source = "WoRMS (2021). Halichoerus grypus (Fabricius, 1791). Accessed at: http://www.marinespecies.org/aphia.php?p=taxdetails&id=137080 on 2021-06-04" ;
+		taxon_lsid:source = "WoRMS (2021). Halichoerus grypus (Fabricius, 1791). Accessed at: http://www.marinespecies.org/aphia.php?p=taxdetails&id=137080 on 2021-10-06" ;
 		taxon_lsid:url = "http://www.marinespecies.org/aphia.php?p=taxdetails&id=137080" ;
 
 // global attributes:
-		:date_created = "2020-08-25T00:04:17Z" ;
+		:date_created = "2021-08-12T20:02:21Z" ;
 		:featureType = "trajectory" ;
 		:cdm_data_type = "Trajectory" ;
+		:Conventions = "CF-1.6, ACDD-1.3" ;
+		:argos_program_number = "16584" ;
+		:creator_email = "kimberly.murray@noaa.gov" ;
+		:id = "5e32f4e46321be14905ea848" ;
+		:ptt = "195533" ;
+		:source = "Service Argos" ;
 		:geospatial_bounds_vertical_crs = "EPSG:4326" ;
 		:geospatial_lat_units = "degrees_north" ;
 		:geospatial_lon_units = "degrees_east" ;
 		:geospatial_vertical_positive = "down" ;
 		:naming_authority = "gov.noaa.ioos.atn" ;
+		:platform = "animal" ;
+		:platform_vocabulary = "https://mmisw.org/ont/ioos/platform" ;
 		:processing_level = "NetCDF file created from position data obtained from Wildlife Computers API." ;
 		:publisher_email = "atndata@ioos.us" ;
+		:publisher_institution = "US ATN DAC" ;
 		:publisher_url = "https://atn.ioos.us" ;
-		:source = "Service Argos" ;
+		:publisher_country = "USA" ;
+		:vendor = "Wildlife Computers" ;
+		:packrat_uuid = "62166dd5-58ea-5d2b-953f-610ac3fdd583" ;
+		:packrat_source = "atn.wildlife_computers.deployments.deployments" ;
+		:packrat_source_id = "5e32f4e46321be14905ea848" ;
 		:geospatial_lat_min = 40.2363 ;
 		:geospatial_lat_max = 43.8355 ;
 		:geospatial_lon_min = -71.3079 ;
@@ -231,57 +289,52 @@ variables:
 		:time_coverage_end = "2020-06-15T23:16:37Z" ;
 		:time_coverage_duration = "P137DT8H11M3S" ;
 		:time_coverage_resolution = "P0DT1H34M21S" ;
-		:date_issued = "2020-08-25T00:04:17Z" ;
-		:date_modified = "2020-08-25T00:04:17Z" ;
-		:history = "2020-08-25T00:04:17Z - Created by the IOOS ATN DAC from the Wildlife Computers API" ;
-		:argos_program_number = "16584" ;
-		:creator_email = "kimberly.murray@noaa.gov" ;
-		:id = "5e32f4e46321be14905ea848" ;
-		:last_uplink_date = "1598309631" ;
-		:last_location_lat = "43.7804" ;
-		:last_location_lon = "-69.4668" ;
-		:Conventions = "CF-1.6, ACDD-1.3" ;
+		:date_issued = "2021-08-12T20:02:21Z" ;
+		:date_modified = "2021-08-12T20:02:21Z" ;
+		:history = "2021-08-12T20:02:21Z - Created by the IOOS ATN DAC from the Wildlife Computers API" ;
+		:platform_name = "5e32f4e46321be14905ea848" ;
+		:platform_id = "5e32f4e46321be14905ea848" ;
+		:vendor_id = "5e32f4e46321be14905ea848" ;
 		:acknowledgement = "NOAA Integrated Ocean Observing System (IOOS), Axiom Data Science,US Navy Office of Naval Research,NOAA National Marine Fisheries Service, Wildlife Computers, Argos" ;
+		:license = "WE\'RE STILL WAITING TO HEAR WHICH LICENSE WE CAN USE FOR THESE DATA" ;
+		:publisher_name = "Integrated Ocean Observing System Animal Telemetry Network (IOOS ATN)" ;
+		:comment = NaN ;
+		:creator_country = "USA" ;
+		:creator_type = "person" ;
+		:instrument = "satellite telemetry tag" ;
+		:program = "Integrated Ocean Observing System Animal Telemetry Network" ;
+		:publisher_type = "institution" ;
+		:first_location_lat = 41.3899 ;
+		:last_location_lat = 43.7804 ;
+		:first_location_lon = -70.0309 ;
+		:last_location_lon = -69.4668 ;
+		:first_location_date = "2020-01-30 15:05:34" ;
 		:creator_name = "Kimberly Murray" ;
 		:creator_url = "https://www.fisheries.noaa.gov/contact/kimberly-murray" ;
 		:infoUrl = "https://somefakeurlforthisproject.coffee" ;
 		:institution = "NOAA Northeast Fisheries Science Center" ;
 		:keywords = "animal telemetry network, ATN, IOOS, Integrated Ocean Observing System, trajectory, gray seal, Halichoerus grypus, Spot 6 " ;
-		:license = "WE\'RE STILL WAITING TO HEAR WHICH LICENSE WE CAN USE FOR THESE DATA" ;
 		:metadata_link = "https://anotherfakeurlforthisproject.coffee" ;
 		:project = "Grey Seal Pup Movements in the Northwest Atlantic, 2020-2021" ;
-		:publisher_name = "Integrated Ocean Observing System Animal Telemetry Network (IOOS ATN)" ;
 		:standard_name_vocabulary = "CF Standard Name Table v77" ;
-		:first_uplink_date = "2020-01-30T15:04:33" ;
-		:tag_id = "195533" ;
-		:last_location_date = "2020-06-15T23:16:37" ;
-		:uuid = "d11bd637-8d37-4a71-986a-b00330d7f770" ;
-		:comment = NaN ;
+		:uuid = "48291772-a7b1-48f0-a428-b0110f97f59e" ;
 		:common_name = "grey seal" ;
-		:creator_country = "USA" ;
 		:creator_institution = "NOAA Fisheries, Northeast Fisheries Science Center" ;
-		:creator_sector = NaN ;
-		:creator_type = "person" ;
+		:creator_sector = "" ;
 		:date_metadata_modified = "2021-04-20" ;
-		:instrument = "satellite telemetry tag" ;
 		:keywords_vocabulary = "None" ;
-		:platform = "animal" ;
-		:platform_id = "5e32f4e46321be14905ea848" ;
-		:platform_name = "5e32f4e46321be14905ea848" ;
-		:platform_vocabulary = "https://mmisw.org/ont/ioos/platform" ;
-		:program = "Integrated Ocean Observing System Animal Telemetry Network" ;
-		:publisher_country = "USA" ;
-		:publisher_institution = "US Animal Telemetry Network Data Assembly Center (US ATN DAC)" ;
-		:publisher_type = "institution" ;
 		:scientific_name = "Halichoerus grypus" ;
-		:vendor = "Wildlife Computers" ;
-		:vendor_id = "5e32f4e46321be14905ea848" ;
 		:wmo_platform_code = "99nnnnn" ;
+		:last_location_date = "2020-06-15 23:16:37" ;
+		:creator_state = "" ;
+		:creator_city = "" ;
+		:creator_address = "" ;
+		:creator_postalcode = "" ;
 		:contributor_email = "fcontributor1@noaa.gov, fake.contributor2@somthing.tld" ;
 		:contributor_name = "fake contributor1, fake contributor2" ;
 		:contributor_role = "mediator, contributor" ;
 		:contributor_role_vocabulary = "http://vocab.nerc.ac.uk/collection/G04/current/" ;
-		:ncei_template_version = "NCEI_trajectory_template_v2.0" ;
+		:ncei_template_version = "NCEI_NetCDF_Trajectory_Template_v2.0" ;
 		:sea_name = "Stellwagen Bank National Marine Sanctuary, and North Atlantic Ocean" ;
 		:summary = "Wildlife Computers SPOT293 tag deployed on a Grey seal (Halichoerus grypus) by Kimberly Murray in Stellwagen Bank National Marine Sanctuary, and North Atlantic Ocean from 2020-01-30 to 2020-06-15. PTT tag number 195533." ;
 		:title = "Grey seal (Halichoerus grypus) location data from a tag deployed from 2020-01-30 to 2020-06-15 in the Stellwagen Bank National Marine Sanctuary, and North Atlantic Ocean, ptt 195533" ;
@@ -1350,167 +1403,255 @@ data:
     -69.3369, -69.373, -69.373, -69.3303, -69.3294, -69.3469, -69.416, 
     -69.6621, -69.5588, -69.4668 ;
 
- location_class = "B", "1", "0", "A", "0", "B", "B", "B", "B", "B", "3", "1", 
-    "0", "B", "B", "B", "2", "A", "2", "B", "B", "B", "A", "B", "B", "A", 
-    "B", "B", "B", "B", "3", "B", "B", "B", "B", "A", "3", "A", "B", "3", 
-    "A", "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "A", "A", "A", "B", "B", "B", "B", "B", "1", 
-    "B", "B", "B", "A", "B", "B", "B", "B", "B", "2", "A", "B", "B", "A", 
-    "B", "B", "B", "A", "B", "B", "B", "A", "2", "B", "B", "B", "B", "B", 
-    "B", "A", "B", "B", "3", "B", "B", "B", "B", "A", "A", "B", "B", "B", 
-    "B", "B", "B", "A", "A", "B", "3", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "B", "A", "A", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "2", "B", "B", "B", "A", 
-    "A", "B", "1", "B", "B", "A", "2", "B", "B", "B", "B", "B", "B", "B", 
-    "A", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "2", "B", "A", 
-    "B", "B", "B", "B", "B", "B", "B", "A", "A", "B", "B", "A", "B", "B", 
-    "A", "A", "B", "1", "B", "B", "B", "A", "B", "B", "A", "A", "B", "B", 
-    "3", "B", "B", "B", "A", "A", "B", "B", "B", "A", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "A", "B", "A", "B", "1", "B", "B", "B", "3", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "0", "A", "A", "B", "0", "2", 
-    "B", "B", "B", "B", "0", "1", "A", "B", "B", "2", "3", "1", "B", "B", 
-    "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "2", "B", "A", "A", "3", "3", "1", "B", "B", "B", "B", "B", "B", "A", 
-    "B", "A", "2", "A", "A", "B", "B", "B", "B", "1", "3", "0", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "A", "1", "3", "B", "1", "B", "A", 
-    "B", "A", "B", "B", "B", "A", "A", "A", "B", "B", "B", "B", "3", "B", 
-    "B", "2", "2", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "A", "B", "B", "B", "1", "B", "2", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "A", "B", "B", "2", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "1", "2", "A", 
-    "B", "B", "3", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "1", "0", "2", "2", "B", "A", "B", "B", "B", "3", "B", "A", 
-    "B", "B", "1", "1", "B", "B", "B", "B", "B", "2", "B", "0", "3", "3", 
-    "3", "B", "2", "3", "1", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", "2", "B", 
-    "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "A", "B", "B", "B", "1", "B", "B", "A", "B", "B", "B", 
-    "B", "B", "A", "B", "2", "1", "3", "A", "B", "B", "B", "B", "A", "2", 
-    "B", "A", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "A", "2", "B", "1", "B", "B", "B", "B", "B", "B", 
-    "A", "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "A", "A", "2", "B", "A", "A", "3", "B", "B", "B", "B", "0", "A", 
-    "B", "0", "B", "A", "A", "3", "2", "2", "A", "3", "B", "A", "B", "B", 
-    "B", "1", "B", "A", "A", "B", "A", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "1", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "1", "A", 
-    "A", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", 
-    "A", "B", "0", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "A", "A", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", 
-    "B", "B", "A", "A", "A", "B", "B", "A", "2", "A", "B", "B", "B", "1", 
-    "A", "B", "B", "B", "B", "A", "A", "0", "B", "B", "1", "A", "A", "B", 
-    "B", "B", "B", "A", "A", "1", "A", "1", "0", "0", "1", "1", "B", "1", 
-    "B", "B", "3", "B", "1", "A", "A", "3", "B", "B", "0", "2", "2", "0", 
-    "A", "B", "B", "B", "B", "1", "3", "B", "B", "B", "B", "A", "B", "B", 
-    "B", "A", "2", "B", "A", "2", "1", "A", "B", "B", "B", "A", "B", "B", 
-    "B", "B", "B", "B", "1", "0", "B", "1", "B", "B", "B", "B", "B", "A", 
-    "B", "1", "B", "A", "B", "A", "B", "A", "2", "B", "B", "A", "A", "B", 
-    "A", "A", "B", "B", "A", "B", "B", "B", "B", "0", "B", "B", "B", "A", 
-    "0", "B", "B", "B", "B", "A", "2", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "1", "A", "B", "1", "1", "A", "B", "B", "B", "A", "B", 
-    "B", "B", "B", "B", "3", "3", "3", "B", "A", "B", "B", "2", "A", "B", 
-    "1", "1", "2", "B", "B", "0", "A", "B", "B", "1", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "2", "B", "B", "B", "B", "B", 
-    "B", "B", "A", "A", "B", "B", "A", "B", "B", "A", "B", "A", "A", "0", 
-    "B", "1", "1", "B", "B", "1", "A", "A", "B", "B", "B", "B", "B", "B", 
-    "B", "A", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", "1", "3", 
-    "A", "2", "B", "B", "B", "1", "0", "3", "0", "B", "2", "B", "3", "3", 
-    "B", "B", "B", "B", "B", "B", "1", "3", "3", "B", "1", "3", "B", "A", 
-    "B", "A", "B", "A", "A", "B", "A", "A", "B", "B", "A", "B", "1", "B", 
-    "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", "0", "A", "A", "A", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "1", "B", "A", "A", "B", "B", "B", "A", 
-    "2", "2", "B", "B", "3", "2", "A", "B", "2", "B", "B", "B", "B", "1", 
-    "B", "1", "1", "3", "B", "B", "A", "B", "B", "B", "B", "A", "2", "2", 
-    "A", "2", "A", "B", "B", "A", "A", "A", "B", "1", "0", "A", "1", "B", 
-    "B", "1", "B", "0", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", 
-    "B", "A", "B", "B", "B", "B", "B", "B", "A", "1", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "3", "B", "B", "A", "B", "B", "B", "B", "A", 
-    "B", "B", "B", "A", "1", "3", "A", "B", "B", "A", "B", "B", "B", "B", 
-    "A", "B", "A", "B", "A", "2", "B", "B", "A", "A", "A", "B", "B", "B", 
-    "B", "B", "B", "B", "A", "B", "A", "B", "A", "B", "A", "B", "B", "2", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "2", "2", "2", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "A", "A", 
-    "B", "B", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "A", "B", "B", "B", "0", "B", "B", "A", "B", "A", 
-    "B", "A", "0", "A", "A", "3", "A", "A", "A", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "2", 
-    "B", "B", "3", "B", "B", "B", "A", "0", "2", "A", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "1", "B", "B", "A", "1", "B", "B", "B", "B", 
-    "A", "1", "B", "B", "B", "B", "B", "1", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "2", "A", "A", "A", "0", "A", "A", "A", "A", "A", 
-    "B", "B", "B", "B", "A", "B", "1", "1", "A", "B", "B", "B", "2", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "3", "A", "B", "2", "A", "2", "B", 
-    "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "A", "A", "B", "2", "2", "B", "3", "2", "A", "B", "A", "B", "1", 
-    "2", "A", "B", "B", "B", "A", "B", "A", "B", "B", "A", "A", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "3", "B", "1", "B", "0", "B", "0", 
-    "1", "A", "B", "B", "B", "B", "B", "A", "B", "1", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "A", "3", "2", "3", "B", "B", "0", "A", "B", "A", "A", 
-    "1", "B", "2", "A", "A", "0", "A", "A", "B", "B", "A", "2", "B", "1", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "3", 
-    "3", "2", "2", "A", "B", "1", "B", "B", "B", "B", "B", "2", "3", "3", 
-    "B", "B", "B", "B", "B", "0", "3", "2", "B", "A", "B", "0", "B", "1", 
-    "B", "B", "B", "B", "3", "A", "2", "A", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "3", "3", "2", 
-    "A", "B", "2", "A", "B", "B", "2", "2", "A", "B", "A", "B", "A", "B", 
-    "B", "B", "B", "B", "B", "2", "B", "B", "A", "A", "B", "0", "A", "B", 
-    "A", "A", "0", "1", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", 
-    "2", "A", "B", "B", "A", "B", "A", "B", "B", "B", "A", "A", "A", "2", 
-    "A", "B", "2", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "0", 
-    "2", "B", "B", "B", "B", "B", "B", "A", "B", "B", "1", "B", "1", "3", 
-    "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", "2", "B", 
-    "1", "2", "0", "A", "2", "B", "B", "B", "1", "B", "A", "2", "1", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "1", "B", "A", 
-    "A", "3", "3", "3", "2", "B", "B", "B", "B", "B", "B", "B", "2", "B", 
-    "B", "A", "2", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "2", 
-    "2", "A", "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "A", 
-    "B", "B", "0", "1", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "2", "A", "0", "B", "A", "A", "1", "1", "B", 
-    "1", "B", "B", "B", "B", "B", "B", "B", "B", "1", "B", "B", "B", "2", 
-    "B", "2", "B", "2", "2", "3", "3", "1", "B", "B", "B", "3", "A", "A", 
-    "1", "1", "3", "2", "B", "B", "B", "B", "1", "B", "B", "B", "B", "B", 
-    "1", "B", "3", "B", "B", "B", "B", "B", "B", "1", "B", "1", "B", "B", 
-    "B", "3", "3", "2", "3", "1", "A", "B", "B", "B", "1", "B", "1", "2", 
-    "3", "3", "B", "B", "B", "B", "B", "1", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "A", "B", "B", "A", "B", "A", "B", "A", "A", "B", "B", "B", "B", 
-    "B", "B", "A", "B", "B", "A", "B", "B", "B", "B", "B", "B", "A", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "A", "A", "1", "B", "B", "B", "B", 
-    "B", "B", "B", "A", "B", "B", "B", "A", "1", "0", "A", "B", "B", "B", 
-    "0", "0", "0", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "0", "B", 
-    "A", "0", "A", "0", "A", "3", "B", "B", "0", "3", "B", "3", "B", "A", 
-    "A", "3", "B", "B", "B", "B", "B", "B", "B", "B", "0", "B", "A", "B", 
-    "A", "A", "B", "B", "B", "B", "A", "B", "B", "B", "B", "1", "B", "1", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "A", "1", "2", "B", "B", "B", "B", "A", "A", "A", 
-    "A", "B", "B", "0", "0", "1", "A", "1", "B", "A", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "Z", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "A", "3", "A", "A", "B", "B", "B", "B", "1", "1", 
-    "1", "1", "B", "B", "B", "A", "B", "A", "A", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "A", "B", "B", "B", "B", "1", "A", "B", "B", "A", "A", 
-    "3", "B", "A", "B", "0", "B", "B", "B", "B", "B", "B", "B", "A", "B", 
-    "B", "B", "B", "B", "B", "B", "A", "A", "B", "B", "A", "2", "0", "A", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "A", "B", "1", "A", "A", "A", "A", "B", "3", "1", "3", "B", "A", 
-    "B", "B", "B", "B", "A", "B", "B", "0", "0", "B", "B", "2", "A", "B", 
-    "1", "A", "1", "B", "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "B", 
-    "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "1", "0", "1", "B", 
-    "B", "B", "B", "A", "B", "A", "B", "A", "B", "0", "B", "A", "1", "1", 
-    "2", "0", "0", "1", "A", "B", "A", "B", "1", "2", "1", "B", "B", "3", 
-    "B", "A", "B", "B", "B", "B" ;
-
  deploy_id = 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
+    195533, 195533, 195533 ;
+
+ Ptt = 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
     195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
     195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
     195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 195533, 
@@ -2222,6 +2363,166 @@ data:
     "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
     "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
     "Argos" ;
+
+ location_class = "B", "1", "0", "A", "0", "B", "B", "B", "B", "B", "3", "1", 
+    "0", "B", "B", "B", "2", "A", "2", "B", "B", "B", "A", "B", "B", "A", 
+    "B", "B", "B", "B", "3", "B", "B", "B", "B", "A", "3", "A", "B", "3", 
+    "A", "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "A", "A", "A", "B", "B", "B", "B", "B", "1", 
+    "B", "B", "B", "A", "B", "B", "B", "B", "B", "2", "A", "B", "B", "A", 
+    "B", "B", "B", "A", "B", "B", "B", "A", "2", "B", "B", "B", "B", "B", 
+    "B", "A", "B", "B", "3", "B", "B", "B", "B", "A", "A", "B", "B", "B", 
+    "B", "B", "B", "A", "A", "B", "3", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "B", "A", "A", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "2", "B", "B", "B", "A", 
+    "A", "B", "1", "B", "B", "A", "2", "B", "B", "B", "B", "B", "B", "B", 
+    "A", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "2", "B", "A", 
+    "B", "B", "B", "B", "B", "B", "B", "A", "A", "B", "B", "A", "B", "B", 
+    "A", "A", "B", "1", "B", "B", "B", "A", "B", "B", "A", "A", "B", "B", 
+    "3", "B", "B", "B", "A", "A", "B", "B", "B", "A", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "A", "B", "A", "B", "1", "B", "B", "B", "3", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "0", "A", "A", "B", "0", "2", 
+    "B", "B", "B", "B", "0", "1", "A", "B", "B", "2", "3", "1", "B", "B", 
+    "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "2", "B", "A", "A", "3", "3", "1", "B", "B", "B", "B", "B", "B", "A", 
+    "B", "A", "2", "A", "A", "B", "B", "B", "B", "1", "3", "0", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "A", "1", "3", "B", "1", "B", "A", 
+    "B", "A", "B", "B", "B", "A", "A", "A", "B", "B", "B", "B", "3", "B", 
+    "B", "2", "2", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "A", "B", "B", "B", "1", "B", "2", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "A", "B", "B", "2", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "1", "2", "A", 
+    "B", "B", "3", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "1", "0", "2", "2", "B", "A", "B", "B", "B", "3", "B", "A", 
+    "B", "B", "1", "1", "B", "B", "B", "B", "B", "2", "B", "0", "3", "3", 
+    "3", "B", "2", "3", "1", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", "2", "B", 
+    "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "A", "B", "B", "B", "1", "B", "B", "A", "B", "B", "B", 
+    "B", "B", "A", "B", "2", "1", "3", "A", "B", "B", "B", "B", "A", "2", 
+    "B", "A", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "A", "2", "B", "1", "B", "B", "B", "B", "B", "B", 
+    "A", "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "A", "A", "2", "B", "A", "A", "3", "B", "B", "B", "B", "0", "A", 
+    "B", "0", "B", "A", "A", "3", "2", "2", "A", "3", "B", "A", "B", "B", 
+    "B", "1", "B", "A", "A", "B", "A", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "1", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "1", "A", 
+    "A", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", 
+    "A", "B", "0", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "A", "A", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", 
+    "B", "B", "A", "A", "A", "B", "B", "A", "2", "A", "B", "B", "B", "1", 
+    "A", "B", "B", "B", "B", "A", "A", "0", "B", "B", "1", "A", "A", "B", 
+    "B", "B", "B", "A", "A", "1", "A", "1", "0", "0", "1", "1", "B", "1", 
+    "B", "B", "3", "B", "1", "A", "A", "3", "B", "B", "0", "2", "2", "0", 
+    "A", "B", "B", "B", "B", "1", "3", "B", "B", "B", "B", "A", "B", "B", 
+    "B", "A", "2", "B", "A", "2", "1", "A", "B", "B", "B", "A", "B", "B", 
+    "B", "B", "B", "B", "1", "0", "B", "1", "B", "B", "B", "B", "B", "A", 
+    "B", "1", "B", "A", "B", "A", "B", "A", "2", "B", "B", "A", "A", "B", 
+    "A", "A", "B", "B", "A", "B", "B", "B", "B", "0", "B", "B", "B", "A", 
+    "0", "B", "B", "B", "B", "A", "2", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "1", "A", "B", "1", "1", "A", "B", "B", "B", "A", "B", 
+    "B", "B", "B", "B", "3", "3", "3", "B", "A", "B", "B", "2", "A", "B", 
+    "1", "1", "2", "B", "B", "0", "A", "B", "B", "1", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "2", "B", "B", "B", "B", "B", 
+    "B", "B", "A", "A", "B", "B", "A", "B", "B", "A", "B", "A", "A", "0", 
+    "B", "1", "1", "B", "B", "1", "A", "A", "B", "B", "B", "B", "B", "B", 
+    "B", "A", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", "1", "3", 
+    "A", "2", "B", "B", "B", "1", "0", "3", "0", "B", "2", "B", "3", "3", 
+    "B", "B", "B", "B", "B", "B", "1", "3", "3", "B", "1", "3", "B", "A", 
+    "B", "A", "B", "A", "A", "B", "A", "A", "B", "B", "A", "B", "1", "B", 
+    "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", "0", "A", "A", "A", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "1", "B", "A", "A", "B", "B", "B", "A", 
+    "2", "2", "B", "B", "3", "2", "A", "B", "2", "B", "B", "B", "B", "1", 
+    "B", "1", "1", "3", "B", "B", "A", "B", "B", "B", "B", "A", "2", "2", 
+    "A", "2", "A", "B", "B", "A", "A", "A", "B", "1", "0", "A", "1", "B", 
+    "B", "1", "B", "0", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", 
+    "B", "A", "B", "B", "B", "B", "B", "B", "A", "1", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "3", "B", "B", "A", "B", "B", "B", "B", "A", 
+    "B", "B", "B", "A", "1", "3", "A", "B", "B", "A", "B", "B", "B", "B", 
+    "A", "B", "A", "B", "A", "2", "B", "B", "A", "A", "A", "B", "B", "B", 
+    "B", "B", "B", "B", "A", "B", "A", "B", "A", "B", "A", "B", "B", "2", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "2", "2", "2", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "A", "A", 
+    "B", "B", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "A", "B", "B", "B", "0", "B", "B", "A", "B", "A", 
+    "B", "A", "0", "A", "A", "3", "A", "A", "A", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "2", 
+    "B", "B", "3", "B", "B", "B", "A", "0", "2", "A", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "1", "B", "B", "A", "1", "B", "B", "B", "B", 
+    "A", "1", "B", "B", "B", "B", "B", "1", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "2", "A", "A", "A", "0", "A", "A", "A", "A", "A", 
+    "B", "B", "B", "B", "A", "B", "1", "1", "A", "B", "B", "B", "2", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "3", "A", "B", "2", "A", "2", "B", 
+    "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "A", "A", "B", "2", "2", "B", "3", "2", "A", "B", "A", "B", "1", 
+    "2", "A", "B", "B", "B", "A", "B", "A", "B", "B", "A", "A", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "3", "B", "1", "B", "0", "B", "0", 
+    "1", "A", "B", "B", "B", "B", "B", "A", "B", "1", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "A", "3", "2", "3", "B", "B", "0", "A", "B", "A", "A", 
+    "1", "B", "2", "A", "A", "0", "A", "A", "B", "B", "A", "2", "B", "1", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "3", 
+    "3", "2", "2", "A", "B", "1", "B", "B", "B", "B", "B", "2", "3", "3", 
+    "B", "B", "B", "B", "B", "0", "3", "2", "B", "A", "B", "0", "B", "1", 
+    "B", "B", "B", "B", "3", "A", "2", "A", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "3", "3", "2", 
+    "A", "B", "2", "A", "B", "B", "2", "2", "A", "B", "A", "B", "A", "B", 
+    "B", "B", "B", "B", "B", "2", "B", "B", "A", "A", "B", "0", "A", "B", 
+    "A", "A", "0", "1", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", 
+    "2", "A", "B", "B", "A", "B", "A", "B", "B", "B", "A", "A", "A", "2", 
+    "A", "B", "2", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "0", 
+    "2", "B", "B", "B", "B", "B", "B", "A", "B", "B", "1", "B", "1", "3", 
+    "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", "2", "B", 
+    "1", "2", "0", "A", "2", "B", "B", "B", "1", "B", "A", "2", "1", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "1", "B", "A", 
+    "A", "3", "3", "3", "2", "B", "B", "B", "B", "B", "B", "B", "2", "B", 
+    "B", "A", "2", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "2", 
+    "2", "A", "B", "B", "B", "B", "A", "B", "B", "B", "B", "B", "B", "A", 
+    "B", "B", "0", "1", "B", "A", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "2", "A", "0", "B", "A", "A", "1", "1", "B", 
+    "1", "B", "B", "B", "B", "B", "B", "B", "B", "1", "B", "B", "B", "2", 
+    "B", "2", "B", "2", "2", "3", "3", "1", "B", "B", "B", "3", "A", "A", 
+    "1", "1", "3", "2", "B", "B", "B", "B", "1", "B", "B", "B", "B", "B", 
+    "1", "B", "3", "B", "B", "B", "B", "B", "B", "1", "B", "1", "B", "B", 
+    "B", "3", "3", "2", "3", "1", "A", "B", "B", "B", "1", "B", "1", "2", 
+    "3", "3", "B", "B", "B", "B", "B", "1", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "A", "B", "B", "A", "B", "A", "B", "A", "A", "B", "B", "B", "B", 
+    "B", "B", "A", "B", "B", "A", "B", "B", "B", "B", "B", "B", "A", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "A", "A", "1", "B", "B", "B", "B", 
+    "B", "B", "B", "A", "B", "B", "B", "A", "1", "0", "A", "B", "B", "B", 
+    "0", "0", "0", "A", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "0", "B", 
+    "A", "0", "A", "0", "A", "3", "B", "B", "0", "3", "B", "3", "B", "A", 
+    "A", "3", "B", "B", "B", "B", "B", "B", "B", "B", "0", "B", "A", "B", 
+    "A", "A", "B", "B", "B", "B", "A", "B", "B", "B", "B", "1", "B", "1", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "A", "1", "2", "B", "B", "B", "B", "A", "A", "A", 
+    "A", "B", "B", "0", "0", "1", "A", "1", "B", "A", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "Z", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "A", "3", "A", "A", "B", "B", "B", "B", "1", "1", 
+    "1", "1", "B", "B", "B", "A", "B", "A", "A", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "A", "B", "B", "B", "B", "1", "A", "B", "B", "A", "A", 
+    "3", "B", "A", "B", "0", "B", "B", "B", "B", "B", "B", "B", "A", "B", 
+    "B", "B", "B", "B", "B", "B", "A", "A", "B", "B", "A", "2", "0", "A", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "A", "B", "1", "A", "A", "A", "A", "B", "3", "1", "3", "B", "A", 
+    "B", "B", "B", "B", "A", "B", "B", "0", "0", "B", "B", "2", "A", "B", 
+    "1", "A", "1", "B", "B", "A", "A", "B", "B", "B", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "B", "B", "B", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "B", 
+    "B", "B", "B", "B", "B", "B", "B", "B", "B", "A", "1", "0", "1", "B", 
+    "B", "B", "B", "A", "B", "A", "B", "A", "B", "0", "B", "A", "1", "1", 
+    "2", "0", "0", "1", "A", "B", "A", "B", "1", "2", "1", "B", "B", "3", 
+    "B", "A", "B", "B", "B", "B" ;
 
  error_radius = _, 607, 1689, 398, 1555, 2818, 2650, 4062, 1626, 1800, 222, 
     834, 3981, 5595, 2784, 1167, 475, 736, 466, 1071, 1592, 1686, 244, 769, 
@@ -3069,6 +3370,288 @@ data:
     _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
     _, _, _, _, _, _, _, _, _, _, _, _, _, _ ;
 
+ gpe_msd = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _ ;
+
+ gpe_u = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _ ;
+
+ count = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _ ;
+
  comment = "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
     "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
     "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
@@ -3296,13 +3879,387 @@ data:
     "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
     "nan", "nan", "nan" ;
 
+ time_axds_valid_range_test = 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 ;
+
+ argo_speed_test = 2, 1, 1, 1, 1, 1, 4, 1, 1, 1, 3, 1, 1, 1, 4, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    4, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 
+    1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 1, 
+    1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 4, 1, 
+    1, 4, 4, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 4, 1, 1, 1, 
+    4, 1, 1, 4, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 
+    1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 3, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 1, 4, 1, 1, 
+    1, 1, 1, 4, 1, 1, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 
+    1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 1, 1, 1, 1, 4, 1, 1, 1, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 4, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 4, 1, 4, 1, 4, 1, 1, 1, 1, 1, 1, 4, 1, 1, 3, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    4, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 4, 
+    1, 1, 1, 1, 1, 1, 3, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    4, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 
+    1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    4, 1, 1, 1, 4, 4, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 
+    1, 4, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 4, 1, 1, 1, 4, 1, 1, 1, 4, 1, 1, 1, 1, 3, 1, 1, 4, 1, 1, 
+    1, 1, 1, 4, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 4, 
+    1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 4, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 4, 1, 1, 1, 1, 1, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 4, 1, 4, 1, 
+    1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 3, 1, 1, 4, 1, 4, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 
+    1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 
+    1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 4, 1, 4, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 4, 1, 4, 1, 4, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 4, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 4, 1, 4, 1, 
+    1, 1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    4, 4, 1, 4, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 
+    4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 4, 1, 1, 1, 
+    1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 4, 
+    1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 
+    1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 4, 4, 4, 1, 4, 1, 4, 1, 1, 4, 1, 1, 1, 4, 
+    4, 1, 1, 1, 4, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 4, 1, 1, 4, 
+    1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 4, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 4, 3, 1, 1, 1, 4, 1, 1, 1, 4, 1, 1, 1, 1, 1, 4, 1, 1, 1, 
+    1, 1, 4, 1, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 
+    1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 4, 1, 4, 1, 1, 1, 4, 4, 4, 
+    1, 4, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 4, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 4, 1, 4, 1, 1, 1, 4, 1, 4, 1, 1, 4, 1, 1, 1, 4, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 
+    1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 4, 1, 4, 1, 1, 4, 1, 4, 1, 1, 4, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 4, 4 ;
+
+ qartod_location_test = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ;
+
+ qartod_rollup_qc = 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 ;
+
  crs = _ ;
 
  instrument_location = _ ;
 
  instrument_tag = _ ;
-
- platform = _ ;
 
  qartod_rollup_flag = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
     _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
@@ -3679,6 +4636,8 @@ data:
     _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
     _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
     _, _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ animal = "animal" ;
 
  taxon_name = "Halichoerus grypus" ;
 
