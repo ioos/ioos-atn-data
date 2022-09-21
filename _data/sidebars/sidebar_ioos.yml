@@ -1,0 +1,66 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Menu
+  levels: three
+  version:
+  folders:
+
+  - title: ATN Specification
+    output: web, pdf
+
+    folderitems:
+
+    - title: Overview
+      url: /index.html
+      output: web
+
+    - title: ATN specification 0.1 (Active)
+      url: /atn-specification-v0-1.html
+      output: web
+
+    - title: Profile Versions
+      url: /index.html#profile-versions
+      output: web
+
+    - title: Compliance Checker
+      url: /index.html#compliance-checker
+      output: web
+
+  - title: IOOS Metadata Profile Documents
+    output: web
+
+    folderitems:
+
+    - title:
+      url:
+      output: web
+
+      subfolders:
+
+      - title: Version 0.1 (Active)
+        output: web
+
+        subfolderitems:
+
+        - title: Summary
+          url: /atn-specification-v0-1.html
+          output: web
+
+        - title: Revision History
+          url: /atn-specification-v0-1.html#revision-history
+          output: web
+
+        - title: Notes/Caveats
+          url: /atn-specification-v0-1.html#notescaveats
+          output: web
+
+        - title: Gold Standard Example Datasets
+          url: /atn-specification-v0-1.html#gold-standard-example-datasets
+          output: web
+
+        - title: Metadata Profile Attributes
+          url: /atn-specification-v0-1.html#ioos-metadata-profile-attributes
+          output: web
+
