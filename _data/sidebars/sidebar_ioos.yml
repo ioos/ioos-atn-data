@@ -16,19 +16,19 @@ entries:
       url: /index.html
       output: web
 
-    - title: ATN specification 0.1 (Active)
-      url: /atn-specification-v0-1.html
+    - title: Current Versions
+      url: /index.html#current-specification-versions
       output: web
 
-    - title: Profile Versions
-      url: /index.html#profile-versions
+    - title: Specification Versions
+      url: /index.html#specification-versions
       output: web
 
     - title: Compliance Checker
       url: /index.html#compliance-checker
       output: web
 
-  - title: IOOS Metadata Profile Documents
+  - title: ATN Specification Documents
     output: web
 
     folderitems:
@@ -39,28 +39,28 @@ entries:
 
       subfolders:
 
-      - title: Version 0.1 (Active)
+      - title: Satellite Telemetry Version 0.1 (Active)
         output: web
 
         subfolderitems:
 
         - title: Summary
-          url: /atn-specification-v0-1.html
+          url: /atn-sat-telem-specification-v0-1.html
           output: web
 
         - title: Revision History
-          url: /atn-specification-v0-1.html#revision-history
+          url: /atn-sat-telem-specification-v0-1.html#revision-history
           output: web
 
         - title: Notes/Caveats
-          url: /atn-specification-v0-1.html#notescaveats
+          url: /atn-sat-telem-specification-v0-1.html#notescaveats
           output: web
 
         - title: Gold Standard Example Datasets
-          url: /atn-specification-v0-1.html#gold-standard-example-datasets
+          url: /atn-sat-telem-specification-v0-1.html#gold-standard-example-datasets
           output: web
 
         - title: Metadata Profile Attributes
-          url: /atn-specification-v0-1.html#ioos-metadata-profile-attributes
+          url: /atn-sat-telem-specification-v0-1.html#atn-satellite-trajectory-specification-attributes
           output: web
 
