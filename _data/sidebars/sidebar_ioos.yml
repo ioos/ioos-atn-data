@@ -39,7 +39,7 @@ entries:
 
       subfolders:
 
-      - title: Satellite Telemetry Version 0.1 (Active)
+      - title: Satellite Telemetry Version 0.1 (In development)
         output: web
 
         subfolderitems:

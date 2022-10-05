@@ -4,7 +4,7 @@ keywords: [ioos, metadata, netCDF, 0.1]
 tags: [ioos, metadata, netCDF, 0.1]
 toc: false
 #permalink: index.html
-summary: This is the currently active ATN satellite telemetry specification version. 
+summary: This is the in development ATN satellite telemetry specification version. 
 ---
 
 ## Revision History
@@ -12,7 +12,7 @@ summary: This is the currently active ATN satellite telemetry specification vers
 
 | Version | Description                                                                                                     | Date       |
 |:--------|:----------------------------------------------------------------------------------------------------------------|:-----------|
-| **0.1** | **Currently Active Satellite Telemetry Version** <br>[Initial version](./atn-sat-telem-specification-v0-1.html) | 2022-09-21 |
+| **0.1** | **In development Satellite Telemetry Version** <br>[Initial version](./atn-sat-telem-specification-v0-1.html) | 2022-09-21 |
 
 ## Notes/Caveats
 

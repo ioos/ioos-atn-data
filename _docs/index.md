@@ -14,7 +14,7 @@ Currently, the US IOOS ATN has been developing netCDF templates for satellite tr
 
 ## **Current Specification Versions**
 
-### [**IOOS ATN Satellite Telemetry Specification v0.1**](atn-sat-telem-specification-v0-1.html)
+### [**IOOS ATN Satellite Telemetry Specification v0.1** (in development)](atn-sat-telem-specification-v0-1.html)
 
 Looking for the latest version?  Follow the links above for details on requirements for the most recent ATN netCDF templates.
 
@@ -32,7 +32,7 @@ The IOOS DMAC data management system has adopted netCDF as a standard data forma
 
 ## Specification Versions:
 
-### [**IOOS ATN Satellite Telemetry Specification v0.1** (Current)](atn-sat-telem-specification-v0-1.html)
+### [**IOOS ATN Satellite Telemetry Specification v0.1** (In development)](atn-sat-telem-specification-v0-1.html)
 
 IOOS ATN Specification 0.1 (released in 2022) is the current **valid**{: style="color: green"} specification, and is based upon the following convention versions:
 
