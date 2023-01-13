@@ -1,0 +1,1551 @@
+netcdf atn_22275_loggerhead_turtle_trajectory_19990720_20040226 {
+dimensions:
+	obs = 706 ;
+variables:
+	int qartod_location_flag(obs) ;
+		qartod_location_flag:_FillValue = 241 ;
+		qartod_location_flag:coordinates = "time z lon lat" ;
+		qartod_location_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_location_flag:flag_values = "1,2,3,4,9" ;
+		qartod_location_flag:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_location_flag:ioos_category = "Other" ;
+		qartod_location_flag:long_name = "Location QC test - Location test" ;
+		qartod_location_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_location_flag:standard_name = "location_test_quality_flag" ;
+	int qartod_rollup_flag(obs) ;
+		qartod_rollup_flag:_FillValue = 241 ;
+		qartod_rollup_flag:coordinates = "time z lon lat" ;
+		qartod_rollup_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_rollup_flag:flag_values = "1,2,3,4,9" ;
+		qartod_rollup_flag:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_rollup_flag:ioos_category = "Other" ;
+		qartod_rollup_flag:long_name = "Aggregate QC value" ;
+		qartod_rollup_flag:references = "https://github.com/ioos/ioos_qc/" ;
+		qartod_rollup_flag:standard_name = "aggregate_quality_flag" ;
+	int qartod_speed_flag(obs) ;
+		qartod_speed_flag:_FillValue = 241 ;
+		qartod_speed_flag:coordinates = "time z lon lat" ;
+		qartod_speed_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_speed_flag:flag_values = "1,2,3,4,9" ;
+		qartod_speed_flag:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_speed_flag:ioos_category = "Other" ;
+		qartod_speed_flag:long_name = "Speed QC test - gross range test" ;
+		qartod_speed_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_speed_flag:standard_name = "gross_range_test_quality_flag" ;
+	int qartod_time_flag(obs) ;
+		qartod_time_flag:_FillValue = 241 ;
+		qartod_time_flag:coordinates = "time z lon lat" ;
+		qartod_time_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_time_flag:flag_values = "1,2,3,4,9" ;
+		qartod_time_flag:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_time_flag:ioos_category = "Other" ;
+		qartod_time_flag:long_name = "Time QC test - gross range test" ;
+		qartod_time_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_time_flag:standard_name = "gross_range_test_quality_flag" ;
+	string trajectory ;
+		trajectory:cf_role = "trajectory_id" ;
+		trajectory:long_name = "trajectory identifier" ;
+	double time(obs) ;
+		time:_FillValue = -9999.9 ;
+		time:units = "seconds since 1990-01-01 00:00:00Z" ;
+		time:standard_name = "time" ;
+		time:axis = "T" ;
+		time:_CoordinateAxisType = "Time" ;
+		time:calendar = "standard" ;
+		time:ioos_category = "Time" ;
+		time:actual_min = "1999-07-20T02:38:53Z" ;
+		time:actual_max = "2004-02-26T02:31:35Z" ;
+		time:long_name = "Time of the measurement, in seconds since 1990-01-01" ;
+		time:ancillary_variables = "qartod_time_flag qartod_rollup_flag qartod_speed_flag" ;
+	int z(obs) ;
+		z:_FillValue = -9999 ;
+		z:axis = "Z" ;
+		z:positive = "down" ;
+		z:standard_name = "depth" ;
+		z:units = "m" ;
+		z:actual_min = 0. ;
+		z:actual_max = 0. ;
+		z:long_name = "depth of measurement" ;
+		z:instrument = "intrument_pressure" ;
+		z:platform = "animal" ;
+	double lat(obs) ;
+		lat:_FillValue = -9999.9 ;
+		lat:axis = "Y" ;
+		lat:_CoordinateAxisType = "Lat" ;
+		lat:ioos_category = "Location" ;
+		lat:standard_name = "latitude" ;
+		lat:units = "degrees_north" ;
+		lat:valid_max = 90. ;
+		lat:valid_min = -90. ;
+		lat:actual_min = 33.282 ;
+		lat:actual_max = 47.816 ;
+		lat:long_name = "Profile latitude Location in decimal degrees North" ;
+		lat:instrument = "instrument_location" ;
+		lat:platform = "animal" ;
+		lat:ancillary_variables = "qartod_location_flag quartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation" ;
+	double lon(obs) ;
+		lon:_FillValue = -9999.9 ;
+		lon:axis = "X" ;
+		lon:_CoordinateAxisType = "Lon" ;
+		lon:ioos_category = "Location" ;
+		lon:standard_name = "longitude" ;
+		lon:units = "degrees_east" ;
+		lon:valid_max = 180. ;
+		lon:valid_min = -180. ;
+		lon:actual_min = -123.143 ;
+		lon:actual_max = 165.118 ;
+		lon:long_name = "Profile longitude Location in decimal degrees East" ;
+		lon:instrument = "instrument_location" ;
+		lon:platform = "animal" ;
+		lon:ancillary_variables = "qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation" ;
+	int deploy_id(obs) ;
+		deploy_id:_FillValue = -9999 ;
+		deploy_id:coordinates = "time z lon lat" ;
+		deploy_id:long_name = "Platform identifier" ;
+		deploy_id:comment = "Friendly name given to the tag by the user. If no specific friendly name is given, this is the PTT id." ;
+	int Ptt(obs) ;
+		Ptt:_FillValue = -9999 ;
+		Ptt:coordinates = "time z lon lat" ;
+	string instrument(obs) ;
+		instrument:coordinates = "time z lon lat" ;
+		instrument:long_name = "Instrument" ;
+		instrument:comment = "Wildlife Computers instrument family. " ;
+	string type(obs) ;
+		type:coordinates = "time z lon lat" ;
+		type:long_name = "Type of location" ;
+		type:comment = "Type of location: Argos" ;
+	string location_class(obs) ;
+		location_class:coordinates = "time z lon lat" ;
+		location_class:standard_name = "quality_flag" ;
+		location_class:ioos_category = "Quality" ;
+		location_class:comment = "Quality codes from the ARGOS satellite (in meters): G,3,2,1,0,A,B,Z. See http://www.argos-system.org/manual/3-location/34_location_classes.htm" ;
+		location_class:long_name = "Location Quality Code from ARGOS satellite system" ;
+		location_class:code_values = "G,3,2,1,0,A,B,Z" ;
+		location_class:code_meanings = "estimated error less than 100m and 1+ messages received per satellite pass,estimated error less than 250m and 4+ messages received per satellite pass,estimated error between 250m and 500m and 4+ messages per satellite pass,estimated error between 500m and 1500m and 4+ messages per satellite pass,estimated error greater than 1500m and 4+ messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 3 messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 1 or 2 messages received per satellite pass,invalid location (available for Service Plus or Auxilliary Location Processing)" ;
+		location_class:instrument = "instrument_location" ;
+		location_class:platform = "animal" ;
+		location_class:ancillary_variables = "lat lon" ;
+	double error_radius(obs) ;
+		error_radius:_FillValue = -9999.9 ;
+		error_radius:coordinates = "time z lon lat" ;
+		error_radius:units = "m" ;
+		error_radius:comment = "If the position is best represented as a circle, this field gives the radius of that circle in meters." ;
+		error_radius:long_name = "Error-circle radius in meters" ;
+		error_radius:instrument = "instrument_location" ;
+		error_radius:platform = "animal" ;
+	double semi_major_axis(obs) ;
+		semi_major_axis:_FillValue = -9999.9 ;
+		semi_major_axis:coordinates = "time z lon lat" ;
+		semi_major_axis:units = "m" ;
+		semi_major_axis:comment = "If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-major elliptical axis (one half of the major axis)." ;
+		semi_major_axis:long_name = "Error-elipse semi-major axis" ;
+		semi_major_axis:instrument = "instrument_location" ;
+		semi_major_axis:platform = "animal" ;
+	double semi_minor_axis(obs) ;
+		semi_minor_axis:_FillValue = -9999.9 ;
+		semi_minor_axis:coordinates = "time z lon lat" ;
+		semi_minor_axis:units = "m" ;
+		semi_minor_axis:comment = "If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-minor elliptical axis (one half of the minor axis)." ;
+		semi_minor_axis:long_name = "Error-elipse semi-minor axis" ;
+		semi_minor_axis:instrument = "instrument_location" ;
+		semi_minor_axis:platform = "animal" ;
+	double ellipse_orientation(obs) ;
+		ellipse_orientation:_FillValue = -9999.9 ;
+		ellipse_orientation:coordinates = "time z lon lat" ;
+		ellipse_orientation:units = "degrees" ;
+		ellipse_orientation:comment = "The angle in degrees of the ellipse from true north, proceeding clockwise (0 to 360). A blank field represents 0 degrees." ;
+		ellipse_orientation:long_name = "Error ellipse orientation in degrees clockwise from true north" ;
+		ellipse_orientation:instrument = "instrument_location" ;
+		ellipse_orientation:platform = "animal" ;
+	double offset(obs) ;
+		offset:_FillValue = -9999.9 ;
+		offset:coordinates = "time z lon lat" ;
+		offset:units = "m" ;
+		offset:comment = "This field is non-zero if the circle or ellipse are not centered on the (Latitude, Longitude) values on this row. \"Offset\" gives the distance in meters from (Latitude, Longitude) to the center of the ellipse." ;
+		offset:long_name = "Offset in meters to center of error elipse or circle" ;
+		offset:instrument = "instrument_location" ;
+		offset:platform = "animal" ;
+	double offset_orientation(obs) ;
+		offset_orientation:_FillValue = -9999.9 ;
+		offset_orientation:coordinates = "time z lon lat" ;
+		offset_orientation:units = "degrees" ;
+		offset_orientation:comment = "If the \"Offset\" field is non-zero, this field is the angle in degrees from (Latitude, Longitude) to the center of the ellipse. Zero degrees is true north; a blank field represents 0 degrees." ;
+		offset_orientation:long_name = "Offset orientation angle to ellipse center" ;
+		offset_orientation:instrument = "instrument_location" ;
+		offset_orientation:platform = "animal" ;
+	double gpe_msd(obs) ;
+		gpe_msd:_FillValue = -9999.9 ;
+		gpe_msd:coordinates = "time z lon lat" ;
+	double gpe_u(obs) ;
+		gpe_u:_FillValue = -9999.9 ;
+		gpe_u:coordinates = "time z lon lat" ;
+	double count(obs) ;
+		count:_FillValue = -9999.9 ;
+		count:coordinates = "time z lon lat" ;
+	string comment(obs) ;
+		comment:coordinates = "time z lon lat" ;
+		comment:long_name = "Comment" ;
+		comment:comment = "Optional text field" ;
+	int crs ;
+		crs:epsg_code = "EPSG:4326" ;
+		crs:grid_mapping_name = "latitude_longitude" ;
+		crs:inverse_flattening = 298.257223563 ;
+		crs:ioos_category = "Other" ;
+		crs:long_name = "http://www.opengis.net/def/crs/EPSG/0/4326" ;
+		crs:semi_major_axis = 6378137. ;
+	string instrument_location ;
+		instrument_location:long_name = "Wildlife Computers SDR" ;
+		instrument_location:location_type = "argos/modeled" ;
+		instrument_location:comment = "Location" ;
+		instrument_location:manufacturer = "Wildlife Computers" ;
+		instrument_location:make_model = "SDR" ;
+		instrument_location:calibration_date = "NOT PROVIDED" ;
+		instrument_location:serial_number = "99-338A" ;
+	string instrument_tag ;
+		instrument_tag:long_name = "telemtry tag applied to animal" ;
+		instrument_tag:comment = "Location" ;
+		instrument_tag:manufacturer = "Wildlife Computers" ;
+		instrument_tag:make_model = "SDR" ;
+		instrument_tag:calibration_date = "NOT PROVIDED" ;
+		instrument_tag:serial_number = "99-338A" ;
+	string animal ;
+		animal:cf_role = "trajectory_id" ;
+		animal:long_name = "BP6772" ;
+		animal:valid_name = "Caretta caretta" ;
+		animal:AphiaID = 137205LL ;
+		animal:scientificname = "Caretta caretta" ;
+		animal:authority = "(Linnaeus, 1758)" ;
+		animal:kingdom = "Animalia" ;
+		animal:phylum = "Chordata" ;
+		animal:class = "" ;
+		animal:order = "Testudines" ;
+		animal:family = "Cheloniidae" ;
+		animal:genus = "Caretta" ;
+		animal:taxonRankID = 220LL ;
+		animal:rank = "Species" ;
+		animal:superdomain = "Biota" ;
+		animal:subphylum = "Vertebrata" ;
+		animal:infraphylum = "Gnathostomata" ;
+		animal:megaclass = "Tetrapoda" ;
+		animal:superclass = "Reptilia" ;
+		animal:suborder = "Cryptodira" ;
+		animal:superfamily = "Chelonioidea" ;
+		animal:species = "Caretta caretta" ;
+	string animal_life_stage ;
+		animal_life_stage:long_name = "Lifestage of the animal (adult, juvenile)" ;
+		animal_life_stage:animal_life_stage = "Not provided" ;
+	float animal_length ;
+		animal_length:long_name = "length of the animal as measured at deployment" ;
+		animal_length:units = "cm" ;
+	float animal_weight ;
+		animal_weight:long_name = "mass of the animal as measured or estimated at deployment" ;
+		animal_weight:units = "kg" ;
+		animal_weight:animal_weight = "Not provided" ;
+	string animal_sex ;
+		animal_sex:long_name = "sex of the animal" ;
+		animal_sex:animal_sex = "unknown" ;
+	string taxon_name ;
+		taxon_name:standard_name = "biological_taxon_name" ;
+		taxon_name:long_name = "most precise taxonomic classification for the tagged animal" ;
+		taxon_name:source = "Uetz, P. (ed.) (2023). The Reptile Database. Caretta caretta (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=137205 on 2023-01-13" ;
+		taxon_name:url = "https://www.marinespecies.org/aphia.php?p=taxdetails&id=137205" ;
+	string taxon_lsid ;
+		taxon_lsid:standard_name = "biological_taxon_lsid" ;
+		taxon_lsid:long_name = "Namespaced Taxon Identifier for the tagged animal" ;
+		taxon_lsid:source = "Uetz, P. (ed.) (2023). The Reptile Database. Caretta caretta (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=137205 on 2023-01-13" ;
+		taxon_lsid:url = "https://www.marinespecies.org/aphia.php?p=taxdetails&id=137205" ;
+		taxon_lsid:id_source_name = "" ;
+		taxon_lsid:id_source_link = "" ;
+
+// global attributes:
+		:date_created = "2021-08-12T21:02:56Z" ;
+		:featureType = "trajectory" ;
+		:cdm_data_type = "Trajectory" ;
+		:argos_program_number = "1092" ;
+		:creator_email = "mtbap.tags@gmail.com" ;
+		:id = "5f08ee316321be13bc7fbc37" ;
+		:source = "Service Argos" ;
+		:geospatial_bounds_vertical_crs = "EPSG:4326" ;
+		:geospatial_lat_units = "degrees_north" ;
+		:geospatial_lon_units = "degrees_east" ;
+		:geospatial_vertical_positive = "down" ;
+		:naming_authority = "gov.noaa.ioos.atn" ;
+		:platform = "animal" ;
+		:processing_level = "NetCDF file created from position data obtained from Wildlife Computers API." ;
+		:publisher_email = "atndata@ioos.us" ;
+		:publisher_country = "USA" ;
+		:vendor = "Wildlife Computers" ;
+		:geospatial_lat_min = 33.282 ;
+		:geospatial_lat_max = 47.816 ;
+		:geospatial_lon_min = -123.143 ;
+		:geospatial_lon_max = 165.118 ;
+		:geospatial_bbox = "POLYGON ((336.213 33.282, 336.213 47.816, 163.607 47.816, 163.607 33.282, 336.213 33.282))" ;
+		:geospatial_bounds = "POLYGON ((165.1179999999999 33.282, 163.607 33.92, 236.857 47.816, 319.721 41.061, 331.475 38.34, 336.213 36.775, 335.844 35.645, 335.057 35.207, 165.1179999999999 33.282))" ;
+		:geospatial_bounds_crs = "EPSG:4326" ;
+		:geospatial_vertical_min = 0. ;
+		:geospatial_vertical_max = 0. ;
+		:geospatial_vertical_units = "m" ;
+		:time_coverage_start = "1999-07-20T02:38:53Z" ;
+		:time_coverage_end = "2004-02-26T02:31:35Z" ;
+		:time_coverage_duration = "P1681DT23H52M42S" ;
+		:time_coverage_resolution = "P2DT9H15M34S" ;
+		:date_issued = "2021-08-12T21:02:56Z" ;
+		:date_modified = "2021-08-12T21:02:56Z" ;
+		:vendor_id = "5f08ee316321be13bc7fbc37" ;
+		:Conventions = "CF-1.10, ACDD-1.3, IOOS-1.2" ;
+		:acknowledgement = "NOAA IOOS, Axiom Data Science, Navy ONR, NOAA NMFS, Wildlife Computers, Argos, IOOS ATN" ;
+		:creator_name = "Summer Martin" ;
+		:creator_url = "https://orcid.org/0000-0003-3443-3325" ;
+		:infoUrl = "https://www.portal.atn.ioos.us/#metadata/[hash value]/project" ;
+		:institution = "NOAA Pacific Islands Fisheries Science Center" ;
+		:keywords = "ANIMALS/VERTEBRATES, ARGOS, TELEMETER, IOOS, Axiom Data Science" ;
+		:license = "These data may be used and redistributed for free, but are not intended for legal use, since they may contain inaccuracies. No person or group associated with these data makes any warranty, expressed or implied, including warranties of merchantability and fitness for a particular purpose, or assumes any legal liability for the accuracy, completeness or usefulness of this information. This disclaimer applies to both individual use of these data and aggregate use with other data. It is strongly recommended that users read and fully comprehend associated metadata prior to use. Please acknowledge the U.S. Animal Telemetry Network (ATN) or the specified citation as the source from which these data were obtained in any publications and/or representations of these data. Communication and collaboration with dataset authors are strongly encouraged." ;
+		:metadata_link = "https://anotherfakeurlforthisproject.coffee" ;
+		:platform_type = "Plaforms > Living Organism-based Platforms > Living Organism > Living Organism" ;
+		:platform_vocabulary = "NASA Global Change Master Directory v15.0" ;
+		:project = "Spatial Ecology of loggerhead turtles tagged at the Azores, 1994-2000" ;
+		:publisher_institution = "US Integrated Ocean Observing System Office" ;
+		:publisher_name = "US Integrate Ocean Observing System (IOOS) Animal Telemetry Network (ATN)" ;
+		:publisher_url = "https://www.atn.ioos.us" ;
+		:standard_name_vocabulary = "CF Standard Name Table v78" ;
+		:uuid = "6f36eed4-16a8-4fac-b055-ca41b3c25da4" ;
+		:platform_name = "Caretta caretta" ;
+		:platform_id = "137205" ;
+		:animal_common_name = "loggerhead turtle" ;
+		:animal_id = "A6173" ;
+		:animal_scientific_name = "Caretta caretta" ;
+		:comment = NaN ;
+		:contributor_email = "alexander.gaos@noaa.gov" ;
+		:contributor_name = "Alexander Gaos" ;
+		:contributor_role = "collaborator" ;
+		:contributor_role_vocabulary = "http://vocab.nerc.ac.uk/collection/G04/current/" ;
+		:contrubtor_url = NaN ;
+		:creator_country = "USA" ;
+		:creator_institution = "Program Lead - Marine Turtle Biology and Assessment Program, NOAA Pacific Islands Fisheries Science Center" ;
+		:creator_institution_url = NaN ;
+		:creator_role = "principalInvestigator" ;
+		:creator_role_vocabulary = "https://vocab.nerc.ac.uk/collection/G04/current/" ;
+		:creator_sector = "gov_federal" ;
+		:creator_sector_vocabulary = "https://mmisw.org/ont/ioos/sector" ;
+		:creator_type = "person" ;
+		:date_metadata_modified = "2023-01-13" ;
+		:deployment_id = NaN ;
+		:deployment_start_lat = "" ;
+		:deployment_start_lon = "" ;
+		:deployment_start_datetime = "2000-07-17 00:00:00" ;
+		:deployment_end_datetime = "2001-07-24 00:00:00" ;
+		:instrument = "satellite telemetry tag" ;
+		:instrument_vocabulary = NaN ;
+		:keywords_vocabulary = "GCMD 15.1" ;
+		:ncei_template_version = "NCEI_NetCDF_Trajectory_Template_v2.0" ;
+		:product_version = NaN ;
+		:program = "IOOS Animal Telemetry Network" ;
+		:ptt_id = "22275" ;
+		:publisher_type = "institution" ;
+		:references = NaN ;
+		:wmo_platform_code = "99nnnnn" ;
+		:contributor_url = "https://orcid.org/0000-0001-6100-7319" ;
+		:arbitrary_keywords = "ATN ,Animal Telemetry Network, IOOS, Integrated Ocean Observing System, trajectory" ;
+		:sea_name = "North Atlantic Ocean" ;
+		:summary = "Wildlife Computers SDR tag deployed on a loggerhead turtle (Caretta caretta) by Summer Martin in North Atlantic Ocean from 1999-07-20 to 2004-02-26. PTT tag number 22275." ;
+		:title = "Loggerhead turtle (Caretta caretta) location data from a tag deployed from 1999-07-20 to 2004-02-26 in the North Atlantic Ocean, ptt 22275" ;
+		:citation = "Martin, Summer; Gaos, Alex. (2023) Loggerhead turtle (Caretta caretta) location data from a tag deployed from 1999-07-20 to 2004-02-26 in the North Atlantic Ocean, ptt 22275. [Dataset]. US Integrate Ocean Observing System (IOOS) Animal Telemetry Network (ATN)." ;
+		:NCO = "netCDF Operators version 4.9.1 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)" ;
+		:history = "Fri Jan 13 13:57:34 2023: ncrename -v qartod_speed_test,qartod_speed_flag atn_02.nc atn_03.nc\nFri Jan 13 13:53:18 2023: ncrename -v qartod_location_test,qartod_location_flag -v argo_speed_test,qartod_speed_test -v qartod_rollup_qc,qartod_rollup_flag -v time_axds_valid_range_test,qartod_time_flag atn_00.nc atn_01.nc\n2021-08-12T21:02:56Z - Created by the IOOS ATN DAC from the Wildlife Computers API" ;
+data:
+
+ qartod_location_flag = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ;
+
+ qartod_rollup_flag = 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 4, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 
+    4, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4 ;
+
+ qartod_speed_flag = 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 4, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 4, 
+    1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 
+    1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ;
+
+ qartod_time_flag = 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+    1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4 ;
+
+ trajectory = "5f08ee316321be13bc7fbc37" ;
+
+ time = 301286333, 301292265, 301317831, 301321183, 301323673, 301327115, 
+    301331462, 301333002, 301337485, 319676226, 319682701, 319688543, 
+    319688724, 319694838, 319695789, 319701721, 319720605, 332752447, 
+    332756231, 332759758, 332762030, 332797101, 332803026, 332807225, 
+    332929768, 332929982, 332932544, 332970827, 332978478, 332979211, 
+    333089273, 333099951, 333101285, 333102496, 333106023, 333140995, 
+    333142401, 333143187, 333146861, 333149187, 333270327, 333272712, 
+    333276118, 333278547, 333313840, 333317021, 333319257, 333325319, 
+    333326909, 333444205, 333446149, 333448648, 333450068, 333452078, 
+    333486960, 333489392, 333495586, 333498209, 333615851, 333780943, 
+    333794841, 333964357, 333968370, 333970755, 334005424, 334005811, 
+    334009293, 334017684, 334017992, 334135790, 334138240, 334140906, 
+    334144388, 334179426, 334181877, 334187816, 334189184, 334307144, 
+    334311088, 334313162, 334314495, 334351968, 334355408, 334358117, 
+    334484555, 334487299, 334525584, 334525756, 334528140, 334534008, 
+    334655972, 334657320, 334660655, 334698146, 334701519, 334708959, 
+    334827289, 334830774, 334833336, 334874043, 334880108, 334880360, 
+    334998795, 335000781, 335003662, 335004715, 335006799, 335044284, 
+    335050564, 335170942, 335177003, 335179645, 335214550, 335335459, 
+    335347043, 335347594, 335349719, 335352871, 335387500, 335390505, 
+    335396714, 335519032, 335522959, 335525847, 335560053, 335572669, 
+    335690380, 335693005, 335698951, 335733834, 335736713, 335742395, 
+    335742837, 335863168, 335866077, 335867756, 335869164, 336027282, 
+    336080090, 336083042, 336089007, 336090966, 336209537, 336210680, 
+    336212310, 336215206, 336218067, 336251625, 336256063, 336262231, 
+    336265030, 336381983, 336385379, 336388440, 336425943, 336435029, 
+    336553585, 336558505, 336559377, 336561346, 336599244, 336602174, 
+    336731677, 336734403, 336771933, 336775463, 336781342, 336901379, 
+    336902492, 336904572, 336907526, 336942254, 336943303, 336945325, 
+    336948342, 336951609, 337071806, 337073765, 337077558, 337080458, 
+    337114958, 337115495, 337127489, 337245144, 337247766, 337250906, 
+    337253618, 337291502, 337297583, 337301649, 337417985, 337422493, 
+    337423704, 337427020, 337461625, 337464551, 337467583, 337473037, 
+    337473695, 337593849, 337593929, 337597104, 337634231, 337637741, 
+    337643763, 337764068, 337765367, 337806275, 337810633, 337813760, 
+    337815374, 337819907, 337936735, 337980377, 337983919, 337989966, 
+    337992634, 338108438, 338110118, 338113211, 338154104, 338156681, 
+    338160046, 338163974, 338273467, 338285449, 338289722, 338326524, 
+    338326781, 338336147, 338456062, 338456884, 338459524, 338461993, 
+    338497849, 338506203, 338628334, 338632145, 338635629, 338670273, 
+    338676300, 338682372, 338683660, 338799839, 338802302, 338805646, 
+    338805723, 338808156, 338843024, 338846281, 338852483, 338854941, 
+    338965062, 338972453, 338977132, 338978339, 339022495, 339148254, 
+    339148275, 339151883, 339189016, 339189474, 339192653, 339198556, 
+    339318523, 339319996, 339324382, 339368481, 339374769, 339374954, 
+    339491308, 339494525, 339497924, 339535024, 339538911, 339544843, 
+    339545983, 339664320, 339668164, 339673995, 339711295, 339714897, 
+    339717132, 339840060, 339840560, 339844487, 339885357, 339890979, 
+    340011442, 340052644, 340061159, 340065782, 340182881, 340236848, 
+    340356665, 340407183, 340531538, 340532977, 340571298, 340573434, 
+    340577302, 340583394, 340690036, 340702789, 340703197, 340747226, 
+    340753470, 340756697, 340874475, 340876862, 340919561, 340927832, 
+    341049003, 341051928, 341054867, 341089337, 341099956, 341210623, 
+    341219244, 341382045, 341395115, 341446039, 341553969, 341741268, 
+    342087218, 342126187, 342128269, 342138217, 342257937, 342308250, 
+    342429022, 342431663, 342433391, 342435057, 342474051, 342603532, 
+    342607906, 342648496, 342654327, 342777935, 342779441, 342783906, 
+    342819029, 342824490, 342829730, 342830594, 342938683, 342949107, 
+    342949822, 342954107, 342955594, 342990160, 342990259, 342994625, 
+    343110161, 343120697, 343124069, 343129962, 343166319, 343170962, 
+    343176812, 343295823, 343298094, 343299963, 343341008, 343346764, 
+    343349401, 343465604, 343469539, 343470209, 343471579, 343510730, 
+    343510929, 343512436, 343516778, 343630568, 343640741, 343646252, 
+    343647614, 343693149, 343802578, 343811705, 343812346, 343816379, 
+    343817816, 343858588, 343863083, 343983788, 343989493, 344027139, 
+    344028525, 344033240, 344039221, 344040364, 344160908, 344163832, 
+    344202147, 344209319, 344332305, 344338501, 344373442, 344374837, 
+    344379427, 344385217, 344494444, 344503865, 344508710, 344509726, 
+    344509803, 344549502, 344550735, 344555366, 344680110, 344681100, 
+    344719557, 344720683, 344725532, 344731161, 344731546, 344893662, 
+    344895728, 344901640, 344902636, 345026087, 345030886, 345064974, 
+    345066872, 345071956, 345077765, 345195389, 345195942, 345201177, 
+    345202043, 345236573, 345236861, 345241826, 345247802, 345358418, 
+    345366326, 345366792, 345371038, 345372132, 345372666, 345411942, 
+    345412928, 345530333, 345542190, 345544133, 345547315, 345547973, 
+    345582936, 345585299, 345588135, 345593566, 345593972, 345715659, 
+    345717393, 345718213, 345756524, 345758076, 345764028, 345886939, 
+    345888249, 345927856, 345928863, 346058561, 346063514, 346064277, 
+    346064293, 346104250, 346105094, 346113284, 346275067, 346284451, 
+    346286134, 346409764, 346447917, 346450058, 346456106, 346578620, 
+    346619527, 346620564, 346626419, 346632934, 346755780, 346755834, 
+    346796639, 346802662, 346804170, 346921413, 346925989, 346926561, 
+    346927309, 346972560, 346975399, 346978646, 347098720, 347102012, 
+    347102448, 347137471, 347139688, 347270075, 347311102, 347312813, 
+    347313317, 347323656, 347441345, 347442635, 347448595, 347483385, 
+    347488626, 347495114, 347612689, 347612710, 347618308, 347618695, 
+    347618824, 347658995, 347659538, 347659903, 347664976, 347788658, 
+    347794573, 347794605, 347829461, 347835199, 347961431, 348002684, 
+    348005136, 348005523, 348011228, 348014828, 348139024, 348140413, 
+    348174186, 348175524, 348181385, 348185985, 348187262, 348293572, 
+    348304941, 348310394, 348310626, 348310837, 348351352, 348351524, 
+    348357305, 348480646, 348480898, 348481725, 348486722, 348522840, 
+    348527353, 348533344, 348651058, 348653147, 348656742, 348656907, 
+    348694247, 348697532, 348697676, 348703507, 348705744, 348824700, 
+    348826801, 348830485, 348865520, 348873557, 348877081, 348879428, 
+    348985732, 348996036, 348997003, 349002847, 349003006, 349043002, 
+    349049626, 349157259, 349173003, 349173289, 349219700, 349343085, 
+    349344729, 349348915, 349348999, 349383938, 349385765, 349395740, 
+    349513337, 349516114, 349519116, 349519243, 349556968, 349559856, 
+    349559972, 349565892, 349678070, 349693471, 349695021, 349695333, 
+    349729838, 349735852, 349735943, 349741972, 349849459, 349859438, 
+    349864897, 349865151, 349865384, 349905850, 349905979, 349906151, 
+    349912050, 350035401, 350036213, 350041147, 350041365, 350076157, 
+    350077241, 350088160, 350211072, 350211461, 350248676, 350251987, 
+    350252259, 350258049, 350384967, 350387556, 350420458, 350422135, 
+    350434490, 350541806, 350550361, 350551340, 350557512, 350597437, 
+    350598035, 350604354, 350607115, 350713255, 350727386, 350727773, 
+    350768132, 350768485, 350768890, 350774363, 350778629, 351070448, 
+    351073371, 351073844, 351076510, 351111773, 351114117, 351114595, 
+    351120687, 351233756, 351241890, 351243591, 351247967, 351249386, 
+    351249902, 351284469, 351289069, 351290273, 351290703, 351296684, 
+    351298317, 351419271, 351419525, 351420042, 351460316, 351460440, 
+    351460861, 351466813, 351469737, 351576972, 351589425, 351590641, 
+    351595420, 351596108, 351596710, 351630250, 351631860, 351636319, 
+    351636921, 351640704, 351642897, 360735550, 360750472, 360753927, 
+    360791640, 360794602, 360800720, 360919380, 360920891, 360926602, 
+    360970886, 413989713, 413991447, 413995818, 413997575, 414005505, 
+    414006519, 445753499, 446610695, 446610695 ;
+
+ z = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ;
+
+ lat = 47.688, 47.678, 47.679, 47.674, 47.678, 47.679, 47.676, 47.685, 47.68, 
+    47.68, 47.679, 47.816, 47.677, 47.675, 47.677, 47.68, 47.682, 38.393, 
+    38.373, 38.379, 38.364, 38.279, 38.278, 38.269, 38.273, 38.247, 38.238, 
+    38.262, 38.203, 38.245, 38.056, 37.997, 37.997, 37.993, 37.979, 37.859, 
+    37.933, 37.867, 37.872, 37.85, 37.585, 37.594, 37.594, 37.571, 37.56, 
+    37.52, 37.536, 37.519, 37.507, 37.485, 37.487, 37.486, 37.449, 37.509, 
+    37.451, 37.465, 37.444, 37.451, 37.478, 37.555, 37.577, 37.539, 37.502, 
+    37.528, 37.613, 37.584, 37.588, 37.595, 37.596, 37.726, 37.704, 37.769, 
+    37.638, 37.753, 37.755, 37.766, 37.771, 37.901, 37.916, 37.879, 37.915, 
+    37.955, 37.994, 38.004, 38.135, 38.074, 38.026, 37.859, 38.056, 38.076, 
+    38.083, 38.079, 38.058, 38.048, 37.993, 38.032, 37.893, 37.899, 37.909, 
+    37.825, 37.839, 37.839, 37.719, 37.725, 37.717, 37.739, 37.739, 37.643, 
+    37.624, 37.499, 37.437, 37.483, 37.472, 37.601, 37.637, 37.62, 37.633, 
+    37.634, 37.475, 37.466, 37.467, 37.303, 37.327, 37.329, 37.393, 37.368, 
+    37.495, 37.493, 37.625, 37.467, 37.459, 37.477, 37.472, 37.266, 37.26, 
+    37.294, 37.268, 37.033, 37.088, 37.083, 37.064, 37.071, 36.89, 36.873, 
+    36.869, 36.882, 36.845, 36.734, 36.768, 36.738, 36.725, 36.679, 36.683, 
+    36.687, 36.771, 36.684, 36.621, 36.618, 36.722, 36.607, 36.633, 36.64, 
+    36.682, 36.801, 36.684, 36.785, 36.804, 36.707, 36.672, 36.701, 36.696, 
+    36.67, 36.777, 36.659, 36.68, 36.651, 36.612, 36.611, 36.59, 36.672, 
+    36.578, 36.53, 36.552, 36.375, 36.379, 36.396, 36.377, 36.334, 36.329, 
+    36.319, 36.08, 36.077, 36.06, 36.063, 35.998, 35.988, 35.984, 35.976, 
+    35.969, 35.885, 35.885, 35.884, 35.817, 35.786, 35.776, 35.755, 35.763, 
+    35.797, 35.813, 35.818, 35.786, 35.784, 35.852, 35.939, 35.904, 35.895, 
+    35.887, 35.795, 35.874, 35.9, 35.893, 35.907, 35.885, 35.878, 35.854, 
+    35.865, 35.868, 35.881, 35.854, 35.874, 35.974, 36.04, 35.97, 36.026, 
+    36.021, 36.028, 36.207, 36.219, 36.217, 36.274, 36.246, 36.277, 36.256, 
+    36.419, 36.417, 36.424, 36.424, 36.421, 36.476, 36.458, 36.485, 36.488, 
+    36.386, 36.443, 36.44, 36.456, 36.508, 36.556, 36.546, 36.551, 36.547, 
+    36.545, 36.549, 36.556, 36.575, 36.576, 36.587, 36.813, 36.59, 36.58, 
+    36.483, 36.486, 36.493, 36.358, 36.389, 36.389, 36.385, 36.242, 36.22, 
+    36.213, 36.191, 36.206, 36.165, 36.047, 36.038, 36.061, 36.148, 35.958, 
+    35.716, 35.656, 35.64, 35.686, 35.522, 35.452, 35.386, 35.326, 35.326, 
+    35.207, 35.326, 35.281, 35.323, 35.35, 35.474, 35.483, 35.477, 35.645, 
+    35.65, 35.631, 35.831, 35.851, 35.874, 35.904, 36.03, 36.115, 36.109, 
+    36.775, 36.148, 36.217, 36.051, 36.469, 36.47, 36.592, 36.635, 36.79, 
+    36.119, 36.193, 36.179, 36.143, 36.106, 36.099, 36.119, 36.11, 36.115, 
+    36.117, 36.11, 36.163, 36.162, 36.086, 36.119, 36.31, 36.311, 36.326, 
+    36.366, 36.384, 36.381, 36.383, 36.568, 36.603, 36.619, 36.611, 36.614, 
+    36.758, 36.763, 36.778, 37.15, 37.165, 37.166, 37.21, 37.362, 37.356, 
+    37.353, 37.553, 37.554, 37.566, 37.584, 37.611, 37.59, 37.578, 37.551, 
+    37.56, 37.571, 37.588, 37.575, 37.579, 37.581, 37.707, 37.697, 37.711, 
+    37.72, 37.782, 37.913, 37.912, 37.916, 37.927, 37.924, 38.035, 38.042, 
+    38.131, 38.142, 38.078, 38.188, 38.195, 38.218, 38.221, 38.312, 38.337, 
+    38.206, 38.313, 38.34, 38.349, 38.26, 38.277, 38.28, 38.264, 38.224, 
+    38.217, 38.218, 38.138, 38.22, 38.163, 38.166, 38.17, 38.268, 38.248, 
+    38.256, 38.235, 38.234, 38.232, 38.242, 38.129, 38.133, 38.135, 38.128, 
+    37.945, 37.932, 37.868, 37.875, 37.859, 37.835, 37.86, 37.857, 37.855, 
+    37.795, 37.862, 37.87, 37.876, 37.869, 37.948, 37.952, 37.952, 37.959, 
+    37.962, 37.969, 38.01, 38.004, 38.023, 38.017, 38.021, 38.022, 37.984, 
+    38.015, 37.948, 38.01, 38.012, 38.007, 38.135, 38.14, 38.146, 38.155, 
+    38.161, 38.147, 38.14, 38.13, 38.145, 38.135, 38.077, 38.003, 38.02, 
+    38.005, 37.965, 37.967, 37.956, 37.75, 37.741, 37.858, 37.597, 37.421, 
+    37.758, 37.579, 37.323, 37.258, 37.257, 37.243, 37.227, 37.113, 37.096, 
+    37.097, 37.084, 37.081, 37.119, 37.131, 37.137, 37.135, 37.146, 37.106, 
+    37.142, 37.224, 37.193, 37.199, 37.146, 37.139, 37.071, 37.056, 37.056, 
+    37.067, 37.07, 37.136, 37.135, 37.161, 37.152, 37.063, 37.171, 36.975, 
+    36.991, 36.98, 36.976, 36.974, 36.99, 36.992, 36.993, 37.017, 36.741, 
+    36.768, 36.751, 36.73, 36.716, 36.447, 36.467, 36.461, 36.464, 36.466, 
+    36.445, 36.425, 36.409, 36.364, 36.366, 36.367, 36.376, 36.378, 36.343, 
+    36.343, 36.343, 36.337, 36.334, 36.301, 36.279, 36.291, 36.252, 36.253, 
+    36.249, 36.255, 36.119, 36.128, 36.119, 36.116, 36.094, 36.091, 36.093, 
+    36.093, 36.091, 36.094, 36.105, 36.098, 36.135, 36.149, 36.111, 36.11, 
+    36.098, 36.102, 36.078, 36.014, 36.02, 36.008, 36.014, 35.994, 35.979, 
+    35.982, 35.848, 35.808, 35.805, 35.794, 35.777, 35.776, 35.781, 35.774, 
+    35.805, 35.819, 35.832, 35.987, 36.001, 36.01, 36.01, 36.113, 36.124, 
+    36.12, 36.129, 36.268, 36.298, 36.29, 36.29, 36.356, 36.363, 36.366, 
+    36.377, 36.485, 36.529, 36.537, 36.528, 36.535, 36.587, 36.576, 36.573, 
+    36.596, 36.811, 36.816, 36.828, 36.825, 36.946, 36.955, 36.996, 37.247, 
+    37.228, 37.227, 37.229, 37.221, 37.239, 37.079, 37.087, 37.206, 37.112, 
+    37.183, 37.343, 37.352, 37.36, 37.373, 37.419, 37.417, 37.433, 37.449, 
+    37.42, 37.425, 37.425, 37.428, 37.425, 37.425, 37.421, 37.426, 37.787, 
+    37.79, 37.796, 37.791, 37.787, 37.785, 37.781, 37.781, 38.074, 38.089, 
+    38.092, 38.124, 38.131, 38.135, 38.27, 38.267, 38.28, 38.276, 38.289, 
+    38.287, 38.506, 38.507, 38.511, 38.616, 38.621, 38.618, 38.643, 38.639, 
+    38.776, 38.758, 38.757, 38.762, 38.763, 38.702, 38.863, 38.865, 38.875, 
+    38.874, 38.88, 38.887, 40.5, 40.535, 40.535, 40.579, 40.652, 40.669, 
+    40.921, 40.927, 40.966, 41.061, 33.386, 33.387, 33.387, 33.385, 33.383, 
+    33.382, 33.92, 33.282, 33.282 ;
+
+ lon = -122.153, -122.123, -122.129, -122.118, -122.123, -122.121, -122.121, 
+    -122.119, -122.127, -122.112, -122.131, -123.143, -122.13, -122.121, 
+    -122.126, -122.121, -122.117, -29.071, -29.071, -29.068, -29.065, 
+    -29.271, -29.285, -29.292, -29.591, -29.621, -29.642, -29.724, -29.739, 
+    -29.74, -29.74, -29.732, -29.728, -29.748, -29.777, -29.784, -29.798, 
+    -29.731, -29.746, -29.751, -29.715, -29.733, -29.704, -29.722, -29.748, 
+    -29.742, -29.729, -29.718, -29.703, -29.653, -29.65, -29.634, -29.634, 
+    -29.627, -29.637, -29.674, -29.708, -29.661, -29.432, -29.444, -29.29, 
+    -29.389, -29.403, -29.334, -29.517, -29.412, -29.448, -29.461, -29.45, 
+    -29.508, -29.466, -29.508, -29.641, -29.5, -29.517, -29.501, -29.509, 
+    -29.553, -29.521, -29.541, -29.567, -29.638, -29.553, -29.565, -29.531, 
+    -29.465, -29.536, -29.325, -29.519, -29.514, -29.285, -29.266, -29.283, 
+    -29.239, -29.206, -29.169, -28.985, -28.997, -28.978, -28.92, -28.877, 
+    -28.879, -28.641, -28.643, -28.61, -28.591, -28.591, -28.58, -28.512, 
+    -28.299, -28.158, -28.267, -28.232, -28.189, -28.148, -28.141, -28.113, 
+    -28.095, -28.057, -28.073, -28.122, -27.961, -28.001, -27.976, -27.988, 
+    -28.004, -28.146, -28.147, -28.204, -28.173, -28.194, -28.186, -28.172, 
+    -28.195, -28.202, -28.201, -28.196, -28.245, -28.187, -28.19, -28.226, 
+    -28.203, -28.188, -28.126, -28.127, -28.131, -27.986, -28.047, -28.135, 
+    -28.164, -28.171, -28.409, -28.417, -28.402, -28.508, -28.515, -28.674, 
+    -28.676, -28.632, -28.658, -28.776, -28.765, -28.659, -28.72, -28.614, 
+    -28.664, -28.647, -28.472, -28.465, -28.457, -28.477, -28.467, -28.304, 
+    -28.524, -28.409, -28.346, -28.371, -28.344, -28.347, -28.239, -28.335, 
+    -28.314, -28.313, -28.257, -28.259, -28.264, -28.272, -28.198, -28.195, 
+    -28.171, -28.151, -28.115, -28.141, -28.181, -28.218, -28.236, -28.195, 
+    -28.215, -28.224, -28.198, -28.2, -28.166, -27.933, -28.046, -28.06, 
+    -27.838, -27.834, -27.84, -27.841, -27.829, -27.858, -27.835, -27.737, 
+    -27.665, -27.753, -27.745, -27.747, -27.605, -27.717, -27.722, -27.686, 
+    -27.72, -27.687, -27.694, -27.607, -27.629, -27.602, -27.517, -27.501, 
+    -27.48, -27.326, -27.216, -27.267, -27.295, -27.213, -27.196, -27.164, 
+    -27.155, -27.139, -27.015, -27.059, -27.03, -27.032, -26.889, -26.892, 
+    -26.891, -26.899, -26.909, -26.839, -26.896, -26.836, -26.836, -26.762, 
+    -26.801, -26.783, -26.777, -26.599, -26.499, -26.503, -26.442, -26.459, 
+    -26.461, -26.465, -26.465, -26.339, -26.3, -26.288, -25.726, -26.14, 
+    -26.142, -26.233, -26.225, -26.22, -26.112, -26.232, -26.231, -26.239, 
+    -26.246, -26.245, -26.124, -26.231, -26.226, -26.267, -26.363, -26.366, 
+    -26.432, -26.567, -26.295, -26.206, -26.111, -26.073, -26.004, -25.83, 
+    -25.808, -25.54, -25.405, -25.128, -24.943, -24.88, -24.831, -24.819, 
+    -24.835, -24.506, -24.517, -24.511, -24.156, -24.41, -24.446, -24.566, 
+    -24.555, -24.654, -24.68, -24.857, -24.867, -24.87, -23.787, -24.831, 
+    -24.932, -24.546, -24.82, -24.861, -24.874, -24.622, -25.289, -25.978, 
+    -26.04, -26.24, -26.104, -26.141, -26.46, -26.748, -26.791, -26.797, 
+    -26.855, -26.785, -26.935, -26.922, -26.857, -26.907, -26.946, -26.954, 
+    -27.022, -27.061, -27.073, -27.129, -27.137, -27.466, -27.474, -27.392, 
+    -27.494, -27.474, -27.612, -27.61, -27.619, -28.004, -28.019, -28.043, 
+    -28.058, -28.118, -28.151, -28.131, -28.326, -28.355, -28.336, -28.383, 
+    -28.383, -28.4, -28.417, -28.388, -28.385, -28.391, -28.399, -28.406, 
+    -28.395, -28.407, -28.554, -28.574, -28.581, -28.601, -28.607, -28.555, 
+    -28.529, -28.534, -28.521, -28.524, -28.529, -28.516, -28.423, -28.422, 
+    -28.534, -28.472, -28.515, -28.511, -28.539, -28.525, -28.501, -28.547, 
+    -28.534, -28.525, -28.566, -28.524, -28.527, -28.511, -28.586, -28.602, 
+    -28.632, -28.66, -28.793, -28.678, -28.623, -28.628, -28.637, -28.578, 
+    -28.558, -28.473, -28.466, -28.452, -28.456, -28.461, -28.573, -28.578, 
+    -28.569, -28.57, -28.683, -28.692, -28.669, -28.67, -28.707, -28.708, 
+    -28.583, -28.568, -28.57, -28.618, -28.594, -28.57, -28.572, -28.543, 
+    -28.479, -28.472, -28.467, -28.466, -28.481, -28.478, -28.331, -28.33, 
+    -28.245, -28.211, -28.214, -28.191, -28.153, -28.186, -28.152, -28.168, 
+    -28.158, -28.165, -28.29, -28.327, -28.318, -28.46, -28.458, -28.475, 
+    -28.754, -28.761, -28.919, -28.879, -29.385, -29.218, -29.208, -29.219, 
+    -29.302, -29.305, -29.307, -29.509, -29.514, -29.96, -29.608, -29.87, 
+    -29.842, -29.58, -29.799, -29.79, -29.798, -29.805, -29.83, -30.047, 
+    -30.064, -30.124, -30.14, -30.136, -30.24, -30.294, -30.293, -30.295, 
+    -30.353, -30.347, -30.34, -30.404, -30.417, -30.377, -30.463, -30.436, 
+    -30.702, -30.703, -30.711, -30.702, -30.706, -30.796, -30.79, -30.798, 
+    -30.856, -30.771, -30.884, -31.108, -31.159, -31.12, -31.117, -31.119, 
+    -31.196, -31.18, -31.171, -31.179, -31.206, -31.268, -31.208, -31.221, 
+    -31.199, -31.339, -31.472, -31.491, -31.487, -31.502, -31.526, -31.777, 
+    -31.8, -31.903, -31.884, -31.926, -31.924, -31.929, -31.807, -31.812, 
+    -31.801, -31.803, -31.797, -31.83, -31.821, -31.819, -31.857, -31.865, 
+    -31.865, -31.859, -31.835, -31.862, -31.834, -31.945, -31.88, -31.879, 
+    -31.881, -31.876, -31.863, -31.872, -31.848, -31.849, -31.785, -31.804, 
+    -31.807, -31.784, -31.795, -31.803, -31.786, -31.762, -31.802, -31.755, 
+    -31.802, -31.776, -31.769, -31.744, -31.647, -31.647, -31.634, -31.67, 
+    -31.559, -31.546, -31.551, -31.554, -31.504, -31.492, -31.466, -31.377, 
+    -31.373, -31.381, -31.374, -31.436, -31.457, -31.438, -31.448, -31.558, 
+    -31.588, -31.592, -31.59, -31.619, -31.636, -31.646, -31.64, -31.779, 
+    -31.854, -31.803, -31.804, -31.805, -31.902, -31.887, -31.891, -31.896, 
+    -32.151, -32.156, -32.173, -32.171, -32.305, -32.297, -32.327, -32.12, 
+    -32.105, -32.079, -32.074, -32.082, -32.071, -32.102, -32.109, -32.182, 
+    -32.177, -32.298, -32.068, -32.049, -32.062, -32.075, -32.045, -32.028, 
+    -32.028, -32.091, -32.324, -32.363, -32.366, -32.42, -32.417, -32.422, 
+    -32.434, -32.443, -32.328, -32.32, -32.319, -32.321, -32.333, -32.332, 
+    -32.335, -32.336, -32.52, -32.481, -32.467, -32.483, -32.485, -32.473, 
+    -32.393, -32.581, -32.572, -32.59, -32.586, -32.593, -33.107, -33.109, 
+    -33.109, -33.285, -33.285, -33.293, -33.299, -33.355, -33.507, -33.509, 
+    -33.516, -33.525, -33.519, -33.541, -33.545, -33.551, -33.566, -33.575, 
+    -33.571, -33.581, -40.626, -40.658, -40.656, -40.732, -40.627, -40.598, 
+    -40.485, -40.425, -40.426, -40.279, -111.814, -111.812, -111.818, 
+    -111.814, -111.813, -111.796, 163.607, 165.118, 165.118 ;
+
+ deploy_id = 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275 ;
+
+ Ptt = 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 22275, 
+    22275, 22275, 22275, 22275, 22275, 22275 ;
+
+ instrument = "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", "ST16", 
+    "ST16", "ST16", "ST16", "ST16", "ST16" ;
+
+ type = "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", "Argos", 
+    "Argos", "Argos", "Argos" ;
+
+ location_class = "A", "0", "1", "B", "2", "2", "2", "2", "3", "1", "1", "B", 
+    "B", "1", "1", "3", "A", "2", "2", "1", "A", "A", "1", "B", "B", "A", 
+    "1", "0", "1", "B", "B", "A", "2", "1", "0", "2", "1", "1", "0", "2", 
+    "1", "1", "1", "1", "2", "A", "1", "1", "1", "2", "2", "1", "A", "0", 
+    "0", "1", "A", "0", "0", "A", "0", "2", "0", "1", "1", "1", "2", "1", 
+    "2", "3", "A", "1", "A", "0", "1", "2", "1", "2", "1", "0", "2", "A", 
+    "A", "1", "1", "0", "0", "A", "1", "1", "1", "1", "1", "0", "0", "0", 
+    "1", "2", "2", "0", "A", "0", "2", "1", "1", "1", "0", "1", "A", "1", 
+    "B", "0", "0", "B", "0", "0", "1", "1", "A", "B", "1", "3", "0", "1", 
+    "1", "2", "1", "2", "B", "1", "2", "1", "1", "2", "1", "1", "1", "0", 
+    "B", "1", "B", "1", "0", "1", "1", "2", "1", "B", "0", "1", "B", "1", 
+    "2", "1", "0", "0", "2", "1", "0", "1", "1", "0", "1", "0", "0", "2", 
+    "A", "1", "0", "2", "1", "0", "0", "0", "1", "0", "1", "1", "2", "B", 
+    "0", "A", "1", "2", "3", "1", "A", "2", "2", "A", "0", "0", "3", "0", 
+    "0", "1", "0", "A", "1", "1", "1", "1", "0", "2", "0", "0", "3", "1", 
+    "2", "1", "B", "A", "2", "0", "1", "1", "1", "B", "0", "0", "1", "B", 
+    "2", "1", "0", "0", "0", "0", "2", "2", "0", "B", "0", "0", "A", "A", 
+    "2", "1", "1", "B", "0", "A", "2", "3", "3", "A", "2", "0", "2", "B", 
+    "2", "1", "A", "A", "1", "1", "0", "0", "2", "1", "1", "1", "1", "2", 
+    "B", "1", "2", "0", "B", "A", "2", "2", "1", "0", "2", "1", "2", "1", 
+    "1", "B", "A", "0", "A", "1", "A", "A", "B", "1", "1", "A", "B", "A", 
+    "1", "A", "1", "1", "0", "0", "B", "A", "0", "1", "0", "A", "A", "A", 
+    "1", "0", "2", "B", "0", "1", "A", "B", "0", "A", "A", "1", "0", "1", 
+    "2", "0", "0", "A", "1", "B", "A", "A", "A", "0", "A", "A", "2", "0", 
+    "1", "1", "0", "A", "0", "A", "2", "1", "A", "0", "A", "B", "1", "1", 
+    "B", "A", "B", "A", "B", "0", "0", "2", "0", "1", "1", "0", "B", "1", 
+    "0", "3", "2", "0", "1", "2", "A", "1", "2", "B", "B", "1", "1", "1", 
+    "1", "2", "0", "B", "1", "2", "2", "3", "1", "1", "1", "0", "0", "0", 
+    "2", "1", "1", "A", "A", "2", "A", "1", "1", "B", "B", "0", "0", "B", 
+    "0", "2", "2", "A", "0", "3", "1", "1", "1", "0", "A", "1", "0", "0", 
+    "0", "0", "2", "1", "1", "1", "3", "B", "2", "0", "B", "2", "B", "1", 
+    "0", "1", "2", "0", "1", "2", "0", "1", "2", "1", "0", "1", "2", "A", 
+    "1", "1", "2", "B", "0", "A", "1", "B", "0", "A", "A", "1", "B", "A", 
+    "2", "2", "3", "B", "0", "B", "2", "0", "1", "2", "0", "A", "2", "B", 
+    "A", "1", "B", "B", "A", "1", "2", "1", "2", "1", "1", "1", "1", "2", 
+    "2", "0", "1", "2", "1", "1", "A", "B", "A", "3", "B", "1", "B", "2", 
+    "2", "2", "1", "A", "3", "3", "A", "1", "B", "A", "3", "0", "2", "2", 
+    "1", "1", "1", "0", "1", "3", "B", "A", "2", "1", "B", "2", "2", "2", 
+    "1", "A", "B", "B", "1", "2", "1", "1", "1", "0", "3", "2", "2", "2", 
+    "2", "2", "1", "A", "3", "2", "1", "0", "0", "1", "B", "2", "2", "2", 
+    "2", "3", "0", "1", "A", "1", "B", "B", "1", "1", "A", "B", "0", "1", 
+    "0", "B", "A", "B", "3", "A", "1", "0", "1", "1", "2", "1", "1", "2", 
+    "1", "1", "1", "3", "1", "2", "1", "3", "2", "1", "1", "B", "A", "3", 
+    "2", "B", "1", "2", "1", "0", "1", "2", "2", "B", "1", "2", "1", "A", 
+    "1", "0", "1", "0", "1", "0", "A", "A", "1", "1", "3", "A", "B", "B", 
+    "B", "1", "B", "1", "0", "3", "B", "1", "0", "1", "B", "1", "2", "2", 
+    "2", "1", "2", "1", "1", "2", "3", "0", "0", "1", "2", "1", "2", "0", 
+    "1", "1", "1", "1", "1", "0", "1", "2", "1", "2", "3", "1", "2", "1", 
+    "1", "1", "2", "1", "B", "A", "0", "3", "2", "2", "A", "1", "2", "1", 
+    "1", "B", "1", "0", "B", "2", "B", "A", "1", "B", "B", "3", "1", "A", 
+    "A", "3", "3", "A", "3", "1", "2", "2" ;
+
+ error_radius = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ semi_major_axis = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ semi_minor_axis = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ ellipse_orientation = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ offset = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ offset_orientation = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ gpe_msd = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ gpe_u = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _ ;
+
+ count = _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 
+    _, _, _, _, _, _, _, _, _, _, _ ;
+
+ comment = "Speed to avg loc 27 x median", "Speed to avg loc 27 x median", 
+    "Speed to avg loc 27 x median", "Speed to avg loc 27 x median", 
+    "Speed to avg loc 27 x median", "Speed to avg loc 27 x median", 
+    "Speed to avg loc 27 x median", "Speed to avg loc 27 x median", 
+    "Speed to avg loc 27 x median", "Speed to avg loc 27 x median", 
+    "Speed to avg loc 27 x median", "Speed to avg loc 27 x median", 
+    "Speed to avg loc 27 x median", "Speed to avg loc 27 x median", 
+    "Speed to avg loc 27 x median", "Speed to avg loc 27 x median", 
+    "Speed to avg loc 27 x median", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "Lat > 4 deviations from mean", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "Lat > 4 deviations from mean", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "Lon > 4 deviations from mean", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "Lon > 4 deviations from mean", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "Lon > 4 deviations from mean", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", "nan", 
+    "nan", "nan", "Speed to avg loc 26 x median", 
+    "Speed to avg loc 26 x median", "Speed to avg loc 26 x median", 
+    "Speed to avg loc 26 x median", "Speed to avg loc 26 x median", 
+    "Speed to avg loc 26 x median", "Speed to avg loc 45 x median", 
+    "Speed to avg loc 45 x median", "Speed to avg loc 45 x median" ;
+
+ crs = _ ;
+
+ instrument_location = "Wildlife Computers SDR" ;
+
+ instrument_tag = "Wildlife Computers SDR" ;
+
+ animal = "A6173" ;
+
+ animal_life_stage = "not provided" ;
+
+ animal_length = -999 ;
+
+ animal_weight = _ ;
+
+ animal_sex = "unknown" ;
+
+ taxon_name = "Caretta caretta" ;
+
+ taxon_lsid = "urn:lsid:marinespecies.org:taxname:137205" ;
+}
