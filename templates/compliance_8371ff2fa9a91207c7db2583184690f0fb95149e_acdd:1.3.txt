@@ -1,0 +1,57 @@
+
+
+--------------------------------------------------------------------------------
+                         IOOS Compliance Checker Report                         
+                                 Version 5.0.0                                  
+                     Report generated 2023-01-25T20:37:53Z                      
+                                    acdd:1.3                                    
+http://wiki.esipfed.org/index.php?title=Category:Attribute_Conventions_Dataset_Discovery
+--------------------------------------------------------------------------------
+                               Corrective Actions                               
+atn_22275_loggerhead_turtle_19970720_20040216.nc has 12 potential issues
+
+
+                               Highly Recommended                               
+--------------------------------------------------------------------------------
+variable "Ptt" missing the following attributes:
+* standard_name
+* units
+
+variable "animal_length" missing the following attributes:
+* standard_name
+
+variable "animal_weight" missing the following attributes:
+* standard_name
+
+variable "count" missing the following attributes:
+* standard_name
+
+variable "deploy_id" missing the following attributes:
+* standard_name
+* units
+
+variable "ellipse_orientation" missing the following attributes:
+* standard_name
+
+variable "error_radius" missing the following attributes:
+* standard_name
+
+variable "offset" missing the following attributes:
+* standard_name
+
+variable "offset_orientation" missing the following attributes:
+* standard_name
+
+variable "semi_major_axis" missing the following attributes:
+* standard_name
+
+variable "semi_minor_axis" missing the following attributes:
+* standard_name
+
+
+                                   Suggested                                    
+--------------------------------------------------------------------------------
+Global Attributes
+* geospatial_lat_resolution not present
+* geospatial_lon_resolution not present
+* geospatial_vertical_resolution not present
