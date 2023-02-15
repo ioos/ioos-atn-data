@@ -39,7 +39,38 @@ IOOS provides a collection of "Gold Standard" example datasets in ERDDAP to demo
 * [IOOS ATN Satellite Trajectory Example Dataset](https://github.com/ioos/ioos-atn-data/blob/main/data/atn_trajectory_template_ncdump_20211006.txt)
 * [Example in IOOS "ERDDAP Gold Standard" GitHub Repository]()
 
+## Identifiers
+Within the ATN netCDF files there are various identifiers which serve important purposes. Below is a table of those identifiers and the purpose they serve.
+
+Identifier | Location in file | Description | Example value
+-----------|------------------|-------------|--------------
+
+
 ## ATN Satellite Trajectory Specification Attributes
+
+### Global attributes
+
+NEED TO UPDATE
+
+Name | Convention | Description | Type 
+:--------- | :-------: | :------------------- | :--------: 
+`Conventions` | CF | A comma-separated list of the conventions that are followed by the dataset. For files that follow this version of the IOOS Metadata Profile, include the string "IOOS-1.2".<br><br>Example: {::nomarkdown}<ul><li><b><code>Conventions = "CF-1.6, ACDD-1.3, IOOS-1.2"</b></code></li></ul>{:/} | global
+`featureType` | CF | CF attribute for identifying the featureType.   <br><br>Example:{::nomarkdown}<ul><li><b><code>featureType = "timeSeries"</b></code></li></ul>{:/} | global
+`id` | ACDD | An identifier for the data set, provided by and unique within its naming authority. The combination of the **`naming authority`** and the **`id`** should be globally unique, but the **`id`** can be globally unique by itself also. IDs can be URLs, URNs, DOIs, meaningful text strings, a local key, or any other unique string of characters. The **`id`** should not include blanks. | global
+`infoUrl`  | IOOS | URL for background information about this dataset. This attributed is also required by ERDDAP. | global
+`keywords` | ACDD | A comma separated list of key words and phrases. | global
+`license`  | ACDD | Describe the restrictions to data access and distribution. | global
+`naming_authority`  | ACDD | The organization that provides the **`id`** for the dataset. <br>The naming authority should be uniquely specified by this attribute; the combination of the **`naming_authority`** and the **`id`** should be a globally unique identifier for the dataset. A reverse-DNS naming is recommended; URIs are also acceptable. <br><br>Example:{::nomarkdown}<ul><li><b><code>naming_authority = "edu.ucar.unidata"</b></code></li></ul>{:/} | global
+`references`  | ACDD/CF | Published or web-based references that describe the data or methods used to produce it. Recommend URIs (such as a URL or DOI) for papers or other references. Multiple references should be separated by commas. | global
+`standard_name_vocabulary`  | ACDD | The name and version of the controlled vocabulary from which variable standard names are taken. Values for any variable's **`standard_name`** attribute must come from the CF Standard Names vocabulary for the dataset to comply with CF. <br><br>The format for the **`standard_name`** attribute must follow the ACDD recommendation ('CF Standard Name Table vXX', where 'XX' is a version of the standard name table), in order to be valid and meet the ACDD conventions.<br><br>If a variables does not have an existing standard name in the CF-managed list, the variable should not include a **`standard_name`** attribute. In these cases, a standard name can be proposed to the CF community for consideration.<br><br>  Example:<br>{::nomarkdown}<ul><li><b><code>standard_name_vocabulary = "CF Standard Name Table v72"</b></code></li></ul>{:/} | global
+`summary`  | ACDD | One paragraph describing the data set. |  global
+`title`  | ACDD | One sentence about the data contained within the file. | global
+
+### Variable attributes
+
+#### time
+
+#### z
 
 ### Dataset Description
 
