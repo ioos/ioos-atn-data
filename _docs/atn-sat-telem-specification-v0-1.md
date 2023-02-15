@@ -43,7 +43,8 @@ IOOS provides a collection of "Gold Standard" example datasets in ERDDAP to demo
 Within the ATN netCDF files there are various identifiers which serve important purposes. Below is a table of those identifiers and the purpose they serve.
 
 Identifier | Location in file | Description | Example value
------------|------------------|-------------|--------------
+:--------- | :---------------: | :----------- | :------------:
+test | test | test | test
 
 
 ## ATN Satellite Trajectory Specification Attributes
