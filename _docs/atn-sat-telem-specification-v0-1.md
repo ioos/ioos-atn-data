@@ -51,21 +51,96 @@ test | test | test | test
 
 ### Global attributes
 
-NEED TO UPDATE
-
-Name | Convention | Description | Type 
-:--------- | :-------: | :------------------- | :--------: 
-`Conventions` | CF | A comma-separated list of the conventions that are followed by the dataset. For files that follow this version of the IOOS Metadata Profile, include the string "IOOS-1.2".<br><br>Example: {::nomarkdown}<ul><li><b><code>Conventions = "CF-1.6, ACDD-1.3, IOOS-1.2"</b></code></li></ul>{:/} | global
-`featureType` | CF | CF attribute for identifying the featureType.   <br><br>Example:{::nomarkdown}<ul><li><b><code>featureType = "timeSeries"</b></code></li></ul>{:/} | global
-`id` | ACDD | An identifier for the data set, provided by and unique within its naming authority. The combination of the **`naming authority`** and the **`id`** should be globally unique, but the **`id`** can be globally unique by itself also. IDs can be URLs, URNs, DOIs, meaningful text strings, a local key, or any other unique string of characters. The **`id`** should not include blanks. | global
-`infoUrl`  | IOOS | URL for background information about this dataset. This attributed is also required by ERDDAP. | global
-`keywords` | ACDD | A comma separated list of key words and phrases. | global
-`license`  | ACDD | Describe the restrictions to data access and distribution. | global
-`naming_authority`  | ACDD | The organization that provides the **`id`** for the dataset. <br>The naming authority should be uniquely specified by this attribute; the combination of the **`naming_authority`** and the **`id`** should be a globally unique identifier for the dataset. A reverse-DNS naming is recommended; URIs are also acceptable. <br><br>Example:{::nomarkdown}<ul><li><b><code>naming_authority = "edu.ucar.unidata"</b></code></li></ul>{:/} | global
-`references`  | ACDD/CF | Published or web-based references that describe the data or methods used to produce it. Recommend URIs (such as a URL or DOI) for papers or other references. Multiple references should be separated by commas. | global
-`standard_name_vocabulary`  | ACDD | The name and version of the controlled vocabulary from which variable standard names are taken. Values for any variable's **`standard_name`** attribute must come from the CF Standard Names vocabulary for the dataset to comply with CF. <br><br>The format for the **`standard_name`** attribute must follow the ACDD recommendation ('CF Standard Name Table vXX', where 'XX' is a version of the standard name table), in order to be valid and meet the ACDD conventions.<br><br>If a variables does not have an existing standard name in the CF-managed list, the variable should not include a **`standard_name`** attribute. In these cases, a standard name can be proposed to the CF community for consideration.<br><br>  Example:<br>{::nomarkdown}<ul><li><b><code>standard_name_vocabulary = "CF Standard Name Table v72"</b></code></li></ul>{:/} | global
-`summary`  | ACDD | One paragraph describing the data set. |  global
-`title`  | ACDD | One sentence about the data contained within the file. | global
+| Attribute                     | Disposition             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|:------------------------------|:------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `acknowledgement`             | required                | A place to acknowledge various types of support for the project that produced this data.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `animal_common_name`          | required                | common name of the platform (animal) on which the instrument was deployed, as defined by the World Register of Marine Species (WORMS, http://www.marinespecies.org/).                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `animal_id`                   | recommended             | An individual unique identifier for the animal, provided by the data owner. If the data owner does not provide an Animal ID, list NaN                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `animal_scientific_name`      | required                | Scientific name of the platform (animal) on which the instrument was deployed, as defined by the World Register of Marine Species (WoRMS, http://www.marinespecies.org/). If the species name cannot be provided, this should be the lowest level taxonomic rank that can be determined.                                                                                                                                                                                                                                                                                                             |
+| `arbitrary_keywords`          | recommended             | Common separated list of arbitary keywords, free text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `argos_program_number`        | recommended             | Argos program number associated with the instrument ptt id                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `cdm_data_type`               | required                | The data type, as derived from Unidata's Common Data Model Scientific Data types and understood by THREDDS, e.g., "Grid", "Image", "Station", "Trajectory", "Radial" (This is a THREDDS "dataType", and is different from the CF NetCDF attribute 'featureType', which indicates a Discrete Sampling Geometry file in CF.)                                                                                                                                                                                                                                                                           |
+| `citation`                    | required                | The citation to be used in publications using the dataset.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `comment`                     | required                | Miscellaneous information about the data or methods used to produce it, not captured elsewhere. NCEI requirment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `contributor_email`           | recommended             | Email addresses of the individuals or institutions that contributed to the creation of this data. Comma seperated list.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `contributor_name`            | recommended             | The name of any individuals, projects, or institutions that contributed to the creation of this data. Comma seperated list.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `contributor_role`            | recommended             | The role of any individuals or institutions that contributed to the creation of this data. Comma seperated list.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `contributor_role_vocabulary` | recommended             | The URL of the controlled vocabulary used for the contributor_role attribute.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `contributor_url`             | recommended             | The url/id of the individuals that contributed to the creation of this data. Multiple URLs/ids can be given, comma seperated, presented in the same order and number as the names in contributor_names. Use ORCID URL                                                                                                                                                                                                                                                                                                                                                                                |
+| `Conventions`                 | required                | A comma-separated list of the conventions that are followed by the dataset.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `creator_country`             | required                | Country of the person or organization that operates a platform or network, which collected the observation data.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `creator_email`               | required                | The email address of the person (or other creator type specified by the creator_type attribute) principally responsible for creating this data (i.e., the PI).                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `creator_institution`         | required                | Institution that collected the data. This should be specified even if it matches the value of publisher_institution, institution or if creator_type is institution.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `creator_institution_url`     | required                | The URL of the institution that collected the data. Note that this should always reference an institution URL, and not a personal URL, even if creator_type=person.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `creator_name`                | required                | The name of the person (or other creator type specified by the creator_type attribute) principally responsible for creating this data (i.e., the PI).                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `creator_role`                | required                | The role of the person (or other creator type specified by the creator_type attribute) principally responsible for creating this data (i.e., the PI).                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `creator_role_vocabulary`     | required                | The URL of the controlled vocabulary used for the creator_role attribute.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `creator_sector`              | required                | IOOS classifier that best describes the platform (network) operator’s societal sector.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `creator_sector_vocabulary`   | required                | The URL of the controlled vocabulary used for the creator_sector attribute.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `creator_type`                | required                | Specifies type of creator with one of the following: ‘person’, ‘group’, ‘institution’, or ‘position’. If this attribute is not specified, the creator is assumed to be a person.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `creator_url`                 | recommended             | The url/id of the individual (principal investigator) that created this dataset. Use ORCID URL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `date_created`                | required                | The date on which this version of the data was created. (Modification of values implies a new version, hence this would be assigned the date of the most recent values modification.) Metadata changes are not considered when assigning the date_created.                                                                                                                                                                                                                                                                                                                                           |
+| `date_issued`                 | required                | The date on which this data (including all modifications) was formally issued (i.e., made available to a wider audience). Note that these apply just to the data, not the metadata.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `date_metadata_modified`      | required                | The date on which the metadata was last modified.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `date_modified`               | required                | The date on which the data was last modified. Note that this applies just to the data, not the metadata.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `deployment_end_datetime`     | required                | The timestamp of when an instrumented animals deployment has ended. (can differ from the time_coverage_end attribute, e.g., could occur before time of last data point). Use ISO 8601:2004 date format, preferably the extended format as recommended in the Attribute Content Guidance section.                                                                                                                                                                                                                                                                                                     |
+| `deployment_id`               | required                | A unique identifier for the deployment event (attaching a specific insturment w/ assigned ptt id on animal) during a specified deployment window (deployment_start_datetime, deployment_end_datetime), provided either by the instrument manufacturer or by the data owner. If not provided, an internal ATN DAC deployment identifier will be assigned, e.g., animal id_ptt id                                                                                                                                                                                                                      |
+| `deployment_start_datetime`   | required                | The timestamp of when an instrumented animal was released, indicating start of the deployment. (can differ from the time_coverage_start attribute, e.g., could occur after time of first data point). Use ISO 8601:2004 date format, preferably the extended format as recommended in the Attribute Content Guidance section.                                                                                                                                                                                                                                                                        |
+| `deployment_start_lat`        | recommended             | The latitude of the location where an instrumented animal was released. Use decimal degrees, WGS84 reference system.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `deployment_start_lon`        | recommended             | The longitude of the location where an instrumented animal was released. Use decimal degrees, WGS84 reference system.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `featureType`                 | required                | Specifies the type of discrete sampling geometry to which the data in the file belongs, and implies that all data variables in the file contain collections of features of that type. Options are: point, timeseries, trajectroy, profile, timeseriesProfile or trajectoryProfile. http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#featureType                                                                                                                                                                                                                   |
+| `geospatial_bbox`             | recommended             | ???                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `geospatial_bounds`           | required                | Describes the data's 2D or 3D geospatial extent in OGC's Well-Known Text (WKT) Geometry format (reference the OGC Simple Feature Access (SFA) specification). The meaning and order of values for each point's coordinates depends on the coordinate reference system (CRS). The ACDD default is 2D geometry in the EPSG:4326 coordinate reference system. The default may be overridden with geospatial_bounds_crs and geospatial_bounds_vertical_crs (see those attributes). EPSG:4326 coordinate values are latitude (decimal degrees_north) and longitude (decimal degrees_east), in that order. |
+| `geospatial_bounds_crs`       | required                | The coordinate reference system (CRS) of the point coordinates in the geospatial_bounds attribute. This CRS may be 2-dimensional or 3-dimensional, but together with geospatial_bounds_vertical_crs, if that attribute is supplied, must match the dimensionality, order, and meaning of point coordinate values in the geospatial_bounds attribute. If geospatial_bounds_vertical_crs is also present then this attribute must only specify a 2D CRS. EPSG CRSs are strongly recommended. If this attribute is not specified, the CRS is assumed to be EPSG:4326.                                   |
+| `geospatial_lat_max`          | required                | Describes a simple upper latitude limit; may be part of a 2- or 3-dimensional bounding region. Geospatial_lat_max specifies the northernmost latitude covered by the dataset.                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `geospatial_lat_min`          | required                | Describes a simple lower latitude limit; may be part of a 2- or 3-dimensional bounding region. Geospatial_lat_min specifies the southernmost latitude covered by the dataset.                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `geospatial_lat_units`        | required                | Units for the latitude axis described in "geospatial_lat_min" and "geospatial_lat_max" attributes. These are presumed to be "degree_north"; other options from udunits may be specified instead.                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `geospatial_lon_max`          | required                | Describes a simple longitude limit; may be part of a 2- or 3-dimensional bounding region. geospatial_lon_max specifies the easternmost longitude covered by the dataset.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `geospatial_lon_min`          | required                | Describes a simple longitude limit; may be part of a 2- or 3-dimensional bounding region. geospatial_lon_min specifies the westernmost longitude covered by the dataset.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `geospatial_lon_units`        | required                | Units for the longitude axis described in "geospatial_lon_min" and "geospatial_lon_max" attributes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `history`                     | required                | Provides an audit trail for modifications to the original data.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `id`                          | required                | Dataset DOI (?), An identifier for the data set, provided by and unique within its naming authority. The combination of the "naming authority" and the "id" should be globally unique, but the id can be globally unique by itself also. IDs can be URLs, URNs, DOIs, meaningful text strings, a local key, or any other unique string of characters. The id should not include white space characters.                                                                                                                                                                                              |
+| `infoUrl`                     | required                | URL for background information about this dataset.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `institution`                 | recommended             | The name of the institution principally responsible for originating this data. Can be the same as creator_institution                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `instrument`                  | required                | Name of the contributing instrument type used to create this data set or product (e.g., satellite, acoustic, Dtag)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `instrument_vocabulary`       | required                | Controlled vocabulary for the names used in the instrument attribute                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `keywords`                    | required                | A comma-separated list of key words and/or phrases. Keywords may be common words or phrases, terms from a controlled vocabulary (GCMD is often used), or URIs for terms from a controlled vocabulary                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `keywords_vocabulary`         | required                | If you are using a controlled vocabulary for the words/phrases in your "keywords" attribute, this is the unique name or identifier of the vocabulary from which keywords are taken. If more than one keyword vocabulary is used, each may be presented with a prefix and a following comma, so that keywords may optionally be prefixed with the controlled vocabulary key.                                                                                                                                                                                                                          |
+| `license`                     | required                | Provide the URL to a standard or specific license, enter "Freely Distributed" or "None", or describe any restrictions to data access and distribution in free text.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `metadata_link`               | recommended             | A URL that gives the location of more complete metadata. A persistent URL is recommended for this attribute. Link to NCEI collection page.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `naming_authority`            | required                | The organization that provides the initial id (see above) for the dataset. The naming authority should be uniquely specified by this attribute.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `ncei_template_version`       | required                | Version on current NCEI template applied to dataset                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `NCO`                         | required                | NetCDF operators                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `platform`                    | required                | Name of the platform(s) that supported the sensor data used to create this data set or product. Platforms can be of any type, including satellite, ship, station, aircraft or animal. Indicate controlled vocabulary used in platform_vocabulary.                                                                                                                                                                                                                                                                                                                                                    |
+| `platform_id`                 | required                | An optional, short identifier for the platform (entity to which the instrument is attached and collecting data), if the data provider prefers to define an id that differs from the dataset identifier, as specified by the id attribute. platform_id should be a single alphanumeric string with no blank spaces. Use animal aphia id.                                                                                                                                                                                                                                                              |
+| `platform_name `              | required                | A descriptive, long name for the platform used in collecting the data. The value of platform_name will be used to label the platform in downstream applications, such as IOOS’ National Products (Environmental Sensor Map, EDS, etc)                                                                                                                                                                                                                                                                                                                                                                |
+| `platform_type`               | required                | Name of the platform(s) that supported the sensor data used to create this data set or product. Indicate controlled vocabulary used in platform_vocabulary.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `platform_vocabulary`         | required                | Controlled vocabulary for the names used in the platform attribute                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `processing_level`            | required                | A textual description of the processing (or quality control) level of the data. Link to NCEI Vocab/list? NCEI archive levels: level 2 product - derived data product, e.g., foie gras,  level 1 product - e.g. potentially edited by PIs to remove insane values, has QARTOD applied, Level 0 product - would be the untrimmed raw files                                                                                                                                                                                                                                                             |
+| `product_version`             | required                | Version identifier of the data file or product as assigned by the data creator. For example, a new algorithm or methodology could result in a new product_version., required by NCEI netCDF trajectory template                                                                                                                                                                                                                                                                                                                                                                                      |
+| `program`                     | required                | The overarching program(s) of which the dataset is a part. A program consists of a set (or portfolio) of related and possibly interdependent projects that meet an overarching objective.                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `project`                     | required                | The name of the project(s) principally responsible for originating this data. Multiple projects can be separated by commas, as described under Attribute Content Guidelines.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `ptt_id`                      | required                | Platform Transmitting Terminal (PTT) number for Argos transmission                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `publisher_country`           | required                | Country of the person or organization that distributes the data.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `publisher_email`             | required                | The email address of the person or group that distributes the data files.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `publisher_institution`       | required                | Institution that distributes the data. This should be specified even if publisher_type is institution (in which case publisher_name would have an identical value).                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `publisher_name`              | required                | Name of the person or group that distributes the data files.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `publisher_type`              | required                | Specifies type of publisher with one of the following: ‘person’, ‘group’, ‘institution’, or ‘position’. If this attribute is not specified, the publisher is assumed to be a person.                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `publisher_url`               | required                | URL of the person or group that distributes the data files. Note that this should always reference an institution URL, and not a personal URL, even if publisher_type=person.                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `references`                  | required                | list of related references???, required by NCEI netCDF trajectory template                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `sea_name`                    | required                | geographical coverage area, report actual sea name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `source`                      | required                | Method of production of the original data.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `standard_name_vocabulary`    | required                | The name and version of the controlled vocabulary from which variable standard names are taken. (Values for any standard_name attribute must come from the CF Standard Names vocabulary for the data file or product to comply with CF.)                                                                                                                                                                                                                                                                                                                                                             |
+| `summary`                     | required                | A paragraph describing the dataset, analogous to an abstract for a paper.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `time_coverage_duration`      | required                | Describes the duration of the data set. Use ISO 8601:2004 duration format, preferably the extended format as recommended in the Attribute Content Guidance section.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `time_coverage_end`           | required                | Describes the time of the last data point in the data set. Use ISO 8601:2004 date format, preferably the extended format as recommended in the Attribute Content Guidance section.                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `time_coverage_resolution`    | required                | Describes the targeted time period between each value in the data set. Use ISO 8601:2004 duration format, preferably the extended format as recommended in the Attribute Content Guidance section.                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `time_coverage_start`         | required                | Describes the time of the first data point in the data set. Use ISO 8601:2004 date format, preferably the extended format as recommended in the Attribute Content Guidance section.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `title`                       | required                | A short phrase or sentence describing the dataset. In many discovery systems, the title will be displayed in the results list from a search, and therefore should be human readable and reasonable to display in a list of such names.                                                                                                                                                                                                                                                                                                                                                               |
+| `uuid`                        | required                | Universally Unique Indentifier, 36 character string containing numbers, letters and dashes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `vendor`                      | required                | Name of vendor that released raw data files to the ATN DAC (i.e., publisher_name), may or may not be the same as the tag manufacturer                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `vendor_id`                   | required                | unique id assigned by the vendor/manufacturer that release this data to the ATN DAC (i.e., publisher_name) , may or may not be the same as deployment_id                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `wmo_platform_code`           | required, if applicable | The WMO identifier for the platform used to measure the data., if gts_ingest = false this fields will display not applicable. if gts_ingest = true, provide WMO id
 
 ### Variable attributes
 
@@ -73,198 +148,644 @@ Name | Convention | Description | Type
 
 #### z
 
-### Dataset Description
+#### lat
 
-The attributes listed below are a collection of high-level attributes recommended largely by the parent conventions of the IOOS Metadata Profile (CF, ACDD).  Their purpose is to describe the dataset in human-readable terms, define specific conventions used by other attributes (**`standard_name_vocabulary`**), or qualify other attributes (**`naming_authority`**).  A high-quality dataset will generally include meaningful values for all of these attributes, even though they are not all required according to the profile.
 
-Name | Convention | Description | Type 
-:--------- | :-------: | :------------------- | :--------: 
-`Conventions` | CF | A comma-separated list of the conventions that are followed by the dataset. For files that follow this version of the IOOS Metadata Profile, include the string "IOOS-1.2".<br><br>Example: {::nomarkdown}<ul><li><b><code>Conventions = "CF-1.6, ACDD-1.3, IOOS-1.2"</b></code></li></ul>{:/} | global
-`featureType` | CF | CF attribute for identifying the featureType.   <br><br>Example:{::nomarkdown}<ul><li><b><code>featureType = "timeSeries"</b></code></li></ul>{:/} | global
-`id` | ACDD | An identifier for the data set, provided by and unique within its naming authority. The combination of the **`naming authority`** and the **`id`** should be globally unique, but the **`id`** can be globally unique by itself also. IDs can be URLs, URNs, DOIs, meaningful text strings, a local key, or any other unique string of characters. The **`id`** should not include blanks. | global
-`infoUrl`  | IOOS | URL for background information about this dataset. This attributed is also required by ERDDAP. | global
-`keywords` | ACDD | A comma separated list of key words and phrases. | global
-`license`  | ACDD | Describe the restrictions to data access and distribution. | global
-`naming_authority`  | ACDD | The organization that provides the **`id`** for the dataset. <br>The naming authority should be uniquely specified by this attribute; the combination of the **`naming_authority`** and the **`id`** should be a globally unique identifier for the dataset. A reverse-DNS naming is recommended; URIs are also acceptable. <br><br>Example:{::nomarkdown}<ul><li><b><code>naming_authority = "edu.ucar.unidata"</b></code></li></ul>{:/} | global
-`references`  | ACDD/CF | Published or web-based references that describe the data or methods used to produce it. Recommend URIs (such as a URL or DOI) for papers or other references. Multiple references should be separated by commas. | global
-`standard_name_vocabulary`  | ACDD | The name and version of the controlled vocabulary from which variable standard names are taken. Values for any variable's **`standard_name`** attribute must come from the CF Standard Names vocabulary for the dataset to comply with CF. <br><br>The format for the **`standard_name`** attribute must follow the ACDD recommendation ('CF Standard Name Table vXX', where 'XX' is a version of the standard name table), in order to be valid and meet the ACDD conventions.<br><br>If a variables does not have an existing standard name in the CF-managed list, the variable should not include a **`standard_name`** attribute. In these cases, a standard name can be proposed to the CF community for consideration.<br><br>  Example:<br>{::nomarkdown}<ul><li><b><code>standard_name_vocabulary = "CF Standard Name Table v72"</b></code></li></ul>{:/} | global
-`summary`  | ACDD | One paragraph describing the data set. |  global
-`title`  | ACDD | One sentence about the data contained within the file. | global
+#### lon
 
-#### Example
 
-Taken from the [ATN satellite trajectory Example dataset]().
+#### location_class
+
+
+#### instrument_tag
+
+
+#### instrument_location
+
+
+#### instrument_presure
+
+
+#### animal
+
+
+#### animal_life_stage
+
+
+#### animal_length_n
+
+#### animal_weight
+
+
+#### animal_sex
+
+
+
+#### taxon_name
+
+
+#### taxon_lsid
+
+
+#### error_radius
+
+
+#### semi_major_axis
+
+
+#### semi_minor_axis
+
+
+#### ellipse_orientation
+
+
+#### offset
+
+
+#### offset_orientation
+
+
+#### crs
+
+
+#### qartod_rollup_flag
+
+
+#### qartod_speed_flag
+
+
+#### qartod_locaton_flag
+
+
+#### qartod_time_flag
+
+### Example Dataset
+
+#### File
+
+Taken from the ATN satellite trajectory test WAF: <https://ncei.axiomdatascience.com/atn/test/>
+
+#### NCML
+```
+dimensions:
+	obs = 1057 ;
+variables:
+	float64 Ptt(obs) ;
+		Ptt:long_name = Platform Transmitter Tag code. ;
+		Ptt:comment = PTT code for this deployment. PTT codes may be used on multiple deployments, but  not concurrently. When combined with deployment dates, PTTs can uniquely identify a deployment. ;
+		Ptt:coverage_content_type = referenceInformation ;
+	<U15 animal() ;
+		animal:cf_role = trajectory_id ;
+		animal:long_name = BP6772 ;
+		animal:valid_name = Chelonia mydas ;
+		animal:AphiaID = 137206 ;
+		animal:scientificname = Chelonia mydas ;
+		animal:authority = (Linnaeus, 1758) ;
+		animal:kingdom = Animalia ;
+		animal:phylum = Chordata ;
+		animal:class =  ;
+		animal:order = Testudines ;
+		animal:family = Cheloniidae ;
+		animal:genus = Chelonia ;
+		animal:taxonRankID = 220 ;
+		animal:rank = Species ;
+		animal:superdomain = Biota ;
+		animal:subphylum = Vertebrata ;
+		animal:infraphylum = Gnathostomata ;
+		animal:megaclass = Tetrapoda ;
+		animal:superclass = Reptilia ;
+		animal:suborder = Cryptodira ;
+		animal:superfamily = Chelonioidea ;
+		animal:species = Chelonia mydas ;
+	float32 animal_length() ;
+		animal_length:long_name = length of the animal as measured at deployment ;
+		animal_length:animal_length_type = curved carapice length ;
+		animal_length:units = cm ;
+		animal_length:coverage_content_type = referenceInformation ;
+	<U8 animal_life_stage() ;
+		animal_life_stage:long_name = Lifestage of the animal (adult, juvenile) ;
+		animal_life_stage:animal_life_stage = Not provided ;
+	<U7 animal_sex() ;
+		animal_sex:long_name = sex of the animal ;
+		animal_sex:animal_sex = unknown ;
+	float32 animal_weight() ;
+		animal_weight:long_name = mass of the animal as measured or estimated at deployment ;
+		animal_weight:units = kg ;
+		animal_weight:animal_weight = Not provided ;
+		animal_weight:coverage_content_type = referenceInformation ;
+	object comment(obs) ;
+		comment:long_name = Comment ;
+		comment:comment = Optional text field ;
+	float64 count(obs) ;
+		count:long_name =  ;
+		count:units = count ;
+		count:coverage_content_type = auxillaryInformation ;
+	int32 crs() ;
+		crs:epsg_code = EPSG:4326 ;
+		crs:grid_mapping_name = latitude_longitude ;
+		crs:inverse_flattening = 298.257223563 ;
+		crs:long_name = http://www.opengis.net/def/crs/EPSG/0/4326 ;
+		crs:semi_major_axis = 6378137.0 ;
+	float64 deploy_id(obs) ;
+		deploy_id:long_name = Platform identifier ;
+		deploy_id:comment = Friendly name given to the tag by the user. If no specific friendly name is given, this is the PTT id. ;
+		deploy_id:coverage_content_type = referenceInformation ;
+	float64 ellipse_orientation(obs) ;
+		ellipse_orientation:long_name = Platform identifier ;
+		ellipse_orientation:units = degrees ;
+		ellipse_orientation:comment = The angle in degrees of the ellipse from true north, proceeding clockwise (0 to 360). A blank field represents 0 degrees. ;
+	float64 error_radius(obs) ;
+		error_radius:long_name = Error radius ;
+		error_radius:units = m ;
+		error_radius:comment = If the position is best represented as a circle, this field gives the radius of that circle in meters. ;
+	object instrument(obs) ;
+		instrument:long_name = Instrument ;
+		instrument:comment = Wildlife Computers instrument family.  ;
+	<U22 instrument_location() ;
+		instrument_location:long_name = Wildlife Computers SPOT6 ;
+		instrument_location:location_type = argos/modeled ;
+		instrument_location:comment = Location ;
+		instrument_location:manufacturer = Wildlife Computers ;
+		instrument_location:make_model = SPOT6 ;
+		instrument_location:calibration_date = NOT PROVIDED ;
+		instrument_location:serial_number = 19U0611 ;
+	<U24 instrument_tag() ;
+		instrument_tag:long_name = telemtry tag applied to animal ;
+		instrument_tag:comment = Location ;
+		instrument_tag:manufacturer = Wildlife Computers ;
+		instrument_tag:make_model = SPOT6 ;
+		instrument_tag:calibration_date = NOT PROVIDED ;
+		instrument_tag:serial_number = 19U0611 ;
+	float64 lat(obs) ;
+		lat:axis = Y ;
+		lat:_CoordinateAxisType = Lat ;
+		lat:long_name = Profile Location ;
+		lat:standard_name = latitude ;
+		lat:units = degrees_north ;
+		lat:valid_max = 90.0 ;
+		lat:valid_min = -90.0 ;
+		lat:actual_min = 30.0216 ;
+		lat:actual_max = 30.7745 ;
+	object location_class(obs) ;
+		location_class:long_name = Location Quality Code ;
+		location_class:standard_name = quality_code ;
+		location_class:comment = Quality codes from the ARGOS satellite (in meters): G,3,2,1,0,A,B,Z. See http://www.argos-system.org/manual/3-location/34_location_classes.htm ;
+	float64 lon(obs) ;
+		lon:axis = X ;
+		lon:_CoordinateAxisType = Lon ;
+		lon:long_name = Profile Location ;
+		lon:standard_name = longitude ;
+		lon:units = degrees_east ;
+		lon:valid_max = 180.0 ;
+		lon:valid_min = -180.0 ;
+		lon:actual_min = -88.0915 ;
+		lon:actual_max = -86.0433 ;
+	float64 offset(obs) ;
+		offset:long_name = Offset ;
+		offset:units = m ;
+		offset:comment = This field is non-zero if the circle or ellipse are not centered on the (Latitude, Longitude) values on this row. "Offset" gives the distance in meters from (Latitude, Longitude) to the center of the ellipse. ;
+	float64 offset_orientation(obs) ;
+		offset_orientation:long_name = Offset orientation ;
+		offset_orientation:units = degrees ;
+		offset_orientation:comment = If the "Offset" field is non-zero, this field is the angle in degrees from (Latitude, Longitude) to the center of the ellipse. Zero degrees is true north; a blank field represents 0 degrees. ;
+	float64 qartod_location_flag(obs) ;
+		qartod_location_flag:flag_meanings = PASS NOT_EVALUATED SUSPECT FAIL MISSING ;
+		qartod_location_flag:implementation = https://github.com/ioos/ioos_qc/ ;
+		qartod_location_flag:long_name = Location QC test - Location test ;
+		qartod_location_flag:references = https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf ;
+		qartod_location_flag:standard_name = location_test_quality_flag ;
+		qartod_location_flag:flag_values = [1 2 3 4 9] ;
+	float64 qartod_rollup_flag(obs) ;
+		qartod_rollup_flag:flag_meanings = PASS NOT_EVALUATED SUSPECT FAIL MISSING ;
+		qartod_rollup_flag:implementation = https://github.com/ioos/ioos_qc/ ;
+		qartod_rollup_flag:long_name = Aggregate QC value ;
+		qartod_rollup_flag:references = https://github.com/ioos/ioos_qc/ ;
+		qartod_rollup_flag:standard_name = aggregate_quality_flag ;
+		qartod_rollup_flag:flag_values = [1 2 3 4 9] ;
+	float64 qartod_speed_flag(obs) ;
+		qartod_speed_flag:flag_meanings = PASS NOT_EVALUATED SUSPECT FAIL MISSING ;
+		qartod_speed_flag:implementation = https://github.com/ioos/ioos_qc/ ;
+		qartod_speed_flag:long_name = Speed QC test - gross range test ;
+		qartod_speed_flag:references = https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf ;
+		qartod_speed_flag:standard_name = gross_range_test_quality_flag ;
+		qartod_speed_flag:flag_values = [1 2 3 4 9] ;
+	float64 qartod_time_flag(obs) ;
+		qartod_time_flag:flag_meanings = PASS NOT_EVALUATED SUSPECT FAIL MISSING ;
+		qartod_time_flag:implementation = https://github.com/ioos/ioos_qc/ ;
+		qartod_time_flag:long_name = Time QC test - gross range test ;
+		qartod_time_flag:references = https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf ;
+		qartod_time_flag:standard_name = gross_range_test_quality_flag ;
+		qartod_time_flag:flag_values = [1 2 3 4 9] ;
+	float64 semi_major_axis(obs) ;
+		semi_major_axis:long_name = Error semi-major axis ;
+		semi_major_axis:units = m ;
+		semi_major_axis:comment = If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-major elliptical axis (one half of the major axis). ;
+	float64 semi_minor_axis(obs) ;
+		semi_minor_axis:long_name = Error semi-minor axis ;
+		semi_minor_axis:units = m ;
+		semi_minor_axis:comment = If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-minor elliptical axis (one half of the minor axis). ;
+	<U41 taxon_lsid() ;
+		taxon_lsid:standard_name = biological_taxon_lsid ;
+		taxon_lsid:long_name = Namespaced Taxon Identifier for the tagged animal ;
+		taxon_lsid:source = Uetz, P. (ed.) (2023). The Reptile Database. Chelonia mydas (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=137206 on 2023-04-19 ;
+		taxon_lsid:url = https://www.marinespecies.org/aphia.php?p=taxdetails&id=137206 ;
+		taxon_lsid:id_source_name =  ;
+		taxon_lsid:id_source_link =  ;
+	<U14 taxon_name() ;
+		taxon_name:standard_name = biological_taxon_name ;
+		taxon_name:long_name = most precise taxonomic classification for the tagged animal ;
+		taxon_name:source = Uetz, P. (ed.) (2023). The Reptile Database. Chelonia mydas (Linnaeus, 1758). Accessed through: World Register of Marine Species at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=137206 on 2023-04-19 ;
+		taxon_name:url = https://www.marinespecies.org/aphia.php?p=taxdetails&id=137206 ;
+	datetime64[ns] time(obs) ;
+		time:standard_name = time ;
+		time:axis = T ;
+		time:_CoordinateAxisType = Time ;
+		time:long_name = Time ;
+		time:actual_min = 2019-10-14T16:23:09Z ;
+		time:actual_max = 2020-03-03T15:46:10Z ;
+	<U24 trajectory() ;
+		trajectory:cf_role = trajectory_id ;
+		trajectory:long_name = trajectory identifier ;
+	object type(obs) ;
+		type:long_name = Type of location ;
+		type:comment = Type of location: Argos ;
+	float64 z(obs) ;
+		z:axis = Z ;
+		z:long_name = depth ;
+		z:positive = down ;
+		z:standard_name = depth ;
+		z:units = m ;
+		z:actual_min = 0.0 ;
+		z:actual_max = 0.0 ;
+// global attributes:
+	:date_created = 2021-08-12T20:47:14Z ;
+	:featureType = trajectory ;
+	:cdm_data_type = Trajectory ;
+	:argos_program_number = 27141 ;
+	:creator_email = kristen_hart@usgs.gov ;
+	:id = 5e3a16da6321be14905fda08 ;
+	:source = Service Argos ;
+	:geospatial_lat_units = degrees_north ;
+	:geospatial_lon_units = degrees_east ;
+	:naming_authority = gov.noaa.ioos.atn ;
+	:processing_level = NetCDF file created from position data obtained from Wildlife Computers API. ;
+	:publisher_email = atndata@ioos.us ;
+	:publisher_url = https://atn.ioos.us ;
+	:publisher_country = USA ;
+	:standard_name_vocabulary = CF-v78 ;
+	:vendor = Wildlife Computers ;
+	:geospatial_lat_min = 30.0216 ;
+	:geospatial_lat_max = 30.7745 ;
+	:geospatial_lon_min = -88.0915 ;
+	:geospatial_lon_max = -86.0433 ;
+	:geospatial_bbox = POLYGON ((-86.0433 30.0216, -86.0433 30.7745, -88.0915 30.7745, -88.0915 30.0216, -86.0433 30.0216)) ;
+	:geospatial_bounds = POLYGON ((-88.0915 30.0216, -87.93510000000001 30.4294, -87.4914 30.6658, -87.2508 30.7745, -86.0433 30.0702, -88.0915 30.0216)) ;
+	:geospatial_bounds_crs = EPSG:4326 ;
+	:time_coverage_start = 2019-10-14T16:23:09Z ;
+	:time_coverage_end = 2020-03-03T15:46:10Z ;
+	:time_coverage_duration = P140DT23H23M1S ;
+	:time_coverage_resolution = P0DT3H18M3S ;
+	:date_issued = 2021-08-12T20:47:14Z ;
+	:date_modified = 2021-08-12T20:47:14Z ;
+	:vendor_id = 5e3a16da6321be14905fda08 ;
+	:Conventions = CF-1.10, ACDD-1.3, IOOS-1.2 ;
+	:acknowledgement = NOAA IOOS, Axiom Data Science, Navy ONR, NOAA NMFS, Wildlife Computers, Argos, IOOS ATN ;
+	:creator_name = Kristen Hart ;
+	:creator_url = https://orcid.org/0000-0002-5257-7974 ;
+	:infoUrl = https://portal.atn.ioos.us/#metadata/6af10e97-4668-4dd0-9868-5ca029cb2f7a/project ;
+	:institution = USGS Wetland Aquatic Research Center ;
+	:license = These data may be used and redistributed for free, but are not intended for legal use, since they may contain inaccuracies. No person or group associated with these data makes any warranty, expressed or implied, including warranties of merchantability and fitness for a particular purpose, or assumes any legal liability for the accuracy, completeness or usefulness of this information. This disclaimer applies to both individual use of these data and aggregate use with other data. It is strongly recommended that users read and fully comprehend associated metadata prior to use. Please acknowledge the U.S. Animal Telemetry Network (ATN) or the specified citation as the source from which these data were obtained in any publications and/or representations of these data. Communication and collaboration with dataset authors are strongly encouraged. ;
+	:metadata_link = https://anotherfakeurlforthisproject.coffee ;
+	:project = Spatial Ecology of loggerhead turtles tagged at the Azores, 1994-2000 ;
+	:publisher_institution = US Integrated Ocean Observing System Office ;
+	:publisher_name = US Integrated Ocean Observing System (IOOS) Animal Telemetry Network (ATN) ;
+	:uuid = 706a2a4f-73b1-4b0c-9498-2c61dc22cfd7 ;
+	:platform_name = Chelonia mydas ;
+	:platform_id = 137206 ;
+	:animal_common_name = Green Sea Turtle ;
+	:animal_id = 982000410612253 ;
+	:animal_scientific_name = Chelonia mydas ;
+	:arbitrary_keywords = ATN ,Animal Telemetry Network, IOOS, Integrated Ocean Observing System, trajectory ;
+	:comment = nan ;
+	:contributor_email = mcherkiss@usgs.gov ;
+	:contributor_name = Michael Cherkiss ;
+	:contributor_role = collaborator ;
+	:contributor_role_vocabulary = https://vocab.nerc.ac.uk/collection/G04/current/ ;
+	:creator_country = USA ;
+	:creator_institution = USGS Wetland Aquatic Research Center ;
+	:creator_institution_url = https://www.usgs.gov/centers/wetland-and-aquatic-research-center ;
+	:creator_role = principalInvestigator ;
+	:creator_role_vocabulary = https://vocab.nerc.ac.uk/collection/G04/current/ ;
+	:creator_sector = gov_federal ;
+	:creator_sector_vocabulary = https://mmisw.org/ont/ioos/sector ;
+	:creator_type = person ;
+	:deployment_id = 5e3a16da6321be14905fda08 ;
+	:deployment_start_lat = 30.29581 ;
+	:deployment_start_lon = -87.53123 ;
+	:deployment_start_datetime = 2019-10-14T00:00:00Z ;
+	:deployment_end_datetime = 2020-03-03T00:00:00Z ;
+	:instrument = Satellite telemetry tag ;
+	:instrument_vocabulary = nan ;
+	:keywords_vocabulary = GCMD Science Keywords v15.1 ;
+	:ncei_template_version = NCEI_NetCDF_Trajectory_Template_v2.0 ;
+	:product_version = nan ;
+	:program = IOOS Animal Telemetry Network ;
+	:ptt_id = 181790 ;
+	:publisher_type = institution ;
+	:references = nan ;
+	:wmo_platform_code = 990nnnn ;
+	:sea_name = Coastal Waters of Florida, Coastal Waters of Alabama, and Gulf of Mexico ;
+	:history = Wed Apr 19 15:22:21 2023: ncks -x -v gpe_u,gpe_msd atn_02.nc atn_03.nc
+Wed Apr 19 15:21:54 2023: ncrename -v qartod_location_test,qartod_location_flag -v argo_speed_test,qartod_speed_flag -v qartod_rollup_qc,qartod_rollup_flag -v time_axds_valid_range_test,qartod_time_flag atn_00.nc atn_01.nc
+2021-08-12T20:47:14Z - Created by the IOOS ATN DAC from the Wildlife Computers API ;
+	:NCO = netCDF Operators version 4.9.1 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco) ;
+	:platform = organism ;
+	:platform_vocabulary = http://vocab.nerc.ac.uk/collection/L06/current/ ;
+	:date_metadata_modified = 2023-04-19T15:17:00Z ;
+	:keywords = Earth Science > Biological Classification > Animals/Vertebrates, Earth Science > Biosphere > Ecological Dynamics > Species/Population Interactions > Migratory Rates/Routes, Earth Science>Biosphere > Ecosystems > Marine Ecosystems, Providers>Government Agencies-U.S. Federal Agencies > DOC > NOAA > IOOS, Providers>Commercial>Axiom Data Science ;
+	:summary = Wildlife Computers SPOT6 tag (ptt id 181790) deployed on a Green Sea Turtle (Chelonia mydas) by Kristen Hart in Coastal Waters of Florida, Coastal Waters of Alabama, and Gulf of Mexico from 2019-10-14 to 2020-03-03. ;
+	:citation = Hart, Kristen; Cherkiss, Michael. (2023) Green sea turtle (Chelonia mydas) location data from a satellite telemetry tag (ptt id 181790) deployed from 2019-10-14 to 2020-03-03 in the Coastal Waters of Florida, Coastal Waters of Alabama, and Gulf of Mexico. [Dataset]. US Integrated Ocean Observing System (IOOS) Animal Telemetry Network (ATN). ;
+	:title = Green sea turtle (Chelonia mydas) location data from a satellite telemetry tag (ptt id 181790) deployed from 2019-10-14 to 2020-03-03 in the Coastal Waters of Florida, Coastal Waters of Alabama, and Gulf of Mexico ;
+```
+
+Variables
 
 ```
-add example ncml (json) here
+'Ptt': <xarray.Variable (obs: 1057)>
+array([181790., 181790., 181790., ..., 181790., 181790., 181790.])
+Attributes:
+    long_name:              Platform Transmitter Tag code.
+    comment:                PTT code for this deployment. PTT codes may be us...
+    coverage_content_type:  referenceInformation,
+
+'animal': <xarray.Variable ()>
+array('982000410612253', dtype='<U15')
+Attributes: (12/22)
+    cf_role:         trajectory_id
+    long_name:       BP6772
+    valid_name:      Chelonia mydas
+    AphiaID:         137206
+    scientificname:  Chelonia mydas
+    authority:       (Linnaeus, 1758)
+    ...              ...
+    infraphylum:     Gnathostomata
+    megaclass:       Tetrapoda
+    superclass:      Reptilia
+    suborder:        Cryptodira
+    superfamily:     Chelonioidea
+    species:         Chelonia mydas,
+
+'animal_length': <xarray.Variable ()>
+array(-9999., dtype=float32)
+Attributes:
+    long_name:              length of the animal as measured at deployment
+    animal_length_type:     curved carapice length
+    units:                  cm
+    coverage_content_type:  referenceInformation,
+
+'animal_life_stage': <xarray.Variable ()>
+array('Juvenile', dtype='<U8')
+Attributes:
+    long_name:          Lifestage of the animal (adult, juvenile)
+    animal_life_stage:  Not provided,
+
+'animal_sex': <xarray.Variable ()>
+array('unknown', dtype='<U7')
+Attributes:
+    long_name:   sex of the animal
+    animal_sex:  unknown,
+
+'animal_weight': <xarray.Variable ()>
+array(9.96921e+36, dtype=float32)
+Attributes:
+    long_name:              mass of the animal as measured or estimated at de...
+    units:                  kg
+    animal_weight:          Not provided
+    coverage_content_type:  referenceInformation,
+
+'comment': <xarray.Variable (obs: 1057)>
+array(['nan', 'nan', 'nan', ..., 'nan', 'Lon > 4 deviations from mean', 'nan'],
+      dtype=object)
+Attributes:
+    long_name:  Comment
+    comment:    Optional text field,
+
+'count': <xarray.Variable (obs: 1057)>
+array([nan, nan, nan, ..., nan, nan, nan])
+Attributes:
+    long_name:              
+    units:                  count
+    coverage_content_type:  auxillaryInformation,
+
+'crs': <xarray.Variable ()>
+array(-2147483647)
+Attributes:
+    epsg_code:           EPSG:4326
+    grid_mapping_name:   latitude_longitude
+    inverse_flattening:  298.257223563
+    long_name:           http://www.opengis.net/def/crs/EPSG/0/4326
+    semi_major_axis:     6378137.0,
+
+'deploy_id': <xarray.Variable (obs: 1057)>
+array([181790., 181790., 181790., ..., 181790., 181790., 181790.])
+Attributes:
+    long_name:              Platform identifier
+    comment:                Friendly name given to the tag by the user. If no...
+    coverage_content_type:  referenceInformation,
+
+'ellipse_orientation': <xarray.Variable (obs: 1057)>
+array([  9., 118.,   1., ...,  75.,  79., 173.])
+Attributes:
+    long_name:  Platform identifier
+    units:      degrees
+    comment:    The angle in degrees of the ellipse from true north, proceedi...,
+
+'error_radius': <xarray.Variable (obs: 1057)>
+array([1569., 1322., 2703., ..., 1202., 3691., 3178.])
+Attributes:
+    long_name:  Error radius
+    units:      m
+    comment:    If the position is best represented as a circle, this field g...,
+
+'instrument': <xarray.Variable (obs: 1057)>
+array(['UT', 'UT', 'UT', ..., 'UT', 'UT', 'UT'], dtype=object)
+Attributes:
+    long_name:  Instrument
+    comment:    Wildlife Computers instrument family. ,
+
+'instrument_location': <xarray.Variable ()>
+array('Wildlife Computers SDR', dtype='<U22')
+Attributes:
+    long_name:         Wildlife Computers SPOT6
+    location_type:     argos/modeled
+    comment:           Location
+    manufacturer:      Wildlife Computers
+    make_model:        SPOT6
+    calibration_date:  NOT PROVIDED
+    serial_number:     19U0611,
+
+'instrument_tag': <xarray.Variable ()>
+array('Wildlife Computers SPOT6', dtype='<U24')
+Attributes:
+    long_name:         telemtry tag applied to animal
+    comment:           Location
+    manufacturer:      Wildlife Computers
+    make_model:        SPOT6
+    calibration_date:  NOT PROVIDED
+    serial_number:     19U0611,
+
+'lat': <xarray.Variable (obs: 1057)>
+array([30.3119, 30.3193, 30.2943, ..., 30.4021, 30.415 , 30.4018])
+Attributes:
+    axis:                 Y
+    _CoordinateAxisType:  Lat
+    long_name:            Profile Location
+    standard_name:        latitude
+    units:                degrees_north
+    valid_max:            90.0
+    valid_min:            -90.0
+    actual_min:           30.0216
+    actual_max:           30.7745,
+
+'location_class': <xarray.Variable (obs: 1057)>
+array(['0', '1', 'B', ..., 'B', 'B', 'B'], dtype=object)
+Attributes:
+    long_name:      Location Quality Code
+    standard_name:  quality_code
+    comment:        Quality codes from the ARGOS satellite (in meters): G,3,2...,
+
+'lon': <xarray.Variable (obs: 1057)>
+array([-87.5671, -87.5581, -87.5399, ..., -86.8046, -86.7424, -86.8053])
+Attributes:
+    axis:                 X
+    _CoordinateAxisType:  Lon
+    long_name:            Profile Location
+    standard_name:        longitude
+    units:                degrees_east
+    valid_max:            180.0
+    valid_min:            -180.0
+    actual_min:           -88.0915
+    actual_max:           -86.0433,
+
+'offset': <xarray.Variable (obs: 1057)>
+array([nan, nan, nan, ..., nan, nan, nan])
+Attributes:
+    long_name:  Offset
+    units:      m
+    comment:    This field is non-zero if the circle or ellipse are not cente...,
+
+'offset_orientation': <xarray.Variable (obs: 1057)>
+array([nan, nan, nan, ..., nan, nan, nan])
+Attributes:
+    long_name:  Offset orientation
+    units:      degrees
+    comment:    If the "Offset" field is non-zero, this field is the angle in...,
+
+'qartod_location_flag': <xarray.Variable (obs: 1057)>
+array([1., 1., 1., ..., 1., 1., 1.])
+Attributes:
+    flag_meanings:   PASS NOT_EVALUATED SUSPECT FAIL MISSING
+    implementation:  https://github.com/ioos/ioos_qc/
+    long_name:       Location QC test - Location test
+    references:      https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual...
+    standard_name:   location_test_quality_flag
+    flag_values:     [1 2 3 4 9],
+
+'qartod_rollup_flag': <xarray.Variable (obs: 1057)>
+array([1., 1., 1., ..., 4., 1., 4.])
+Attributes:
+    flag_meanings:   PASS NOT_EVALUATED SUSPECT FAIL MISSING
+    implementation:  https://github.com/ioos/ioos_qc/
+    long_name:       Aggregate QC value
+    references:      https://github.com/ioos/ioos_qc/
+    standard_name:   aggregate_quality_flag
+    flag_values:     [1 2 3 4 9],
+
+'qartod_speed_flag': <xarray.Variable (obs: 1057)>
+array([2., 1., 1., ..., 4., 1., 4.])
+Attributes:
+    flag_meanings:   PASS NOT_EVALUATED SUSPECT FAIL MISSING
+    implementation:  https://github.com/ioos/ioos_qc/
+    long_name:       Speed QC test - gross range test
+    references:      https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual...
+    standard_name:   gross_range_test_quality_flag
+    flag_values:     [1 2 3 4 9],
+
+'qartod_time_flag': <xarray.Variable (obs: 1057)>
+array([1., 1., 1., ..., 1., 1., 1.])
+Attributes:
+    flag_meanings:   PASS NOT_EVALUATED SUSPECT FAIL MISSING
+    implementation:  https://github.com/ioos/ioos_qc/
+    long_name:       Time QC test - gross range test
+    references:      https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual...
+    standard_name:   gross_range_test_quality_flag
+    flag_values:     [1 2 3 4 9],
+
+'semi_major_axis': <xarray.Variable (obs: 1057)>
+array([2165., 3352., 5079., ..., 1427., 4916., 3291.])
+Attributes:
+    long_name:  Error semi-major axis
+    units:      m
+    comment:    If the estimated position error is best expressed as an ellip...,
+
+'semi_minor_axis': <xarray.Variable (obs: 1057)>
+array([1137.,  521., 1438., ..., 1012., 2771., 3069.])
+Attributes:
+    long_name:  Error semi-minor axis
+    units:      m
+    comment:    If the estimated position error is best expressed as an ellip...,
+
+'taxon_lsid': <xarray.Variable ()>
+array('urn:lsid:marinespecies.org:taxname:137206', dtype='<U41')
+Attributes:
+    standard_name:   biological_taxon_lsid
+    long_name:       Namespaced Taxon Identifier for the tagged animal
+    source:          Uetz, P. (ed.) (2023). The Reptile Database. Chelonia my...
+    url:             https://www.marinespecies.org/aphia.php?p=taxdetails&id=...
+    id_source_name:  
+    id_source_link:  ,
+
+'taxon_name': <xarray.Variable ()>
+array('Chelonia mydas', dtype='<U14')
+Attributes:
+    standard_name:  biological_taxon_name
+    long_name:      most precise taxonomic classification for the tagged animal
+    source:         Uetz, P. (ed.) (2023). The Reptile Database. Chelonia myd...
+    url:            https://www.marinespecies.org/aphia.php?p=taxdetails&id=1...,
+
+'time': <xarray.Variable (obs: 1057)>
+array(['2019-10-14T16:23:09.000000000', '2019-10-14T16:43:02.000000000',
+       '2019-10-15T15:45:28.000000000', ..., '2020-03-03T03:00:17.000000000',
+       '2020-03-03T15:36:04.000000000', '2020-03-03T15:46:10.000000000'],
+      dtype='datetime64[ns]')
+Attributes:
+    standard_name:        time
+    axis:                 T
+    _CoordinateAxisType:  Time
+    long_name:            Time
+    actual_min:           2019-10-14T16:23:09Z
+    actual_max:           2020-03-03T15:46:10Z,
+
+'trajectory': <xarray.Variable ()>
+array('5e3a16da6321be14905fda08', dtype='<U24')
+Attributes:
+    cf_role:    trajectory_id
+    long_name:  trajectory identifier,
+
+'type': <xarray.Variable (obs: 1057)>
+array(['Argos', 'Argos', 'Argos', ..., 'Argos', 'Argos', 'Argos'], dtype=object)
+Attributes:
+    long_name:  Type of location
+    comment:    Type of location: Argos,
+
+'z': <xarray.Variable (obs: 1057)>
+array([0., 0., 0., ..., 0., 0., 0.])
+Attributes:
+    axis:           Z
+    long_name:      depth
+    positive:       down
+    standard_name:  depth
+    units:          m
+    actual_min:     0.0
+    actual_max:     0.0
 ```
-
-### Attribution
-
-The attributes listed in the table below allow for consistent attribution of datasets within IOOS' national products.  Data providers are encouraged to follow these attribute guidelines exactly to ensure datasets appear with proper attribution.  
-
-Consult the [Gold Standard Example Datasets](gold-standard-examples.html) for good examples to start from.
-
-Name | Convention | Description | Type 
-:--------- | :-------: | :------------------- | :--------: 
-`contributor_email` | IOOS | Email addresses of the individuals or institutions that contributed to the creation of this data. Multiple emails should be given in CSV format, and presented in the same order and number as the names in **`contributor_names`**. | global
-`contributor_name` | ACDD | The name of any individuals or institutions that contributed to the creation of this data. Combined with the **`contributor_role`**, it provides the full description of the contributor. Multiple names should be given in CSV format. <br><br>Examples: {::nomarkdown}<ul><li><b><code>contributor_name = "Pacific Islands Ocean Observing System (PacIOOS)"</b></code></li> <li><b><code>contributor_name = "Great Lakes Observing System (GLOS),LimnoTech"</b></code></li></ul>{:/} | global
-`contributor_role` | ACDD | The role of any individuals or institutions that contributed to the creation of this data. The CI_RoleCode vocabulary ([NERC](https://vocab.nerc.ac.uk/collection/G04/current/), [NOAA-NCEI](https://www.ngdc.noaa.gov/wiki/index.php?title=ISO_19115_and_19115-2_CodeList_Dictionaries#CI_RoleCode)) should be used. Multiple roles should be given in CSV format, and presented in the same order and number as the names in **`contributor_names`**.<br>For the IOOS ncSOS, **`contributor_role = "sponsor"`** defines a person, group, or organization’s full or partial support of an IOOS activity, asset, model, or product. <br><br>Examples:  {::nomarkdown}<ul><li><b><code>contributor_role = "sponsor"</b></code></li> <li><b><code>contributor_role = "sponsor, collaborator"</b></code></li></ul>{:/} | global
-`contributor_role_vocabulary` | IOOS | The URL of the controlled vocabulary used for the **`contributor_role`** attribute. <br><br>The default is ["https://vocab.nerc.ac.uk/collection/G04/current/"](https://vocab.nerc.ac.uk/collection/G04/current/). | global
-`contributor_url` | IOOS | The URL of the individuals or institutions that contributed to the creation of this data. Multiple URLs should be given in CSV format, and presented in the same order and number as the names in **`contributor_names`**. | global
-`creator_address` | IOOS | Street address of the person or organization that collected the data.  | global
-`creator_city` | IOOS | City of the person or organization that collected the data.  | global
-`creator_country` | IOOS | Country of the person or organization that operates a platform or network, which collected the observation data. | global
-`creator_email`  | ACDD | Email address of the person or institution that collected the data. | global
-`creator_institution`  | ACDD | Institution that collected the data. This should be specified even if it matches the value of **`publisher_institution`**, **`institution`** or if **`creator_type`** is institution. | global
-`creator_institution_url`  | IOOS | URL for the institution that collected the data. For clarity, it is recommended that this field is specified even if the creator_type is institution and a creator_url is provided. | global
-`creator_name`  | ACDD | Name of the person or organization that collected the data. <br><br>Follow the guidance described in the **`creator_type`** attribute for how to populate this field depending on whether a person, institution, group, or position. | global
-`creator_phone` | IOOS | The phone number of the person or group that collected the data. <br><br>Example:{::nomarkdown}<ul><li><b><code>creator_phone = "(240) 533-9444"</b></code></li><li><b><code>creator_phone = "+1-240-533-9444"</b></code></li></ul>{:/} | global
-`creator_sector` | IOOS | [IOOS classifier](https://mmisw.org/ont/ioos/sector) that best describes the platform (network) operator's societal sector. <br><br>Example:{::nomarkdown}<ul><li><b><code>creator_sector = "academic"</b></code></li></ul>{:/} | global
-`creator_state` | IOOS | State of the person or organization that collected the data.  | global
-`creator_type` | ACDD | Specifies type of creator with one of the following: 'person', 'group', 'institution', or 'position'. If this attribute is not specified, the creator is assumed to be a person.  | global
-`creator_url`  | ACDD | URL of the person or organization that collected the data.  | global
-`creator_postalcode` | IOOS | The postal code of the person or organization that collected the data.  | global
-`institution`  | ACDD | The institution of the person or group that collected the data. | global
-`publisher_address` | IOOS | Street address of the person or organization that distributes the data.   | global
-`publisher_city` | IOOS | City of the person or organization that distributes the data.   | global
-`publisher_country` | IOOS | Country of the person or organization that distributes the data.   | global
-`publisher_email`  | ACDD | The email address of the person or group that distributes the data files. | global
-`publisher_institution`  | ACDD | Institution that distributes the data. This should be specified even if **`publisher_type`** is institution (in which case **`publisher_name`** would have an identical value). | global
-`publisher_name`  | ACDD | Name of the person or group that distributes the data files. <br><br>Follow the guidance described in the **`publisher_type`** attribute for how to populate this field depending on whether a person, institution, group, or position. | global
-`publisher_phone` | IOOS | The phone number of the person or group that distributes the data files. <br><br>Example:{::nomarkdown}<ul><li><b><code>creator_phone = "(240) 533-9444"</b></code></li><li><b><code>creator_phone = "+1-240-533-9444"</b></code></li></ul>{:/} | global
-`publisher_state` | IOOS | State of the person or organization that distributes the data.   | global
-`publisher_type` | ACDD | Specifies type of publisher with one of the following: 'person', 'group', 'institution', or 'position'. If this attribute is not specified, the publisher is assumed to be a person. | global
-`publisher_url`  | ACDD/IOOS | URL of the person or group that distributes the data files. Note that this should always reference an institution URL, and not a personal URL, even if **`publisher_type=person`**.   | global
-`publisher_postalcode` | IOOS | The postal code of the person or organization that distributes the data.   | global
-
-#### Example
-
-Taken from the [ATN Satellite Trajectory Example dataset]().
-
-```
-add example ncml (json) here
-```
-
-```
-add example ncml (json) here
-```
-
-```
-add example ncml (json) here
-```
-
-### Variables
-
-A collection of variable attributes that should be applied to all geophysical or other measured parameter variable contained in the dataset.  This is mostly a re-listing and description of how to use CF convention attributes, with the addition of a few IOOS-specific attributes for variable precision/accuracy and standard name identification.  
-
-**Note:** the table below uses **`geophysical_variable`** as an alias intending to represent any variable containing geophysical data.
-
-Name | Convention | Description | Type 
-:--------- | :-------: | :------------------- | :--------: 
-`geophysical_variable:_FillValue` | CF | This value is considered to be a special value that indicates undefined or missing data, and is returned when reading values that were not written. The type of this variable should match the type of the unpacked variable data. {::nomarkdown}<ul><b><code>  <li>time:_FillValue = -999999.0f    <li>lat:_FillValue = -999999.0f    <li>lon:_FillValue = -999999.0f    <li>z:_FillValue = -999999.0f    <li>sea_water_temperature:_FillValue = Float.NaN</li></b></code></ul>{:/} | variable
-`geophysical_variable:accuracy` | IOOS | The sensor accuracy is the closeness of the measurements to the variable's true value. It should be given in the same units as the measured variable. If the instrument has been calibrated multiple times with different results, the most recent accuracy should be provided here (see **`instrument_variable:calibration_date`**). | variable
-`geophysical_variable:missing_value` | CF | This should always be equal to the `_FillValue` attribute and both are used for legacy library support. {::nomarkdown}<ul><b><code> <li>time:missing_value = -999999.0f    <li>lat:missing_value = -999999.0f    <li>lon:missing_value =-999999.0f    <li>z:missing_value = -999999.0f <li>sea_water_temperature:missing_value = Float.NaN</li></b></code></ul>{:/} | variable
-`geophysical_variable:precision` | IOOS | The sensor precision is the closeness of the measurements to each other. It should be given in the same units as the measured variable. If the instrument has been calibrated multiple times with different results, the most recent precision should be provided here (see **`instrument_variable:calibration_date`**). | variable 
-`geophysical_variable:resolution` | IOOS | The sensor resolution is the smallest change it can represent in the quantity that it is measuring. It should be given in the same units as the measured variable. | variable 
-`geophysical_variable:standard_name` | CF | Standardized field which uses the [CF Standard Names](http://www.cfconventions.org/documents.html). If a variables does not have an existing standard_name in the CF-managed list, this attribute should not be used. In these cases, a standard name can be proposed to the CF community for consideration and acceptance. | variable
-`geophysical_variable:standard_name_url` | IOOS | The URL of a **`standard_name`** in the online vocabulary listed in the global **`standard_name_vocabulary`** attribute.<br><br>Example: {::nomarkdown}<ul> <li> <b><code>sea_water_temperature:standard_name_url = "https://vocab.nerc.ac.uk/collection/P07/current/CFSN0335/"</code></b> </li>  <li> <b><code>sea_water_temperature:standard_name = "sea_water_temperature"</code></b> </li> </ul>{:/} | variable
-`geophysical_variable:units`  | CF | Required for most all variables that represent dimensional quantities. The value for a geophysical variable's **`units`** attribute should match or be derived from the canonical units specified for the variable's **`standard_name`** in the CF Standard Name table. <br><br>CF units are specified by the  [**`udunits`**](https://www.unidata.ucar.edu/software/udunits/) package, which includes a file `udunits.dat` listing the valid individual unit names (e.g., "g" and "m") from which which composite **`units`** strings can be formed (e.g., "kg m-3"). <br><br>For example, all temperature standard names have canonical units of "K", but often geophysical variables that measure temperature are specified with **`units`** of `degree_Celsius` or some variant thereof. | variable
-
-#### Example
-
-Taken from the [ATN Satellite Trajecotry Example dataset]().
-
-```
-add example ncml (json) here
-```
-
-
-### Platform
-
-The method for specifying platform metadata for in situ measurements has historically been a source of confusion. CF Discrete Sampling Geometries (DSG) guidelines represent observing platforms as 'featureTypes' (e.g. 'timeSeries', 'profile', 'trajectory'), and allow multiple platforms to be included in a single file by way of a coordinate variable that uniquely identifies each feature by ID.  For example, each buoy in a timeSeries feature dataset with multiple buoys can be differentiated by storing its identifier in this coordinate variable, which varies by the instance (or 'station' dimension in the case of timeSeries) according to the number of timeSeries features in the dataset.  This feature ID coordinate variable is specified by the **`cf_role`** attribute - more info available in the table below.
-
-For animals tracked via satellite telemetry methods, we recommend the CF DSG FeatureType [`trajectory`](https://cfconventions.org/cf-conventions/cf-conventions.html#trajectory-data).
-
-More information about CF DSG and associated requirements is available in [CF Documentation - Chapter 9](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#discrete-sampling-geometries).
-<br><br>
-
-**Guidelines for the treatment of Platforms in animal telemetry Datasets**:   
-
-For animal satellite telemetry datasets, the `platform` variable is intended to be a container variable which documents specific information about the animal that was tagged. This variable is then referenced in the `platform` attribute of the appropriate observational variables. To reduce confusion, we have elected to name this variable `animal` in the provided examples and template.
-
-<br><br>
-
-**Platform Attribution:**
-
-Name | Convention | Description | Type 
-:--------- | :-------: | :------------------- | :--------: 
-`cf_role` | CF | Indicates the values of this variable contain identifiers for the CF DSG [featureType](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#_features_and_feature_types) features in the dataset (the 'instance' variable). Allowed values are defined in [Chapter 9.5](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#coordinates-metadata) CF guidelines and consist of: `timeseries_id`, `profile_id`, and `trajectory_id`, depending on the featureType represented in the dataset, as specified by the **`featureType`** global attribute.  The dimension of this coordinate variable is referred to as the 'instance' dimension of a CF DSG file, or alternatively as the 'station', 'profile', or 'trajectory' dimension, respectively. <br> <br> **`cf_role`** may be applied to the 'Platform Variable', as indicated by **`geophysical_variable:platform`**, but it may also be an independent variable.  To comply with the **single platform per dataset** rule of the IOOS Metadata Profile, the **`cf_role`** variable will typically have a dimension of 1, unless it is a TimeSeries dataset following the 'TimeSeries - multiple-station' format.<br><br>Example: {::nomarkdown}<ul><li><b><code>cf_role = "timeseries_id"</code></b></li></ul>{:/}| variable
-`geophysical_variable:platform` | NCEI | **Variable** level attribute to be specified on each **`geophysical_variable`** (i.e. data variable) with the value indicating the name of a container variable containing platform metadata (i.e. the 'Platform Variable').<br><br>Because the IOOS Metadata Profile restricts datasets to a **single platform per dataset**, each dataset must only contain one platform container variable (usually named `station` or `platform`), and each data variable in the dataset must include a **`platform`** attribute with the name of this variable.  The **`cf_role`** attribute may optionally be applied to this variable to assign it as the CF DSG 'instance' variable.<br><br> Example: {::nomarkdown}<ul> <li> <b><code>sea_water_temperature:platform = "station"</code></b></li><li><b><code>station:cf_role = "profile_id"</code></b></li><li><b><code>station:ncei_code = "3164"</code></b></li></ul>{:/} | variable
-`platform` | ACDD |  **Global** attribute specifying the name of the *type* of platform(s) that supported the sensor data used to create this data set or product. Platforms can be of any type, including satellite, ship, station, aircraft or other. The controlled vocabulary must be indicated in the **`platform_vocabulary`** field.<br><br>**`platform`** should be a single string with no blank spaces.<br><br>Example: {::nomarkdown}<ul> <li> <b><code>platform = "buoy";</code></b> <li><b><code>platform_vocabulary = "https://mmisw.org/ont/ioos/platform";</code></b> </ul>{:/}<br>The value of the **`platform`** global attribute is used in generating the [IOOS Asset Identifier]([https://ioos.github.io/conventions-for-observing-asset-identifiers/ioos-assets-v1-0.html]) for the dataset.  Consult the [Rules for Asset Identifier Generation](#rules-for-ioos-asset-identifier-generation) section below this table for details on how this formula works. | global
-`platform_id` | IOOS | An optional, short identifier for the platform, if the data provider prefers to define an id that differs from the dataset identifier, as specified by the  **`id`** attribute.<br><br>**`platform_id`** should be a single alphanumeric string with no blank spaces.<br><br>  When **`platform_id`** is defined for a dataset, it is used in place of the **`id`** field in generating the IOOS Asset Identifier (consult the [Rules for Asset Identifier Generation](#rules-for-ioos-asset-identifier-generation) section below).<br><br>Examples: {::nomarkdown}<ul> <li> <b><code>platform_id = "carquinez"</code></b> <li><b><code>platform_id = "cb0102"</code></b> </ul>{:/} | global
-`platform_name` | IOOS | A descriptive, long name for the platform used in collecting the data.  <br><br>The value of **`platform_name`** will be used to label the platform in downstream applications, such as IOOS' National Products (Environmental Sensor Map, EDS, etc) <br><br>Examples: {::nomarkdown}<ul> <li> <b><code>platform_name = "Morro Bay - BS1 MET"</code></b> <li><b><code>platform_name = "Chesapeake Bay Buoy 102"</code></b> </ul>{:/} | global
-`platform_vocabulary` | ACDD | Controlled vocabulary for the names used in the **`platform`** attribute.<br><br> The recommended value for the **`platform_vocabulary`** attribute is a URL to either the [IOOS Platform Category vocabulary](https://mmisw.org/ont/ioos/platform), or [NERC SeaVoX Platform Categories vocabulary](https://vocab.nerc.ac.uk/collection/L06/current/). <br><br>Example:{::nomarkdown}<ul> <li> <b><code> platform_vocabulary = "https://mmisw.org/ont/ioos/platform"</code></b> </ul>{:/}<br>The IOOS Metadata Profile diverges from the NCEI Templates 2.0 in that the use of the "NASA GCMD Platform Keywords 8.1" as a **`platform_vocabulary`** is not allowed.  The reason for this is that the **`platform`** global attribute is used in generating the [IOOS Asset Identifier 1.0](https://ioos.github.io/conventions-for-observing-asset-identifiers/ioos-assets-v1-0.html) for the dataset, and thus requires a single string platform name with no blank characters.  GCMD Platform Keywords do not follow this pattern and therefore are disallowed.  See the [Rules for Asset Identifier Generation](#rules-for-ioos-asset-identifier-generation) for more info. | global
-`wmo_platform_code` | IOOS | The WMO identifier for the platform used to measure the data.  This identifier can be any of the following types:<br>{::nomarkdown}<ul> <li>WMO ID for buoys (numeric, 5 digits)</li><li>WMO ID for gliders (numeric, 7 digits)</li><li>NWS ID (alphanumeric, 5 digits)</ul>{:/} When a dataset is assigned a **`wmo_platform_code`** it is thereby assigned a secondary Asset Identifier for the **'wmo' `naming_authority`**.  See the  [Rules for Asset Identifier Generation](#rules-for-ioos-asset-identifier-generation) for more information.  <br><br>Example: {::nomarkdown}<ul> <li> <b><code>wmo_platform_code = "44011"</code></b> </ul>{:/} | global
-
-
-
-### Quality Control/QARTOD
-
-Guidance for implementing [QARTOD](https://ioos.noaa.gov/project/qartod/) quality control flag variables in a standardized fashion.  QARTOD flag variables are associated with data variables using the CF "Ancillary Variables" approach.  More information on this is available in [CF Chapter 3.4](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#ancillary-data).  
-
-This profile requires that all variables containing results from QARTOD tests be referenced by ancillary variables, and those variables use a valid CF Standard Name to reflect the test performed (see **`qartod_variable:standard_name`** in the table below for a list of suitable standard names).
-
-**Notes:**
-*  The table below uses **`geophysical_variable`** as an alias intending to represent any variable containing geophysical data, and **`qartod_variable`** as an alias for an ancillary QC flag variable.
-
-Name | Convention | Description | Type
-:--------- | :-------: | :------------------- | :--------: 
-`geophysical_variable:ancillary_variables` | CF | From [CF Chapter 3.4](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#ancillary-data):{::nomarkdown}<ul> <li>"When one data variable provides metadata about the individual values of another data variable it may be desirable to express this association by providing a link between the variables. For example, instrument data may have associated measures of uncertainty. The attribute <code><b>ancillary_variables</b></code> is used to express these types of relationships. It is a string attribute whose value is a blank separated list of variable names. The nature of the relationship between variables associated via ancillary_variables must be determined by other attributes." </li></ul>{:/}For purposes of the IOOS Metadata Profile, the **`ancillary_variables`** attribute associates the data variable with one or many QARTOD flag variables containing test results. Multiple QARTOD ancillary variables should be represented as a space-separated list of individual test variable names (for cases where data provider includes multiple test results, or includes the QARTOD "Aggregate/Rollup" flag in addition to individual flags, as required by this profile). | variable
-`qartod_variable:standard_name` | CF | The full set of CF Standard Names available to identify QARTOD flag ancillary variables can be found in [Standard Name Table v72](http://cfconventions.org/Data/cf-standard-names/72/build/cf-standard-name-table.html) (March 2020) and includes: {::nomarkdown}<ul><li><code><b>aggregate_quality_flag</b></code>: an Aggregate/Rollup flag combining multiple individual flags</li><li><code><b>attenuated_signal_test_quality_flag</b></code>: Attenuated Signal Test flag</li><li><code><b>climatology_test_quality_flag</b></code>: Climatology Test flag</li><li><code><b>flat_line_test_quality_flag</b></code>: Flat Line Test flag</li><li><code><b>gap_test_quality_flag</b></code>: Timing/Gap Test flag</li><li><code><b>gross_range_test_quality_flag</b></code>: Gross Range Test flag</li><li><code><b>location_test_quality_flag</b></code>: Location Test flag</li><li><code><b>multi_variate_test_quality_flag</b></code>: Multi-variate Test flag</li><li><code><b>neighbor_test_quality_flag</b></code>: Neighbor Test flag </li><li><code><b>rate_of_change_test_quality_flag</b></code>: Rate of Change Test flag</li><li><code><b>spike_test_quality_flag</b></code>: Spike Test flag</li><li><code><b>syntax_test_quality_flag</b></code>:  Syntax Test flag</li></ul>{:/} | variable
-`qartod_variable:flag_values` | CF | The **`flag_values`** and **`flag_meanings`** attributes describe a status flag consisting of mutually exclusive coded values. The **`flag_values`** attribute is the same type as the variable to which it is attached, and contains a list of the possible flag values.  See the below example for recommended usage of **`flag_values`** for QARTOD flagging.  | variable
-`qartod_variable:flag_meanings` | CF | The **`flag_meanings`** attribute is a string whose value is a blank separated list of descriptive words or phrases, one for each flag value.  If multi-word phrases are used to describe the flag values, then the words within a phrase should be connected with underscores. See the below example for recommended usage of **`flag_meanings`** for QARTOD flagging. | variable
-`qartod_variable:references` | CF | This should be a URL to a resource that describes the test configuration, parameters used, etc, if such a resource is available. The global `references` attribute can also be used to describe QC methods in general. | variable
-
-#### Example
-
-Adapted from: [ATN Satellite Trajectory Dataset Example]().
-
-```
-Add ncml (json) example here
-```
-
-### Instrument
-
-The IOOS Metadata Profile generally follows the [NCEI Templates](https://www.ncei.noaa.gov/netcdf-templates) guidance on usage of the **`instrument`** attribute and associated **`instrument_variable`**s.  The NCEI Templates define two different usages of the **`instrument`** attribute in a dataset:
-
-1) as a variable attribute **`instrument`** that references an **`'instrument_variable'`** by name that contains additional metadata, if needed. <br /> <br />
-
-The IOOS Metadata Profile defines specific attributes that can be attached to a dataset's **`instrument_variable`**s:
-
-* attributes that describe the instrument details (e.g. **`calibration_date`**, **`make_model`**)
-
-* attributes that allow compliance with the [IOOS Convention for Asset Identification](https://ioos.github.io/conventions-for-observing-asset-identifiers/) by further qualifying the resulting Asset Identifier for measured variables (e.g. **`component`**, **`discriminant`**) <br><br>
-
-Name | Convention | Description | Type
-:--------- | :-------: | :------------------- | :--------:
-`geophysical_variable:instrument` | NCEI | **Variable** attribute to be specified on each **`geophysical variable`** to identify the instrument that collected the data.  The value of the attribute should be set to another variable which contains the details of the instrument. There can be multiple instruments involved depending on if all the instances of the featureType in the collection come from the same instrument or not. If multiple instruments are involved, a variable should be defined for each instrument and referenced from the **`geophysical variable`** in a comma separated string. | variable
-`instrument` | ACDD | **Global**, vocabulary-constrained attribute indicating the name of the contributing instrument(s) or sensor(s) used to create this dataset. Indicate controlled vocabulary used in the **`instrument_vocabulary`** attribute.  Separate multiple instruments using commas. | global
-`instrument_variable:calibration_date` | IOOS | The date the instrument was last calibrated. Value should be specified using ISO\-8601 compatible strings. | variable
-`instrument_variable:component` | IOOS | The value of a **`component`** applies to the like-named field in the IOOS SOS Asset Identifier URN; it is used to identify individual, distinct components, or sub-assets (for example, two different sensor types), on a single platform. The **`:component`** is mapped to the Asset Identifier as follows:<br><br> Asset Identifier = <code>urn:ioos:asset_type:authority:label<b>[:component]</b>[:discriminant][#functional_parameters]</code><br><br>See examples below.| variable
-`instrument_variable:discriminant` | IOOS | The value of a **`discriminant`** applies to the like-named field in the IOOS SOS Asset Identifier URN; it ensures that in case of multiple deployments of identical sensors on the same platform (for example, measuring the same **`observedProperty`**), each sensor has a unique ID in the Identifier.  The **`:discriminant`** is mapped to the Asset Identifier as follows:<br><br> Asset Identifier = <code>urn:ioos:asset_type:authority:label[:component]<b>[:discriminant]</b>[#functional_parameters]</code> <br><br>See examples below. | variable
-`instrument_variable:make_model` | IOOS | The make and model of the instrument. | variable
-`instrument_vocabulary` | ACDD | Controlled vocabulary for the names used in the **`instrument`** attribute. <br><br>The recommended value for the **`instrument_vocabulary`** attribute is a URL to a controlled vocabulary of instrument terms, similar to guidance for **`platform_vocabulary`**. | global
-
-#### Example
-
-```
-add example ncml (json) here
-```
-
-```
-add ncml (json) here
-```
-<br><br>
-
-#### Examples
