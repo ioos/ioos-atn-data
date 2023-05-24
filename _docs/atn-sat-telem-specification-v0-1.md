@@ -144,80 +144,947 @@ test | test | test | test
 
 ### Variable attributes
 
-#### time
+ #### qartod_location_flag
 
-#### z
-
-#### lat
-
-
-#### lon
-
-
-#### location_class
-
-
-#### instrument_tag
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `flag_meanings` | | | PASS NOT_EVALUATED SUSPECT FAIL MISSING
+| `implementation` | | | https://github.com/ioos/ioos_qc/
+| `long_name` | | | Location QC test - Location test
+| `references` | | | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf
+| `standard_name` | | | location_test_quality_flag
+| `flag_values` | | | [1 2 3 4 9]
 
 
-#### instrument_location
-
-
-#### instrument_presure
-
-
-#### animal
-
-
-#### animal_life_stage
-
-
-#### animal_length_n
-
-#### animal_weight
-
-
-#### animal_sex
-
-
-
-#### taxon_name
-
-
-#### taxon_lsid
-
-
-#### error_radius
-
-
-#### semi_major_axis
-
-
-#### semi_minor_axis
-
-
-#### ellipse_orientation
-
-
-#### offset
-
-
-#### offset_orientation
-
-
-#### crs
-
+```
+ <xarray.DataArray 'qartod_location_flag' (obs: 115)>
+array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1.])
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    flag_meanings:   PASS NOT_EVALUATED SUSPECT FAIL MISSING
+    implementation:  https://github.com/ioos/ioos_qc/
+    long_name:       Location QC test - Location test
+    references:      https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual...
+    standard_name:   location_test_quality_flag
+    flag_values:     [1 2 3 4 9] 
+```
 
 #### qartod_rollup_flag
 
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `flag_meanings` | | | PASS NOT_EVALUATED SUSPECT FAIL MISSING
+| `implementation` | | | https://github.com/ioos/ioos_qc/
+| `long_name` | | | Aggregate QC value
+| `references` | | | https://github.com/ioos/ioos_qc/
+| `standard_name` | | | aggregate_quality_flag
+| `flag_values` | | | [1 2 3 4 9]
+
+
+```
+ <xarray.DataArray 'qartod_rollup_flag' (obs: 115)>
+array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 3., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 3., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1.])
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    flag_meanings:   PASS NOT_EVALUATED SUSPECT FAIL MISSING
+    implementation:  https://github.com/ioos/ioos_qc/
+    long_name:       Aggregate QC value
+    references:      https://github.com/ioos/ioos_qc/
+    standard_name:   aggregate_quality_flag
+    flag_values:     [1 2 3 4 9] 
+```
 
 #### qartod_speed_flag
 
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `flag_meanings` | | | PASS NOT_EVALUATED SUSPECT FAIL MISSING
+| `implementation` | | | https://github.com/ioos/ioos_qc/
+| `long_name` | | | Speed QC test - gross range test
+| `references` | | | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf
+| `standard_name` | | | gross_range_test_quality_flag
+| `flag_values` | | | [1 2 3 4 9]
 
-#### qartod_locaton_flag
 
+```
+ <xarray.DataArray 'qartod_speed_flag' (obs: 115)>
+array([2., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 3., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 3., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1.])
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    flag_meanings:   PASS NOT_EVALUATED SUSPECT FAIL MISSING
+    implementation:  https://github.com/ioos/ioos_qc/
+    long_name:       Speed QC test - gross range test
+    references:      https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual...
+    standard_name:   gross_range_test_quality_flag
+    flag_values:     [1 2 3 4 9] 
+```
 
 #### qartod_time_flag
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `flag_meanings` | | | PASS NOT_EVALUATED SUSPECT FAIL MISSING
+| `implementation` | | | https://github.com/ioos/ioos_qc/
+| `long_name` | | | Time QC test - gross range test
+| `references` | | | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf
+| `standard_name` | | | gross_range_test_quality_flag
+| `flag_values` | | | [1 2 3 4 9]
+
+
+```
+ <xarray.DataArray 'qartod_time_flag' (obs: 115)>
+array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1.])
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    flag_meanings:   PASS NOT_EVALUATED SUSPECT FAIL MISSING
+    implementation:  https://github.com/ioos/ioos_qc/
+    long_name:       Time QC test - gross range test
+    references:      https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual...
+    standard_name:   gross_range_test_quality_flag
+    flag_values:     [1 2 3 4 9] 
+```
+
+#### trajectory
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `cf_role` | | | trajectory_id
+| `long_name` | | | trajectory identifier
+
+
+```
+ <xarray.DataArray 'trajectory' ()>
+array('63d36a62e9b351752d1e6fdf', dtype='<U24')
+Attributes:
+    cf_role:    trajectory_id
+    long_name:  trajectory identifier 
+```
+
+#### time
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `standard_name` | | | time
+| `axis` | | | T
+| `_CoordinateAxisType` | | | Time
+| `actual_min` | | | 2023-01-31T08:00:00Z
+| `actual_max` | | | 2023-03-03T17:21:56Z
+| `long_name` | | | Time of the measurement, in seconds since 1990-01-01
+| `ancillary_variables` | | | qartod_time_flag qartod_rollup_flag qartod_speed_flag
+
+
+```
+ <xarray.DataArray 'time' (obs: 115)>
+[115 values with dtype=datetime64[ns]]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    standard_name:        time
+    axis:                 T
+    _CoordinateAxisType:  Time
+    actual_min:           2023-01-31T08:00:00Z
+    actual_max:           2023-03-03T17:21:56Z
+    long_name:            Time of the measurement, in seconds since 1990-01-01
+    ancillary_variables:  qartod_time_flag qartod_rollup_flag qartod_speed_flag 
+```
+
+#### z
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `axis` | | | Z
+| `positive` | | | down
+| `standard_name` | | | depth
+| `units` | | | m
+| `actual_min` | | | 0.0
+| `actual_max` | | | 0.0
+| `long_name` | | | depth of measurement
+| `instrument` | | | intrument_pressure
+| `platform` | | | animal
+
+
+```
+ <xarray.DataArray 'z' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    axis:           Z
+    positive:       down
+    standard_name:  depth
+    units:          m
+    actual_min:     0.0
+    actual_max:     0.0
+    long_name:      depth of measurement
+    instrument:     intrument_pressure
+    platform:       animal 
+```
+
+#### lat
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `axis` | | | Y
+| `_CoordinateAxisType` | | | Lat
+| `standard_name` | | | latitude
+| `units` | | | degrees_north
+| `valid_max` | | | 90.0
+| `valid_min` | | | -90.0
+| `actual_min` | | | 45.6618
+| `actual_max` | | | 45.9472
+| `long_name` | | | Latitude portion of location in decimal degrees North
+| `instrument` | | | instrument_location
+| `platform` | | | animal
+| `ancillary_variables` | | | qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation
+
+
+```
+ <xarray.DataArray 'lat' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    axis:                 Y
+    _CoordinateAxisType:  Lat
+    standard_name:        latitude
+    units:                degrees_north
+    valid_max:            90.0
+    valid_min:            -90.0
+    actual_min:           45.6618
+    actual_max:           45.9472
+    long_name:            Latitude portion of location in decimal degrees North
+    instrument:           instrument_location
+    platform:             animal
+    ancillary_variables:  qartod_location_flag qartod_rollup_flag qartod_spee... 
+```
+
+#### lon
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `axis` | | | X
+| `_CoordinateAxisType` | | | Lon
+| `standard_name` | | | longitude
+| `units` | | | degrees_east
+| `valid_max` | | | 180.0
+| `valid_min` | | | -180.0
+| `actual_min` | | | 50.8371
+| `actual_max` | | | 51.1888
+| `long_name` | | | Longitude portion of location in decimal degrees East
+| `instrument` | | | instrument_location
+| `platform` | | | animal
+| `ancillary_variables` | | | qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation
+
+
+```
+ <xarray.DataArray 'lon' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    axis:                 X
+    _CoordinateAxisType:  Lon
+    standard_name:        longitude
+    units:                degrees_east
+    valid_max:            180.0
+    valid_min:            -180.0
+    actual_min:           50.8371
+    actual_max:           51.1888
+    long_name:            Longitude portion of location in decimal degrees East
+    instrument:           instrument_location
+    platform:             animal
+    ancillary_variables:  qartod_location_flag qartod_rollup_flag qartod_spee... 
+```
+
+#### deploy_id
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `comment` | | | Friendly name given to the tag by the user. If no specific friendly name is given, this is the PTT id.
+| `long_name` | | | id for this deployment. This is typically the tag ptt
+| `coverage_content_type` | | | referenceInformation
+
+
+```
+ <xarray.DataArray 'deploy_id' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    comment:                Friendly name given to the tag by the user. If no...
+    long_name:              id for this deployment. This is typically the tag...
+    coverage_content_type:  referenceInformation 
+```
+
+#### ptt
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `long_name` | | | Platform Transmitter Terminal (PTT) id used for Argos transmissions
+| `comment` | | | PTT code for this deployment. PTT codes may be used on multiple deployments, but  not concurrently. When combined with deployment dates, PTTs can uniquely identify a deployment.
+| `coverage_content_type` | | | referenceInformation
+
+
+```
+ <xarray.DataArray 'ptt' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    long_name:              Platform Transmitter Terminal (PTT) id used for A...
+    comment:                PTT code for this deployment. PTT codes may be us...
+    coverage_content_type:  referenceInformation 
+```
+
+#### instrument
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `long_name` | | | Instrument
+| `comment` | | | Wildlife Computers instrument family. 
+
+
+```
+ <xarray.DataArray 'instrument' (obs: 115)>
+[115 values with dtype=object]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    long_name:  Instrument
+    comment:    Wildlife Computers instrument family.  
+```
+
+#### type
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `comment` | | | Type of location: Argos
+| `long_name` | | | Type of location information - Argos satellite location
+
+
+```
+ <xarray.DataArray 'type' (obs: 115)>
+[115 values with dtype=object]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    comment:    Type of location: Argos
+    long_name:  Type of location information - Argos satellite location 
+```
+
+#### location_class
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `standard_name` | | | quality_flag
+| `comment` | | | Quality codes from the ARGOS satellite (in meters): G,3,2,1,0,A,B,Z. See http://www.argos-system.org/manual/3-location/34_location_classes.htm
+| `long_name` | | | Location Quality Code from ARGOS satellite system
+| `code_values` | | | G,3,2,1,0,A,B,Z
+| `code_meanings` | | | estimated error less than 100m and 1+ messages received per satellite pass,estimated error less than 250m and 4+ messages received per satellite pass,estimated error between 250m and 500m and 4+ messages per satellite pass,estimated error between 500m and 1500m and 4+ messages per satellite pass,estimated error greater than 1500m and 4+ messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 3 messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 1 or 2 messages received per satellite pass,invalid location (available for Service Plus or Auxilliary Location Processing)
+| `instrument` | | | instrument_location
+| `platform` | | | animal
+| `ancillary_variables` | | | lat lon
+
+
+```
+ <xarray.DataArray 'location_class' (obs: 115)>
+[115 values with dtype=object]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    standard_name:        quality_flag
+    comment:              Quality codes from the ARGOS satellite (in meters):...
+    long_name:            Location Quality Code from ARGOS satellite system
+    code_values:          G,3,2,1,0,A,B,Z
+    code_meanings:        estimated error less than 100m and 1+ messages rece...
+    instrument:           instrument_location
+    platform:             animal
+    ancillary_variables:  lat lon 
+```
+
+#### error_radius
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `long_name` | | | Error radius
+| `units` | | | m
+| `comment` | | | If the position is best represented as a circle, this field gives the radius of that circle in meters.
+| `instrument` | | | instrument_location
+| `platform` | | | animal
+| `coverage_content_type` | | | qualityInformation
+
+
+```
+ <xarray.DataArray 'error_radius' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    long_name:              Error radius
+    units:                  m
+    comment:                If the position is best represented as a circle, ...
+    instrument:             instrument_location
+    platform:               animal
+    coverage_content_type:  qualityInformation 
+```
+
+#### semi_major_axis
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `units` | | | m
+| `comment` | | | If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-major elliptical axis (one half of the major axis).
+| `long_name` | | | Error-elipse semi-major axis
+| `instrument` | | | instrument_location
+| `platform` | | | animal
+| `coverage_content_type` | | | auxillaryInformation
+
+
+```
+ <xarray.DataArray 'semi_major_axis' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    units:                  m
+    comment:                If the estimated position error is best expressed...
+    long_name:              Error-elipse semi-major axis
+    instrument:             instrument_location
+    platform:               animal
+    coverage_content_type:  auxillaryInformation 
+```
+
+#### semi_minor_axis
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `units` | | | m
+| `comment` | | | If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-minor elliptical axis (one half of the minor axis).
+| `long_name` | | | Error-elipse semi-minor axis
+| `instrument` | | | instrument_location
+| `platform` | | | animal
+| `coverage_content_type` | | | auxillaryInformation
+
+
+```
+ <xarray.DataArray 'semi_minor_axis' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    units:                  m
+    comment:                If the estimated position error is best expressed...
+    long_name:              Error-elipse semi-minor axis
+    instrument:             instrument_location
+    platform:               animal
+    coverage_content_type:  auxillaryInformation 
+```
+
+#### ellipse_orientation
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `units` | | | degrees
+| `comment` | | | The angle in degrees of the ellipse from true north, proceeding clockwise (0 to 360). A blank field represents 0 degrees.
+| `long_name` | | | Error ellipse orientation in degrees clockwise from true north
+| `instrument` | | | instrument_location
+| `platform` | | | animal
+| `coverage_content_type` | | | auxillaryInformation
+
+
+```
+ <xarray.DataArray 'ellipse_orientation' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    units:                  degrees
+    comment:                The angle in degrees of the ellipse from true nor...
+    long_name:              Error ellipse orientation in degrees clockwise fr...
+    instrument:             instrument_location
+    platform:               animal
+    coverage_content_type:  auxillaryInformation 
+```
+
+#### offset
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `units` | | | m
+| `comment` | | | This field is non-zero if the circle or ellipse are not centered on the (Latitude, Longitude) values on this row. "Offset" gives the distance in meters from (Latitude, Longitude) to the center of the ellipse.
+| `long_name` | | | Offset in meters to center of error elipse or circle
+| `instrument` | | | instrument_location
+| `platform` | | | animal
+| `coverage_content_type` | | | auxillaryInformation
+
+
+```
+ <xarray.DataArray 'offset' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    units:                  m
+    comment:                This field is non-zero if the circle or ellipse a...
+    long_name:              Offset in meters to center of error elipse or circle
+    instrument:             instrument_location
+    platform:               animal
+    coverage_content_type:  auxillaryInformation 
+```
+
+#### offset_orientation
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `units` | | | degrees
+| `comment` | | | If the "Offset" field is non-zero, this field is the angle in degrees from (Latitude, Longitude) to the center of the ellipse. Zero degrees is true north; a blank field represents 0 degrees.
+| `long_name` | | | Offset orientation angle to ellipse center
+| `instrument` | | | instrument_location
+| `platform` | | | animal
+| `coverage_content_type` | | | auxillaryInformation
+
+
+```
+ <xarray.DataArray 'offset_orientation' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    units:                  degrees
+    comment:                If the "Offset" field is non-zero, this field is ...
+    long_name:              Offset orientation angle to ellipse center
+    instrument:             instrument_location
+    platform:               animal
+    coverage_content_type:  auxillaryInformation 
+```
+
+#### gpe_msd
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+
+
+```
+ <xarray.DataArray 'gpe_msd' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs 
+```
+
+#### gpe_u
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+
+
+```
+ <xarray.DataArray 'gpe_u' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs 
+```
+
+#### count
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `long_name` | | | 
+| `units` | | | count
+| `coverage_content_type` | | | auxillaryInformation
+
+
+```
+ <xarray.DataArray 'count' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    long_name:              
+    units:                  count
+    coverage_content_type:  auxillaryInformation 
+```
+
+#### comment
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `comment` | | | Optional text field
+| `long_name` | | | just a comment
+
+
+```
+ <xarray.DataArray 'comment' (obs: 115)>
+[115 values with dtype=float64]
+Coordinates:
+    time     (obs) datetime64[ns] ...
+    z        (obs) float64 ...
+    lat      (obs) float64 ...
+    lon      (obs) float64 ...
+Dimensions without coordinates: obs
+Attributes:
+    comment:    Optional text field
+    long_name:  just a comment 
+```
+
+#### crs
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `epsg_code` | | | EPSG:4326
+| `grid_mapping_name` | | | latitude_longitude
+| `inverse_flattening` | | | 298.257223563
+| `semi_major_axis` | | | 6378137.0
+| `long_name` | | | Coordinate Reference System - http://www.opengis.net/def/crs/EPSG/0/4326
+
+
+```
+ <xarray.DataArray 'crs' ()>
+[1 values with dtype=int32]
+Attributes:
+    epsg_code:           EPSG:4326
+    grid_mapping_name:   latitude_longitude
+    inverse_flattening:  298.257223563
+    semi_major_axis:     6378137.0
+    long_name:           Coordinate Reference System - http://www.opengis.net... 
+```
+
+#### instrument_location
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `long_name` | | | Wildlife Computers SPLASH10-F
+| `location_type` | | | argos/modeled
+| `comment` | | | Location
+| `manufacturer` | | | Wildlife Computers
+| `make_model` | | | SPLASH10-F
+| `calibration_date` | | | NOT PROVIDED
+| `serial_number` | | | 07A0358
+
+
+```
+ <xarray.DataArray 'instrument_location' ()>
+[1 values with dtype=object]
+Attributes:
+    long_name:         Wildlife Computers SPLASH10-F
+    location_type:     argos/modeled
+    comment:           Location
+    manufacturer:      Wildlife Computers
+    make_model:        SPLASH10-F
+    calibration_date:  NOT PROVIDED
+    serial_number:     07A0358 
+```
+
+#### instrument_tag
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `manufacturer` | | | Wildlife Computers
+| `make_model` | | | SPLASH10-F
+| `calibration_date` | | | NOT PROVIDED
+| `serial_number` | | | 07A0358
+| `long_name` | | | telemetry tag applied to animal
+
+
+```
+ <xarray.DataArray 'instrument_tag' ()>
+[1 values with dtype=object]
+Attributes:
+    manufacturer:      Wildlife Computers
+    make_model:        SPLASH10-F
+    calibration_date:  NOT PROVIDED
+    serial_number:     07A0358
+    long_name:         telemetry tag applied to animal 
+```
+
+#### animal
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `cf_role` | | | trajectory_id
+| `long_name` | | | tagged animal id
+| `valid_name` | | | Pusa caspica
+| `AphiaID` | | | 255022
+| `scientificname` | | | Pusa caspica
+| `authority` | | | Gmelin, 1788
+| `kingdom` | | | Animalia
+| `phylum` | | | Chordata
+| `class` | | | Mammalia
+| `order` | | | Carnivora
+| `family` | | | Phocidae
+| `genus` | | | Pusa
+| `taxonRankID` | | | 220
+| `rank` | | | Species
+| `superdomain` | | | Biota
+| `subphylum` | | | Vertebrata
+| `infraphylum` | | | Gnathostomata
+| `megaclass` | | | Tetrapoda
+| `subclass` | | | Theria
+| `suborder` | | | Caniformia
+| `infraorder` | | | Pinnipedia
+| `species` | | | Pusa caspica
+
+
+```
+ <xarray.DataArray 'animal' ()>
+[1 values with dtype=object]
+Attributes: (12/22)
+    cf_role:         trajectory_id
+    long_name:       tagged animal id
+    valid_name:      Pusa caspica
+    AphiaID:         255022
+    scientificname:  Pusa caspica
+    authority:       Gmelin, 1788
+    ...              ...
+    infraphylum:     Gnathostomata
+    megaclass:       Tetrapoda
+    subclass:        Theria
+    suborder:        Caniformia
+    infraorder:      Pinnipedia
+    species:         Pusa caspica 
+```
+
+#### animal_life_stage
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `long_name` | | | Lifestage of the animal at time of deployment (adult, juvenile)
+| `animal_life_stage` | | | adult
+
+
+```
+ <xarray.DataArray 'animal_life_stage' ()>
+[1 values with dtype=object]
+Attributes:
+    long_name:          Lifestage of the animal at time of deployment (adult,...
+    animal_life_stage:  adult 
+```
+
+#### animal_sex
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `long_name` | | | sex of the animal at time of tag deployment
+| `animal_sex` | | | female
+
+
+```
+ <xarray.DataArray 'animal_sex' ()>
+[1 values with dtype=object]
+Attributes:
+    long_name:   sex of the animal at time of tag deployment
+    animal_sex:  female 
+```
+
+#### animal_length
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `long_name` | | | length of the animal as measured at deployment
+| `units` | | | m
+| `coverage_content_type` | | | referenceInformation
+| `animal_length_type` | | | curve length
+
+
+```
+ <xarray.DataArray 'animal_length' ()>
+[1 values with dtype=float32]
+Attributes:
+    long_name:              length of the animal as measured at deployment
+    units:                  m
+    coverage_content_type:  referenceInformation
+    animal_length_type:     curve length 
+```
+
+#### animal_length_2
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+
+
+```
+ <xarray.DataArray 'animal_length_2' ()>
+[1 values with dtype=float32] 
+```
+
+#### animal_weight
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `long_name` | | | mass of the animal as measured or estimated at deployment
+| `units` | | | kg
+| `animal_weight` | | | 59.00 kg
+| `coverage_content_type` | | | referenceInformation
+
+
+```
+ <xarray.DataArray 'animal_weight' ()>
+[1 values with dtype=float32]
+Attributes:
+    long_name:              mass of the animal as measured or estimated at de...
+    units:                  kg
+    animal_weight:          59.00 kg
+    coverage_content_type:  referenceInformation 
+```
+
+#### taxon_name
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `standard_name` | | | biological_taxon_name
+| `long_name` | | | most precise taxonomic classification for the tagged animal
+| `source` | | | WoRMS (2023). Pusa caspica Gmelin, 1788. Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022 on 2023-05-05
+| `url` | | | https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022
+
+
+```
+ <xarray.DataArray 'taxon_name' ()>
+[1 values with dtype=object]
+Attributes:
+    standard_name:  biological_taxon_name
+    long_name:      most precise taxonomic classification for the tagged animal
+    source:         WoRMS (2023). Pusa caspica Gmelin, 1788. Accessed at: htt...
+    url:            https://www.marinespecies.org/aphia.php?p=taxdetails&id=2... 
+```
+
+#### taxon_lsid
+
+| attribute | disposition | description | example
+|-----------|-------------|-------------|--------
+| `standard_name` | | | biological_taxon_lsid
+| `long_name` | | | Namespaced Taxon Identifier for the tagged animal
+| `source` | | | WoRMS (2023). Pusa caspica Gmelin, 1788. Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022 on 2023-05-05
+| `url` | | | https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022
+| `id_source_name` | | | 
+| `id_source_link` | | | 
+
+
+```
+ <xarray.DataArray 'taxon_lsid' ()>
+[1 values with dtype=object]
+Attributes:
+    standard_name:   biological_taxon_lsid
+    long_name:       Namespaced Taxon Identifier for the tagged animal
+    source:          WoRMS (2023). Pusa caspica Gmelin, 1788. Accessed at: ht...
+    url:             https://www.marinespecies.org/aphia.php?p=taxdetails&id=...
+    id_source_name:  
+    id_source_link:   
+```
 
 ### Example Dataset
 
