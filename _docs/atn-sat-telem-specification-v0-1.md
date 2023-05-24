@@ -144,7 +144,7 @@ test | test | test | test
 
 ### Variable attributes
 
- #### qartod_location_flag
+#### qartod_location_flag
 
 | attribute | disposition | description | example
 |-----------|-------------|-------------|--------
