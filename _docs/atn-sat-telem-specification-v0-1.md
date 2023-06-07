@@ -145,15 +145,18 @@ test | test | test | test
 
 #### qartod_location_flag
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `flag_meanings` | | | PASS NOT_EVALUATED SUSPECT FAIL MISSING
-| `implementation` | | | https://github.com/ioos/ioos_qc/
-| `long_name` | | | Location QC test - Location test
-| `references` | | | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf
-| `standard_name` | | | location_test_quality_flag
-| `flag_values` | | | [1 2 3 4 9]
-
+| Attribute             | Disposition   | Description   | Example                                                                           |
+|:----------------------|:--------------|:--------------|:----------------------------------------------------------------------------------|
+| _FillValue            |               |               | 241                                                                               |
+| coordinates           |               |               | time z lon lat                                                                    |
+| flag_meanings         |               |               | PASS NOT_EVALUATED SUSPECT FAIL MISSING                                           |
+| implementation        |               |               | https://github.com/ioos/ioos_qc/                                                  |
+| long_name             |               |               | Location QC test - Location test                                                  |
+| references            |               |               | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf |
+| standard_name         |               |               | location_test_quality_flag                                                        |
+| flag_values           |               |               | [1, 2, 3, 4, 9]                                                                   |
+| coverage_content_type |               |               | qualityInformation                                                                |
+| ioos_category         |               |               | Quality                                                                           |
 
 ```
  <xarray.DataArray 'qartod_location_flag' (obs: 115)>
@@ -181,15 +184,18 @@ Attributes:
 
 #### qartod_rollup_flag
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `flag_meanings` | | | PASS NOT_EVALUATED SUSPECT FAIL MISSING
-| `implementation` | | | https://github.com/ioos/ioos_qc/
-| `long_name` | | | Aggregate QC value
-| `references` | | | https://github.com/ioos/ioos_qc/
-| `standard_name` | | | aggregate_quality_flag
-| `flag_values` | | | [1 2 3 4 9]
-
+| Attribute             | Disposition   | Description   | Example                                                                           |
+|:----------------------|:--------------|:--------------|:----------------------------------------------------------------------------------|
+| _FillValue            |               |               | 241                                                                               |
+| coordinates           |               |               | time z lon lat                                                                    |
+| flag_meanings         |               |               | PASS NOT_EVALUATED SUSPECT FAIL MISSING                                           |
+| implementation        |               |               | https://github.com/ioos/ioos_qc/                                                  |
+| long_name             |               |               | Aggregate QC value                                                                |
+| references            |               |               | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf |
+| standard_name         |               |               | aggregate_quality_flag                                                            |
+| flag_values           |               |               | [1, 2, 3, 4, 9]                                                                   |
+| coverage_content_type |               |               | qualityInformation                                                                |
+| ioos_category         |               |               | Quality                                                                           |
 
 ```
  <xarray.DataArray 'qartod_rollup_flag' (obs: 115)>
@@ -217,14 +223,18 @@ Attributes:
 
 #### qartod_speed_flag
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `flag_meanings` | | | PASS NOT_EVALUATED SUSPECT FAIL MISSING
-| `implementation` | | | https://github.com/ioos/ioos_qc/
-| `long_name` | | | Speed QC test - gross range test
-| `references` | | | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf
-| `standard_name` | | | gross_range_test_quality_flag
-| `flag_values` | | | [1 2 3 4 9]
+| Attribute             | Disposition   | Description   | Example                                                                           |
+|:----------------------|:--------------|:--------------|:----------------------------------------------------------------------------------|
+| _FillValue            |               |               | 241                                                                               |
+| coordinates           |               |               | time z lon lat                                                                    |
+| flag_meanings         |               |               | PASS NOT_EVALUATED SUSPECT FAIL MISSING                                           |
+| implementation        |               |               | https://github.com/ioos/ioos_qc/                                                  |
+| long_name             |               |               | Speed QC test - gross range test                                                  |
+| references            |               |               | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf |
+| standard_name         |               |               | gross_range_test_quality_flag                                                     |
+| flag_values           |               |               | [1, 2, 3, 4, 9]                                                                   |
+| coverage_content_type |               |               | qualityInformation                                                                |
+| ioos_category         |               |               | Quality                                                                           |
 
 
 ```
@@ -253,14 +263,18 @@ Attributes:
 
 #### qartod_time_flag
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `flag_meanings` | | | PASS NOT_EVALUATED SUSPECT FAIL MISSING
-| `implementation` | | | https://github.com/ioos/ioos_qc/
-| `long_name` | | | Time QC test - gross range test
-| `references` | | | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf
-| `standard_name` | | | gross_range_test_quality_flag
-| `flag_values` | | | [1 2 3 4 9]
+| Attribute             | Disposition   | Description   | Example                                                                           |
+|:----------------------|:--------------|:--------------|:----------------------------------------------------------------------------------|
+| _FillValue            |               |               | 241                                                                               |
+| coordinates           |               |               | time z lon lat                                                                    |
+| flag_meanings         |               |               | PASS NOT_EVALUATED SUSPECT FAIL MISSING                                           |
+| implementation        |               |               | https://github.com/ioos/ioos_qc/                                                  |
+| long_name             |               |               | Time QC test - gross range test                                                   |
+| references            |               |               | https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf |
+| standard_name         |               |               | gross_range_test_quality_flag                                                     |
+| flag_values           |               |               | [1, 2, 3, 4, 9]                                                                   |
+| coverage_content_type |               |               | qualityInformation                                                                |
+| ioos_category         |               |               | Quality                                                                           |
 
 
 ```
@@ -289,10 +303,10 @@ Attributes:
 
 #### trajectory
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `cf_role` | | | trajectory_id
-| `long_name` | | | trajectory identifier
+| Attribute   | Disposition   | Description   | Example               |
+|:------------|:--------------|:--------------|:----------------------|
+| cf_role     |               |               | trajectory_id         |
+| long_name   |               |               | trajectory identifier |
 
 
 ```
@@ -305,15 +319,20 @@ Attributes:
 
 #### time
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `standard_name` | | | time
-| `axis` | | | T
-| `_CoordinateAxisType` | | | Time
-| `actual_min` | | | 2023-01-31T08:00:00Z
-| `actual_max` | | | 2023-03-03T17:21:56Z
-| `long_name` | | | Time of the measurement, in seconds since 1990-01-01
-| `ancillary_variables` | | | qartod_time_flag qartod_rollup_flag qartod_speed_flag
+| Attribute             | Disposition   | Description   | Example                                               |
+|:----------------------|:--------------|:--------------|:------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                 |
+| units                 |               |               | "seconds since 1970-01-01 00:00:00Z"                  |
+| standard_name         |               |               | time                                                  |
+| axis                  |               |               | T                                                     |
+| _CoordinateAxisType   |               |               | Time                                                  |
+| calendar              |               |               | standard                                              |
+| actual_min            |               |               | 2023-01-31T08:00:00Z                                  |
+| actual_max            |               |               | 2023-03-03T17:21:56Z                                  |
+| long_name             |               |               | Time of the measurement, in seconds since 1970-01-01  |
+| ancillary_variables   |               |               | qartod_time_flag qartod_rollup_flag qartod_speed_flag |
+| coverage_content_type |               |               | coordinate                                            |
+| ioos_category         |               |               | Time                                                  |
 
 
 ```
@@ -337,17 +356,20 @@ Attributes:
 
 #### z
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `axis` | | | Z
-| `positive` | | | down
-| `standard_name` | | | depth
-| `units` | | | m
-| `actual_min` | | | 0.0
-| `actual_max` | | | 0.0
-| `long_name` | | | depth of measurement
-| `instrument` | | | intrument_pressure
-| `platform` | | | animal
+| Attribute             | Disposition   | Description   | Example              |
+|:----------------------|:--------------|:--------------|:---------------------|
+| _FillValue            |               |               | -9999.9              |
+| axis                  |               |               | Z                    |
+| positive              |               |               | down                 |
+| standard_name         |               |               | depth                |
+| units                 |               |               | m                    |
+| actual_min            |               |               | 0.0                  |
+| actual_max            |               |               | 0.0                  |
+| long_name             |               |               | depth of measurement |
+| instrument            |               |               | instrument_location  |
+| platform              |               |               | animal               |
+| coverage_content_type |               |               | coordinate           |
+| ioos_category         |               |               | Depth                |
 
 
 ```
@@ -373,20 +395,23 @@ Attributes:
 
 #### lat
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `axis` | | | Y
-| `_CoordinateAxisType` | | | Lat
-| `standard_name` | | | latitude
-| `units` | | | degrees_north
-| `valid_max` | | | 90.0
-| `valid_min` | | | -90.0
-| `actual_min` | | | 45.6618
-| `actual_max` | | | 45.9472
-| `long_name` | | | Latitude portion of location in decimal degrees North
-| `instrument` | | | instrument_location
-| `platform` | | | animal
-| `ancillary_variables` | | | qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation
+| Attribute             | Disposition   | Description   | Example                                                                                                                                              |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999.9                                                                                                                                              |
+| axis                  |               |               | Y                                                                                                                                                    |
+| _CoordinateAxisType   |               |               | Lat                                                                                                                                                  |
+| standard_name         |               |               | latitude                                                                                                                                             |
+| units                 |               |               | degrees_north                                                                                                                                        |
+| valid_max             |               |               | 90.0                                                                                                                                                 |
+| valid_min             |               |               | -90.0                                                                                                                                                |
+| actual_min            |               |               | 45.6618                                                                                                                                              |
+| actual_max            |               |               | 45.9472                                                                                                                                              |
+| long_name             |               |               | Latitude portion of location in decimal degrees North                                                                                                |
+| instrument            |               |               | instrument_location                                                                                                                                  |
+| platform              |               |               | animal                                                                                                                                               |
+| ancillary_variables   |               |               | qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation |
+| coverage_content_type |               |               | coordinate                                                                                                                                           |
+| ioos_category         |               |               | Location                                                                                                                                             |
 
 
 ```
@@ -415,20 +440,23 @@ Attributes:
 
 #### lon
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `axis` | | | X
-| `_CoordinateAxisType` | | | Lon
-| `standard_name` | | | longitude
-| `units` | | | degrees_east
-| `valid_max` | | | 180.0
-| `valid_min` | | | -180.0
-| `actual_min` | | | 50.8371
-| `actual_max` | | | 51.1888
-| `long_name` | | | Longitude portion of location in decimal degrees East
-| `instrument` | | | instrument_location
-| `platform` | | | animal
-| `ancillary_variables` | | | qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation
+| Attribute             | Disposition   | Description   | Example                                                                                                                                              |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999.9                                                                                                                                              |
+| axis                  |               |               | X                                                                                                                                                    |
+| _CoordinateAxisType   |               |               | Lon                                                                                                                                                  |
+| standard_name         |               |               | longitude                                                                                                                                            |
+| units                 |               |               | degrees_east                                                                                                                                         |
+| valid_max             |               |               | 180.0                                                                                                                                                |
+| valid_min             |               |               | -180.0                                                                                                                                               |
+| actual_min            |               |               | 50.8371                                                                                                                                              |
+| actual_max            |               |               | 51.1888                                                                                                                                              |
+| long_name             |               |               | Longitude portion of location in decimal degrees East                                                                                                |
+| instrument            |               |               | instrument_location                                                                                                                                  |
+| platform              |               |               | platform                                                                                                                                             |
+| ancillary_variables   |               |               | qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation |
+| coverage_content_type |               |               | coordinate                                                                                                                                           |
+| ioos_category         |               |               | Location                                                                                                                                             |
 
 
 ```
@@ -457,11 +485,16 @@ Attributes:
 
 #### deploy_id
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `comment` | | | Friendly name given to the tag by the user. If no specific friendly name is given, this is the PTT id.
-| `long_name` | | | id for this deployment. This is typically the tag ptt
-| `coverage_content_type` | | | referenceInformation
+| Attribute             | Disposition   | Description   | Example                                                                                                |
+|:----------------------|:--------------|:--------------|:-------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                                                                  |
+| coordinates           |               |               | time z lon lat                                                                                         |
+| comment               |               |               | Friendly name given to the tag by the user. If no specific friendly name is given, this is the PTT id. |
+| long_name             |               |               | id for this deployment. This is typically the tag ptt                                                  |
+| instrument            |               |               | instrument_location                                                                                    |
+| platform              |               |               | platform                                                                                               |
+| coverage_content_type |               |               | referenceInformation                                                                                   |
+| ioos_category         |               |               | Other                                                                                                  |
 
 
 ```
@@ -481,11 +514,16 @@ Attributes:
 
 #### ptt
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `long_name` | | | Platform Transmitter Terminal (PTT) id used for Argos transmissions
-| `comment` | | | PTT code for this deployment. PTT codes may be used on multiple deployments, but  not concurrently. When combined with deployment dates, PTTs can uniquely identify a deployment.
-| `coverage_content_type` | | | referenceInformation
+| Attribute             | Disposition   | Description   | Example                                                                                                                                                                      |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                                                                                                                                        |
+| coordinates           |               |               | time z lon lat                                                                                                                                                               |
+| comment               |               |               | PTT id for this deployment. PTT ids may be used on multiple deployments, but not concurrently. When combined with deployment dates, PTTs can uniquely identify a deployment. |
+| long_name             |               |               | Platform Transmitter Terminal (PTT) id used for Argos transmissions                                                                                                          |
+| instrument            |               |               | instrument_location                                                                                                                                                          |
+| platform              |               |               | platform                                                                                                                                                                     |
+| coverage_content_type |               |               | referenceInformation                                                                                                                                                         |
+| ioos_category         |               |               | Other                                                                                                                                                                        |
 
 
 ```
@@ -505,10 +543,15 @@ Attributes:
 
 #### instrument
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `long_name` | | | Instrument
-| `comment` | | | Wildlife Computers instrument family. 
+| Attribute             | Disposition   | Description   | Example                               |
+|:----------------------|:--------------|:--------------|:--------------------------------------|
+| coordinates           |               |               | time z lon lat                        |
+| comment               |               |               | Wildlife Computers instrument family. |
+| long_name             |               |               | Instrument family                     |
+| instrument            |               |               | instrument_location                   |
+| platform              |               |               | platform                              |
+| coverage_content_type |               |               | referenceInformation                  |
+| ioos_category         |               |               | Other                                 |
 
 
 ```
@@ -527,10 +570,15 @@ Attributes:
 
 #### type
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `comment` | | | Type of location: Argos
-| `long_name` | | | Type of location information - Argos satellite location
+| Attribute             | Disposition   | Description   | Example                                                                       |
+|:----------------------|:--------------|:--------------|:------------------------------------------------------------------------------|
+| coordinates           |               |               | time z lon lat                                                                |
+| comment               |               |               | Type of location: Argos, FastGPS or User                                      |
+| long_name             |               |               | Type of location information - Argos, GPS satellite or user provided location |
+| instrument            |               |               | instrument_location                                                           |
+| platform              |               |               | platform                                                                      |
+| coverage_content_type |               |               | referenceInformation                                                          |
+| ioos_category         |               |               | Other                                                                         |
 
 
 ```
@@ -549,16 +597,19 @@ Attributes:
 
 #### location_class
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `standard_name` | | | quality_flag
-| `comment` | | | Quality codes from the ARGOS satellite (in meters): G,3,2,1,0,A,B,Z. See http://www.argos-system.org/manual/3-location/34_location_classes.htm
-| `long_name` | | | Location Quality Code from ARGOS satellite system
-| `code_values` | | | G,3,2,1,0,A,B,Z
-| `code_meanings` | | | estimated error less than 100m and 1+ messages received per satellite pass,estimated error less than 250m and 4+ messages received per satellite pass,estimated error between 250m and 500m and 4+ messages per satellite pass,estimated error between 500m and 1500m and 4+ messages per satellite pass,estimated error greater than 1500m and 4+ messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 3 messages received per satellite pass,no least squares estimated error or unbounded kalman filter estimated error and 1 or 2 messages received per satellite pass,invalid location (available for Service Plus or Auxilliary Location Processing)
-| `instrument` | | | instrument_location
-| `platform` | | | animal
-| `ancillary_variables` | | | lat lon
+| Attribute             | Disposition   | Description   | Example                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| coordinates           |               |               | time z lon lat                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| standard_name         |               |               | quality_flag                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| comment               |               |               | Quality codes from the ARGOS satellite (in meters): G,3,2,1,0,A,B,Z. See http://www.argos-system.org/manual/3-location/34_location_classes.htm                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| long_name             |               |               | Location Quality Code from ARGOS satellite system                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| code_values           |               |               | G,3,2,1,0,A,B,Z                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| code_meanings         |               |               | estimated error less than 100m and 1+ messages received per satellite pass, estimated error less than 250m and 4+ messages received per satellite pass, estimated error between 250m and 500m and 4+ messages per satellite pass, estimated error between 500m and 1500m and 4+ messages per satellite pass,  estimated error greater than 1500m and 4+ messages received per satellite pass, no least squares estimated error or unbounded kalman filter estimated error and 3 messages received per satellite pass, no least squares estimated error or unbounded kalman filter estimated error and 1 or 2 messages received per satellite pass, invalid location (available for Service Plus or Auxilliary Location Processing) |
+| instrument            |               |               | instrument_location                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| platform              |               |               | animal                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ancillary_variables   |               |               | lat lon                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| coverage_content_type |               |               | qualityInformation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ioos_category         |               |               | Quality                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 
 ```
@@ -583,14 +634,18 @@ Attributes:
 
 #### error_radius
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `long_name` | | | Error radius
-| `units` | | | m
-| `comment` | | | If the position is best represented as a circle, this field gives the radius of that circle in meters.
-| `instrument` | | | instrument_location
-| `platform` | | | animal
-| `coverage_content_type` | | | qualityInformation
+| Attribute             | Disposition   | Description   | Example                                                                                                |
+|:----------------------|:--------------|:--------------|:-------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                                                                  |
+| coordinates           |               |               | time z lon lat                                                                                         |
+| comment               |               |               | If the position is best represented as a circle, this field gives the radius of that circle in meters. |
+| long_name             |               |               | Error radius                                                                                           |
+| units                 |               |               | m                                                                                                      |
+| instrument            |               |               | instrument_location                                                                                    |
+| platform              |               |               | animal                                                                                                 |
+| ancillary_variables   |               |               | lat lon offset offset_orientation                                                                      |
+| coverage_content_type |               |               | qualityInformation                                                                                     |
+| ioos_category         |               |               | Quality                                                                                                |
 
 
 ```
@@ -613,14 +668,18 @@ Attributes:
 
 #### semi_major_axis
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `units` | | | m
-| `comment` | | | If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-major elliptical axis (one half of the major axis).
-| `long_name` | | | Error-elipse semi-major axis
-| `instrument` | | | instrument_location
-| `platform` | | | animal
-| `coverage_content_type` | | | auxillaryInformation
+| Attribute             | Disposition   | Description   | Example                                                                                                                                                                |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                                                                                                                                  |
+| coordinates           |               |               | time z lon lat                                                                                                                                                         |
+| comment               |               |               | If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-major elliptical axis (one half of the major axis). |
+| long_name             |               |               | Error - ellipse semi-major axis                                                                                                                                        |
+| units                 |               |               | m                                                                                                                                                                      |
+| instrument            |               |               | instrument_location                                                                                                                                                    |
+| platform              |               |               | animal                                                                                                                                                                 |
+| ancillary_variables   |               |               | lat lon ellipse_orientation offset offset_orientation                                                                                                                  |
+| coverage_content_type |               |               | qualityInformation                                                                                                                                                     |
+| ioos_category         |               |               | Quality                                                                                                                                                                |
 
 
 ```
@@ -643,14 +702,18 @@ Attributes:
 
 #### semi_minor_axis
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `units` | | | m
-| `comment` | | | If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-minor elliptical axis (one half of the minor axis).
-| `long_name` | | | Error-elipse semi-minor axis
-| `instrument` | | | instrument_location
-| `platform` | | | animal
-| `coverage_content_type` | | | auxillaryInformation
+| Attribute             | Disposition   | Description   | Example                                                                                                                                                                |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                                                                                                                                  |
+| coordinates           |               |               | time z lon lat                                                                                                                                                         |
+| comment               |               |               | If the estimated position error is best expressed as an ellipse, this field gives the length in meters of the semi-minor elliptical axis (one half of the minor axis). |
+| long_name             |               |               | Error - ellipse semi-major axis                                                                                                                                        |
+| units                 |               |               | m                                                                                                                                                                      |
+| instrument            |               |               | instrument_location                                                                                                                                                    |
+| platform              |               |               | animal                                                                                                                                                                 |
+| ancillary_variables   |               |               | lat lon ellipse_orientation offset offset_orientation                                                                                                                  |
+| coverage_content_type |               |               | qualityInformation                                                                                                                                                     |
+| ioos_category         |               |               | Quality                                                                                                                                                                |
 
 
 ```
@@ -673,14 +736,18 @@ Attributes:
 
 #### ellipse_orientation
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `units` | | | degrees
-| `comment` | | | The angle in degrees of the ellipse from true north, proceeding clockwise (0 to 360). A blank field represents 0 degrees.
-| `long_name` | | | Error ellipse orientation in degrees clockwise from true north
-| `instrument` | | | instrument_location
-| `platform` | | | animal
-| `coverage_content_type` | | | auxillaryInformation
+| Attribute             | Disposition   | Description   | Example                                                                                                                   |
+|:----------------------|:--------------|:--------------|:--------------------------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                                                                                     |
+| coordinates           |               |               | time z lon lat                                                                                                            |
+| comment               |               |               | The angle in degrees of the ellipse from true north, proceeding clockwise (0 to 360). A blank field represents 0 degrees. |
+| long_name             |               |               | Error - ellipse orientation in degrees clockwise from true north                                                          |
+| units                 |               |               | degrees                                                                                                                   |
+| instrument            |               |               | instrument_location                                                                                                       |
+| platform              |               |               | animal                                                                                                                    |
+| ancillary_variables   |               |               | lat lon semi_major_axis semi_minor_axis offset offset_orientation                                                         |
+| coverage_content_type |               |               | qualityInformation                                                                                                        |
+| ioos_category         |               |               | Quality                                                                                                                   |
 
 
 ```
@@ -703,14 +770,18 @@ Attributes:
 
 #### offset
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `units` | | | m
-| `comment` | | | This field is non-zero if the circle or ellipse are not centered on the (Latitude, Longitude) values on this row. "Offset" gives the distance in meters from (Latitude, Longitude) to the center of the ellipse.
-| `long_name` | | | Offset in meters to center of error elipse or circle
-| `instrument` | | | instrument_location
-| `platform` | | | animal
-| `coverage_content_type` | | | auxillaryInformation
+| Attribute             | Disposition   | Description   | Example                                                                                                                                                                                                          |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                                                                                                                                                                            |
+| coordinates           |               |               | time z lon lat                                                                                                                                                                                                   |
+| comment               |               |               | This field is non-zero if the circle or ellipse are not centered on the (Latitude, Longitude) values on this row. "Offset" gives the distance in meters from (Latitude, Longitude) to the center of the ellipse. |
+| long_name             |               |               | Error - Offset in meters to center of error elipse or circle                                                                                                                                                     |
+| units                 |               |               | m                                                                                                                                                                                                                |
+| instrument            |               |               | instrument_location                                                                                                                                                                                              |
+| platform              |               |               | animal                                                                                                                                                                                                           |
+| ancillary_variables   |               |               | lat lon error_radius semi_major_axis semi_minor_axis offset_orientation                                                                                                                                          |
+| coverage_content_type |               |               | qualityInformation                                                                                                                                                                                               |
+| ioos_category         |               |               | Quality                                                                                                                                                                                                          |
 
 
 ```
@@ -733,14 +804,18 @@ Attributes:
 
 #### offset_orientation
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `units` | | | degrees
-| `comment` | | | If the "Offset" field is non-zero, this field is the angle in degrees from (Latitude, Longitude) to the center of the ellipse. Zero degrees is true north; a blank field represents 0 degrees.
-| `long_name` | | | Offset orientation angle to ellipse center
-| `instrument` | | | instrument_location
-| `platform` | | | animal
-| `coverage_content_type` | | | auxillaryInformation
+| Attribute             | Disposition   | Description   | Example                                                                                                                                                                                        |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                                                                                                                                                          |
+| coordinates           |               |               | time z lon lat                                                                                                                                                                                 |
+| comment               |               |               | If the "Offset" field is non-zero, this field is the angle in degrees from (Latitude, Longitude) to the center of the ellipse. Zero degrees is true north; a blank field represents 0 degrees. |
+| long_name             |               |               | Error - Offset orientation angle to ellipse center                                                                                                                                             |
+| units                 |               |               | degrees                                                                                                                                                                                        |
+| instrument            |               |               | instrument_location                                                                                                                                                                            |
+| platform              |               |               | animal                                                                                                                                                                                         |
+| ancillary_variables   |               |               | lat lon error_radius semi_major_axis semi_minor_axis offset                                                                                                                                    |
+| coverage_content_type |               |               | qualityInformation                                                                                                                                                                             |
+| ioos_category         |               |               | Quality                                                                                                                                                                                        |
 
 
 ```
@@ -763,8 +838,17 @@ Attributes:
 
 #### gpe_msd
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
+| Attribute             | Disposition   | Description   | Example                           |
+|:----------------------|:--------------|:--------------|:----------------------------------|
+| _FillValue            |               |               | -9999.9                           |
+| coordinates           |               |               | time z lon lat                    |
+| comment               |               |               | Historical. No longer applicable. |
+| long_name             |               |               |                                   |
+| units                 |               |               |                                   |
+| instrument            |               |               | instrument_location               |
+| platform              |               |               | animal                            |
+| coverage_content_type |               |               | auxillaryInformation              |
+| ioos_category         |               |               | Other                             |
 
 
 ```
@@ -780,8 +864,17 @@ Dimensions without coordinates: obs
 
 #### gpe_u
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
+| Attribute             | Disposition   | Description   | Example                           |
+|:----------------------|:--------------|:--------------|:----------------------------------|
+| _FillValue            |               |               | -9999.9                           |
+| coordinates           |               |               | time z lon lat                    |
+| comment               |               |               | Historical. No longer applicable. |
+| long_name             |               |               |                                   |
+| units                 |               |               |                                   |
+| instrument            |               |               | instrument_location               |
+| platform              |               |               | animal                            |
+| coverage_content_type |               |               | auxillaryInformation              |
+| ioos_category         |               |               | Other                             |
 
 
 ```
@@ -797,11 +890,17 @@ Dimensions without coordinates: obs
 
 #### count
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `long_name` | | | 
-| `units` | | | count
-| `coverage_content_type` | | | auxillaryInformation
+| Attribute             | Disposition   | Description   | Example                                                                                        |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                                                          |
+| coordinates           |               |               | time z lon lat                                                                                 |
+| comment               |               |               | Total number of times a particular data item was received, verified, and successfully decoded. |
+| long_name             |               |               | Count                                                                                          |
+| units                 |               |               | count                                                                                          |
+| instrument            |               |               | instrument_location                                                                            |
+| platform              |               |               | animal                                                                                         |
+| coverage_content_type |               |               | auxillaryInformation                                                                           |
+| ioos_category         |               |               | Other                                                                                          |
 
 
 ```
@@ -821,10 +920,15 @@ Attributes:
 
 #### comment
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `comment` | | | Optional text field
-| `long_name` | | | just a comment
+| Attribute             | Disposition   | Description   | Example              |
+|:----------------------|:--------------|:--------------|:---------------------|
+| coordinates           |               |               | time z lon lat       |
+| comment               |               |               | Optional text field  |
+| long_name             |               |               | Comment              |
+| instrument            |               |               | instrument_location  |
+| platform              |               |               | animal               |
+| coverage_content_type |               |               | auxillaryInformation |
+| ioos_category         |               |               | Other                |
 
 
 ```
@@ -843,13 +947,15 @@ Attributes:
 
 #### crs
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `epsg_code` | | | EPSG:4326
-| `grid_mapping_name` | | | latitude_longitude
-| `inverse_flattening` | | | 298.257223563
-| `semi_major_axis` | | | 6378137.0
-| `long_name` | | | Coordinate Reference System - http://www.opengis.net/def/crs/EPSG/0/4326
+| Attribute             | Disposition   | Description   | Example                                                                  |
+|:----------------------|:--------------|:--------------|:-------------------------------------------------------------------------|
+| epsg_code             |               |               | EPSG:4326                                                                |
+| grid_mapping_name     |               |               | latitude_longitude                                                       |
+| inverse_flattening    |               |               | 298.257223563                                                            |
+| semi_major_axis       |               |               | 6378137.0                                                                |
+| long_name             |               |               | Coordinate Reference System - http://www.opengis.net/def/crs/EPSG/0/4326 |
+| coverage_content_type |               |               | coordinate                                                               |
+| ioos_category         |               |               | Location                                                                 |
 
 
 ```
@@ -865,15 +971,17 @@ Attributes:
 
 #### instrument_location
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `long_name` | | | Wildlife Computers SPLASH10-F
-| `location_type` | | | argos/modeled
-| `comment` | | | Location
-| `manufacturer` | | | Wildlife Computers
-| `make_model` | | | SPLASH10-F
-| `calibration_date` | | | NOT PROVIDED
-| `serial_number` | | | 07A0358
+| Attribute             | Disposition   | Description   | Example                       |
+|:----------------------|:--------------|:--------------|:------------------------------|
+| location_type         |               |               | argos / modeled               |
+| comment               |               |               | Location                      |
+| long_name             |               |               | Wildlife Computers SPLASH10-F |
+| manufacturer          |               |               | Wildlife Computers            |
+| make_model            |               |               | SPLASH10-F                    |
+| calibration_date      |               |               |                               |
+| serial_number         |               |               | 07A0358                       |
+| coverage_content_type |               |               | referenceInformation          |
+| ioos_category         |               |               | Other                         |
 
 
 ```
@@ -891,13 +999,15 @@ Attributes:
 
 #### instrument_tag
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `manufacturer` | | | Wildlife Computers
-| `make_model` | | | SPLASH10-F
-| `calibration_date` | | | NOT PROVIDED
-| `serial_number` | | | 07A0358
-| `long_name` | | | telemetry tag applied to animal
+| Attribute             | Disposition   | Description   | Example                         |
+|:----------------------|:--------------|:--------------|:--------------------------------|
+| long_name             |               |               | telemetry tag applied to animal |
+| manufacturer          |               |               | Wildlife Computers              |
+| make_model            |               |               | SPLASH10-F                      |
+| calibration_date      |               |               |                                 |
+| serial_number         |               |               | 07A0358                         |
+| coverage_content_type |               |               | referenceInformation            |
+| ioos_category         |               |               | Other                           |
 
 
 ```
@@ -913,30 +1023,32 @@ Attributes:
 
 #### animal
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `cf_role` | | | trajectory_id
-| `long_name` | | | tagged animal id
-| `valid_name` | | | Pusa caspica
-| `AphiaID` | | | 255022
-| `scientificname` | | | Pusa caspica
-| `authority` | | | Gmelin, 1788
-| `kingdom` | | | Animalia
-| `phylum` | | | Chordata
-| `class` | | | Mammalia
-| `order` | | | Carnivora
-| `family` | | | Phocidae
-| `genus` | | | Pusa
-| `taxonRankID` | | | 220
-| `rank` | | | Species
-| `superdomain` | | | Biota
-| `subphylum` | | | Vertebrata
-| `infraphylum` | | | Gnathostomata
-| `megaclass` | | | Tetrapoda
-| `subclass` | | | Theria
-| `suborder` | | | Caniformia
-| `infraorder` | | | Pinnipedia
-| `species` | | | Pusa caspica
+| Attribute             | Disposition   | Description   | Example              |
+|:----------------------|:--------------|:--------------|:---------------------|
+| cf_role               |               |               | trajectory_id        |
+| long_name             |               |               | tagged animal id     |
+| valid_name            |               |               | Pusa caspica         |
+| AphiaID               |               |               | 255022               |
+| scientificname        |               |               | Pusa caspica         |
+| authority             |               |               | Gmelin, 1788         |
+| kingdom               |               |               | Animalia             |
+| phylum                |               |               | Chordata             |
+| class                 |               |               | Mammalia             |
+| order                 |               |               | Carnivora            |
+| family                |               |               | Phocidae             |
+| genus                 |               |               | Pusa                 |
+| taxonRankID           |               |               | 220                  |
+| rank                  |               |               | Species              |
+| superdomain           |               |               | Biota                |
+| subphylum             |               |               | Vertebrata           |
+| infraphylum           |               |               | Gnathostomata        |
+| megaclass             |               |               | Tetrapoda            |
+| subclass              |               |               | Theria               |
+| suborder              |               |               | Caniformia           |
+| infraorder            |               |               | Pinnipedia           |
+| species               |               |               | Pusa caspica         |
+| coverage_content_type |               |               | referenceInformation |
+| ioos_category         |               |               | Other                |
 
 
 ```
@@ -960,10 +1072,12 @@ Attributes: (12/22)
 
 #### animal_life_stage
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `long_name` | | | Lifestage of the animal at time of deployment (adult, juvenile)
-| `animal_life_stage` | | | adult
+| Attribute             | Disposition   | Description   | Example                                       |
+|:----------------------|:--------------|:--------------|:----------------------------------------------|
+| long_name             |               |               | Lifestage of the animal at time of deployment |
+| animal_life_stage     |               |               | adult                                         |
+| coverage_content_type |               |               | referenceInformation                          |
+| ioos_category         |               |               | Other                                         |
 
 
 ```
@@ -976,10 +1090,12 @@ Attributes:
 
 #### animal_sex
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `long_name` | | | sex of the animal at time of tag deployment
-| `animal_sex` | | | female
+| Attribute             | Disposition   | Description   | Example                                     |
+|:----------------------|:--------------|:--------------|:--------------------------------------------|
+| long_name             |               |               | sex of the animal at time of tag deployment |
+| animal_sex            |               |               | female                                      |
+| coverage_content_type |               |               | referenceInformation                        |
+| ioos_category         |               |               | Other                                       |
 
 
 ```
@@ -992,12 +1108,15 @@ Attributes:
 
 #### animal_length
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `long_name` | | | length of the animal as measured at deployment
-| `units` | | | m
-| `coverage_content_type` | | | referenceInformation
-| `animal_length_type` | | | curve length
+| Attribute             | Disposition   | Description   | Example                                                     |
+|:----------------------|:--------------|:--------------|:------------------------------------------------------------|
+| _FillValue            |               |               | -9999.9                                                     |
+| long_name             |               |               | length of the animal as measured or estimated at deployment |
+| units                 |               |               | m                                                           |
+| animal_length_type    |               |               | standard length                                             |
+| animal_length         |               |               | 1.12 m standard length                                      |
+| coverage_content_type |               |               | referenceInformation                                        |
+| ioos_category         |               |               | Other                                                       |
 
 
 ```
@@ -1012,8 +1131,15 @@ Attributes:
 
 #### animal_length_2
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
+| Attribute             | Disposition   | Description   | Example                                                     |
+|:----------------------|:--------------|:--------------|:------------------------------------------------------------|
+| _FillValue            |               |               | -9999.9                                                     |
+| long_name             |               |               | length of the animal as measured or estimated at deployment |
+| units                 |               |               | m                                                           |
+| animal_length_type    |               |               | curve length                                                |
+| animal_length_2       |               |               | 1.38 m curve length                                         |
+| coverage_content_type |               |               | referenceInformation                                        |
+| ioos_category         |               |               | Other                                                       |
 
 
 ```
@@ -1023,12 +1149,14 @@ Attributes:
 
 #### animal_weight
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `long_name` | | | mass of the animal as measured or estimated at deployment
-| `units` | | | kg
-| `animal_weight` | | | 59.00 kg
-| `coverage_content_type` | | | referenceInformation
+| Attribute             | Disposition   | Description   | Example                                                   |
+|:----------------------|:--------------|:--------------|:----------------------------------------------------------|
+| _FillValue            |               |               | -9999.9                                                   |
+| long_name             |               |               | mass of the animal as measured or estimated at deployment |
+| units                 |               |               | kg                                                        |
+| animal_weight         |               |               | 67.00 kg                                                  |
+| coverage_content_type |               |               | referenceInformation                                      |
+| ioos_category         |               |               | Other                                                     |
 
 
 ```
@@ -1041,14 +1169,31 @@ Attributes:
     coverage_content_type:  referenceInformation 
 ```
 
+#### animal_age
+
+| Attribute             | Disposition   | Description   | Example                                                  |
+|:----------------------|:--------------|:--------------|:---------------------------------------------------------|
+| _FillValue            |               |               | -9999                                                    |
+| long_name             |               |               | age of the animal as measured or estimated at deployment |
+| units                 |               |               |                                                          |
+| animal_age            |               |               |                                                          |
+| coverage_content_type |               |               | referenceInformation                                     |
+| ioos_category         |               |               | Other                                                    |
+
+```
+ADD NCML here
+```
+
 #### taxon_name
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `standard_name` | | | biological_taxon_name
-| `long_name` | | | most precise taxonomic classification for the tagged animal
-| `source` | | | WoRMS (2023). Pusa caspica Gmelin, 1788. Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022 on 2023-05-05
-| `url` | | | https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022
+| Attribute             | Disposition   | Description   | Example                                                                                                                            |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------|
+| standard_name         |               |               | biological_taxon_name                                                                                                              |
+| long_name             |               |               | most precise taxonomic classification for the tagged animal                                                                        |
+| source                |               |               | WoRMS (2023). Pusa caspica Gmelin, 1788. Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022 on 2023-05-05 |
+| url                   |               |               | https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022                                                                     |
+| coverage_content_type |               |               | referenceInformation                                                                                                               |
+| ioos_category         |               |               | Other                                                                                                                              |
 
 
 ```
@@ -1063,14 +1208,14 @@ Attributes:
 
 #### taxon_lsid
 
-| attribute | disposition | description | example
-|-----------|-------------|-------------|--------
-| `standard_name` | | | biological_taxon_lsid
-| `long_name` | | | Namespaced Taxon Identifier for the tagged animal
-| `source` | | | WoRMS (2023). Pusa caspica Gmelin, 1788. Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022 on 2023-05-05
-| `url` | | | https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022
-| `id_source_name` | | | 
-| `id_source_link` | | | 
+| Attribute             | Disposition   | Description   | Example                                                                                                                            |
+|:----------------------|:--------------|:--------------|:-----------------------------------------------------------------------------------------------------------------------------------|
+| standard_name         |               |               | biological_taxon_lsid                                                                                                              |
+| long_name             |               |               | Namespaced Taxon Identifier for the tagged animal                                                                                  |
+| source                |               |               | WoRMS (2023). Pusa caspica Gmelin, 1788. Accessed at: https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022 on 2023-05-05 |
+| url                   |               |               | https://www.marinespecies.org/aphia.php?p=taxdetails&id=255022                                                                     |
+| coverage_content_type |               |               | referenceInformation                                                                                                               |
+| ioos_category         |               |               | Other                                                                                                                              |
 
 
 ```
