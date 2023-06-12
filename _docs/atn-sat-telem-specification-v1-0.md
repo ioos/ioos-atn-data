@@ -36,7 +36,7 @@ summary: This is version 1.0 of the ATN satellite telemetry netCDF specification
 
 IOOS provides a collection of "Gold Standard" example datasets in ERDDAP to demonstrate implementation of this Metadata Profile.  The Gold Standard datasets can be used as templates for data providers to generate their own compliant datasets in ERDDAP, and include a fully-deployable ERDDAP instance that includes both the example data and configuration files.  Consult the links below for more information:
 
-* [IOOS ATN Satellite Trajectory Example Dataset](https://github.com/ioos/ioos-atn-data/blob/main/data/atn_trajectory_template_ncdump_20211006.txt)
+* [IOOS ATN Satellite Trajectory Example Dataset]()
 * [Example in IOOS "ERDDAP Gold Standard" GitHub Repository]()
 
 ## Identifiers
@@ -1239,7 +1239,7 @@ Attributes:
 
 #### File
 
-Taken from the ATN satellite trajectory test WAF: <https://ncei.axiomdatascience.com/atn/test/>
+Files will be found at: <https://ncei.axiomdatascience.com/atn/prod/>
 
 #### NCML
 ```
