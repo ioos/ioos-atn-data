@@ -28,7 +28,7 @@ entries:
       url: /index.html#compliance-checker
       output: web
 
-  - title: ATN Specification Documents
+  - title: ATN Specification Versions
     output: web
 
     folderitems:
@@ -39,28 +39,40 @@ entries:
 
       subfolders:
 
-      - title: Satellite Telemetry Version 0.1 (In development)
+      - title: Satellite Telemetry Version 1.0
         output: web
 
         subfolderitems:
 
         - title: Summary
-          url: /atn-sat-telem-specification-v0-1.html
+          url: /atn-sat-telem-specification-v1-0.html
           output: web
 
         - title: Revision History
-          url: /atn-sat-telem-specification-v0-1.html#revision-history
+          url: /atn-sat-telem-specification-v1-0.html#revision-history
           output: web
 
         - title: Notes/Caveats
-          url: /atn-sat-telem-specification-v0-1.html#notescaveats
+          url: /atn-sat-telem-specification-v1-0.html#notescaveats
           output: web
 
         - title: Gold Standard Example Datasets
-          url: /atn-sat-telem-specification-v0-1.html#gold-standard-example-datasets
+          url: /atn-sat-telem-specification-v1-0.html#gold-standard-example-datasets
           output: web
 
-        - title: Metadata Profile Attributes
-          url: /atn-sat-telem-specification-v0-1.html#atn-satellite-trajectory-specification-attributes
+        - title: Identifiers
+          url: /atn-sat-telem-specification-v1-0.html#identifiers
+          output: web
+
+        - title: Global Attributes
+          url: /atn-sat-telem-specification-v1-0.html#global-attributes
+          output: web
+
+        - title: Variable Attributes
+          url: /atn-sat-telem-specification-v1-0.html#variable-attributes
+          output: web
+
+        - title: Example Dataset
+          url: /atn-sat-telem-specification-v1-0.html#example-dataset
           output: web
 

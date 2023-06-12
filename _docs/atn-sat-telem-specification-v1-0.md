@@ -1,18 +1,18 @@
 ---
-title: "ATN Satellite Telemetry Specification Version 0.1"
-keywords: [ioos, metadata, netCDF, 0.1]
-tags: [ioos, metadata, netCDF, 0.1]
+title: "ATN Satellite Telemetry Specification Version 1.0"
+keywords: [ioos, metadata, netCDF, 1.0]
+tags: [ioos, metadata, netCDF, 1.0]
 toc: false
 #permalink: index.html
-summary: This is the in development ATN satellite telemetry specification version. 
+summary: This is version 1.0 of the ATN satellite telemetry netCDF specification. 
 ---
 
 ## Revision History
 
 
-| Version | Description                                                                                                     | Date       |
-|:--------|:----------------------------------------------------------------------------------------------------------------|:-----------|
-| **0.1** | **In development Satellite Telemetry Version** <br>[Initial version](./atn-sat-telem-specification-v0-1.html) | 2022-09-21 |
+| Version | Description                                                                                    | Date       |
+|:--------|:-----------------------------------------------------------------------------------------------|:-----------|
+| **1.0** | **Satellite Telemetry Version** <br>[Initial version](./atn-sat-telem-specification-v1-0.html) | 2023-06-12 |
 
 ## Notes/Caveats
 
