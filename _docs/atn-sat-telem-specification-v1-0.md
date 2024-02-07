@@ -32,7 +32,7 @@ summary: This is version 1.0 of the ATN satellite telemetry netCDF specification
 
 1. In the ATN specification doesn't define **required** or **recommended** attributes as it is an attempt to synthesize existing standards into a specific implementation for animal tracking observations.
 
-2. ATN satellite trajectory files may include attributes not described in the ATN satellite telemetry specification (https://ioos.github.io/ioos-atn-data/). When this is the case, any such attributes are considered unverified and may not follow dataset conventions or vocabularies.
+2. ATN satellite trajectory files may include attributes not described in the ATN Satellite Telemetry Specification. When this is the case, any such attributes are considered unverified and may not follow dataset conventions or vocabularies.
 
 ## Gold Standard Example Datasets
 
