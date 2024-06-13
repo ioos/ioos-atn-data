@@ -39,3 +39,12 @@ jobs:
            timestamp=$(date -u)
            git commit -m "Update theme on: ${timestamp}" || exit 0
            git push
+
+  keepalive-job:
+    name: Keepalive Workflow
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/keepalive-workflow@v2
