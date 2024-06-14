@@ -32,6 +32,8 @@ summary: This is version 1.0 of the ATN satellite telemetry netCDF specification
 
 1. In the ATN specification doesn't define **required** or **recommended** attributes as it is an attempt to synthesize existing standards into a specific implementation for animal tracking observations.
 
+2. ATN satellite trajectory files may include attributes not described in the ATN Satellite Telemetry Specification. When this is the case, any such attributes are considered unverified and may not follow dataset conventions or vocabularies.
+
 ## Gold Standard Example Datasets
 
 IOOS provides a collection of "Gold Standard" example datasets in ERDDAP to demonstrate implementation of this Metadata Profile.  The Gold Standard datasets can be used as templates for data providers to generate their own compliant datasets in ERDDAP, and include a fully-deployable ERDDAP instance that includes both the example data and configuration files.  Consult the links below for more information:
