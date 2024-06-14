@@ -4,7 +4,71 @@ The observations have been split into [trajectory](#trajectory) and [profile](#p
 Each section below documents the decisions made for the archival of the data at NCEI.
 
 ## Data flow
-![ATN Data Flow](https://user-images.githubusercontent.com/8480023/115601167-74588e00-a2ab-11eb-9d8b-c8045d66a2ee.png) From https://docs.google.com/presentation/d/1yb0E9k4n2jMHjyNrjCAo6bSiEbDUaorsgoBN_gfW_6A/edit#slide=id.gd2fc8c240e_0_0
+```mermaid
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#007396',
+      'primaryTextColor': '#fff',
+      'primaryBorderColor': '#003087',
+      'lineColor': '#003087',
+      'secondaryColor': '#007396',
+      'tertiaryColor': '#CCD1D1'
+    },
+   'flowchart': { 'curve': 'basis' }
+  }
+}%%
+
+flowchart TD
+
+A([Satellite Tag Deployment])
+B([ATN])
+D([NCEI])
+E([Darwin Core Alignment])
+F([IPT OBIS-USA])
+G([ATN Portal])
+H([NDBC])
+I([GTS])
+
+A --> B
+B -- Data released from embargo --> D
+D --> E
+E --> F
+B --> G
+B -- Profiling Tags --> H
+H --> I
+F --collection--> D
+```
+
+### ATN WAF structure for NCEI pickup
+```mermaid
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#007396',
+      'primaryTextColor': '#fff',
+      'primaryBorderColor': '#003087',
+      'lineColor': '#003087',
+      'secondaryColor': '#007396',
+      'tertiaryColor': '#CCD1D1'
+    },
+   'flowchart': { 'curve': 'basis' }
+  }
+}%%
+flowchart TD
+%% Nodes
+    A("Deployment")
+    B("Trajectory")
+    C("Profile")
+    D("Derived\n(eg. Foie-gras)")
+
+%% build the graph
+    A --> B 
+    A --> C 
+    A --> D 
+```
 
 ## Trajectory
 * Example files can be found at this url: 
