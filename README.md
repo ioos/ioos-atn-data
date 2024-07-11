@@ -1,25 +1,40 @@
 # ioos-metadata
 GitHub Pages for IOOS Metadata Profile with Jekyll Documentation Theme
 
-See website at https://ioos.github.io/ioos-metadata/
+See website at [https://ioos.github.io/ioos-metadata/](https://ioos.github.io/ioos-atn-data/)
 
-## Developer Info: Running Locally
+## Contributing to the documentation
+See [CONTRIBUTING](CONTRIBUTING.md).
 
-When you clone or pull this repo, make sure to run `git submodule update --init` to update the git submodules.
+## Deploying site locally
+Requirements:
+* bundle
+* Jekyll
 
-To run, use one of the options below. After jekyll has started, go to http://localhost:4000/ioos-metadata/ to view the site. As you update pages in the repo, the changes will be automatically reflected.
+See [IOOS How To: Local Development with Jekyll](https://ioos.github.io/ioos-documentation-jekyll-skeleton/howto.html#local-development-with-jekyll).
 
-### Option 1: run Jekyll directly
-
-Follow the quickstart instructions at https://jekyllrb.com/docs/ to install jekyll and serve this site.
-
-### Option 2: Run Jekyll via Docker
-
+Clone this repository:
+```commandline
+git clone https://github.com/ioos/ioos-atn-data.git
 ```
-docker run \
-  -v "$PWD:/srv/jekyll" \
-  -p 4000:4000 \
-  jekyll/jekyll:3.8 \
-  jekyll serve
+Checkout the gh-pages branch:
+```commandline
+git checkout gh-pages
 ```
+To build the site, in the `ioos-atn-data/` directory run:
+```commandline
+bundle exec jekyll serve --config _config.yml --watch --verbose --incremental
+```
+This will deploy a website at: http://127.0.0.1:4000/ioos-atn-data/
 
+Make edits to the appropriate markdown files in `_docs/`. 
+
+If changing headers and menus, stop the running server by entering `ctrl-c` in the terminal. Then run:
+```commandline
+bundle exec jekyll clean
+```
+Then build the site again.
+```commandline
+bundle exec jekyll serve --config _config.yml --watch --verbose --incremental
+```
+And review at http://127.0.0.1:4000/ioos-atn-data/
