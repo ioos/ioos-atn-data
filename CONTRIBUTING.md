@@ -1,6 +1,6 @@
 # Contributing
 
-## How this repo is organized
+## How this branch of the repo is organized
 `_docs/` - directory containing documentation pages (in markdown). 
 
 `_data/` - configuration files for the website. Only edit `/_data/sidebars/sidebar_ioos.yml`
