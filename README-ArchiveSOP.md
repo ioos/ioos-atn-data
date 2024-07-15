@@ -111,7 +111,7 @@ flowchart TD
 ### File naming convention
 Template | Example
 ---------|---------
-`atn_`[_ptt id_]`_`[_animal common name_]`_trajectory_`[_deployment start date_]-[_deployment end date_]`.nc` |   atn_38553_bearded-seal_trajectory_20110617-20120313.nc  
+`atn_`[_ptt id_]`_`[_animal common name_]`_trajectory_`[_deployment start date_]-[_deployment end date_]`.nc` |   `atn_38553_bearded-seal_trajectory_20110617-20120313.nc`  
 
 Variable | Description | Example
 ---------|-------------|--------
