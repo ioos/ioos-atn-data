@@ -1,5 +1,5 @@
 ---
-title: ATN Archive Standard Operating Procedure 
+title: ATN archive process 
 keywords: [ioos, metadata, netCDF, archive, NCEI]
 tags: [ioos, metadata, netCDF, archive, NCEI]
 toc: false
