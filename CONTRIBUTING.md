@@ -1,6 +1,6 @@
 # Contributing
 
-## How this branch of the repo is organized
+## Key directories
 `_docs/` - directory containing documentation pages (in markdown). 
 
 `_data/` - configuration files for the website. Only edit `/_data/sidebars/sidebar_ioos.yml`
@@ -49,3 +49,36 @@ revision-specific branch(es) from there.
 [github-join]: https://github.com/join
 [how-contribute]: https://app.egghead.io/playlists/how-to-contribute-to-an-open-source-project-on-github
 [issues]: https://guides.github.com/features/issues/
+
+## Deploying site locally
+Requirements:
+* bundle
+* Jekyll
+
+See [IOOS How To: Local Development with Jekyll](https://ioos.github.io/ioos-documentation-jekyll-skeleton/howto.html#local-development-with-jekyll).
+
+Clone this repository:
+```commandline
+git clone https://github.com/ioos/ioos-atn-data.git
+```
+Checkout the gh-pages branch:
+```commandline
+git checkout gh-pages
+```
+To build the site, in the `ioos-atn-data/` directory run:
+```commandline
+bundle exec jekyll serve --config _config.yml --watch --verbose --incremental
+```
+This will deploy a website at: http://127.0.0.1:4000/ioos-atn-data/
+
+Make edits to the appropriate markdown files in `_docs/`. 
+
+If changing headers and menus, stop the running server by entering `ctrl-c` in the terminal. Then run:
+```commandline
+bundle exec jekyll clean
+```
+Then build the site again.
+```commandline
+bundle exec jekyll serve --config _config.yml --watch --verbose --incremental
+```
+And review at http://127.0.0.1:4000/ioos-atn-data/

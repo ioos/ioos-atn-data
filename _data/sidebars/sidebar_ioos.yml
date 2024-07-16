@@ -76,3 +76,15 @@ entries:
           url: /atn-sat-telem-specification-v1-0.html#example-dataset
           output: web
 
+  - title: ATN Data Flows
+    output: web, pdf
+
+    folderitems:
+
+    - title: NCEI Archive
+      url: /atn-archive.html
+      output: web
+
+    - title: Darwin Core Alignment
+      url: /atn-darwin-core.html
+      output: web
