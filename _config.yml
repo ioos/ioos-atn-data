@@ -32,6 +32,11 @@ exclude:
   - theme/search.json
   - theme/update.sh
   - theme/pdf-*
+  - _docs/notebooks/
+  - _docs/crosswalk/
+  - _docs/data/
+  - CONTRIBUTING.md
+  - README.md
   #- theme/
 
 feedback_subject_line: ATN Specification

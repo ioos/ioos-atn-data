@@ -1,40 +1,15 @@
-# ioos-metadata
-GitHub Pages for IOOS Metadata Profile with Jekyll Documentation Theme
+# ioos-atn-data
+Code, documentation and issue tracking for U.S. IOOS Animal Telemetry Network's (ATN) development of data file 
+specifications for submission to NOAA's
+[National Centers for Environmental Information](https://www.ncei.noaa.gov/) and the 
+[Ocean Biodiversity Information System (OBIS)]([obis.org](https://obis.org/)).
 
-See website at [https://ioos.github.io/ioos-metadata/](https://ioos.github.io/ioos-atn-data/)
+See website at [https://ioos.github.io/ioos-atn-data/](https://ioos.github.io/ioos-atn-data/)
+
+## Structure of this repository
+* **_docs/crosswalk/** - contains spreadsheet crosswalking CF/ACDD to DarwinCore.
+* **_docs/data/templates/** - contains [common data language (cdl)](https://www.unidata.ucar.edu/software/netcdf/workshops/most-recent/nc3model/Cdl.html#:~:text=CDL%20(Common%20Data%20Language)%20is,for%20netCDF%20objects%20and%20data.&text=This%20example%20specifies%20a%20netCDF,data%20values%20for%20the%20variable.) netCDF templates.
+* **_docs/notebooks/** - contains example Python notebooks for reading data files.
 
 ## Contributing to the documentation
 See [CONTRIBUTING](CONTRIBUTING.md).
-
-## Deploying site locally
-Requirements:
-* bundle
-* Jekyll
-
-See [IOOS How To: Local Development with Jekyll](https://ioos.github.io/ioos-documentation-jekyll-skeleton/howto.html#local-development-with-jekyll).
-
-Clone this repository:
-```commandline
-git clone https://github.com/ioos/ioos-atn-data.git
-```
-Checkout the gh-pages branch:
-```commandline
-git checkout gh-pages
-```
-To build the site, in the `ioos-atn-data/` directory run:
-```commandline
-bundle exec jekyll serve --config _config.yml --watch --verbose --incremental
-```
-This will deploy a website at: http://127.0.0.1:4000/ioos-atn-data/
-
-Make edits to the appropriate markdown files in `_docs/`. 
-
-If changing headers and menus, stop the running server by entering `ctrl-c` in the terminal. Then run:
-```commandline
-bundle exec jekyll clean
-```
-Then build the site again.
-```commandline
-bundle exec jekyll serve --config _config.yml --watch --verbose --incremental
-```
-And review at http://127.0.0.1:4000/ioos-atn-data/
