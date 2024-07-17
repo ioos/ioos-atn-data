@@ -46,7 +46,7 @@ B -- Data released from embargo --> D
 D --> E
 E --> F
 B --> G
-B -- Profiling Tags --> H
+B -- BUFR msgs from Profiling Tags --> H
 H --> I
 F --collection--> D
 ```
