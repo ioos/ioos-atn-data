@@ -421,5 +421,5 @@ variables:
 		:vendor = "" ; //...............................................................................................ATN  - Vendor of the tag
 		:vendor_id = "" ; //............................................................................................ATN  - uuid for vendor?
 		:wmo_platform_code = "" ; //....................................................................................IOOS
-        :Conventions = "CF-1.10, ACDD-1.3, IOOS-1.2, ATN Satellite Telemetry Specification v1.0" ; //...................CF
+		:Conventions = "CF-1.10, ACDD-1.3, IOOS-1.2, ATN Satellite Telemetry Specification v1.0" ; //...................CF
 }
