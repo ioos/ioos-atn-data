@@ -1,0 +1,425 @@
+netcdf atn_satellite_trajectory_template {
+dimensions:
+	obs = < dim1 > ;
+variables:
+	string deploy_id ;
+		deploy_id:_FillValue = 0.0f ;
+		deploy_id:comment = "" ;
+		deploy_id:coordinates = "time z lon lat" ;
+		deploy_id:coverage_content_type = "referenceInformation" ;
+		deploy_id:instrument = "instrument_location" ;
+		deploy_id:long_name = "id for this deployment. This is typically the tag ptt" ;
+		deploy_id:platform = "animal" ;
+	double time(obs) ;
+		time:_CoordinateAxisType = "Time" ;
+		time:_FillValue = 0.0f ;
+		time:actual_max = "" ;
+		time:actual_min = "" ;
+		time:ancillary_variables = "qartod_time_flag qartod_rollup_flag qartod_speed_flag" ;
+		time:axis = "T" ;
+		time:calendar = "standard" ;
+		time:coverage_content_type = "coordinate" ;
+		time:instrument = "instrument_location" ;
+		time:long_name = "Time of the measurement, in seconds since 1990-01-01" ;
+		time:platform = "animal" ;
+		time:standard_name = "time" ;
+		time:units = "seconds since 1990-01-01 00:00:00Z" ;
+	int z(obs) ;
+		z:_FillValue = 0.0f ;
+		z:actual_max = 0.0f ;
+		z:actual_min = 0.0f ;
+		z:axis = "Z" ;
+		z:comment = "" ;
+		z:coverage_content_type = "coordinate" ;
+		z:instrument = "" ;
+		z:long_name = "depth of measurement" ;
+		z:platform = "animal" ;
+		z:positive = "down" ;
+		z:standard_name = "depth" ;
+		z:units = "m" ;
+	double lat(obs) ;
+		lat:_CoordinateAxisType = "Lat" ;
+		lat:_FillValue = 0.0f ;
+		lat:actual_max = 0.0f ;
+		lat:actual_min = 0.0f ;
+		lat:ancillary_variables = "qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation" ;
+		lat:axis = "Y" ;
+		lat:coverage_content_type = "coordinate" ;
+		lat:instrument = "instrument_location" ;
+		lat:long_name = "Latitude portion of location in decimal degrees North" ;
+		lat:platform = "animal" ;
+		lat:standard_name = "latitude" ;
+		lat:units = "degrees_north" ;
+		lat:valid_max = 0.0f ;
+		lat:valid_min = 0.0f ;
+	double lon(obs) ;
+		lon:_CoordinateAxisType = "Lon" ;
+		lon:_FillValue = 0.0f ;
+		lon:actual_max = 0.0f ;
+		lon:actual_min = 0.0f ;
+		lon:ancillary_variables = "qartod_location_flag qartod_rollup_flag qartod_speed_flag error_radius semi_major_axis semi_minor_axis ellipse_orientation offset offset_orientation" ;
+		lon:axis = "X" ;
+		lon:coverage_content_type = "coordinate" ;
+		lon:instrument = "instrument_location" ;
+		lon:long_name = "Longitude portion of location in decimal degrees East" ;
+		lon:platform = "animal" ;
+		lon:standard_name = "longitude" ;
+		lon:units = "degrees_east" ;
+		lon:valid_max = 0.0f ;
+		lon:valid_min = 0.0f ;
+	int ptt(obs) ;
+		ptt:_FillValue = 0.0f ;
+		ptt:comment = "" ;
+		ptt:coordinates = "time z lon lat" ;
+		ptt:coverage_content_type = "referenceInformation" ;
+		ptt:instrument = "instrument_location" ;
+		ptt:long_name = "Platform Transmitter Terminal (PTT) id used for Argos transmissions" ;
+		ptt:platform = "animal" ;
+	string instrument(obs) ;
+		instrument:comment = "" ;
+		instrument:coordinates = "time z lon lat" ;
+		instrument:coverage_content_type = "referenceInformation" ;
+		instrument:instrument = "instrument_location" ;
+		instrument:long_name = "Instrument family" ;
+		instrument:platform = "animal" ;
+	string type(obs) ; //...............................................................................................Type of location: Argos, FastGPS or User
+		type:comment = "" ;
+		type:coordinates = "time z lon lat" ;
+		type:coverage_content_type = "referenceInformation" ;
+		type:instrument = "instrument_location" ;
+		type:long_name = "Type of location information - Argos, GPS satellite or user provided location" ;
+		type:platform = "animal" ;
+	string location_class(obs) ; //.....................................................................................Quality codes from the ARGOS satellite (in meters): G,3,2,1,0,A,B,Z. See http://www.argos-system.org/manual/3-location/34_location_classes.htm
+		location_class:ancillary_variables = "lat lon" ;
+		location_class:code_meanings = "estimated error less than 100m and 1+ messages received per satellite pass, estimated error less than 250m and 4+ messages received per satellite pass, estimated error between 250m and 500m and 4+ messages per satellite pass, estimated error between 500m and 1500m and 4+ messages per satellite pass, estimated error greater than 1500m and 4+ messages received per satellite pass, no least squares estimated error or unbounded kalman filter estimated error and 3 messages received per satellite pass, no least squares estimated error or unbounded kalman filter estimated error and 1 or 2 messages received per satellite pass, invalid location (available for Service Plus or Auxilliary Location Processing)" ;
+		location_class:code_values = "G,3,2,1,0,A,B,Z" ;
+		location_class:comment = "" ;
+		location_class:coordinates = "time z lon lat" ;
+		location_class:coverage_content_type = "qualityInformation" ;
+		location_class:instrument = "instrument_location" ;
+		location_class:long_name = "Location Quality Code from ARGOS satellite system" ;
+		location_class:platform = "animal" ;
+		location_class:standard_name = "quality_flag" ;
+	int error_radius(obs) ;
+		error_radius:_FillValue = 0.0f ;
+		error_radius:ancillary_variables = "lat lon offset offset_orientation" ;
+		error_radius:comment = "" ;
+		error_radius:coordinates = "time z lon lat" ;
+		error_radius:coverage_content_type = "qualityInformation" ;
+		error_radius:instrument = "instrument_location" ;
+		error_radius:long_name = "Error radius" ;
+		error_radius:platform = "animal" ;
+		error_radius:units = "m" ;
+	int semi_major_axis(obs) ;
+		semi_major_axis:_FillValue = 0.0f ;
+		semi_major_axis:ancillary_variables = "lat lon ellipse_orientation offset offset_orientation" ;
+		semi_major_axis:comment = "" ;
+		semi_major_axis:coordinates = "time z lon lat" ;
+		semi_major_axis:coverage_content_type = "qualityInformation" ;
+		semi_major_axis:instrument = "instrument_location" ;
+		semi_major_axis:long_name = "Error - ellipse semi-major axis" ;
+		semi_major_axis:platform = "animal" ;
+		semi_major_axis:units = "m" ;
+	int semi_minor_axis(obs) ;
+		semi_minor_axis:_FillValue = 0.0f ;
+		semi_minor_axis:ancillary_variables = "lat lon ellipse_orientation offset offset_orientation" ;
+		semi_minor_axis:comment = "" ;
+		semi_minor_axis:coordinates = "time z lon lat" ;
+		semi_minor_axis:coverage_content_type = "qualityInformation" ;
+		semi_minor_axis:instrument = "instrument_location" ;
+		semi_minor_axis:long_name = "Error - ellipse semi-minor axis" ;
+		semi_minor_axis:platform = "animal" ;
+		semi_minor_axis:units = "m" ;
+	int ellipse_orientation(obs) ;
+		ellipse_orientation:_FillValue = 0.0f ;
+		ellipse_orientation:ancillary_variables = "lat lon semi_major_axis semi_minor_axis offset offset_orientation" ;
+		ellipse_orientation:comment = "" ;
+		ellipse_orientation:coordinates = "time z lon lat" ;
+		ellipse_orientation:coverage_content_type = "qualityInformation" ;
+		ellipse_orientation:instrument = "instrument_location" ;
+		ellipse_orientation:long_name = "Error - ellipse orientation in degrees clockwise from true north" ;
+		ellipse_orientation:platform = "animal" ;
+		ellipse_orientation:units = "degrees" ;
+	int offset(obs) ; //................................................................................................Error offset in meters to center of error ellipse
+		offset:_FillValue = 0.0f ;
+		offset:ancillary_variables = "lat lon error_radius semi_major_axis semi_minor_axis offset_orientation" ;
+		offset:comment = "" ;
+		offset:coordinates = "time z lon lat" ;
+		offset:coverage_content_type = "qualityInformation" ;
+		offset:instrument = "instrument_location" ;
+		offset:long_name = "" ;
+		offset:platform = "animal" ;
+		offset:units = "m" ;
+	int offset_orientation(obs) ; //....................................................................................Error offset orientation information
+		offset_orientation:_FillValue = 0.0f ;
+		offset_orientation:ancillary_variables = "lat lon error_radius semi_major_axis semi_minor_axis offset" ;
+		offset_orientation:comment = "" ;
+		offset_orientation:coordinates = "time z lon lat" ;
+		offset_orientation:coverage_content_type = "qualityInformation" ;
+		offset_orientation:instrument = "instrument_location" ;
+		offset_orientation:long_name = "" ;
+		offset_orientation:platform = "animal" ;
+		offset_orientation:units = "degrees" ;
+	double gpe_msd(obs) ; //............................................................................................Historical. No longer applicable.
+		gpe_msd:_FillValue = 0.0f ;
+		gpe_msd:comment = "" ;
+		gpe_msd:coordinates = "time z lon lat" ;
+		gpe_msd:coverage_content_type = "auxillaryInformation" ;
+		gpe_msd:instrument = "instrument_location" ;
+		gpe_msd:long_name = "" ;
+		gpe_msd:platform = "animal" ;
+		gpe_msd:units = "" ;
+	double gpe_u(obs) ; //..............................................................................................Historical. No longer applicable
+		gpe_u:_FillValue = 0.0f ;
+		gpe_u:comment = "" ;
+		gpe_u:coordinates = "time z lon lat" ;
+		gpe_u:coverage_content_type = "auxillaryInformation" ;
+		gpe_u:instrument = "instrument_location" ;
+		gpe_u:long_name = "" ;
+		gpe_u:platform = "animal" ;
+		gpe_u:units = "" ;
+	int count(obs) ; //.................................................................................................Total number of times a particular data item was received, verified, and successfully decoded.
+		count:_FillValue = 0.0f ;
+		count:comment = "" ;
+		count:coordinates = "time z lon lat" ;
+		count:coverage_content_type = "auxillaryInformation" ;
+		count:instrument = "instrument_location" ;
+		count:long_name = "Count" ;
+		count:platform = "animal" ; //..................................................................................reference to animal container variable
+		count:units = "count" ;
+	ubyte qartod_time_flag(obs) ; //....................................................................................QARTOD time flags
+		qartod_time_flag:_FillValue = 0.0f ;
+		qartod_time_flag:coordinates = "time z lon lat" ;
+		qartod_time_flag:coverage_content_type = "qualityInformation" ;
+		qartod_time_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_time_flag:flag_values = 1UB, 2UB, 3UB, 4UB, 9UB ;
+		qartod_time_flag:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_time_flag:long_name = "Time QC test - gross range test" ;
+		qartod_time_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_time_flag:standard_name = "gross_range_test_quality_flag" ;
+	ubyte qartod_speed_flag(obs) ; //...................................................................................QARTOD speed flags
+		qartod_speed_flag:_FillValue = 0.0f ;
+		qartod_speed_flag:coordinates = "time z lon lat" ;
+		qartod_speed_flag:coverage_content_type = "qualityInformation" ;
+		qartod_speed_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_speed_flag:flag_values = 1UB, 2UB, 3UB, 4UB, 9UB ;
+		qartod_speed_flag:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_speed_flag:long_name = "Speed QC test - gross range test" ;
+		qartod_speed_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_speed_flag:standard_name = "gross_range_test_quality_flag" ;
+	ubyte qartod_location_flag(obs) ; //................................................................................QARTOD location flags
+		qartod_location_flag:_FillValue = 0.0f ;
+		qartod_location_flag:coordinates = "time z lon lat" ;
+		qartod_location_flag:coverage_content_type = "qualityInformation" ;
+		qartod_location_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_location_flag:flag_values = 1UB, 2UB, 3UB, 4UB, 9UB ;
+		qartod_location_flag:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_location_flag:long_name = "Location QC test - Location test" ;
+		qartod_location_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_location_flag:standard_name = "location_test_quality_flag" ;
+	ubyte qartod_rollup_flag(obs) ; //..................................................................................QARTOD roll up flags
+		qartod_rollup_flag:_FillValue = 0.0f ;
+		qartod_rollup_flag:coordinates = "time z lon lat" ;
+		qartod_rollup_flag:coverage_content_type = "qualityInformation" ;
+		qartod_rollup_flag:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_rollup_flag:flag_values = 1UB, 2UB, 3UB, 4UB, 9UB ;
+		qartod_rollup_flag:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_rollup_flag:long_name = "Aggregate QC value" ;
+		qartod_rollup_flag:references = "https://cdn.ioos.noaa.gov/media/2020/03/QARTOD_TS_Manual_Update2_200324_final.pdf" ;
+		qartod_rollup_flag:standard_name = "aggregate_quality_flag" ;
+	int crs ; //........................................................................................................
+		crs:coverage_content_type = "referenceInformation" ;
+		crs:epsg_code = "EPSG:4326" ;
+		crs:grid_mapping_name = "latitude_longitude" ;
+		crs:inverse_flattening = 298.257223563 ;
+		crs:long_name = "Coordinate Reference System - http://www.opengis.net/def/crs/EPSG/0/4326" ;
+		crs:semi_major_axis = 6378137. ;
+	string trajectory ; //..............................................................................................
+		trajectory:cf_role = "trajectory_id" ;
+		trajectory:long_name = "trajectory identifier" ;
+	int animal_age ; //.................................................................................................Additional animal information
+		animal_age:_FillValue = 0.0f ;
+		animal_age:animal_age = "" ;
+		animal_age:coverage_content_type = "referenceInformation" ;
+		animal_age:long_name = "" ;
+		animal_age:units = "" ;
+	string animal_life_stage ; //.......................................................................................Additional animal information
+		animal_life_stage:animal_life_stage = "" ;
+		animal_life_stage:coverage_content_type = "referenceInformation" ;
+		animal_life_stage:long_name = "" ;
+	string animal_sex ; //..............................................................................................Additional animal information
+		animal_sex:animal_sex = "" ;
+		animal_sex:coverage_content_type = "referenceInformation" ;
+		animal_sex:long_name = "" ;
+	float animal_weight ; //............................................................................................Additional animal information
+		animal_weight:_FillValue = 0.0f ;
+		animal_weight:animal_weight = "" ;
+		animal_weight:coverage_content_type = "referenceInformation" ;
+		animal_weight:long_name = "" ;
+		animal_weight:units = "" ;
+	float animal_length ; //............................................................................................Additional animal information (eg. length of animal at time of tagging)
+		animal_length:_FillValue = 0.0f ;
+		animal_length:animal_length = "" ;
+		animal_length:animal_length_type = "" ;
+		animal_length:coverage_content_type = "referenceInformation" ;
+		animal_length:long_name = "" ;
+		animal_length:units = "" ;
+	float animal_length_2 ; //..........................................................................................Additional animal measurement information
+		animal_length_2:_FillValue = 0.0f ;
+		animal_length_2:animal_length_2 = "" ;
+		animal_length_2:animal_length_2_type = "" ;
+		animal_length_2:coverage_content_type = "referenceInformation" ;
+		animal_length_2:long_name = "" ;
+		animal_length_2:units = "" ;
+	string animal ; //..................................................................................................World Registry of Marine Species Taxonomy for tagged species
+		animal:AphiaID = 0i ;
+		animal:authority = "" ; //......................................................................................WoRMS authority
+		animal:cf_role = "trajectory_id" ;
+		animal:class = "" ;
+		animal:coverage_content_type = "referenceInformation" ;
+		animal:family = "" ;
+		animal:genus = "" ;
+		animal:infraorder = "" ;
+		animal:infraphylum = "" ;
+		animal:kingdom = "" ;
+		animal:long_name = "" ;
+		animal:megaclass = "" ;
+		animal:order = "" ;
+		animal:phylum = "" ;
+		animal:rank = "" ; //...........................................................................................Lowest taxonomic hierarchy known.
+		animal:scientificname = "" ;
+		animal:species = "" ;
+		animal:subclass = "" ;
+		animal:suborder = "" ;
+		animal:subphylum = "" ;
+		animal:superdomain = "" ;
+		animal:taxonRankID = 0i ; //...................................................................................Not sure what this is
+		animal:valid_name = "" ;
+	string instrument_tag ; //..........................................................................................Container variable documenting the tag instrument
+		instrument_tag:calibration_date = "" ;
+		instrument_tag:coverage_content_type = "referenceInformation" ;
+		instrument_tag:long_name = "" ;
+		instrument_tag:make_model = "" ;
+		instrument_tag:manufacturer = "" ;
+		instrument_tag:serial_number = "" ;
+	string instrument_location ; //..........................................Container variable documenting the tag location?
+		instrument_location:calibration_date = "" ;
+		instrument_location:comment = "" ;
+		instrument_location:coverage_content_type = "referenceInformation" ;
+		instrument_location:location_type = "" ;
+		instrument_location:long_name = "" ;
+		instrument_location:make_model = "" ;
+		instrument_location:manufacturer = "" ;
+		instrument_location:serial_number = "" ;
+	string taxon_name ; //..............................................................................................Container variable containing the WoRMS taxonomic name. CF.
+		taxon_name:coverage_content_type = "referenceInformation" ;
+		taxon_name:long_name = "most precise taxonomic classification for the tagged animal" ;
+		taxon_name:source = "" ; //.....................................................................................reference to WoRMS and date accessed.
+		taxon_name:standard_name = "biological_taxon_name" ;
+		taxon_name:url = "" ; //........................................................................................Specific WoRMS url for species
+	string taxon_lsid ; //..............................................................................................Container variable for the life science identifier for the species. CF.
+		taxon_lsid:coverage_content_type = "referenceInformation" ;
+		taxon_lsid:long_name = "Namespaced Taxon Identifier for the tagged animal" ;
+		taxon_lsid:source = "" ; //.....................................................................................reference to WoRMS and date accessed.
+		taxon_lsid:standard_name = "biological_taxon_lsid" ;
+		taxon_lsid:url = "" ; //........................................................................................Specific WoRMS url for species
+	string comment(obs) ; //............................................................................................What is this variable??
+		comment:comment = "Optional text field" ;
+		comment:coordinates = "time z lon lat" ;
+		comment:coverage_content_type = "auxillaryInformation" ;
+		comment:instrument = "instrument_location" ;
+		comment:long_name = "Comment" ;
+		comment:platform = "animal" ;
+
+// global attributes:
+		:acknowledgement = "" ; //......................................................................................ACDD - Standard text "National Oceanic and Atmospheric Administration (NOAA) Integrated Ocean Observing System (IOOS), Axiom Data Science, Office of Naval Research (ONR), NOAA National Marine Fisheries Service (NMFS), Wildlife Computers, Argos, IOOS Animal Telemetry Network (ATN)"
+		:animal_common_name = "" ; //...................................................................................ATN  - common name for the tagged animal
+		:animal_id = "" ; //............................................................................................ATN  - id for the animal. Is this ATN's ID??
+		:animal_scientific_name = "" ; //...............................................................................ATN  - scientific name for tagged animal - from WoRMS??
+		:arbitrary_keywords = "" ; //...................................................................................ATN  - additional keywords not necessarily from a controlled vocabulary
+		:argos_program_number = "" ; //.................................................................................ATN  -
+		:attachment = "" ; //...........................................................................................ATN  - Where the tag was attached??
+		:cdm_data_type = "Trajectory" ; //..............................................................................ACDD
+		:citation = "" ; //.............................................................................................ATN  - recommended citation for this dataset (documented at ??)
+		:comment = "" ; //..............................................................................................ACDD
+		:contributor_email = "" ; //....................................................................................IOOS - Comma separated list of PI emails
+		:contributor_institution = "" ; //..............................................................................ACDD - Comma separated list of contributor institutions
+		:contributor_name = "" ; //.....................................................................................ACDD - Comma separated list of PIs who contributed to dataset - from ATN registration system
+		:contributor_role = "" ; //.....................................................................................ACDD - Comma separated list of contributor roles (orginator, author, etc.)
+		:contributor_role_vocabulary = "" ; //..........................................................................IOOS - NERC Vocabulary server link to vocab used (eg. https://vocab.nerc.ac.uk/collection/G04/current/)
+		:contributor_url = "" ; //......................................................................................IOOS - Contributor ORCiD urls (comma separated list)
+		:creator_country = "" ; //......................................................................................IOOS - Country code
+		:creator_email = "" ; //........................................................................................ACDD
+		:creator_institution = "" ; //..................................................................................ACDD - Institution name for creator
+		:creator_institution_url = "" ; //..............................................................................IOOS - url to institution landing page
+		:creator_name = "" ; //.........................................................................................ACDD
+		:creator_role = "" ; //.........................................................................................ATN  - Role of the creator (vocab??)
+		:creator_role_vocabulary = "" ; //..............................................................................ATN  - NERC Vocabulary server link to vocab used (eg. https://vocab.nerc.ac.uk/collection/G04/current/)
+		:creator_sector = "" ; //.......................................................................................IOOS - Sector from https://mmisw.org/ont/ioos/sector
+		:creator_sector_vocabulary = "https://mmisw.org/ont/ioos/sector" ; //...........................................ATN  - IOOS MMISW sector vocabulary
+		:creator_type = "person" ; //...................................................................................ACDD
+		:creator_url = "" ; //..........................................................................................ACDD - orcid for creator
+		:date_created = "" ; //.........................................................................................ACDD
+		:date_issued = "" ; //..........................................................................................ACDD - Date issued
+		:date_metadata_modified = "" ; //...............................................................................ACDD - Date the metadata was last updated
+		:date_modified = "" ; //........................................................................................ACDD - Date file was updated
+		:deployment_end_datetime = "" ; //..............................................................................ATN  - Date when the deployment ended (might differ from time_coverage_end)
+		:deployment_id = "" ; //........................................................................................ATN  - Internal ATN identifier for deployment?
+		:deployment_start_datetime = "" ; //............................................................................ATN  - Date when the deployment started (might differ from time_coverage_start)
+		:deployment_start_lat = "" ; //.................................................................................ATN  - Start Latitude of deployment (might differ from geospatial_latitude_min/max)
+		:deployment_start_lon = "" ; //.................................................................................ATN  - End Longitude of deployment (might differ from geospatial_longitude_min/max)
+		:featureType = "trajectory" ; //................................................................................CF
+		:geospatial_bbox = "" ; //......................................................................................ATN  - Bounding box in WKT format
+		:geospatial_bounds = "" ; //....................................................................................ACDD - Bounding polygon in WKT format
+		:geospatial_bounds_crs = "EPSG:4326" ; //.......................................................................ACDD
+		:geospatial_lat_max = 0.0f ; //.................................................................................ACDD
+		:geospatial_lat_min = 0.0f ; //.................................................................................ACDD
+		:geospatial_lat_units = "degrees_north" ; //....................................................................ACDD
+		:geospatial_lon_max = 0.0f ; //.................................................................................ACDD
+		:geospatial_lon_min = 0.0f ; //.................................................................................ACDD
+		:geospatial_lon_units = "degrees_east" ; //.....................................................................ACDD
+		:history = "" ; //..............................................................................................ACDD - Additional processing details
+		:id = "" ; //...................................................................................................ACDD
+		:infoUrl = "" ; //..............................................................................................IOOS - ATN portal metadata link
+		:institution = "" ; //..........................................................................................ACDD - institution who submitted to ATN?
+		:instrument = "" ; //...........................................................................................ACDD - Why was this decided? Satellite telemetry tag
+		:instrument_vocabulary = "" ; //................................................................................ACDD - no vocab?
+		:keywords = "" ; //.............................................................................................ACDD - list of GCMD keywords (eg. EARTH SCIENCE > AGRICULTURE > ANIMAL SCIENCE > ANIMAL ECOLOGY AND BEHAVIOR, EARTH SCIENCE > BIOSPHERE > ECOLOGICAL DYNAMICS > SPECIES/POPULATION INTERACTIONS > MIGRATORY RATES/ROUTES, EARTH SCIENCE > OCEANS, EARTH SCIENCE > CLIMATE INDICATORS > BIOSPHERIC INDICATORS > SPECIES MIGRATION, EARTH SCIENCE > OCEANS, EARTH SCIENCE > BIOLOGICAL CLASSIFICATION > ANIMALS/VERTEBRATES, EARTH SCIENCE > BIOSPHERE > ECOSYSTEMS > MARINE ECOSYSTEMS, PROVIDERS > GOVERNMENT AGENCIES-U.S. FEDERAL AGENCIES > DOC > NOAA > IOOS, PROVIDERS > COMMERCIAL > Axiom Data Science)
+		:keywords_vocabulary = "" ; //..................................................................................ACDD - Version of GCMD used for keywords (eg. GCMD Science Keywords v15.1)
+		:license = "These data may be used and redistributed for free, but are not intended for legal use, since they may contain inaccuracies. No person or group associated with these data makes any warranty, expressed or implied, including warranties of merchantability and fitness for a particular purpose, or assumes any legal liability for the accuracy, completeness or usefulness of this information. This disclaimer applies to both individual use of these data and aggregate use with other data. It is strongly recommended that users read and fully comprehend associated metadata prior to use. Please acknowledge the U.S. Animal Telemetry Network (ATN) or the specified citation as the source from which these data were obtained in any publications and/or representations of these data. Communication and collaboration with dataset authors are strongly encouraged." ;
+		:metadata_link = "" ; //........................................................................................ACDD
+		:naming_authority = "" ; //.....................................................................................ACDD - manufacturer url (reversed)
+		:ncei_template_version = "" ; //................................................................................NCEI - NCEI netCDF template version number (eg. NCEI_NetCDF_Trajectory_Template_v2.0)
+		:platform = "" ; //.............................................................................................ACDD - (eg. land-sea mammals)
+		:platform_category = "" ; //....................................................................................ATN  - (eg. animal)
+		:platform_id = "" ; //..........................................................................................IOOS - animal aphia ID
+		:platform_name = "" ; //........................................................................................IOOS - animal scientific name
+		:platform_vocabulary = "" ; //..................................................................................ACDD - Link to NERC Vocabulary Server platform categories (eg. https://vocab.nerc.ac.uk/collection/L06/current/)
+		:processing_level = "" ; //.....................................................................................ACDD - summary of where data came from and what was done (eg. NetCDF file created from position data obtained from Wildlife Computers API)
+		:product_version = "" ; //......................................................................................ACDD
+		:program = "IOOS Animal Telemetry Network" ; //.................................................................ACDD
+		:project = "" ; //..............................................................................................ACDD - Name of the project
+		:ptt_id = "" ; //...............................................................................................ATN  - Platform Transmitter Terminal (PTT) id assigned by ??
+		:publisher_country = "USA" ; //.................................................................................ACDD
+		:publisher_email = "atndata@ioos.us" ; //.......................................................................ACDD
+		:publisher_institution = "US Integrated Ocean Observing System Office" ; //.....................................ACDD
+		:publisher_name = "US Integrated Ocean Observing System (IOOS) Animal Telemetry Network (ATN)" ; //.............ACDD
+		:publisher_type = "institution" ; //............................................................................ACDD
+		:publisher_url = "https://atn.ioos.us" ; //.....................................................................ACDD
+		:references = "" ; //...........................................................................................ACDD
+		:sea_name = "" ; //.............................................................................................ATN  - sea names as determined using lat/lons and NCEI sea names polygons
+		:source = "" ; //...............................................................................................ACDD
+		:standard_name_vocabulary = "" ; //.............................................................................ACDD - citation for CF standard name table (eg. CF Standard Name Table v27)
+		:summary = "" ; //..............................................................................................ACDD - Abstract for the dataset
+		:tag_serial = "" ; //...........................................................................................ATN  - Serial number for the tag
+		:time_coverage_duration = "" ; //...............................................................................ACDD - total time duration
+		:time_coverage_end = "" ; //....................................................................................ACDD
+		:time_coverage_resolution = "" ; //.............................................................................ACDD resolution of time observations
+		:time_coverage_start = "" ; //..................................................................................ACDD
+		:title = "" ; //................................................................................................ACDD - Title for the dataset
+		:uuid = "" ; //.................................................................................................ATN
+		:vendor = "" ; //...............................................................................................ATN  - Vendor of the tag
+		:vendor_id = "" ; //............................................................................................ATN  - uuid for vendor?
+		:wmo_platform_code = "" ; //....................................................................................IOOS
+		:Conventions = "CF-1.10, ACDD-1.3, IOOS-1.2, ATN Satellite Telemetry Specification v1.0" ; //...................CF
+}
