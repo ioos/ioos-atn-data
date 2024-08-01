@@ -40,15 +40,32 @@ F([IPT OBIS-USA])
 G([ATN Portal])
 H([NDBC])
 I([GTS])
+J[(NOAA OneStop)]
+K[(data.gov)]
+L[("Commerce
+Data Hub")]
+M[("IOOS Data Catalog
+(data.ioos.us)")]
 
 A --> B
 B -- Data released from embargo --> D
-D --> E
-E --> F
+D .-> E
+D --> FC
+E .-> F
 B --> G
 B -- BUFR msgs from Profiling Tags --> H
+B .->|Data released from embargo| M
+M --> FC
 H --> I
 F --collection--> D
+
+
+subgraph FC [U.S. Federal Catalogs]
+J
+K
+L
+end
+
 ```
 
 ### ATN WAF structure for NCEI pickup
