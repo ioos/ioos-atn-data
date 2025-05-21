@@ -1,4 +1,4 @@
-netcdf atn_satellite_trajectory_template {
+netcdf atn_satellite_profile_template {
 dimensions:
 	obs = < dim1 > ; //.................................................................................................Number of time steps in the time series
 variables:
