@@ -171,7 +171,6 @@ variables:
 	string animal ; //..................................................................................................World Registry of Marine Species Taxonomy for tagged species
 		animal:AphiaID = "" ;
 		animal:authority = "" ; //......................................................................................WoRMS authority
-		animal:cf_role = "trajectory_id" ;
 		animal:class = "" ;
 		animal:coverage_content_type = "referenceInformation" ;
 		animal:family = "" ;
