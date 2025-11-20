@@ -14,7 +14,7 @@ The observations have been split into [trajectory](#trajectory) and [profile](#p
 Each section below documents the decisions made for the translation of the ATN netCDF data into DarwinCore.
 
 ## Trajectory
-See this [Python library](https://github.com/MathewBiddle/atn2obis/tree/main) on performing the translation. A short summary and data flow diagram are below.
+See this [atn2obis](https://github.com/MathewBiddle/atn2obis/tree/main) Python library on performing the translation. A short summary and data flow diagram are below.
 
 ### Step-by-step
 1. Pulls source netCDF data directly from NCEI.
