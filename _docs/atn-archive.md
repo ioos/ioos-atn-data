@@ -34,8 +34,8 @@ flowchart TD
 A([Satellite Tag Deployment])
 B([ATN])
 D([NCEI])
-E([Darwin Core Alignment])
-F([IPT OBIS-USA])
+E([Darwin Core Alignment atn2obis])
+F[(OBIS-USA IPT)]
 G([ATN Portal])
 H([NDBC])
 I([GTS])
@@ -45,12 +45,17 @@ L[("Commerce
 Data Hub")]
 M[("IOOS Data Catalog
 (data.ioos.us)")]
+N[(OBIS)]
+O[(GBIF)]
 
 A --> B
 B -- Data released from embargo --> D
-B .-> |Data released from embargo| E
+D --> E
 D --> FC
-E .-> F
+E --> F
+F --> D
+F --> N
+F --> O
 B --> G
 B -- BUFR msgs from Profiling Tags --> H
 B .->|Data released from embargo| M
@@ -58,12 +63,12 @@ M --> FC
 H --> I
 
 
+
 subgraph FC [U.S. Federal Catalogs]
 J
 K
 L
 end
-
 ```
 
 ### ATN web accessible folder structure for NCEI pickup
