@@ -1807,3 +1807,75 @@ Attributes:
     actual_min:     0.0
     actual_max:     0.0
 ```
+
+### Quality Control Protocols
+
+ATN DAC quality control protocols handle animal trajectory and dive profile data and uses the `ioos_qc` Python package to implement multiple QARTOD tests and an aggregate rollup flag.
+
+#### Speed, Location, Range Tests
+
+The following `ioos_qc` tests are applied: 
+* `ioos_qc.argo.speed_test`
+* `ioos_qc.qartod.location_test`
+* `ioos_qc.qartod.gross_range_test` - for temperature and salinity
+
+With these default thresholds. The temperature and salinity thresholds are taken from the ARGOS QC Manual:
+
+| Test | Parameter | Suspect | Fail |
+|----------|----------|----------|
+| ioos_qc.argo.speed_test | Speed | 8.0 m/s | 10.0 m/s |
+| ioos_qc.argo.location_test | Latitude / Longitude | n/a | [-180, -90, 180, 90] |
+| ioos_qc.qartod.gross_range_test | Temperature | n/a | [-2.5, 40] |
+| ioos_qc.qartod.gross_range_test | Salinity | n/a | [0.0, 41.0] |
+
+#### Date Tests
+
+Valid start and end deployment dates are either provided in an XML metadata file alongside the data files or manually submitted through the ATN Data Registration portal. These provided date ranges are used to truncate the data on both ends, to account for time on land before deployment and after retrieval.
+
+#### Trajectory & Profile Data
+
+# TODO: finish this section
+
+In addition to the above tests for trajectory data, we also check that z is [0, 0] since it is horizontal, surface trajectory information.
+
+For profiles, we evaluate temperature, salinity, sea water electrical conductivity, depth.
+
+
+#### Implementation Example
+
+# TODO: Add examples of `df` and `Config`
+# TODO: Add example of what `results_store` looks like
+# TODO: Link to an example notebook
+Snippet of `ioos_qc` implementation:
+
+```
+from ioos_qc.stores import PandasStore
+from ioos_qc.streams import Config, PandasStream
+
+def apply_qc(df: pd.DataFrame, config: Config) -> pd.DataFrame:
+    # Setup the stream
+    stream = PandasStream(df)
+
+    # Run the tests
+    results = stream.run(config)
+
+    # Store the results in another DataFrame
+    store = PandasStore(
+        results,
+        axes={
+            't': 'time',
+            'z': 'z',
+            'y': 'lat',
+            'x': 'lon'
+        }
+    )
+
+    # Compute any aggregations
+    store.compute_aggregate(name='rollup_qc')  # Appends to the results internally
+
+    # Write only the test results to the store
+    results_store = store.save(write_data=False, write_axes=False)
+
+    # Append columns from qc results back into the data
+    return pd.concat([df, results_store], axis=1)
+```
