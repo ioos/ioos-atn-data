@@ -1819,7 +1819,7 @@ The following `ioos_qc` tests are applied:
 * `ioos_qc.qartod.location_test`
 * `ioos_qc.qartod.gross_range_test` - for temperature and salinity
 
-With these default thresholds. The temperature and salinity thresholds are taken from the ARGOS QC Manual:
+The table below summarizes the default thresholds for each test and parameter. The temperature thresholds and salinity upper bound threshold are taken from the [Argo Quality Control Manual for CTD and Trajectory Data](https://archimer.ifremer.fr/doc/00228/33951/):
 
 | Test | Parameter | Suspect | Fail |
 |----------|----------|----------|
@@ -1828,13 +1828,15 @@ With these default thresholds. The temperature and salinity thresholds are taken
 | ioos_qc.qartod.gross_range_test | Temperature | n/a | [-2.5, 40] |
 | ioos_qc.qartod.gross_range_test | Salinity | n/a | [0.0, 41.0] |
 
+TODO: Check on sal lower bound. The argo manual says 2, but this threshold is for all our platforms.
+
 #### Date Tests
 
 Valid start and end deployment dates are either provided in an XML metadata file alongside the data files or manually submitted through the ATN Data Registration portal. These provided date ranges are used to truncate the data on both ends, to account for time on land before deployment and after retrieval.
 
 #### Trajectory & Profile Data
 
-# TODO: finish this section
+TODO: finish this section
 
 In addition to the above tests for trajectory data, we also check that z is [0, 0] since it is horizontal, surface trajectory information.
 
@@ -1843,9 +1845,9 @@ For profiles, we evaluate temperature, salinity, sea water electrical conductivi
 
 #### Implementation Example
 
-# TODO: Add examples of `df` and `Config`
-# TODO: Add example of what `results_store` looks like
-# TODO: Link to an example notebook
+TODO: Add examples of `df` and `Config`
+TODO: Add example of what `results_store` looks like
+TODO: Link to an example notebook
 Snippet of `ioos_qc` implementation:
 
 ```
