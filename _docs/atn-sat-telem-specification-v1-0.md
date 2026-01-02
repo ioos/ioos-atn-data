@@ -1828,10 +1828,27 @@ The table below summarizes the thresholds for each test and parameter. The tempe
 | ioos_qc.argo.location_test | Latitude / Longitude | n/a | [-180, -90, 180, 90] |
 | ioos_qc.qartod.gross_range_test | Temperature | n/a | [-2.5, 40] |
 | ioos_qc.qartod.gross_range_test | Salinity | n/a | [0.0, 41.0] |
+| ioos_qc.axds.valid_range_test | Starting Time | n/a | Varies |
+| ioos_qc.axds.valid_range_test | Ending Time | n/a | Varies |
 
 TODO: Check on sal lower bound. The argo manual says 2.
 
-The `ioos_qc.axds.valid_range_test()` is applied by checking the ingested data against provider-supplied start and end deployment dates. Valid start and end deployment dates are either accessed from an XML metadata file alongside the data files or manually submitted through the ATN Data Registration portal. These provided date ranges are used to truncate the data on both ends, to account for time on land before deployment and after retrieval.
+The `ioos_qc.axds.valid_range_test()` is applied by checking the ingested data against provider-supplied start and end deployment dates, if available. Valid start and end deployment dates are either accessed from manually submitted deployment information saved in the [ATN Data Registration portal (ADR)](https://dacregistration.atn.ioos.us/) or from an XML metadata file packaged alongside the data files. When both are available, the ADR deployment dates are used as the source of truth. The provided date ranges are converted to `datetime` and used to truncate the data on both ends, to account for time on land before deployment and after retrieval.
+
+Currently, only auto-ingested Wildlife Computer tag data include start and end date metadata (epoch time) in the corresponding XML file, which might look something like this:
+
+```
+<deployment>
+    <start>
+        <date>1464789420</date>
+        <latitude>34.2178</latitude>
+        <longitude>-120.5634</longitude>
+    </start>
+    <end>
+        <date>1465776000</date>
+    </end>
+</deployment>
+```
 
 
 #### Implementation Example
