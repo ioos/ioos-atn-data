@@ -1824,7 +1824,7 @@ The following `ioos_qc` tests are applied:
 The table below summarizes the thresholds for each test and parameter. The temperature thresholds and salinity upper bound threshold are taken from the [Argo Quality Control Manual for CTD and Trajectory Data](https://archimer.ifremer.fr/doc/00228/33951/):
 
 | Test | Parameter | Suspect | Fail |
-|----------|----------|----------|
+|----------|----------|----------|----------|
 | ioos_qc.argo.speed_test | Speed | If over 8.0 m/s | If over 10.0 m/s |
 | ioos_qc.argo.location_test | Latitude / Longitude | n/a | If falls outside of [-180, -90, 180, 90] |
 | ioos_qc.qartod.gross_range_test | Temperature (C) | n/a | If falls outside of [-2.5, 40] |
