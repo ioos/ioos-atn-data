@@ -1812,7 +1812,6 @@ Attributes:
 
 ATN DAC quality control protocols handle animal trajectory and dive profile data and uses the `ioos_qc` Python package to implement multiple QARTOD tests and an aggregate rollup flag.
 
-See this example notebook for more details.
 
 #### Speed, Location, Gross Range Tests
 
