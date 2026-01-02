@@ -1817,7 +1817,8 @@ ATN DAC quality control protocols handle animal trajectory and dive profile data
 The following `ioos_qc` tests are applied: 
 * `ioos_qc.argo.speed_test`
 * `ioos_qc.qartod.location_test`
-* `ioos_qc.qartod.gross_range_test` - for temperature and salinity
+* `ioos_qc.qartod.gross_range_test`
+* `ioos_qc.axds.valid_range_test`
 
 The table below summarizes the thresholds for each test and parameter. The temperature thresholds and salinity upper bound threshold are taken from the [Argo Quality Control Manual for CTD and Trajectory Data](https://archimer.ifremer.fr/doc/00228/33951/):
 
@@ -1830,9 +1831,7 @@ The table below summarizes the thresholds for each test and parameter. The tempe
 
 TODO: Check on sal lower bound. The argo manual says 2.
 
-#### Date Tests
-
-Valid start and end deployment dates are either provided in an XML metadata file alongside the data files or manually submitted through the ATN Data Registration portal. These provided date ranges are used to truncate the data on both ends, to account for time on land before deployment and after retrieval.
+The `ioos_qc.axds.valid_range_test()` is applied by checking the ingested data against provider-supplied start and end deployment dates. Valid start and end deployment dates are either accessed from an XML metadata file alongside the data files or manually submitted through the ATN Data Registration portal. These provided date ranges are used to truncate the data on both ends, to account for time on land before deployment and after retrieval.
 
 
 #### Implementation Example
