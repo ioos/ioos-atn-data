@@ -1812,26 +1812,30 @@ Attributes:
 
 ATN DAC quality control protocols handle animal trajectory and dive profile data and uses the `ioos_qc` Python package to implement multiple QARTOD tests and an aggregate rollup flag.
 
-#### Speed, Location, Range Tests
+See this example notebook for more details.
+
+#### Speed, Location, Gross Range Tests
 
 The following `ioos_qc` tests are applied: 
-* `ioos_qc.argo.speed_test`
-* `ioos_qc.qartod.location_test`
-* `ioos_qc.qartod.gross_range_test`
-* `ioos_qc.axds.valid_range_test`
+* [`ioos_qc.argo.speed_test`](https://ioos.github.io/ioos_qc/api/ioos_qc.html#ioos_qc.argo.speed_test)
+* [`ioos_qc.qartod.location_test`](https://ioos.github.io/ioos_qc/api/ioos_qc.html#ioos_qc.qartod.location_test)
+* [`ioos_qc.qartod.gross_range_test`](https://ioos.github.io/ioos_qc/api/ioos_qc.html#ioos_qc.qartod.gross_range_test)
+* [`ioos_qc.axds.valid_range_test`](https://ioos.github.io/ioos_qc/api/ioos_qc.html#ioos_qc.axds.valid_range_test)
 
 The table below summarizes the thresholds for each test and parameter. The temperature thresholds and salinity upper bound threshold are taken from the [Argo Quality Control Manual for CTD and Trajectory Data](https://archimer.ifremer.fr/doc/00228/33951/):
 
 | Test | Parameter | Suspect | Fail |
 |----------|----------|----------|
-| ioos_qc.argo.speed_test | Speed | 8.0 m/s | 10.0 m/s |
-| ioos_qc.argo.location_test | Latitude / Longitude | n/a | [-180, -90, 180, 90] |
-| ioos_qc.qartod.gross_range_test | Temperature | n/a | [-2.5, 40] |
-| ioos_qc.qartod.gross_range_test | Salinity | n/a | [0.0, 41.0] |
+| ioos_qc.argo.speed_test | Speed | If over 8.0 m/s | If over 10.0 m/s |
+| ioos_qc.argo.location_test | Latitude / Longitude | n/a | If falls outside of [-180, -90, 180, 90] |
+| ioos_qc.qartod.gross_range_test | Temperature (C) | n/a | If falls outside of [-2.5, 40] |
+| ioos_qc.qartod.gross_range_test | Salinity (psu) | n/a | If falls outside of [0.0, 41.0] |
 | ioos_qc.axds.valid_range_test | Starting Time | n/a | Varies |
 | ioos_qc.axds.valid_range_test | Ending Time | n/a | Varies |
 
-TODO: Check on sal lower bound. The argo manual says 2.
+The Argo Quality Control Manual suggests a gross range lower bound of 2 psu for salinity, but here we set it to 0 psu.
+
+#### Temporal Valid Range Test
 
 The `ioos_qc.axds.valid_range_test()` is applied by checking the ingested data against provider-supplied start and end deployment dates, if available. Valid start and end deployment dates are either accessed from manually submitted deployment information saved in the [ATN Data Registration portal (ADR)](https://dacregistration.atn.ioos.us/) or from an XML metadata file packaged alongside the data files. When both are available, the ADR deployment dates are used as the source of truth. The provided date ranges are converted to `datetime` and used to truncate the data on both ends, to account for time on land before deployment and after retrieval.
 
@@ -1848,44 +1852,4 @@ Currently, only auto-ingested Wildlife Computer tag data include start and end d
         <date>1465776000</date>
     </end>
 </deployment>
-```
-
-
-#### Implementation Example
-
-TODO: Add examples of `df` and `Config`
-TODO: Add example of what `results_store` looks like
-TODO: Link to an example notebook
-Snippet of `ioos_qc` implementation:
-
-```
-from ioos_qc.stores import PandasStore
-from ioos_qc.streams import Config, PandasStream
-
-def apply_qc(df: pd.DataFrame, config: Config) -> pd.DataFrame:
-    # Setup the stream
-    stream = PandasStream(df)
-
-    # Run the tests
-    results = stream.run(config)
-
-    # Store the results in another DataFrame
-    store = PandasStore(
-        results,
-        axes={
-            't': 'time',
-            'z': 'z',
-            'y': 'lat',
-            'x': 'lon'
-        }
-    )
-
-    # Compute any aggregations
-    store.compute_aggregate(name='rollup_qc')  # Appends to the results internally
-
-    # Write only the test results to the store
-    results_store = store.save(write_data=False, write_axes=False)
-
-    # Append columns from qc results back into the data
-    return pd.concat([df, results_store], axis=1)
 ```
