@@ -11,3 +11,4 @@ dependencies:
   - xarray
   - cartopy
   - netcdf4
+  - ioos-qc==2.2.0
