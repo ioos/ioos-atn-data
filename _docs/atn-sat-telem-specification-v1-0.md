@@ -1832,7 +1832,7 @@ The table below summarizes the thresholds for each test and parameter. The tempe
 | ioos_qc.axds.valid_range_test | Starting Time | n/a | Varies |
 | ioos_qc.axds.valid_range_test | Ending Time | n/a | Varies |
 
-The Argo Quality Control Manual suggests a gross range lower bound of 2 psu for salinity, but here we set it to 0 psu.
+Note: While the Argo Quality Control Manual suggests a gross range lower bound of 2 psu for salinity, modern conductivity-based salinity sensors can measure near 0 psu conditions with reasonable accuracy and without signal degradation ([Menn & Nair 2022](https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2022.1031824/full)). NOAA's [Manual for Real-Time Quality Control](https://repository.library.noaa.gov/view/noaa/23701) defines the Gross Range Test to flag measurements outside of a sensor's operational limits. Therefore, the lower bound we use here is 0 psu.
 
 #### Temporal Valid Range Test
 
