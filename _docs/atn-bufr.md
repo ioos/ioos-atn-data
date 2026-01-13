@@ -14,18 +14,45 @@ This page documents the standard operating procedures for formatting and submitt
 
 
 
-## BUFR Format
 
-The formatting follows the World Meteorological Organization (WMO) updated v.39 tables. Conversion is done using [`bufrtools`](https://github.com/axiom-data-science/bufrtools).
+## Data Scope
 
-## Near Real-Time
+Data are submitted near real-time, or within 24 hours of profile data collection by the animal-borne tag, but within a maximum of 10 days. Data older than this is not useful for the Global Telecommunication System.
 
-Data are submitted within 24 hours of profile data collection by the animal-borne tag, but within a maximum of 10 days. Data older than this is not useful for the Global Telecommunication System.
-
-Data are made available [here](https://ndbc-bufr.srv.axds.co/platforms/atn/smru/) and pushed to NDBC via FTP for pickup (https://axds.atlassian.net/browse/ATN-19).
+Data are made available [here](https://ndbc-bufr.srv.axds.co/platforms/atn/smru/) and pushed to NDBC via FTP for pickup.
 
 Data can be accessed [here](https://www.ndbc.noaa.gov/faq/rt_data_access.shtml) on the NDBC website.
 
-## Scope
-
 Currently we are only submitting profile data from SMRU data. But eventually we'll want to integration additional manufacturers and tag types
+
+## BUFR Conversion
+
+The formatting follows the World Meteorological Organization (WMO) updated v.39 tables. Conversion is done using [`bufrtools`](https://github.com/axiom-data-science/bufrtools).
+
+
+1. First we prepare the profile data in netCDF to make sure the depths are ordered by time
+2. Ensure profile id is only 8 characters maximum
+3. Conversion is done using [`bufrtools`](https://github.com/axiom-data-science/bufrtools); see `bufrtools` documentation for implementation
+
+
+Create a BUFR message for profile data, `df`:
+
+```
+from bufrtools.encoding.wildlife_computers import encode
+
+random_uuid = uuid # random unique identifier associated with this profile deployment
+random_ptt_id = ptt_id # from metadata
+
+encode(profile_dataset=df, output="profiles.bufr", uuid=random_uuid, ptt=random_ptt_id)
+```
+
+Get Section 4 Records of the BUFR Message:
+```
+from bufrtools.encoding.wildlife_computers import get_section4
+
+records = get_section4(df, random_uuid)
+```
+
+## Submitting to NDBC
+
+Data are currently submitted to NDBC for incorporation into GTS 
