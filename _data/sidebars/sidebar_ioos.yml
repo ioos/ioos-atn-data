@@ -76,6 +76,10 @@ entries:
           url: /atn-sat-telem-specification-v1-0.html#example-dataset
           output: web
 
+        - title: Quality Control
+          url: /atn-sat-telem-specification-v1-0.html#quality-control-protocols
+          output: web
+
   - title: ATN Data Flows
     output: web, pdf
 
