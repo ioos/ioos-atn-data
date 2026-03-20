@@ -1812,6 +1812,18 @@ Attributes:
 
 ATN DAC quality control protocols handle animal trajectory and dive profile data and uses the `ioos_qc` Python package to implement multiple QARTOD tests and an aggregate rollup flag.
 
+#### QC Flag Values
+
+Below are the QC flags and their meaning.
+
+| Flag | Meaning |
+|------|---------|
+| 1 | PASS - Data passed all QC tests |
+| 2 | NOT_EVALUATED - Test not performed |
+| 3 | SUSPECT - Data questionable, use with caution |
+| 4 | FAIL - Data failed QC, should not be used |
+| 9 | MISSING - Data is missing |
+
 
 #### Speed, Location, Gross Range Tests
 
