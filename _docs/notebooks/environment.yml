@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.8
+  # - python=3.8
   - cfunits==3.2.9
   - folium
   - jupyter
@@ -12,3 +12,10 @@ dependencies:
   - cartopy
   - netcdf4
   - ioos-qc==2.2.0
+  - rpy2
+  - r-base
+  - r-sf      # aniMotum dep: brings in gdal/geos/proj binaries
+  - cmake     # needed to build s2/abseil during aniMotum install
+
+# conda activate atn
+# Rscript -e 'install.packages("aniMotum", repos=c("https://cloud.r-project.org","https://ianjonsen.r-universe.dev"), dependencies=TRUE)'
