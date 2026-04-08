@@ -81,10 +81,18 @@ entries:
 
     folderitems:
 
+    - title: Quality Control Protocols
+      url: /quality-control.html
+      output: web
+
     - title: NCEI Archive
       url: /atn-archive.html
       output: web
 
     - title: Darwin Core Alignment
       url: /atn-darwin-core.html
+      output: web
+
+    - title: Trajectory Estimates (aniMotum)
+      url: /animotum.html
       output: web
