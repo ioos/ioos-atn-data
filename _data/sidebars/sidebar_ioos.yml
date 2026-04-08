@@ -81,6 +81,14 @@ entries:
 
     folderitems:
 
+    - title: Overview
+      url: /overview.html
+      output: web
+
+    - title: aniMotum Estimates
+      url: /animotum.html
+      output: web
+
     - title: Quality Control Protocols
       url: /quality-control.html
       output: web
@@ -91,8 +99,4 @@ entries:
 
     - title: Darwin Core Alignment
       url: /atn-darwin-core.html
-      output: web
-
-    - title: Trajectory Estimates (aniMotum)
-      url: /animotum.html
       output: web
