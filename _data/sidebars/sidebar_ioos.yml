@@ -81,6 +81,18 @@ entries:
 
     folderitems:
 
+    - title: Overview
+      url: /overview.html
+      output: web
+
+    - title: aniMotum Estimates
+      url: /animotum.html
+      output: web
+
+    - title: Quality Control Protocols
+      url: /quality-control.html
+      output: web
+
     - title: NCEI Archive
       url: /atn-archive.html
       output: web
