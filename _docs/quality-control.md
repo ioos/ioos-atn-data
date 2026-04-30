@@ -20,7 +20,7 @@ The following `ioos_qc` tests are applied:
 
 The Location and Speed tests are applied to trajectory data only, while the Gross Range Test is applied to temperature and salinity profile observations. Data are not removed during the QC step, but the results are included in the processed datasets. The Valid Range Test is the only QC test used on both trajectory and profile data that actually truncates the raw data based on deployment dates provided in the metadata, since telemetry tags often begin pinging their locations before and after they are attached to the animal. 
 
-Please see the [ATN DAC Flow Overview](https://ioos.github.io/ioos-atn-data/atn-overview.html) for more details on where the processed data with QC flags can be accessed.
+Please see the [ATN DAC Flow Overview](https://ioos.github.io/ioos-atn-data/overview.html) for more details on where the processed data with QC flags can be accessed.
 
 ### Trajectory QC Tests
 
