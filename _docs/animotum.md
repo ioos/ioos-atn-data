@@ -1,10 +1,10 @@
 ---
-title: "Trajectory Estimations with aniMotum"
-keywords: [ioos, metadata, netCDF, aniMotum, trajectory]
+title: "Modeled Trajectory (Level 2 Data)"
+keywords: [ioos, metadata, netCDF, aniMotum, trajectory, SSM, state space model]
 tags: [ioos, metadata, netCDF, aniMotum, trajectory]
 toc: false
 #permalink: index.html
-summary: This page documents the implementation of aniMotum in the ATN DAC to improve trajectory estimation.
+summary: This page documents the State Space Model (SSM) processing pipeline used by the ATN DAC to produce regularized, quality-controlled trajectory estimates from raw Argos satellite tracking data.
 mermaid: true 
 ---
 
@@ -68,28 +68,36 @@ Each record submitted to the model must contain the following columns:
 | `lc` | Argos Location Class (G, 3, 2, 1, 0, A, B, Z) |
 | `lon` | Longitude (decimal degrees) |
 | `lat` | Latitude (decimal degrees) |
-| `smaj` | Semi-major axis of the Argos error ellipse (meters) |
-| `smin` | Semi-minor axis of the Argos error ellipse (meters) |
-| `eor` | Ellipse orientation/rotation (degrees from north) |
+| `smaj` | Semi-major axis of the Argos error ellipse (meters) — optional for LC `G`, required for others |
+| `smin` | Semi-minor axis of the Argos error ellipse (meters) — optional for LC `G`, required for others |
+| `eor` | Ellipse orientation/rotation (degrees from north) — optional for LC `G`, required for others |
 
 Rows with missing `lc` values are dropped prior to processing, as they cause errors in the SSM fitting step.
+
+For `G` (Fastloc GPS) locations, the `smaj`, `smin`, and `eor` fields can be set to `NA`, as aniMotum applies the appropriate measurement error model based on location class. Deployments may contain mixed location types (Argos, GPS, etc.); aniMotum handles the different error models accordingly.
 
 
 ## Pre-Processing Validation
 
-Before running the model, two checks are applied to ensure the data are suitable for SSM fitting:
+Before running the model, the following checks and filters are applied to ensure the data are suitable for SSM fitting:
 
-### 1. Minimum Record Threshold
-A **minimum of 20 location records** is required. Fewer records are considered insufficient for the model to converge to a reliable solution.
+### 1. Missing Critical Fields
+Rows with missing values in critical columns (`date`, `lon`, `lat`, `lc`) are dropped, as these are essential for SSM fitting.
+
+### 2. QARTOD QC Filtering
+If a QARTOD rollup quality control column exists, all rows where the QC value is 4 (failed) are removed. The code recognizes: 1=Pass, 2=Not evaluated, 3=Suspect, 4=Fail, 9=Missing.
+
+### 3. Minimum Record Threshold
+A **minimum of 20 location records** is required after filtering. Fewer records are considered insufficient for the model to converge to a reliable solution.
 
 > *Threshold based on recommendation from Ian Jonsen, the developer of aniMotum.*
 
-### 2. Maximum Time Gap Check
+### 4. Maximum Time Gap Check
 The model runs at a fixed **2-hour time step**. If any consecutive pair of records has a gap exceeding **10 hours** (5× the 2-hour time step), the model is unlikely to converge and processing is skipped for that deployment.
 
 > *Gap threshold also based on Ian Jonsen's recommendation.*
 
-If either check fails, a warning is logged, the deployment is skipped, and the reason is recorded.
+If any check fails, a warning is logged, the deployment is skipped, and the reason is recorded.
 
 
 ## The aniMotum Model
@@ -113,13 +121,16 @@ The aniMotum model outputs a CSV of regularized predicted locations at the confi
 
 #### 1. Parquet File
 A binary columnar data file (Apache Parquet, Snappy-compressed) with:
-- Predicted locations (time, longitude, latitude)
+- Predicted locations including:
+  - Geodetic coordinates: `lon`, `lat` (decimal degrees)
+  - Projected coordinates: `x`, `y` (km, using Mercator projection EPSG 3395)
+  - Position error estimates: `x.se`, `y.se` (km, standard errors in x and y directions)
 - A depth variable `z` set to `0` (surface assumed)
 - Metadata attributes (see below)
 - Timestamps rounded to the nearest second (in UTC)
 
 #### 2. CSV File
-A plain-text version of the same predicted locations, with timestamps in `YYYY-MM-DDTHH:MM:SS` format.
+A plain-text version of the same predicted locations, with timestamps in `YYYY-MM-DD HH:MM:SS+00:00` format (e.g., `2024-10-24 00:00:00+00:00`), including the position error estimates (`x.se` and `y.se`).
 
 ### Metadata Added to Output Files
 
@@ -137,13 +148,16 @@ When results are packaged as a NetCDF trajectory file (using the [pocean-core](h
 | `history` | Timestamped creation record (e.g., `2024-01-15T12:00:00Z - Created by the IOOS ATN DAC from an aniMotum model run`) |
 | `time_coverage_start` / `_end` | Derived from the data |
 
-### Where Output Goes
+### Data Products
 
-Processed outputs of the aniMotum SSM are designated as ATN Level 2 Data Products. Only deployments that pass pre-processing validation and produce a successful model fit will have Level 2 results; deployments that are skipped or fail to converge retain only their Level 1 raw Argos data. Successful outputs are expected to be:
+Processed outputs of the aniMotum SSM are designated as **ATN Level 2 Data Products**. Only deployments that pass pre-processing validation and produce a successful model fit will have Level 2 results. Deployments that are skipped or fail to converge retain only their Level 1 raw Argos data.
 
-- **Added to data files**: Processed location data (parquet/CSV) supplements the raw Argos positions for a given deployment
-- **Added to metadata files**: NetCDF files carry full CF-convention metadata describing the deployment, species, and processing provenance
-- **Accessible via the ATN portal**: Level 2 SSM-processed trajectory files are available through the [ATN Data Portal](https://portal.atn.ioos.us/) alongside the corresponding Level 1 raw Argos data for each deployment, subject to any embargo periods that may restrict public access.
+**Level 2 outputs include**:
+- **Parquet file**: Binary columnar format with predicted trajectory locations, coordinates, and position errors
+- **CSV file**: Plain-text version of the same trajectory data
+- **NetCDF file**: CF-convention compliant trajectory file with full metadata describing the deployment, species, processing provenance, and temporal/spatial coverage
+
+These Level 2 Data Products are made available through data archival systems and the [ATN Data Portal](https://portal.atn.ioos.us/), subject to any applicable embargo periods.
 
 ## Summary Flow
 
@@ -163,10 +177,12 @@ Processed outputs of the aniMotum SSM are designated as ATN Level 2 Data Product
 }%%
 
 flowchart TD
-  A["Raw Argos PTT Data"] --> B["Input Validation<br/>≥ 20 records?<br/>Max gap ≤ 10 hours?"]
+  A["Raw Argos PTT Data<br/>(Level 1 Data)"] --> B["Pre-Processing & QC<br/>QARTOD filtering<br/>≥ 20 records?<br/>Max gap ≤ 10 hours?"]
   B -->|Pass| C["aniMotum SSM in Docker<br/>Model: random walk<br/>Time step: 2 hours<br/>Output: predicted locations"]
   C -->|Success| D["Post-Processing<br/>Reformat columns<br/>Round timestamps<br/>Write Parquet + CSV<br/>Generate NetCDF with metadata"]
-  C -->|Fail| F["Level 1 Data Only"]
-  D --> E["ATN Level 2 Data Product<br/>Available via Portal<br/>Added to Data/Metadata Files"]
+  C -->|Fail| F["Raw Argos PTT Data<br/>(Level 1 Data)"]
+  D --> E["Modeled Trajectory<br/>(Level 2 Data)"]
   B -->|Fail| F
+  E --> G["Portal"]
+  F --> G
 ```
