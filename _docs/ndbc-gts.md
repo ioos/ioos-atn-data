@@ -46,9 +46,7 @@ flowchart LR
 
     E --> G[Global Telecommunications System (GTS)]
 ```
-
-
-## Data Scope
+Please see the [ATN DAC Flow Overview](https://ioos.github.io/ioos-atn-data/overview.html) for the full ATN data flow.
 
 ## Data Scope
 
@@ -56,11 +54,9 @@ Profile data are submitted on a near real-time basis, with a target of within 24
 
 Profile data older than this window may still be archived and served through other ATN or IOOS-supported data access pathways (e.g., NCEI, ERDDAP), but they are not submitted to NDBC or distributed via the GTS.
 
-Operationally, profile data from deployments marked for submission to NDBC are converted to BUFR messages on an ongoing basis throughout the deployment period. Generated BUFR messages are made available through a public [Web Accessible Folder (WAF)](https://ndbc-bufr.srv.axds.co/platforms/atn/smru/).
+Operationally, profile data from deployments marked for submission to NDBC are converted to BUFR messages on an ongoing basis throughout the deployment period. Generated BUFR messages and corresponding human-readable files in CSV format are made available through a public [Web Accessible Folder (WAF)](https://ndbc-bufr.srv.axds.co/platforms/atn/smru/).
 
 Once BUFR messages are generated, they are evaluated using an NDBC submission checker and, when eligible, pushed to NDBC via secure file transfer (SFTP) for pickup and processing. Near real-time data distributed through NDBC can be accessed via the NDBC [real-time data access services](https://www.ndbc.noaa.gov/faq/rt_data_access.shtml).
-
-At present, only profile data from Sea Mammal Research Unit manufactured tags are submitted through this workflow. Support for additional manufacturers and tag types may be incorporated in the future.
 
 
 ## BUFR Conversion
@@ -71,7 +67,7 @@ Each eligible profile from an active deployment is converted into an individual 
 ### Pre-processing Steps
 
 For each available profile:
-- Read the source data file (Parquet or netCDF)
+- Read the source data file (Parquet) as a dataframe
 - Extract a single target profile
 - Coerce depth (z) values to numeric
 - Remove duplicate (profile, time, depth) records
@@ -122,10 +118,8 @@ BUFR Messages will be created if
 
 Submission decisions are made at the individual profile level. A BUFR message is submitted to NDBC via SFTP when all of the following criteria are met:
 - The profile contains at least one observation
-- The data were collected within the previous 96 hours
+- The data were collected within the previous 96 hours, to avoid submitting stale data
 - Required deployment metadata and submission flags are present
-
-The time window guards against sending stale data to the GTS which only accepts near real-time observations.
 
 For data that meet these criteria for submission, the status of submission is tracked on this dashboard: https://atn-submission-dashboard.srv.axds.co/.
 
