@@ -1,0 +1,275 @@
+netcdf atn_satellite_profile_template_MKM notes_take 2 {
+dimensions:
+	obs = < dim1 > ; //.................................................................................................Number of time steps in the time series
+variables:
+	double time(obs) ;
+		time:_CoordinateAxisType = "Time" ;
+		time:_FillValue = 0.0f ;
+		time:actual_max = "" ;
+		time:actual_min = "" ;
+		time:ancillary_variables = "qartod_flag_1" ;
+		time:axis = "T" ;
+		time:calendar = "standard" ;
+		time:coverage_content_type = "coordinate" ;
+		time:instrument = "instrument_container_var" ;
+		time:long_name = "Time of the measurement, in seconds since 1990-01-01" ;
+		time:platform = "animal" ;
+		time:standard_name = "time" ;
+		time:units = "seconds since 1990-01-01 00:00:00Z" ;
+	int z(obs) ;//...............................................................................................SMRU files also have pressure (dbar) variable in addition to depth 
+		z:_FillValue = 0.0f ;
+		z:actual_max = "" ;
+		z:actual_min = "" ;
+		z:axis = "Z" ;
+		z:comment = "" ;
+		z:coverage_content_type = "coordinate" ;
+		z:instrument = "instrument_container_var" ;
+		z:long_name = "depth of measurement" ;
+		z:platform = "animal" ;
+		z:positive = "down" ;
+		z:standard_name = "depth" ;
+		z:units = "m" ;
+	double lat(obs) ;
+		lat:_CoordinateAxisType = "Lat" ;
+		lat:_FillValue = 0.0f ;
+		lat:actual_max = "" ;
+		lat:actual_min = "" ;
+		lat:ancillary_variables = "qartod_flag_1 satellite_quality_1" ;
+		lat:axis = "Y" ;
+		lat:coverage_content_type = "coordinate" ;
+		lat:instrument = "instrument_container_var" ;
+		lat:long_name = "Latitude portion of location in decimal degrees North" ;
+		lat:platform = "animal" ;
+		lat:standard_name = "latitude" ;
+		lat:units = "degrees_north" ;
+		lat:valid_max = "90.0" ;
+		lat:valid_min = "-90.0" ;
+	double lon(obs) ;
+		lon:_CoordinateAxisType = "Lon" ;
+		lon:_FillValue = 0.0f ;
+		lon:actual_max = "" ;
+		lon:actual_min = "" ;
+		lon:ancillary_variables = "qartod_flag_1 satellite_quality_1" ;
+		lon:axis = "X" ;
+		lon:coverage_content_type = "coordinate" ;
+		lon:instrument = "instrument_container_var" ;
+		lon:long_name = "Longitude portion of location in decimal degrees East" ;
+		lon:platform = "animal" ;
+		lon:standard_name = "longitude" ;
+		lon:units = "degrees_east" ;
+		lon:valid_max = "180.0" ;
+		lon:valid_min = "180.0" ;
+	int ptt(obs) ; //...................................................................................................Variable for PTT identifier. 
+		ptt:_FillValue = 0.0f ;
+		ptt:comment = "PTT id for this deployment. PTT ids may be used on multiple deployments, but not concurrently. When combined with deployment dates, PTTs can uniquely identify a deployment." ;
+		ptt:coordinates = "time z lon lat" ;
+		ptt:coverage_content_type = "referenceInformation" ;
+		ptt:instrument = "instrument_container_var" ;
+		ptt:long_name = "Platform Transmitter Terminal (PTT) id used for Argos transmissions" ;
+		ptt:platform = "animal" ;
+	string satellite_quality_1(obs) ; //................................................................................variables containing satellite quality information (eg. location_class, error_radius, semi_major_axis, semi_minor_axis, ellipse_orientation)
+		satellite_quality_1:ancillary_variables = "lat lon satellite_quality_1 " ;
+		satellite_quality_1:code_meanings = "" ;
+		satellite_quality_1:code_values = "" ;
+		satellite_quality_1:comment = "" ;
+		satellite_quality_1:coordinates = "time z lon lat" ;
+		satellite_quality_1:coverage_content_type = "qualityInformation" ;
+		satellite_quality_1:instrument = "instrument_container_var" ;
+		satellite_quality_1:long_name = "" ;
+		satellite_quality_1:platform = "animal" ;
+		satellite_quality_1:units = "";
+	double geophysical_variable_1(obs) ; //.............................................................................Variable for geophysical data, if collected (eg. temp, sal, etc.)
+	    geophysical_variable_1:add_offset = 0.0f ;
+	    geophysical_variable_1:ancillary_variables = "qartod_flag_2" ;
+	    geophysical_variable_1:comment = "" ;
+	    geophysical_variable_1:coordinates = "" ;
+	    geophysical_variable_1:coverage_content_type = "physicalMeasurement" ;
+	    geophysical_variable_1:grid_mapping = "crs" ;
+	    geophysical_variable_1:instrument = "instrument_container_var" ;
+	    geophysical_variable_1:long_name = "" ;
+	    geophysical_variable_1:platform = "animal" ;
+	    geophysical_variable_1:scale_factor = 0.0f ;
+	    geophysical_variable_1:source = "" ;
+	    geophysical_variable_1:standard_name = "" ;
+	    geophysical_variable_1:units = "" ;
+	    geophysical_variable_1:valid_max = "" ;
+	    geophysical_variable_1:valid_min = "" ;
+	ubyte qartod_flag_1(obs) ; //.......................................................................................QARTOD flags (eg. rollup, location, speed, time)
+		qartod_flag_1:_FillValue = 0.0f ;
+		qartod_flag_1:coordinates = "time z lon lat" ;
+		qartod_flag_1:coverage_content_type = "qualityInformation" ;
+		qartod_flag_1:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_flag_1:flag_values = "[1, 2, 3, 4, 9]" ;
+		qartod_flag_1:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_flag_1:long_name = "" ;
+		qartod_flag_1:references = "" ;
+		qartod_flag_1:standard_name = "" ; //...........................................................................CF standard name for QARTOD flag
+	ubyte qartod_flag_2(obs) ; //.......................................................................................QARTOD flags for geophysical_variable (eg. gross range)
+		qartod_flag_2:_FillValue = 0.0f ;
+		qartod_flag_2:coordinates = "time z lon lat" ;
+		qartod_flag_2:coverage_content_type = "qualityInformation" ;
+		qartod_flag_2:flag_meanings = "PASS NOT_EVALUATED SUSPECT FAIL MISSING" ;
+		qartod_flag_2:flag_values = "[1, 2, 3, 4, 9]" ;
+		qartod_flag_2:implementation = "https://github.com/ioos/ioos_qc/" ;
+		qartod_flag_2:long_name = "" ;
+		qartod_flag_2:references = "" ;
+		qartod_flag_2:standard_name = "" ; //...........................................................................CF standard name for QARTOD flag
+	int crs ; //........................................................................................................CF - Coordinate Reference System information
+		crs:coverage_content_type = "referenceInformation" ;
+		crs:epsg_code = "EPSG:4326" ;
+		crs:grid_mapping_name = "latitude_longitude" ;
+		crs:inverse_flattening = 298.257223563 ;
+		crs:long_name = "Coordinate Reference System - http://www.opengis.net/def/crs/EPSG/0/4326" ;
+		crs:semi_major_axis = 6378137.0 ;
+	string trajectory ; //...............................................................................................This is the ATN internal identifier for deployment
+		trajectory:cf_role = "trajectory_id" ;
+		trajectory:long_name = "trajectory identifier" ;
+	int animal_attribute_1 ; //.........................................................................................ATN - Additional animal information (eg. life stage, age, sex, length, weight)
+		animal_attribute_1:_FillValue = 0.0f ;
+		animal_attribute_1:animal_attribute_1 = "";
+		animal_age:coverage_content_type = "referenceInformation" ;
+		animal_age:long_name = "" ;
+		animal_age:units = "" ;
+	string animal ; //..................................................................................................World Registry of Marine Species Taxonomy for tagged species
+		animal:cf_role = "trajectory_id" ;
+		animal:AphiaID = "" ;
+		animal:authority = "" ; //......................................................................................WoRMS authority
+		animal:class = "" ;
+		animal:coverage_content_type = "referenceInformation" ;
+		animal:family = "" ;
+		animal:genus = "" ;
+		animal:infraorder = "" ;
+		animal:infraphylum = "" ;
+		animal:kingdom = "" ;
+		animal:long_name = "tagged animal id" ;
+		animal:megaclass = "" ;
+		animal:order = "" ;
+		animal:phylum = "" ;
+		animal:rank = "" ; //...........................................................................................Lowest taxonomic hierarchy known.
+		animal:scientificname = "" ;
+		animal:species = "" ;
+		animal:subclass = "" ;
+		animal:suborder = "" ;
+		animal:subphylum = "" ;
+		animal:superdomain = "" ;
+		animal:taxonRankID = "" ; //....................................................................................numeric code that identifies the taxonomic rank of a given taxon , comes from WoRMs api
+		animal:valid_name = "" ;
+	string instrument_container_var ; //................................................................................Container variable documenting the tag instrument
+		instrument_container_var:calibration_date = "" ;
+		instrument_container_var:coverage_content_type = "referenceInformation" ;
+		instrument_container_var:long_name = "" ;
+		instrument_container_var:make_model = "" ;
+		instrument_container_var:manufacturer = "" ;
+		instrument_container_var:serial_number = "" ;
+	string taxon_name ; //..............................................................................................CF - Container variable containing the WoRMS taxonomic name. CF.
+		taxon_name:coverage_content_type = "referenceInformation" ;
+		taxon_name:long_name = "most precise taxonomic classification for the tagged animal" ;
+		taxon_name:source = "" ; //.....................................................................................reference to WoRMS and date accessed.
+		taxon_name:standard_name = "biological_taxon_name" ;
+		taxon_name:url = "" ; //........................................................................................Specific WoRMS url for species
+	string taxon_lsid ; //..............................................................................................CF - Container variable for the life science identifier for the species. CF.
+		taxon_lsid:coverage_content_type = "referenceInformation" ;
+		taxon_lsid:long_name = "Namespaced Taxon Identifier for the tagged animal" ;
+		taxon_lsid:source = "" ; //.....................................................................................reference to WoRMS and date accessed.
+		taxon_lsid:standard_name = "biological_taxon_lsid" ;
+		taxon_lsid:url = "" ; //........................................................................................Specific WoRMS url for species
+		
+		
+// global attributes:
+		:acknowledgement = "" ; //......................................................................................ACDD - Standard text "National Oceanic and Atmospheric Administration (NOAA) Integrated Ocean Observing System (IOOS), Axiom Data Science, Office of Naval Research (ONR), NOAA National Marine Fisheries Service (NMFS), Wildlife Computers, Argos, IOOS Animal Telemetry Network (ATN)"
+		:animal_common_name = "" ; //...................................................................................ATN  - common name for the tagged animal - from WoRMs
+		:animal_id = "" ; //............................................................................................ATN  - id for the animal. Is this ATN's ID?? NO, it's an unique identifier for the instrumented animal, provided by the data owner.
+		:animal_scientific_name = "" ; //...............................................................................ATN  - scientific name for tagged animal - from WoRMS?? Yes
+		:arbitrary_keywords = "" ; //...................................................................................ATN  - additional keywords not necessarily from a controlled vocabulary; standard text "ATN, Animal Telemetry Network, IOOS, Integrated Ocean Observing System, trajectory, satellite telemetry tag"
+		:argos_program_number = "" ; //.................................................................................ATN  - Argos program number associated with the instruments ptt_id
+		:cdm_data_type = "Trajectory" ; //..............................................................................ACDD
+		:citation = "" ; //.............................................................................................ATN  - recommended citation for this dataset -  Format: [creator_last_name, creator_first_name]; [contributor_last name(s), contributor_first name(s)]. [year]. [animal_common_name] ([animal_scientific_name]) profile data from a [instrument] (ptt id [ptt_id]) deployed in the [sea_name] from [deployment_state_datetime] to [deployment_end_datetime], deployment id [deployment_id]. [Dataset]. [publisher_name].
+		:comment = "" ; //..............................................................................................ACDD
+		:contributor_email = "" ; //....................................................................................IOOS - Comma separated list of contributor emails
+		:contributor_institution = "" ; //..............................................................................NCEI - Comma separated list of contributor institutions
+		:contributor_name = "" ; //.....................................................................................ACDD - Comma separated list of individuals who contributed to dataset
+		:contributor_role = "" ; //.....................................................................................ACDD - Comma separated list of contributor roles (orginator, author, etc.)
+		:contributor_role_vocabulary = "https://vocab.nerc.ac.uk/collection/G04/current/" ; //..........................IOOS - NERC Vocabulary server link to vocab used (eg. https://vocab.nerc.ac.uk/collection/G04/current/)
+		:contributor_url = "" ; //......................................................................................ATN - Contributor ORCiD urls (comma separated list)
+		:Coventions = "CF-1.10, ACDD-1.3, IOOS-1.2, ATN Satellite Telemetry Profile Specification v1.0" ; //............CF
+		:creator_country = "" ; //......................................................................................IOOS - Country code
+		:creator_email = "" ; //........................................................................................ACDD - PI email
+		:creator_institution = "" ; //..................................................................................ACDD - Institution name for creator
+		:creator_institution_url = "" ; //..............................................................................IOOS - url to institution landing page
+		:creator_name = "" ; //.........................................................................................ACDD - PI
+		:creator_role = "principalInvestigator" ; //....................................................................ACDD  - Role of the creator, must be listed as "principalInvestigator"
+		:creator_role_vocabulary = "https://vocab.nerc.ac.uk/collection/G04/current/" ; //..............................ATN  - NERC Vocabulary server link to vocab used (eg. https://vocab.nerc.ac.uk/collection/G04/current/)
+		:creator_sector = "" ; //.......................................................................................IOOS - Sector from https://mmisw.org/ont/ioos/sector
+		:creator_sector_vocabulary = "https://mmisw.org/ont/ioos/sector" ; //...........................................IOOS  - IOOS MMISW sector vocabulary
+		:creator_type = "person" ; //...................................................................................ACDD
+		:creator_url = "" ; //..........................................................................................ATN - orcid for creator
+		:date_created = "" ; //.........................................................................................ACDD
+		:date_issued = "" ; //..........................................................................................ACDD - Date issued
+		:date_metadata_modified = "" ; //...............................................................................ACDD - Date the metadata was last updated
+		:date_modified = "" ; //........................................................................................ACDD - Date file was updated
+		:deployment_end_datetime = "" ; //..............................................................................ATN  - Date when the deployment ended (might differ from time_coverage_end)
+		:deployment_id = "" ; //........................................................................................ATN  - Internal ATN identifier for deployment
+		:deployment_start_datetime = "" ; //............................................................................ATN  - Date when the deployment started (might differ from time_coverage_start)
+		:deployment_start_lat = "" ; //.................................................................................ATN  - Start Latitude of deployment (might differ from geospatial_latitude_min/max)
+		:deployment_start_lon = "" ; //.................................................................................ATN  - End Longitude of deployment (might differ from geospatial_longitude_min/max)
+		:featureType = "trajectoryProfile" ; //.........................................................................CF - If profiling data 
+		:geospatial_bbox = "" ; //......................................................................................ATN  - Bounding box in WKT format
+		:geospatial_bounds = "" ; //....................................................................................ACDD - Bounding polygon in WKT format
+		:geospatial_bounds_crs = "EPSG:4326" ; //.......................................................................ACDD
+		:geospatial_bounds_vertical_crs = "EPSG:5831" ; //..............................................................ACDD - If profiling data
+		:geospatial_lat_max = 0.0f ; //.................................................................................ACDD
+		:geospatial_lat_min = 0.0f ; //.................................................................................ACDD
+		:geospatial_lat_units = "degrees_north" ; //....................................................................ACDD
+		:geospatial_lon_max = 0.0f ; //.................................................................................ACDD
+		:geospatial_lon_min = 0.0f ; //.................................................................................ACDD
+		:geospatial_lon_units = "degrees_east" ; //.....................................................................ACDD
+		:geospatial_vertical_max = 0.0f ; //............................................................................ACDD - If profiling data
+		:geospatial_vertical_min = 0.0f ; //............................................................................ACDD - If profiling data
+		:geospatial_vertical_positive = "down" ; //.....................................................................ACDD - If profiling data
+		:geospatial_vertical_units = "meters" ; //......................................................................ACDD - If profiling data
+		:gts_ingest = "" ; //...........................................................................................IOOS - If profiling data; Global attribute that indicates if the data were converted to BUFR by DAC, harvested by NDBC and published on the GTS. true = yes, false = no 
+		:history = "" ; //..............................................................................................ACDD - Additional processing details
+		:id = "" ; //...................................................................................................ACDD
+		:infoUrl = "" ; //..............................................................................................IOOS - ATN portal metadata link
+		:institution = "" ; //..........................................................................................ACDD - institution who submitted to ATN?
+		:instrument = "Satellite telemetry tag" ; //....................................................................ACDD - Name of the contributing instrument type used to create this data set or product (e.g., satellite, acoustic, Dtag)
+		:instrument_sensor_type = "" ; //...............................................................................ATN - The type of sensors with which data were collected, list all sensors associated with this instrument_model, comma seperated list (e.g., Argos, GPS, pressure, temperature, conductivity, dissolved oxygen, fluorescence) 
+		:instrument_vocabulary = "" ; //................................................................................ACDD 
+		:keywords = "EARTH SCIENCE > AGRICULTURE > ANIMAL SCIENCE > ANIMAL ECOLOGY AND BEHAVIOR, EARTH SCIENCE > BIOSPHERE > ECOLOGICAL DYNAMICS > SPECIES/POPULATION INTERACTIONS > MIGRATORY RATES/ROUTES, EARTH SCIENCE > OCEANS, EARTH SCIENCE > CLIMATE INDICATORS > BIOSPHERIC INDICATORS > SPECIES MIGRATION, EARTH SCIENCE > OCEANS, EARTH SCIENCE > BIOLOGICAL CLASSIFICATION > ANIMALS/VERTEBRATES, EARTH SCIENCE > BIOSPHERE > ECOSYSTEMS > MARINE ECOSYSTEMS, PROVIDERS > GOVERNMENT AGENCIES-U.S. FEDERAL AGENCIES > DOC > NOAA > IOOS, PROVIDERS > COMMERCIAL > Axiom Data Science" ; //...ACDD - list of GCMD keywords (eg. EARTH SCIENCE > AGRICULTURE > ANIMAL SCIENCE > ANIMAL ECOLOGY AND BEHAVIOR, EARTH SCIENCE > BIOSPHERE > ECOLOGICAL DYNAMICS > SPECIES/POPULATION INTERACTIONS > MIGRATORY RATES/ROUTES, EARTH SCIENCE > OCEANS, EARTH SCIENCE > CLIMATE INDICATORS > BIOSPHERIC INDICATORS > SPECIES MIGRATION, EARTH SCIENCE > OCEANS, EARTH SCIENCE > BIOLOGICAL CLASSIFICATION > ANIMALS/VERTEBRATES, EARTH SCIENCE > BIOSPHERE > ECOSYSTEMS > MARINE ECOSYSTEMS, PROVIDERS > GOVERNMENT AGENCIES-U.S. FEDERAL AGENCIES > DOC > NOAA > IOOS, PROVIDERS > COMMERCIAL > Axiom Data Science)
+		:keywords_vocabulary = "GCMD Science Keywords v15.1" ; //.......................................................ACDD - Version of GCMD used for keywords (eg. GCMD Science Keywords v15.1)
+		:license = "These data may be used and redistributed for free, but are not intended for legal use, since they may contain inaccuracies. No person or group associated with these data makes any warranty, expressed or implied, including warranties of merchantability and fitness for a particular purpose, or assumes any legal liability for the accuracy, completeness or usefulness of this information. This disclaimer applies to both individual use of these data and aggregate use with other data. It is strongly recommended that users read and fully comprehend associated metadata prior to use. Please acknowledge the U.S. Animal Telemetry Network (ATN) or the specified citation as the source from which these data were obtained in any publications and/or representations of these data. Communication and collaboration with dataset authors are strongly encouraged." ; //....ACDD
+		:metadata_link = "" ; //........................................................................................ACDD
+		:naming_authority = "" ; //.....................................................................................ACDD - manufacturer url (reversed)
+		:ncei_template_version = "NCEI_NetCDF_trajectoryProfile_template_v2.0" ; //.....................................NCEI - NCEI netCDF template version number (eg. NCEI_NetCDF_Trajectory_Template_v2.0)
+		:platform = "" ; //.............................................................................................ACDD - (eg. land-sea mammals), links tos platform_vocabulary
+		:platform_id = "" ; //..........................................................................................IOOS - animal aphia ID
+		:platform_name = "" ; //........................................................................................IOOS - animal scientific name
+		:platform_vocabulary = "https://vocab.nerc.ac.uk/collection/L06/current/" ; //..................................ACDD - Link to NERC Vocabulary Server platform categories (eg. https://vocab.nerc.ac.uk/collection/L06/current/)
+		:processing_level = "" ; //.....................................................................................ACDD - summary of where data came from and what was done (eg. NetCDF file created from position data obtained from Wildlife Computers API)
+		:product_version = "" ; //......................................................................................ACDD
+		:program = "IOOS Animal Telemetry Network" ; //.................................................................ACDD
+		:project = "" ; //..............................................................................................ACDD - Name of the project in ADR
+		:ptt_id = "" ; //...............................................................................................ATN  - Platform Transmitter Terminal (PTT) id, as listed in ADR
+		:publisher_country = "USA" ; //.................................................................................IOOS
+		:publisher_email = "atndata@ioos.us" ; //.......................................................................ACDD
+		:publisher_institution = "US Integrated Ocean Observing System Office" ; //.....................................ACDD
+		:publisher_name = "US Integrated Ocean Observing System (IOOS) Animal Telemetry Network (ATN)" ; //.............ACDD
+		:publisher_type = "institution" ; //............................................................................ACDD
+		:publisher_url = "https://atn.ioos.us" ; //.....................................................................ACDD
+		:references = "" ; //...........................................................................................NCEI
+		:sea_name = "" ; //.............................................................................................NCEI - sea names as determined using lat/lons and NCEI sea names polygons
+		:source = "Service Argos" ; //..................................................................................CF
+		:standard_name_vocabulary = "" ; //.............................................................................ACDD - citation for CF standard name table (eg. CF Standard Name Table v27)
+		:summary = "" ; //..............................................................................................ACDD - Abstract for the dataset - format: [tag_manufacturer] [tag_model] (ptt id [ptt_id]) deployed on [animal_common_name] ([animal_scientific_name]) by [creator_name] in [sea_name] from [deployment__start_datetime] to [deployment_end_datetime].
+		:time_coverage_duration = "" ; //...............................................................................ACDD - total time duration
+		:time_coverage_end = "" ; //....................................................................................ACDD
+		:time_coverage_resolution = "" ; //.............................................................................ACDD - resolution of time observations
+		:time_coverage_start = "" ; //..................................................................................ACDD
+		:title = "" ; //................................................................................................ACDD - Title for the dataset - format: [common name] ([species]) location data from a [instrument] (ptt id [ptt id]) deployed in the [sea_name] from [deployment_start_datetime] to [deployment_end_datetime], deployment id [deployment id].
+		:uuid = "" ; //.................................................................................................ATN  - Universally Unique Indentifier, 36 character string containing numbers, letters and dashes
+		:vendor = "" ; //...............................................................................................ATN  - Vendor of the tag
+		:vendor_id = "" ; //............................................................................................ATN  - A unique id assigned by the vendor/manufacturer that released these data to the ATN DAC
+		:wigos_station_identifier = "" ; //.............................................................................ATN - Four-part WSI, unique platform identifier, links to WMO ID. 1st block (number) = WIGOS identifer series, 2nd block (number) = Issuer of identifier, 3rd block (number) = Issue number, 4th block (character) = Local identifier; e.g., 0-22000-0-9901478
+		:wmo_platform_code = "" ; //....................................................................................IOOS - The WMO identifier for the platform used to measure the data., , if gts_ingest = false this field will display not applicable or be blank. if gts_ingest = true, provide WMO id.
+		
+}
