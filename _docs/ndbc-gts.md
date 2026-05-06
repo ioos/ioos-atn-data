@@ -35,16 +35,13 @@ The diagram below summarizes this workflow:
   }
 }%%
 
-flowchart LR
-    A[Animal-based profile data] --> B[Data preparation]
-    B --> C[Convert to BUFR message<br/>+ Section 4 CSV]
-
+flowchart TD
+    A[Animal-based profile data] --> B[Data preparation*]
+    B --> C[Convert to BUFR message<br/>+ Section 4 Table]
     C --> D{Data generated<br/>within last 96 hours?}
-
-    D -- Yes --> E[NDBC submission]
-    D -- No --> F[Not submitted]
-
-    E --> G[Global Telecommunications System (GTS)]
+    D -->|Yes| E[Submit to NDBC]
+    D -->|No| F[Not submitted]
+    E --> G[Global Telecommunications System]
 ```
 Please see the [ATN DAC Flow Overview](https://ioos.github.io/ioos-atn-data/overview.html) for the full ATN data flow.
 
