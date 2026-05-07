@@ -40,7 +40,7 @@ flowchart TB
   Incoming["Incoming Data*"]@{ shape: bang}
 
   ATNApp --> Incoming
-  Incoming -->|Manual Data Curation| DataONE
+
 
   %% -----------------------
   %% QC configuration
@@ -50,7 +50,8 @@ flowchart TB
   %% ATN processing pipeline
   %% -----------------------
   subgraph PIPELINE[ATN processing pipeline]
-    Processing((processing))@{ shape: cloud }
+    Processing((Processing))@{ shape: cloud }
+    Manual(("Manual Data Curation"))@{ shape: cloud }
     PQ1[/parquet file/]
     IOOSQC((ioos_qc*))@{ shape: cloud }
     PQ2[/parquet file/]
@@ -62,7 +63,9 @@ flowchart TB
   end
 
   %% Pipeline flow
-  Incoming --> Processing
+  Incoming --> |API/Server Access| Processing
+  Incoming --> |Manual Data Curation| Processing
+  Incoming -->|Research Workspace| DataONE
   Processing --> PQ1
   PQ1 --> IOOSQC
   DefaultQC --> IOOSQC
