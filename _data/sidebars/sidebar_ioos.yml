@@ -85,7 +85,7 @@ entries:
       url: /overview.html
       output: web
 
-    - title: aniMotum Estimates
+    - title: Modeled Trajectory
       url: /animotum.html
       output: web
 
