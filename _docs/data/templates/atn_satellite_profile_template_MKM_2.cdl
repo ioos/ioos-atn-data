@@ -127,9 +127,9 @@ variables:
 	int animal_attribute_1 ; //.........................................................................................ATN - Additional animal information (eg. life stage, age, sex, length, weight)
 		animal_attribute_1:_FillValue = 0.0f ;
 		animal_attribute_1:animal_attribute_1 = "";
-		animal_age:coverage_content_type = "referenceInformation" ;
-		animal_age:long_name = "" ;
-		animal_age:units = "" ;
+		animal_attribute_1:coverage_content_type = "referenceInformation" ;
+		animal_attribute_1:long_name = "" ;
+		animal_attribute_1:units = "" ;
 	string animal ; //..................................................................................................World Registry of Marine Species Taxonomy for tagged species
 		animal:cf_role = "trajectory_id" ;
 		animal:AphiaID = "" ;
