@@ -131,7 +131,6 @@ variables:
 		animal_attribute_1:long_name = "" ;
 		animal_attribute_1:units = "" ;
 	string animal ; //..................................................................................................World Registry of Marine Species Taxonomy for tagged species
-		animal:cf_role = "trajectory_id" ;
 		animal:AphiaID = "" ;
 		animal:authority = "" ; //......................................................................................WoRMS authority
 		animal:class = "" ;
