@@ -1,6 +1,6 @@
-netcdf atn_satellite_profile_template_MKM notes_take 2 {
+netcdf atn_satellite_profile_template_MKM_2 {
 dimensions:
-	obs = < dim1 > ; //.................................................................................................Number of time steps in the time series
+	obs = 1 ; //.................................................................................................Number of time steps in the time series
 variables:
 	double time(obs) ;
 		time:_CoordinateAxisType = "Time" ;
