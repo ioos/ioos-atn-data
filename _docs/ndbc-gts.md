@@ -10,12 +10,12 @@ mermaid: true
 
 # Ocean Profiles from Animal-borne Sensor Tags
 
-This page documents the standard operating procedures for formatting and submitting near, real-time ocean profile data from animal-borne sensor tags that are registered with the Animal Telemetry Network. After quality control and formatting into BUFR, eligible profiles are submitted in near real-time to the National Data Buoy Center (NDBC), which then distributes the observations to the [Global Telecommunications System](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/global-telecommunication-system-gts) (GTS) via the Nationoal Weather Service Telecommunication Gateway (NWSTG). 
+This page documents the standard operating procedures for formatting and submitting near, real-time ocean profile data from animal-borne sensor tags that are registered with the Animal Telemetry Network. After quality control and formatting into Binary Universal Form for the Representation of Meteorological and Oceanographic Data (BUFR), eligible profiles are submitted in near real-time to the National Data Buoy Center (NDBC), which then distributes the observations to the [Global Telecommunications System](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/global-telecommunication-system-gts) (GTS) via the National Weather Service Telecommunication Gateway (NWSTG). 
 
 
 ## Workflow Overview
 
-At a high level, ocean profile data collected by animal-borne sensor tags are processed, converted to BUFR (Binary Universal Form for the Representation of Meteorological and Oceanographic Data) format, and when recevied within the near real-time submissiono window, conditionally submitted to the NDBC. The NDBC generates the corresponding BUFR bulletins for dissemination to the GTS through the NWSTG under the WMO bulletin header IOXX01 KWND. Only observations collected within the near real-time submission window are eligible for submission.
+At a high level, ocean profile data collected by animal-borne sensor tags are processed, converted to BUFR format, and when recevied within the near real-time submission window, conditionally submitted to the NDBC. The NDBC generates the corresponding BUFR bulletins for dissemination to the GTS through the NWSTG under the WMO bulletin header IOXX01 KWND. Only observations collected within the near real-time submission window are eligible for submission.
 
 The diagram below summarizes this workflow:
 
@@ -41,17 +41,18 @@ flowchart TD
     C --> D{Data generated<br/>within last 96 hours?}
     D -->|Yes| E[Submit to National Data Buoy Center]
     D -->|No| F[Not submitted]
-    E --> G[Global Telecommunications System]
+    E --> G[National Weather Service Telecommunication Gateway]
+    G --> F[Global Telecommunications System]
 ```
 *Please see the [ATN DAC Flow Overview](https://ioos.github.io/ioos-atn-data/overview.html) for the full ATN data flow.
 
 ## Data Scope
 
-Profile data are submitted on a near real-time basis, with a target of within 24 hours of collection when possible. For operational purposes, only observations collected within the previous 96 hours are eligible for submission to the National Data Buoy Center (NDBC), as older data are not accepted by the Global Telecommunications System (GTS).
+Profile data are submitted on a near real-time basis, with a target of within 24 hours of collection when possible. For operational purposes, only observations collected within the previous 96 hours are eligible for submission to the NDBC, as older data are not accepted by the GTS.
 
 Profile data older than this window may still be archived and served through other ATN or IOOS-supported data access pathways (e.g., NCEI, ERDDAP), but they are not submitted to NDBC or distributed via the GTS.
 
-Operationally, profile data from deployments marked for submission to NDBC are converted to BUFR messages on an ongoing basis throughout the deployment period (the data ingestion pipeline currenntly checks for new data from source every 30 min to every other hour depending on the source). Generated BUFR messages and corresponding human-readable files in CSV format are made available through a public [Web Accessible Folder (WAF)](https://ndbc-bufr.srv.axds.co/platforms/atn/smru/).
+Operationally, profile data from deployments marked for submission to NDBC are converted to BUFR messages on an ongoing basis throughout the deployment period (the data ingestion pipeline currently checks for new data every 30 min to every other hour, depending on the source). Generated BUFR messages and corresponding human-readable files in CSV format are made available through a public [Web Accessible Folder (WAF)](https://ndbc-bufr.srv.axds.co/platforms/atn/smru/).
 
 Once BUFR messages are generated, they are evaluated using an NDBC submission checker and, when eligible, pushed to NDBC via secure file transfer (SFTP) for pickup and processing. Near real-time data distributed through NDBC can be accessed via the NDBC [real-time data access services](https://www.ndbc.noaa.gov/faq/rt_data_access.shtml).
 
