@@ -51,7 +51,7 @@ Profile data are submitted on a near real-time basis, with a target of within 24
 
 Profile data older than this window may still be archived and served through other ATN or IOOS-supported data access pathways (e.g., NCEI, ERDDAP), but they are not submitted to NDBC or distributed via the GTS.
 
-Operationally, profile data from deployments marked for submission to NDBC are converted to BUFR messages on an ongoing basis throughout the deployment period. Generated BUFR messages and corresponding human-readable files in CSV format are made available through a public [Web Accessible Folder (WAF)](https://ndbc-bufr.srv.axds.co/platforms/atn/smru/).
+Operationally, profile data from deployments marked for submission to NDBC are converted to BUFR messages on an ongoing basis throughout the deployment period (the data ingestion pipeline currenntly checks for new data from source every 30 min to every other hour depending on the source). Generated BUFR messages and corresponding human-readable files in CSV format are made available through a public [Web Accessible Folder (WAF)](https://ndbc-bufr.srv.axds.co/platforms/atn/smru/).
 
 Once BUFR messages are generated, they are evaluated using an NDBC submission checker and, when eligible, pushed to NDBC via secure file transfer (SFTP) for pickup and processing. Near real-time data distributed through NDBC can be accessed via the NDBC [real-time data access services](https://www.ndbc.noaa.gov/faq/rt_data_access.shtml).
 
