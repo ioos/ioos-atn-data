@@ -15,7 +15,7 @@ This page documents the standard operating procedures for formatting and submitt
 
 ## Workflow Overview
 
-At a high level, ocean profile data collected by animal-borne sensor tags are processed, converted to BUFR format, and when recevied within the near real-time submissiono window, conditionally submitted to the NDBC. The NDBC generates the corresponding BUFR bulletins for dissemination to the GTS through the NWSTG under the WMO bulletin header IOXX01 KWND. Only observations collected within the near real-time submission window are eligible for submission.
+At a high level, ocean profile data collected by animal-borne sensor tags are processed, converted to BUFR (Binary Universal Form for the Representation of Meteorological and Oceanographic Data) format, and when recevied within the near real-time submissiono window, conditionally submitted to the NDBC. The NDBC generates the corresponding BUFR bulletins for dissemination to the GTS through the NWSTG under the WMO bulletin header IOXX01 KWND. Only observations collected within the near real-time submission window are eligible for submission.
 
 The diagram below summarizes this workflow:
 
@@ -58,7 +58,7 @@ Once BUFR messages are generated, they are evaluated using an NDBC submission ch
 
 ## BUFR Conversion
 
-Each eligible profile from an active deployment is converted into an individual BUFR message following World Meteorological Organization (WMO) BUFR v39 tables. A corresponding BUFR Section 4 descriptor record is also generated in CSV format to support human-readable inspection of encoded values without requiring a BUFR decoder. 
+Each eligible profile is converted into an individual BUFR message in accordance with the World Meteorological Organization (WMO) BUFR v39 tables and template 3-15-023 for animal-borne oceanographic profile data. A corresponding BUFR Section 4 descriptor record is also generated in CSV format to support human-readable inspection of encoded values without requiring a BUFR decoder. 
 
 
 ### Pre-processing Steps
@@ -72,7 +72,7 @@ For each available profile:
 - Truncate profile identifiers to a maximum of 8 characters, as required by BUFR field constraints
 
 **Quality Control Note:**  
-Standard QARTOD quality control checks are applied to the ocean profile observations (e.g. temperature, salinity) prior to BUFR encoding. At present, QARTOD flag values are not yet mapped to BUFR-required quality indicator fields. This mapping may be added in a future update.
+Standard QARTOD quality control checks are applied to the ocean profile observations (e.g. temperature, salinity) prior to BUFR encoding. At present, QARTOD flag values are not yet mapped to BUFR-required quality indicator fields, so all GTSPP flags are hardcoded to 0 (unqualified). This mapping may be added in a future update.
 
 
 ### Encoding Outputs
