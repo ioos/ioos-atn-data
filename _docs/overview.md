@@ -116,6 +116,5 @@ flowchart TB
   class DataONE,ERDDAP,NCEI,OBIS,NDBC,GTS finalRepo;
 ```
 
-## Incoming data sources
 
 More details coming soon on incoming data sources, QC configuration, processing, and data distribution!
