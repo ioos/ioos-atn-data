@@ -118,42 +118,4 @@ flowchart TB
 
 ## Incoming data sources
 
-ATN Data Registration App
-DataONE (via manual data curation)
-ATN Tag Manufacturer API/Server
-
-For data that are automatically ingested from the ATN tag manufacturers' data access point, ATN checks for incoming data every 30 minutes or every 2 hours, depending on source.
-
-
-
-## QC configuration
-
-Default QC configuration
-Optional custom QC configuration (stored in platform_service)
-QC performed via ioos_qc
-
-
-
-## Processing
-
-Incoming data → processing → parquet files
-Profile vs non-profile data branching
-Non-profile data may go to aniMotum → CSV → parquet
-
-Outputs:
-- Standardized netCDF
-- Standardized QC netCDF
-- BUFR messages (not yet including QARTOD QC flags)
-
-Notes
-- For PAT tags, trajectory data are in the GPE file, not Location files
-- QARTOD QC flags are not yet integrated into BUFR fields
-
-
-## Data Distribution
-
-- ATN DAC Portal / Data Access
-- ERDDAP
-- NCEI
-- OBIS/GBIF
-- BUFR → SFTP → NDBC → GTS
+More details coming soon on incoming data sources, QC configuration, processing, and data distribution!
