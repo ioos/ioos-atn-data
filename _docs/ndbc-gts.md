@@ -10,12 +10,12 @@ mermaid: true
 
 # Ocean Profiles from Animal-borne Sensor Tags
 
-This page documents the standard operating procedures for formatting and submitting near, real-time ocean profile data from animal-borne sensor tags that are registered with the Animal Telemetry Network. After quality control and formatting into BUFR, eligible profiles are submitted in near real-time to the National Data Buoy Center (NDBC), which then distributes the observations via the [Global Telecommunications System](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/global-telecommunication-system-gts) (GTS). 
+This page documents the standard operating procedures for formatting and submitting near, real-time ocean profile data from animal-borne sensor tags that are registered with the Animal Telemetry Network. After quality control and formatting into BUFR, eligible profiles are submitted in near real-time to the National Data Buoy Center (NDBC), which then distributes the observations to the [Global Telecommunications System](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/global-telecommunication-system-gts) (GTS) via the Nationoal Weather Service Telecommunication Gateway (NWSTG). 
 
 
 ## Workflow Overview
 
-At a high level, ocean profile data from animal-borne sensor tags are processed, converted to BUFR format, and conditionally submitted to the National Data Buoy Center (NDBC) for distribution via the Global Telecommunications System (GTS). Only observations collected within the near real-time submission window are eligible for submission.
+At a high level, ocean profile data collected by animal-borne sensor tags are processed, converted to BUFR format, and when recevied within the near real-time submissiono window, conditionally submitted to the NDBC. The NDBC generates the corresponding BUFR bulletins for dissemination to the GTS through the NWSTG under the WMO bulletin header IOXX01 KWND. Only observations collected within the near real-time submission window are eligible for submission.
 
 The diagram below summarizes this workflow:
 
