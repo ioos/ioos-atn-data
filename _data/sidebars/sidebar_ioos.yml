@@ -93,6 +93,10 @@ entries:
       url: /quality-control.html
       output: web
 
+    - title: NDBC Submission
+      url: /ndbc-gts.html
+      output: web
+
     - title: NCEI Archive
       url: /atn-archive.html
       output: web
