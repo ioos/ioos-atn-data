@@ -38,8 +38,7 @@ summary: This is version 1.0 of the ATN satellite telemetry netCDF specification
 
 IOOS provides a collection of "Gold Standard" example datasets in ERDDAP to demonstrate implementation of this Metadata Profile.  The Gold Standard datasets can be used as templates for data providers to generate their own compliant datasets in ERDDAP, and include a fully-deployable ERDDAP instance that includes both the example data and configuration files.  Consult the links below for more information:
 
-* [IOOS ATN Satellite Trajectory Example Dataset]()
-* [Example in IOOS "ERDDAP Gold Standard" GitHub Repository]()
+* [IOOS ATN Satellite Trajectory Datasets on ERDDAP](https://atn.ioos.us/erddap/info/index.html?page=1&itemsPerPage=1000)
 
 ## Identifiers
 Within the ATN netCDF files there are various identifiers which serve important purposes. Below is a table of those identifiers and the purpose they serve.
