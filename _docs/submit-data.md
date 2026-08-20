@@ -69,7 +69,6 @@ found within ATN’s data management [policy
 guidance](https://cdn.ioos.noaa.gov/media/2022/03/ATN-DAC-Data-Management-Policy-Guidance_v.202201.pdf)
 document.
 
-> [!NOTE]
 > Data feeds made available to the ATN DAC while a tag is actively
 > deployed on an animal will appear in the `Real-time tag deployment`
 > layers of the ATN data portal map interface. These feeds will also be
@@ -88,7 +87,6 @@ submit to the ATN DAC through the following steps:
 4.  Upload your deployment metadata and data files
 5.  Work with the ATN DC to publish your data files
 
-> [!NOTE]
 > Uploading metadata and data files to the Workspace will allow you to
 > publish your data to the ATN data portal project catalog, as well as
 > archive your dataset with a national data center, such as
