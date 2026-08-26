@@ -104,3 +104,24 @@ entries:
     - title: Darwin Core Alignment
       url: /atn-darwin-core.html
       output: web
+
+  - title: ATN DAC Help Docs
+    output: web, pdf
+
+    folderitems:
+
+    - title: Overview
+      url: /atn-help.html
+      output: web
+
+    - title: U.S. ATN Argos Fees Program
+      url: /argos.html
+      output: web
+
+    - title: How to Submit Data
+      url: /submit-data.html
+      output: web
+
+    - title: Contact Information
+      url: /contact.html
+      output: web
