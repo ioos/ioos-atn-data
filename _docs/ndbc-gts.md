@@ -99,6 +99,7 @@ encode(profile_dataset=df, output="profiles.bufr", uuid=random_uuid, ptt=random_
 ```
 
 2. Get Section 4 Records of the BUFR Message:
+
 ```
 from bufrtools.encoding.wildlife_computers import get_section4
 
