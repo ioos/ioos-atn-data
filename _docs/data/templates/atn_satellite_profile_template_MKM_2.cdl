@@ -187,10 +187,10 @@ variables:
 		:contributor_email = "" ; //....................................................................................IOOS - Comma separated list of contributor emails
 		:contributor_institution = "" ; //..............................................................................NCEI - Comma separated list of contributor institutions
 		:contributor_name = "" ; //.....................................................................................ACDD - Comma separated list of individuals who contributed to dataset
-		:contributor_role = "" ; //.....................................................................................ACDD - Comma separated list of contributor roles (orginator, author, etc.)
+		:contributor_role = "" ; //.....................................................................................ACDD - Comma separated list of contributor roles (originator, author, etc.)
 		:contributor_role_vocabulary = "https://vocab.nerc.ac.uk/collection/G04/current/" ; //..........................IOOS - NERC Vocabulary server link to vocab used (eg. https://vocab.nerc.ac.uk/collection/G04/current/)
-		:contributor_url = "" ; //......................................................................................ATN - Contributor ORCiD urls (comma separated list)
-		:Coventions = "CF-1.10, ACDD-1.3, IOOS-1.2, ATN Satellite Telemetry Profile Specification v1.0" ; //............CF
+		:contributor_url = "" ; //......................................................................................ATN - Contributor ORCiD URLs (comma-separated list)
+		:Conventions = "CF-1.10, ACDD-1.3, IOOS-1.2, ATN Satellite Telemetry Profile Specification v1.0" ; //............CF
 		:creator_country = "" ; //......................................................................................IOOS - Country code
 		:creator_email = "" ; //........................................................................................ACDD - PI email
 		:creator_institution = "" ; //..................................................................................ACDD - Institution name for creator
@@ -201,7 +201,7 @@ variables:
 		:creator_sector = "" ; //.......................................................................................IOOS - Sector from https://mmisw.org/ont/ioos/sector
 		:creator_sector_vocabulary = "https://mmisw.org/ont/ioos/sector" ; //...........................................IOOS  - IOOS MMISW sector vocabulary
 		:creator_type = "person" ; //...................................................................................ACDD
-		:creator_url = "" ; //..........................................................................................ATN - orcid for creator
+		:creator_url = "" ; //..........................................................................................ATN - ORCiD for creator
 		:date_created = "" ; //.........................................................................................ACDD
 		:date_issued = "" ; //..........................................................................................ACDD - Date issued
 		:date_metadata_modified = "" ; //...............................................................................ACDD - Date the metadata was last updated
@@ -232,7 +232,7 @@ variables:
 		:infoUrl = "" ; //..............................................................................................IOOS - ATN portal metadata link
 		:institution = "" ; //..........................................................................................ACDD - institution who submitted to ATN?
 		:instrument = "Satellite telemetry tag" ; //....................................................................ACDD - Name of the contributing instrument type used to create this data set or product (e.g., satellite, acoustic, Dtag)
-		:instrument_sensor_type = "" ; //...............................................................................ATN - The type of sensors with which data were collected, list all sensors associated with this instrument_model, comma seperated list (e.g., Argos, GPS, pressure, temperature, conductivity, dissolved oxygen, fluorescence) 
+		:instrument_sensor_type = "" ; //...............................................................................ATN - The type of sensors with which data were collected, list all sensors associated with this instrument_model, comma-separated list (e.g., Argos, GPS, pressure, temperature, conductivity, dissolved oxygen, fluorescence) 
 		:instrument_vocabulary = "" ; //................................................................................ACDD 
 		:keywords = "EARTH SCIENCE > AGRICULTURE > ANIMAL SCIENCE > ANIMAL ECOLOGY AND BEHAVIOR, EARTH SCIENCE > BIOSPHERE > ECOLOGICAL DYNAMICS > SPECIES/POPULATION INTERACTIONS > MIGRATORY RATES/ROUTES, EARTH SCIENCE > OCEANS, EARTH SCIENCE > CLIMATE INDICATORS > BIOSPHERIC INDICATORS > SPECIES MIGRATION, EARTH SCIENCE > OCEANS, EARTH SCIENCE > BIOLOGICAL CLASSIFICATION > ANIMALS/VERTEBRATES, EARTH SCIENCE > BIOSPHERE > ECOSYSTEMS > MARINE ECOSYSTEMS, PROVIDERS > GOVERNMENT AGENCIES-U.S. FEDERAL AGENCIES > DOC > NOAA > IOOS, PROVIDERS > COMMERCIAL > Axiom Data Science" ; //...ACDD - list of GCMD keywords (eg. EARTH SCIENCE > AGRICULTURE > ANIMAL SCIENCE > ANIMAL ECOLOGY AND BEHAVIOR, EARTH SCIENCE > BIOSPHERE > ECOLOGICAL DYNAMICS > SPECIES/POPULATION INTERACTIONS > MIGRATORY RATES/ROUTES, EARTH SCIENCE > OCEANS, EARTH SCIENCE > CLIMATE INDICATORS > BIOSPHERIC INDICATORS > SPECIES MIGRATION, EARTH SCIENCE > OCEANS, EARTH SCIENCE > BIOLOGICAL CLASSIFICATION > ANIMALS/VERTEBRATES, EARTH SCIENCE > BIOSPHERE > ECOSYSTEMS > MARINE ECOSYSTEMS, PROVIDERS > GOVERNMENT AGENCIES-U.S. FEDERAL AGENCIES > DOC > NOAA > IOOS, PROVIDERS > COMMERCIAL > Axiom Data Science)
 		:keywords_vocabulary = "GCMD Science Keywords v15.1" ; //.......................................................ACDD - Version of GCMD used for keywords (eg. GCMD Science Keywords v15.1)
@@ -240,7 +240,7 @@ variables:
 		:metadata_link = "" ; //........................................................................................ACDD
 		:naming_authority = "" ; //.....................................................................................ACDD - manufacturer url (reversed)
 		:ncei_template_version = "NCEI_NetCDF_trajectoryProfile_template_v2.0" ; //.....................................NCEI - NCEI netCDF template version number (eg. NCEI_NetCDF_Trajectory_Template_v2.0)
-		:platform = "" ; //.............................................................................................ACDD - (eg. land-sea mammals), links tos platform_vocabulary
+		:platform = "" ; //.............................................................................................ACDD - (eg. land-sea mammals), links to platform_vocabulary
 		:platform_id = "" ; //..........................................................................................IOOS - animal aphia ID
 		:platform_name = "" ; //........................................................................................IOOS - animal scientific name
 		:platform_vocabulary = "https://vocab.nerc.ac.uk/collection/L06/current/" ; //..................................ACDD - Link to NERC Vocabulary Server platform categories (eg. https://vocab.nerc.ac.uk/collection/L06/current/)
@@ -265,10 +265,10 @@ variables:
 		:time_coverage_resolution = "" ; //.............................................................................ACDD - resolution of time observations
 		:time_coverage_start = "" ; //..................................................................................ACDD
 		:title = "" ; //................................................................................................ACDD - Title for the dataset - format: [common name] ([species]) location data from a [instrument] (ptt id [ptt id]) deployed in the [sea_name] from [deployment_start_datetime] to [deployment_end_datetime], deployment id [deployment id].
-		:uuid = "" ; //.................................................................................................ATN  - Universally Unique Indentifier, 36 character string containing numbers, letters and dashes
+		:uuid = "" ; //.................................................................................................ATN  - Universally Unique Identifier, 36 character string containing numbers, letters and dashes
 		:vendor = "" ; //...............................................................................................ATN  - Vendor of the tag
 		:vendor_id = "" ; //............................................................................................ATN  - A unique id assigned by the vendor/manufacturer that released these data to the ATN DAC
-		:wigos_station_identifier = "" ; //.............................................................................ATN - Four-part WSI, unique platform identifier, links to WMO ID. 1st block (number) = WIGOS identifer series, 2nd block (number) = Issuer of identifier, 3rd block (number) = Issue number, 4th block (character) = Local identifier; e.g., 0-22000-0-9901478
+		:wigos_station_identifier = "" ; //.............................................................................ATN - Four-part WSI, unique platform identifier, links to WMO ID. 1st block (number) = WIGOS identifier series, 2nd block (number) = Issuer of identifier, 3rd block (number) = Issue number, 4th block (character) = Local identifier; e.g., 0-22000-0-9901478
 		:wmo_platform_code = "" ; //....................................................................................IOOS - The WMO identifier for the platform used to measure the data., , if gts_ingest = false this field will display not applicable or be blank. if gts_ingest = true, provide WMO id.
 		
 }
