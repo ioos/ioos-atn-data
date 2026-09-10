@@ -10,7 +10,7 @@ mermaid: true
 
 ## Quality Control Protocols
 
-ATN DAC quality control (QC) protocols handle animal trajectory and dive profile data and use the `ioos_qc` Python package (see [docs](https://ioos.github.io/ioos_qc/)) to implement multiple QARTOD tests and an aggregate rollup flag. 
+The Animal Telemetry Network (ATN) DAC quality control (QC) protocols handle animal trajectory and dive profile data and use the `ioos_qc` Python package (see [docs](https://ioos.github.io/ioos_qc/)) to implement multiple QARTOD tests and an aggregate rollup flag. 
 
 The following `ioos_qc` tests are applied: 
 * [`ioos_qc.argo.speed_test`](https://ioos.github.io/ioos_qc/api/ioos_qc.html#ioos_qc.argo.speed_test)
@@ -31,7 +31,7 @@ The Location and Speed tests are applied to trajectory data only, while the Gros
 
 Prior to applying the quality control protocols, raw trajectory and profile data for each deployment are first truncated based on deployment start and end dates provided in the metadata. This is a necessary data cleaning step since telemetry tags are often activated and begin pinging their locations before and after they are attached to the animal and officially "deployed". These out-of-bounds locations may appear either on land or at sea.
 
-Processed, tidy data with QC flags are then submitted to a variety of downstream locations and repositories including the ATN Portal, NDBC for integration into the GTS, NCEI, and ERDDAP for increased data accessibility and archival. Please see the [ATN DAC Flow Overview](https://ioos.github.io/ioos-atn-data/overview.html) for more details.
+Processed, tidy data with QC flags are then submitted to a variety of downstream locations and repositories including the [ATN Portal](https://portal.atn.ioos.us/#), National Data Buoy Center (NDBC) for integration into the [Global Telecommunications System](https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/global-telecommunication-system-gts) (GTS), DataONE, NCEI, and ERDDAP for increased data accessibility and archival. Please see the [ATN DAC Flow Overview](https://ioos.github.io/ioos-atn-data/overview.html) for more details.
 
 ### Raw Data Tidying
 
