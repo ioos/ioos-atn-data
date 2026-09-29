@@ -120,14 +120,22 @@ flowchart TB
 
 ## Incoming Data Sources
 
-The ATN DAC aggregates data from a variety of data sources both manually transferred by data providers or sourced directly from tag manufacturers' API or web server when available. ATN projects and new deployments need to first be registered through the [ATN Data Registration App](https://dacregistration.atn.ioos.us/accounts/login/?next=/) in order to be integrated into the ATN DAC. After registration, the ATN Data Coordinator will work with the data provider(s) to ensure metadata have been appropriately provide and confirm approval of data relase prior to integration into the DAC. 
+The ATN DAC aggregates data from a variety of data sources both manually transferred by data providers or sourced directly from a tag manufacturer's API or web server when available. ATN projects and new deployments need to first be registered through the [ATN Data Registration App (ADR)](https://dacregistration.atn.ioos.us/accounts/login/?next=/) in order to be integrated into the ATN DAC. After registration, the ATN Data Coordinator will work with the data provider(s) to ensure metadata have been appropriately provide and confirm approval of data relase prior to integration into the DAC. 
 
 Once approved and released, the ATN DAC can pull deployment data automatically from the following tag manufacturers, checking for incoming data every 30 minutes or every 2 hours, depending on the source:
 - [Wildlife Computers](https://wildlifecomputers.com/)
 - [Sea Mammal Research Unit](https://www.smru.st-andrews.ac.uk/index.html)
 - [Woods Hole Group (a CLS North American company)](https://www.woodsholegroup.com/)
 
-Manual data integration will be slower to integrate and pipelines are assessed for automation as data become more easily accessible from different manufacturers.
+Manual data integration is required when deployment or tag data are not available through a web-accessible pathway listed above. For these cases, PIs can work with the ATN Data Coordinator after registering their project in the ADR to gain access to the ATN Research Workspace Campaign for secure transfers. 
+
+Examples of manual data integration include:
+- Tags manufacturered by providers other than Wildlife Computers, Sea Mammal Research Unit, or Woods Hole Group
+- Data recovered directly from a tag, such as pop-up satellite archival tags (PSAT), that are not accessible from one of the above data sources
+- Historical, legacy, or otherwise non-standard datasets that require additional review, mapping, or reformatting before they can enter the standard processing workflow
+- Data for which access credentials, release permissions, metadata, or other required information are not yet available through an automated connection
+
+Manual ingestion may include additional coordination with data providers and ATN Data Coordinator, obtaining the source files and associated metadata, mapping the data to standardized formatting for ATN DAC integration, and conducting data review and quality control. The ATN DAC will periodically assess manually integrated data sources for potential automation and streamlining as tag manufacturer access methods and data-sharing agreements evolve.
 
 All ATN data can be viewed on the ATN Data Portal [here](https://portal.atn.ioos.us/?ls=HKwofDkA#map), and deployment data from the past 30-days viewable [here](https://portal.atn.ioos.us/?ls=q2VLkmP-#map).
 
