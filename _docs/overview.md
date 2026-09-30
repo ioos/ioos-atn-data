@@ -130,7 +130,7 @@ Once approved and released, the ATN DAC can pull deployment data automatically f
 Manual data integration is required when deployment or tag data are not available through a web-accessible pathway listed above. For these cases, PIs can work with the ATN Data Coordinator after registering their project in the ADR to gain access to the ATN Research Workspace Campaign for secure transfers. 
 
 Examples of manual data integration include:
-- Tags manufacturered by providers other than Wildlife Computers, Sea Mammal Research Unit, or Woods Hole Group
+- Tags manufactured by providers other than Wildlife Computers and Sea Mammal Research Unit, unless tag data is available via the CLS America data API
 - Data recovered directly from a tag, such as pop-up satellite archival tags (PSAT), that are not accessible from one of the above data sources
 - Historical, legacy, or otherwise non-standard datasets that require additional review, mapping, or reformatting before they can enter the standard processing workflow
 - Data for which access credentials, release permissions, metadata, or other required information are not yet available through an automated connection
