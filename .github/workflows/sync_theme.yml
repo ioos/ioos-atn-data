@@ -24,20 +24,21 @@ jobs:
       with:
         ref: gh-pages
         fetch-depth: 0
-        persist-credentials: true
+        persist-credentials: false
+        submodules: recursive
 
-    - name: submodule checkout
-      run: |
-           git submodule update --init
-    - name: check submodule status
+    - name: check submodule status before
       run: |
           git submodule status
+
     - name: Update theme from submodules
       run: |
            git submodule update --remote --merge
-    - name: check submodule status 2
+
+    - name: check submodule status after
       run: |
            git submodule status
+
     - name: Commit and push if it changed
       run: |
            git config user.name "Automated"
