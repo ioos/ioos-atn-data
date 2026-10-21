@@ -1,5 +1,8 @@
 name: sync theme submodules
 
+# no permissions by default
+permissions: {}
+
 on:
   push:
     branches: gh-pages
@@ -9,15 +12,18 @@ on:
 
   workflow_dispatch:
 
-
 jobs:
   sync_theme_submodules:
     if: github.repository_owner == 'ioos' # only run if ioos owns repo
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - name: Checkout repo
-      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-      with: { ref: gh-pages }
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      with:
+        fetch-depth: 0
+        persist-credentials: false
 
     - name: submodule checkout
       run: |
