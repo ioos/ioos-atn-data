@@ -1031,7 +1031,6 @@ Attributes:
 
 | Attribute             | Disposition   | Description   | Example              |
 |:----------------------|:--------------|:--------------|:---------------------|
-| cf_role               |               |               | trajectory_id        |
 | long_name             |               |               | tagged animal id     |
 | valid_name            |               |               | Pusa caspica         |
 | AphiaID               |               |               | 255022               |
@@ -1060,13 +1059,13 @@ Attributes:
 ```
  <xarray.DataArray 'animal' ()>
 [1 values with dtype=object]
-Attributes: (12/22)
-    cf_role:         trajectory_id
+Attributes: (12/21)
     long_name:       tagged animal id
     valid_name:      Pusa caspica
     AphiaID:         255022
     scientificname:  Pusa caspica
     authority:       Gmelin, 1788
+    kingdom:         Animalia
     ...              ...
     infraphylum:     Gnathostomata
     megaclass:       Tetrapoda
@@ -1252,7 +1251,6 @@ variables:
 		Ptt:comment = PTT code for this deployment. PTT codes may be used on multiple deployments, but  not concurrently. When combined with deployment dates, PTTs can uniquely identify a deployment. ;
 		Ptt:coverage_content_type = referenceInformation ;
 	<U15 animal() ;
-		animal:cf_role = trajectory_id ;
 		animal:long_name = BP6772 ;
 		animal:valid_name = Chelonia mydas ;
 		animal:AphiaID = 137206 ;
@@ -1537,13 +1535,13 @@ Attributes:
 
 'animal': <xarray.Variable ()>
 array('982000410612253', dtype='<U15')
-Attributes: (12/22)
-    cf_role:         trajectory_id
+Attributes: (12/21)
     long_name:       BP6772
     valid_name:      Chelonia mydas
     AphiaID:         137206
     scientificname:  Chelonia mydas
     authority:       (Linnaeus, 1758)
+    kingdom:         Animalia
     ...              ...
     infraphylum:     Gnathostomata
     megaclass:       Tetrapoda
